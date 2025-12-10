@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { configApp } from "../config/conig-app";
+import StoreProvider from "../store/StoreProvider";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: {
     default: configApp.NAME(),
-    template: `%s - ${configApp.NAME()}`
+    template: `%s - ${configApp.NAME()}`,
   },
   description: `The best messanger in the industry - ${configApp.NAME()}`,
 };
@@ -24,10 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${fontRoboto.className} antialiased`}
-      >
-        {children}
+      <body className={`${fontRoboto.className} antialiased`}>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
