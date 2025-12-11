@@ -6,19 +6,29 @@ import StoreProvider from "../store/StoreProvider";
 import { ShaderDarkVeil, routing } from "@/shared";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: configApp.NAME(),
-    template: `%s - ${configApp.NAME()}`,
-  },
-  description: `The best messanger in the industry - ${configApp.NAME()}`,
-};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return {
+    title: {
+      template: `%s - ${configApp.NAME()}`,
+      default: `${t("pagesTitle.homeTitle")} - ${configApp.NAME()}`,
+    },
+    description: `The best messanger in the industry - ${configApp.NAME()}`,
+  };
+}
 
 type Props = {
   children: React.ReactNode;
@@ -33,7 +43,7 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
-  
+
   return (
     <html lang="en">
       <body className={`${fontRoboto.className} antialiased`}>
