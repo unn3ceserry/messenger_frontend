@@ -1,5 +1,53 @@
 {
+  "pagesTitle": {
+    "homeTitle": "Home",
+    "registrationTitle": "Registration",
+    "authorizationTitle": "Authorization",
+    "profileCompleteTitle": "Profile complete"
+  },
+  "buttons": {
+    "buttonBack": "Back",
+    "buttonSave": "Save",
+    "buttonSkip": "Skip",
+    "buttonSendCode": "Send the code",
+    "buttonSignUp": "Sign Up",
+    "buttonSignIn": "Sign In",
+    "buttonIHaveAccount": "I have an account",
+    "buttonContinue": "Continue"
+  },
   "home": {
-    "title": "Home"
+    "heroDesc": "The best messenger of all time. Chat with friends, give gifts, and share photos, videos, and voice messages."
+  },
+  "register": {
+    "title": "Registration —",
+    "desc": "Registration is very simple. Enter your phone number and wait for the code to be sent. Then simply enter it.",
+    "phoneInput": "Phone number",
+    "information": {
+      "title": "Information —",
+      "desc": "Your first and last name are required for your account. To be recognized, you must complete these two fields.",
+      "firstNameInput": "First name",
+      "lastNameInput": "Last name"
+    }
+  },
+  "auth": {
+    "title": "Authorization —",
+    "desc": "Authorization is very simple. Enter your phone number and wait for the code to be sent. Then simply enter it.",
+    "phoneInput": "Phone number",
+    "password": {
+      "title": "Password —",
+      "desc": "A cloud password is one way to protect your account. Please enter your cloud password to authorize.",
+      "passwordInput": "Cloud password"
+    }
+  },
+
+  "profileComplete": {
+    "title": "Complete your profile.",
+    "desc": "Filling out your profile is one of the basic functions of our messenger. If you'd like to share information about yourself, this section is for you.",
+    "emailTitle": "Email",
+    "emailDesc": "Mail to contact you.",
+    "birthdayTitle": "Birthday",
+    "birthdayDesc": "Your birthday",
+    "passwordTitle": "Password",
+    "passwordDesc": "Password for account security."
   }
 }
