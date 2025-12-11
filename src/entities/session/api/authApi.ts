@@ -1,7 +1,6 @@
 import { mainApi } from "@/shared";
 import { SignInType, SignUpType } from "../model";
 import { FindUserType } from "@/entities/user";
-import { url } from "inspector";
 
 export const sessionApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
