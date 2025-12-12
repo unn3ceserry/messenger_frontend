@@ -3,11 +3,21 @@
 import { FC, InputHTMLAttributes, ReactNode } from "react";
 
 interface IDefaultInput extends InputHTMLAttributes<HTMLInputElement> {
-  icon?: ReactNode
+  icon?: ReactNode;
+  classNameDiv?: string;
 }
-const DefaultInput: FC<IDefaultInput> = ({ className, icon, ...props }) => {
+const DefaultInput: FC<IDefaultInput> = ({
+  className,
+  classNameDiv,
+  icon,
+  ...props
+}) => {
   return (
-    <div className="flex items-start justify-center p-3.5 bg-rect-bg backdrop-blur-xl rounded-xl ring-2 ring-accent/10 w-full">
+    <div
+      className={`${
+        classNameDiv ? classNameDiv : ""
+      } flex items-start justify-center p-3.5 bg-rect-bg backdrop-blur-xl rounded-xl ring-2 ring-accent/10 w-full`}
+    >
       {icon}
       <input
         {...props}
