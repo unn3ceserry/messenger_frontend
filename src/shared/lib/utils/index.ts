@@ -1,0 +1,1 @@
+export {isErrorWithMessageAndType, isFetchBaseQueryError} from './isRtkQueryError'
