@@ -6,7 +6,7 @@ import StoreProvider from "../store/StoreProvider";
 import { ShaderDarkVeil, routing } from "@/shared";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -43,11 +43,13 @@ export default async function RootLayout({
     notFound();
   }
 
+  setRequestLocale(locale);
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${fontRoboto.className} antialiased`}>
         <StoreProvider>
-          <NextIntlClientProvider>
+          <NextIntlClientProvider locale={locale}>
             <div className="w-full h-screen fixed top-0 left-0 -z-10">
               <ShaderDarkVeil
                 speed={2}
