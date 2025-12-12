@@ -1,3 +1,11 @@
-export {mainApi} from './api'
-export {getRequestConfig, routing, Link, redirect, usePathname, useRouter, getPathname} from './lib'
-export {ShaderDarkVeil, GlassReactangle} from './ui'
+export { mainApi } from "./api";
+export {
+  getRequestConfig,
+  routing,
+  Link,
+  redirect,
+  usePathname,
+  useRouter,
+  getPathname,
+} from "./lib";
+export { ShaderDarkVeil, GlassReactangle, DefaultInput } from "./ui";
