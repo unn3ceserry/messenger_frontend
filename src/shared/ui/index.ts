@@ -1,3 +1,4 @@
 export {default as ShaderDarkVeil} from './shader/ShaderDarkVeil'
 export {default as GlassReactangle} from './glass/GlassReactangle'
 export {default as DefaultInput} from './input/DefaultInput'
+export {default as Button} from './button/Button'

@@ -1,20 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --ff-main: 'DMSans', sans-serif;
+  --ff-main: "DMSans", sans-serif;
   --accent-color: #3549ff;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
   --switcher-bg-color: color-mix(in srgb, var(--accent-color) 10%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 3%, #000000);
-  --rect-background-color: color-mix(in srgb, var(--accent-color) 1%, transparent);
+  --rect-background-color: color-mix(
+    in srgb,
+    var(--accent-color) 1%,
+    transparent
+  );
   --rect-border-color: color-mix(in srgb, var(--accent-color) 8%, #ffffff01);
   --text-color: color-mix(in srgb, var(--accent-color) 25%, #ffffff);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 35%, #ffffff80);
   --line-color: color-mix(in srgb, var(--accent-color) 5%, #ffffff01);
-  --background-slider-color: color-mix(in srgb, var(--accent-color) 10%, #ffffff01);
-  --background-thumb-color: color-mix(in srgb, var(--accent-color) 15%, #ffffff01);
+  --background-slider-color: color-mix(
+    in srgb,
+    var(--accent-color) 10%,
+    #ffffff01
+  );
+  --background-thumb-color: color-mix(
+    in srgb,
+    var(--accent-color) 15%,
+    #ffffff01
+  );
 }
-
 
 @theme inline {
   --color-accent: var(--accent-color);
