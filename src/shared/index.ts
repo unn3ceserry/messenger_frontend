@@ -7,5 +7,13 @@ export {
   usePathname,
   useRouter,
   getPathname,
+  isErrorWithMessageAndType,
+  isFetchBaseQueryError,
 } from "./lib";
-export { ShaderDarkVeil, GlassReactangle, DefaultInput, Button, TimeClient } from "./ui";
+export {
+  ShaderDarkVeil,
+  GlassReactangle,
+  DefaultInput,
+  Button,
+  TimeClient,
+} from "./ui";
