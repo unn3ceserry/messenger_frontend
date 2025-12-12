@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { configApp } from "../config/conig-app";
 import StoreProvider from "../store/StoreProvider";
-import { ShaderDarkVeil, routing } from "@/shared";
+import { ShaderDarkVeil, TimeClient, routing } from "@/shared";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -44,7 +44,7 @@ export default async function RootLayout({
   }
 
   setRequestLocale(locale);
-
+  const now = new Date().toISOString();
   return (
     <html lang={locale}>
       <body className={`${fontRoboto.className} antialiased`}>
@@ -60,6 +60,7 @@ export default async function RootLayout({
                 warpAmount={1}
               />
             </div>
+            <TimeClient initialTime={now} />
             {children}
           </NextIntlClientProvider>
         </StoreProvider>
