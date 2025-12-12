@@ -1,6 +1,6 @@
 class CONFIG_APP {
   NAME() {
-    return "Fluent App";
+    return "Fluent";
   }
   VERSION() {
     return "1.0.0";
