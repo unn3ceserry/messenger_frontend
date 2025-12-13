@@ -30,11 +30,11 @@ const HeroTitle = () => {
         <Button
           onClick={() => router.push(`/${params.locale}/register`)}
           label={t("buttons.buttonSignUp")}
-          className="w-full p-2.5"
+          className="w-full p-3.5"
         />
         <button
           onClick={() => router.push(`/${params.locale}/auth`)}
-          className="bg-rect-bg ring ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-2.5 items-center justify-center w-full"
+          className="bg-rect-bg ring ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-3.5 items-center justify-center w-full"
         >
           {t("buttons.buttonIHaveAccount")}
         </button>
