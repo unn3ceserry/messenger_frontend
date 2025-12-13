@@ -1,4 +1,7 @@
 {
+  "notify": {
+    "title": "Уведомление"
+  },
   "pagesTitle": {
     "homeTitle": "Главная",
     "registrationTitle": "Регистрация",

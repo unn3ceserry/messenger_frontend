@@ -16,6 +16,7 @@
         "react-dom": "19.2.1",
         "react-hook-form": "^7.68.0",
         "react-redux": "^9.2.0",
+        "react-toastify": "^11.0.5",
         "reactjs-otp-input": "^2.0.10",
         "zod": "^4.1.13",
         "zustand": "^5.0.9",
@@ -333,6 +334,8 @@
     "react-is": ["react-is@16.13.1", "", {}, "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="],
 
     "react-redux": ["react-redux@9.2.0", "", { "dependencies": { "@types/use-sync-external-store": "^0.0.6", "use-sync-external-store": "^1.4.0" }, "peerDependencies": { "@types/react": "^18.2.25 || ^19", "react": "^18.0 || ^19", "redux": "^5.0.0" }, "optionalPeers": ["@types/react", "redux"] }, "sha512-ROY9fvHhwOD9ySfrF0wmvu//bKCQ6AeZZq1nJNtbDC+kk5DuSuNX/n6YWYF/SYy7bSba4D4FSz8DJeKY/S/r+g=="],
+
+    "react-toastify": ["react-toastify@11.0.5", "", { "dependencies": { "clsx": "^2.1.1" }, "peerDependencies": { "react": "^18 || ^19", "react-dom": "^18 || ^19" } }, "sha512-EpqHBGvnSTtHYhCPLxML05NLY2ZX0JURbAdNYa6BUkk+amz4wbKBQvoKQAB0ardvSarUBuY4Q4s1sluAzZwkmA=="],
 
     "reactjs-otp-input": ["reactjs-otp-input@2.0.10", "", { "peerDependencies": { "react": ">=17.0.0", "react-dom": ">=17.0.0" } }, "sha512-JNHvMs0AYNcXw2EmbfOgNVlLzPoX6i8UfsUSjhcFl7I0SdIPxxfiaNEUly4ys9TUgXgIElUxY+dqKRgrbKYT1w=="],
 

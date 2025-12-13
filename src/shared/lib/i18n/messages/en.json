@@ -1,4 +1,7 @@
 {
+  "notify": {
+    "title": "Notification"
+  },
   "pagesTitle": {
     "homeTitle": "Home",
     "registrationTitle": "Registration",

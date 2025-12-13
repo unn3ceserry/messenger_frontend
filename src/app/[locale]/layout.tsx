@@ -7,6 +7,7 @@ import { ShaderDarkVeil, TimeClient, routing } from "@/shared";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { ToastContainer } from "react-toastify";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -46,7 +47,7 @@ export default async function RootLayout({
   setRequestLocale(locale);
   const now = new Date().toISOString();
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`${fontRoboto.className} antialiased`}>
         <StoreProvider>
           <NextIntlClientProvider locale={locale}>
@@ -62,6 +63,7 @@ export default async function RootLayout({
             </div>
             <TimeClient initialTime={now} />
             {children}
+            <ToastContainer position="bottom-right" />
           </NextIntlClientProvider>
         </StoreProvider>
       </body>
