@@ -1,1 +1,1 @@
-export {HeroTitle, LoginTitle} from './ui'
+export {HeroTitle, LoginTitle, RegisterTitle} from './ui'
