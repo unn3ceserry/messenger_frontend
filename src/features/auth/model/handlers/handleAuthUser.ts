@@ -1,6 +1,7 @@
 import { makeStore } from "@/app";
 import type { SignInType } from "../../model";
 import { sessionApi } from "@/entities/session/api/authApi";
+import { isErrorWithMessageAndType, Notification } from "@/shared";
 
 export const handleAuthUser = async ({
   number,
@@ -13,8 +14,10 @@ export const handleAuthUser = async ({
         sessionApi.endpoints.signIn.initiate({ number, cloudPassword, code })
       )
       .unwrap();
-
   } catch (error: unknown) {
+    if (isErrorWithMessageAndType(error)) {
+      Notification(error.data.message);
+    }
     throw error;
   }
 };

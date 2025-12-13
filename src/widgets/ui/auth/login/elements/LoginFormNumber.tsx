@@ -6,6 +6,7 @@ import {
   Button,
   DefaultInput,
   isErrorWithMessageAndType,
+  Notification,
   OTPInput,
 } from "@/shared";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,13 +25,7 @@ const LoginFormNumber = () => {
     null
   );
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm<SignInType>({
+  const { register, handleSubmit, watch, setValue } = useForm<SignInType>({
     resolver: zodResolver(schemaSignIn),
   });
 
@@ -41,7 +36,7 @@ const LoginFormNumber = () => {
         cloudPassword: data.cloudPassword,
         code: data.code,
       });
-      router.replace(`/${params.locale}/c`)
+      router.replace(`/${params.locale}/c`);
     } catch (error) {
       if (isErrorWithMessageAndType(error)) {
         if (error.data.type === "NON_CODE") {
@@ -50,7 +45,6 @@ const LoginFormNumber = () => {
           setWhoVisible("password");
         }
       }
-      throw error;
     }
   };
   const code = watch("code");
