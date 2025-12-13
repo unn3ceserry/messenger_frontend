@@ -16,4 +16,5 @@ export {
   DefaultInput,
   Button,
   TimeClient,
+  OTPInput,
 } from "./ui";

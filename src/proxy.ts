@@ -1,8 +1,11 @@
 import { routing } from "@/shared";
-import createMiddleware from "next-intl/middleware";
+import createIntlMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 
-export function proxy(request: NextRequest) {
+const intlMiddleware = createIntlMiddleware(routing);
+
+export default function middleware(request: NextRequest) {
+
   const isAuth = request.cookies.get("session");
   const pathname = request.nextUrl.pathname;
 
@@ -19,10 +22,9 @@ export function proxy(request: NextRequest) {
   if (privateRoutes.includes(path) && !isAuth) {
     return NextResponse.redirect(new URL(`/${locale}`, request.url));
   }
-  return NextResponse.next();
-}
 
-export default createMiddleware(routing);
+  return intlMiddleware(request);
+}
 
 export const config = {
   matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
