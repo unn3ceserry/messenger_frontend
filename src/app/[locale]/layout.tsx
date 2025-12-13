@@ -46,7 +46,7 @@ export default async function RootLayout({
   setRequestLocale(locale);
   const now = new Date().toISOString();
   return (
-    <html lang={locale}>
+    <html lang='en'>
       <body className={`${fontRoboto.className} antialiased`}>
         <StoreProvider>
           <NextIntlClientProvider locale={locale}>
