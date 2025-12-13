@@ -16,14 +16,15 @@ const DefaultInput: FC<IDefaultInput> = ({
     <div
       className={`${
         classNameDiv ? classNameDiv : ""
-      } flex items-start justify-center gap-2 p-3.5 bg-rect-bg backdrop-blur-xl rounded-xl ring-2 ring-accent/10 w-full`}
+      } flex items-start justify-center gap-2 p-3.5 bg-rect-bg backdrop-blur-xl rounded-xl ring-2 ring-accent/10 w-full 
+  focus-within:ring-2 focus-within:ring-accent/20 transition-all duration-300`}
     >
       {icon}
       <input
         {...props}
         className={`${
           className ? className : ""
-        }   text-text outline-0 flex items-center justify-center placeholder:text-text/50 w-full`}
+        } text-text outline-none flex-1 placeholder:text-text/50 w-full`}
       />
     </div>
   );
