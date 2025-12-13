@@ -6,7 +6,6 @@ import {
   Button,
   DefaultInput,
   isErrorWithMessageAndType,
-  Notification,
   OTPInput,
 } from "@/shared";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -82,7 +81,7 @@ const LoginFormNumber = () => {
       <div className="flex flex-col items-center justify-center gap-3 w-full">
         <Button
           type="submit"
-          label={t("buttons.buttonSendCode")}
+          label={!whoVisible ? t("buttons.buttonSendCode") : t("buttons.buttonContinue")}
           className="w-full p-2.5"
         />
         <button
