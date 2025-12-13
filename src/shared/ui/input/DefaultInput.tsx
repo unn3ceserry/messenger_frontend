@@ -23,7 +23,7 @@ const DefaultInput: FC<IDefaultInput> = ({
         {...props}
         className={`${
           className ? className : ""
-        }  text-[.9rem] text-text outline-0 flex items-center justify-center placeholder:text-text/50 w-full`}
+        }   text-text outline-0 flex items-center justify-center placeholder:text-text/50 w-full`}
       />
     </div>
   );
