@@ -1,7 +1,7 @@
 "use client";
 
-import { SignInType } from "@/entities";
-import { handleAuthUser, schemaSignIn } from "@/features";
+import { SignUpType } from "@/entities";
+import { handleRegisterUser, schemaSignUp } from "@/features";
 import {
   Button,
   DefaultInput,
@@ -15,24 +15,24 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const LoginFormNumber = () => {
+const RegisterFormNumber = () => {
   const router = useRouter();
   const params = useParams();
   const t = useTranslations();
 
-  const [whoVisible, setWhoVisible] = useState<"code" | "password" | null>(
-    null
-  );
+  const [whoVisible, setWhoVisible] = useState<"code" | "info" | null>(null);
 
-  const { register, handleSubmit, watch, setValue } = useForm<SignInType>({
-    resolver: zodResolver(schemaSignIn),
+  const { register, handleSubmit, watch, setValue } = useForm<SignUpType>({
+    resolver: zodResolver(schemaSignUp),
   });
 
-  const onSubmit = async (data: SignInType) => {
+  const onSubmit = async (data: SignUpType) => {
     try {
-      await handleAuthUser({
+      await handleRegisterUser({
         number: data.number,
-        cloudPassword: data.cloudPassword,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        username: data.username,
         code: data.code,
       });
       router.replace(`/${params.locale}/c`);
@@ -40,8 +40,8 @@ const LoginFormNumber = () => {
       if (isErrorWithMessageAndType(error)) {
         if (error.data.type === "NON_CODE") {
           setWhoVisible("code");
-        } else if (error.data.type === "NON_PASSWORD") {
-          setWhoVisible("password");
+        } else if (error.data.type === 'NON_INFO') {
+          setWhoVisible("info");
         }
       }
     }
@@ -69,19 +69,43 @@ const LoginFormNumber = () => {
           placeholder="1A2B3C"
         />
       ) : (
-        <DefaultInput
-          {...register("cloudPassword")}
-          placeholder={t("auth.password.passwordInput")}
-          type="password"
-          icon={<Image alt="mobile" src={"/key.svg"} width={23} height={23} />}
-        />
+        <>
+          <DefaultInput
+            {...register("username")}
+            placeholder={t("register.information.usernameInput")}
+            type="text"
+            icon={
+              <Image alt="mobile" src={"/tag-user.svg"} width={23} height={23} />
+            }
+          />
+          <DefaultInput
+            {...register("firstName")}
+            placeholder={t("register.information.firstNameInput")}
+            type="text"
+            icon={
+              <Image alt="mobile" src={"/tag-user.svg"} width={23} height={23} />
+            }
+          />
+          <DefaultInput
+            {...register("lastName")}
+            placeholder={t("register.information.lastNameInput")}
+            type="text"
+            icon={
+              <Image alt="mobile" src={"/tag-user.svg"} width={23} height={23} />
+            }
+          />
+        </>
       )}
 
       {/* buttons */}
       <div className="flex flex-col items-center justify-center gap-3 w-full">
         <Button
           type="submit"
-          label={!whoVisible ? t("buttons.buttonSendCode") : t("buttons.buttonContinue")}
+          label={
+            !whoVisible
+              ? t("buttons.buttonSendCode")
+              : t("buttons.buttonContinue")
+          }
           className="w-full p-2.5"
         />
         <button
@@ -96,4 +120,4 @@ const LoginFormNumber = () => {
   );
 };
 
-export default LoginFormNumber;
+export default RegisterFormNumber;

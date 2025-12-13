@@ -1,17 +1,25 @@
 import { makeStore } from "@/app";
-import type { SignInType } from "../../model";
 import { sessionApi } from "@/entities/session/api/authApi";
 import { isErrorWithMessageAndType, Notification } from "@/shared";
+import { SignUpType } from "@/entities";
 
-export const handleAuthUser = async ({
+export const handleRegisterUser = async ({
   number,
-  cloudPassword,
+  firstName,
+  lastName,
+  username,
   code,
-}: SignInType) => {
+}: SignUpType) => {
   try {
     await makeStore
       .dispatch(
-        sessionApi.endpoints.signIn.initiate({ number, cloudPassword, code })
+        sessionApi.endpoints.signUp.initiate({
+          number,
+          firstName,
+          lastName,
+          username,
+          code,
+        })
       )
       .unwrap();
   } catch (error: unknown) {

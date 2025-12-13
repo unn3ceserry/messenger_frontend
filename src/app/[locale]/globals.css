@@ -43,6 +43,10 @@ body {
   color: var(--text-color);
 }
 
+.Toastify__close-button {
+  color: var(--text-color);
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;

@@ -5,8 +5,8 @@ export type SignInType = {
 }
 export type SignUpType = {
   number: string;
-  username: string;
-  firstName: string;
-  lastName: string;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
   code?: string;
 }

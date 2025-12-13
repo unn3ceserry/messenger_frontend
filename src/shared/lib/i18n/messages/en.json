@@ -1,4 +1,7 @@
 {
+  "notify": {
+    "title": "Notification"
+  },
   "pagesTitle": {
     "homeTitle": "Home",
     "registrationTitle": "Registration",
@@ -26,7 +29,8 @@
       "title": "Information —",
       "desc": "Your first and last name are required for your account. To be recognized, you must complete these two fields.",
       "firstNameInput": "First name",
-      "lastNameInput": "Last name"
+      "lastNameInput": "Last name",
+      "usernameInput": "Username"
     }
   },
   "auth": {

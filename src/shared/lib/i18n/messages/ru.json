@@ -1,4 +1,7 @@
 {
+  "notify": {
+    "title": "Уведомление"
+  },
   "pagesTitle": {
     "homeTitle": "Главная",
     "registrationTitle": "Регистрация",
@@ -26,7 +29,8 @@
       "title": "Информация —",
       "desc": "Ваши имя и фамилия необходимы для аккаунта. Чтобы вас распознавали, необходимо заполнить эти два поля.",
       "firstNameInput": "Имя",
-      "lastNameInput": "Фамилия"
+      "lastNameInput": "Фамилия",
+      "usernameInput": "Имя пользователя"
     }
   },
   "auth": {
