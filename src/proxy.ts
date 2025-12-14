@@ -12,7 +12,7 @@ export default function middleware(request: NextRequest) {
   const locale = pathname.split("/")[1];
   const path = pathname.replace(`/${locale}`, "") || "/";
 
-  const publicRoutes = ["/", "/auth", "/register"];
+  const publicRoutes = ["/", "/auth", "/register",];
   const privateRoutes = ["/c"];
 
   if (publicRoutes.includes(path) && isAuth) {

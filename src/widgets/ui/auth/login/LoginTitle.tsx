@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import LoginFormNumber from "./elements/LoginFormNumber";
+import {LoginFormNumber} from "@/features";
 
 const LoginTitle = () => {
   const t = useTranslations();

@@ -1,17 +1,16 @@
 import { makeStore } from "@/app";
-import type { SignInType } from "../../model";
-import { sessionApi } from "@/entities";
+import { UserCompleteData, userApi } from "@/entities";
 import { isErrorWithMessageAndType, Notification } from "@/shared";
 
-export const handleAuthUser = async ({
-  number,
+export const handleSetCompleteData = async ({
   cloudPassword,
-  code,
-}: SignInType) => {
+  birthday,
+  email
+}: UserCompleteData) => {
   try {
     await makeStore
       .dispatch(
-        sessionApi.endpoints.signIn.initiate({ number, cloudPassword, code })
+        userApi.endpoints.setCompleteData.initiate({ birthday, cloudPassword, email })
       )
       .unwrap();
   } catch (error: unknown) {

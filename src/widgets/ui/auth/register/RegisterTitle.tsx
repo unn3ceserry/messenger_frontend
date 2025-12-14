@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import RegisterFormNumber from "./elements/RegisterFormNumber";
+import {RegisterFormNumber} from "@/features";
 
 const RegisterTitle = () => {
   const t = useTranslations();

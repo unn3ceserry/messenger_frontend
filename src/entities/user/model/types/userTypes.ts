@@ -4,3 +4,9 @@ export type FindUserType = {
   createdAt: Date;
   cookie?: any;
 };
+
+export type UserCompleteData = {
+  email?: string;
+  birthday?: string;
+  cloudPassword?: string;
+};

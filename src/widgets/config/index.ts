@@ -1,0 +1,1 @@
+export {COMPLETE_CONFIG} from './compelte-config'

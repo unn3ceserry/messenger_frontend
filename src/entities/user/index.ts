@@ -1,1 +1,2 @@
-export type {FindUserType} from './model'
+export type {FindUserType, UserCompleteData} from './model'
+export {userApi} from './api'

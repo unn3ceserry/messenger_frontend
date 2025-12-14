@@ -6,7 +6,7 @@
     "homeTitle": "Главная",
     "registrationTitle": "Регистрация",
     "authorizationTitle": "Авторизация",
-    "profileCompleteTitle": "Профиль заполнен"
+    "profileCompleteTitle": "Заполните ваш профиль"
   },
   "buttons": {
     "buttonBack": "Назад",
@@ -50,7 +50,7 @@
     "emailDesc": "Почта для связи с вами.",
     "birthdayTitle": "День рождения",
     "birthdayDesc": "Ваш день рождения",
-    "passwordTitle": "Пароль",
-    "passwordDesc": "Пароль для безопасности аккаунта."
+    "passwordTitle": "Облачный пароль",
+    "passwordDesc": "Облачный пароль для безопасности аккаунта."
   }
 }

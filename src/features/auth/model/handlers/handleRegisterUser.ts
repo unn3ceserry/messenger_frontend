@@ -1,7 +1,6 @@
 import { makeStore } from "@/app";
-import { sessionApi } from "@/entities/session/api/authApi";
 import { isErrorWithMessageAndType, Notification } from "@/shared";
-import { SignUpType } from "@/entities";
+import { SignUpType, sessionApi } from "@/entities";
 
 export const handleRegisterUser = async ({
   number,
