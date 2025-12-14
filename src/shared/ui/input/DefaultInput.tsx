@@ -16,8 +16,7 @@ const DefaultInput: FC<IDefaultInput> = ({
     <div
       className={`${
         classNameDiv ? classNameDiv : ""
-      } flex items-start justify-center gap-2 p-3.5 bg-rect-bg backdrop-blur-xl rounded-xl ring-2 ring-accent/10 w-full 
-  focus-within:ring-2 focus-within:ring-accent/20 transition-all duration-300`}
+      } flex items-start justify-center gap-2 p-3.5 bg-rect-bg backdrop-blur-xl rounded-xl ring-2 ring-accent/5 w-full`}
     >
       {icon}
       <input

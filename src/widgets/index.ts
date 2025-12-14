@@ -1,1 +1,2 @@
-export {HeroTitle, LoginTitle, RegisterTitle} from './ui'
+export {HeroTitle, LoginTitle, RegisterTitle, CompleteProfile} from './ui'
+export {COMPLETE_CONFIG} from './config'

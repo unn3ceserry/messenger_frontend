@@ -6,7 +6,7 @@
     "homeTitle": "Home",
     "registrationTitle": "Registration",
     "authorizationTitle": "Authorization",
-    "profileCompleteTitle": "Profile complete"
+    "profileCompleteTitle": "Complete your profile"
   },
   "buttons": {
     "buttonBack": "Back",
@@ -51,7 +51,7 @@
     "emailDesc": "Mail to contact you.",
     "birthdayTitle": "Birthday",
     "birthdayDesc": "Your birthday",
-    "passwordTitle": "Password",
-    "passwordDesc": "Password for account security."
+    "passwordTitle": "Cloud password",
+    "passwordDesc": "Cloud password for account security."
   }
 }
