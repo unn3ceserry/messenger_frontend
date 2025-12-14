@@ -35,7 +35,7 @@ const RegisterFormNumber = () => {
         username: data.username,
         code: data.code,
       });
-      router.replace(`/${params.locale}/c`);
+      router.replace(`/${params.locale}/complete`);
     } catch (error) {
       if (isErrorWithMessageAndType(error)) {
         if (error.data.type === "NON_CODE") {
