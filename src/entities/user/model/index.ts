@@ -1,1 +1,1 @@
-export type {FindUserType} from './types/userTypes'
+export type {FindUserType, UserCompleteData} from './types/userTypes'
