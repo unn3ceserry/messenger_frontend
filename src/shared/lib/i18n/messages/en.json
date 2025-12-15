@@ -57,7 +57,7 @@
     "passwordDesc": "Cloud password for account security."
   },
   "notFound": {
-    "title": "Ooops",
+    "title": "Oops",
     "desc": "It looks like the page you're looking for has gotten lost in the vastness of the internet. Try returning to the home page or using the navigation menu to find the information you need."
   }
 }
