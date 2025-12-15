@@ -9,6 +9,7 @@ import {
   OTPInput,
 } from "@/shared";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CircleUserRound, Smartphone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -40,7 +41,7 @@ const RegisterFormNumber = () => {
       if (isErrorWithMessageAndType(error)) {
         if (error.data.type === "NON_CODE") {
           setWhoVisible("code");
-        } else if (error.data.type === 'NON_INFO') {
+        } else if (error.data.type === "NON_INFO") {
           setWhoVisible("info");
         }
       }
@@ -57,9 +58,7 @@ const RegisterFormNumber = () => {
           {...register("number", { required: true })}
           placeholder={t("auth.phoneInput")}
           type="number"
-          icon={
-            <Image alt="mobile" src={"/mobile.svg"} width={23} height={23} />
-          }
+          icon={<Smartphone size={22} />}
         />
       ) : whoVisible === "code" ? (
         <OTPInput
@@ -74,25 +73,19 @@ const RegisterFormNumber = () => {
             {...register("username")}
             placeholder={t("register.information.usernameInput")}
             type="text"
-            icon={
-              <Image alt="mobile" src={"/tag-user.svg"} width={23} height={23} />
-            }
+            icon={<CircleUserRound size={22} />}
           />
           <DefaultInput
             {...register("firstName")}
             placeholder={t("register.information.firstNameInput")}
             type="text"
-            icon={
-              <Image alt="mobile" src={"/tag-user.svg"} width={23} height={23} />
-            }
+            icon={<CircleUserRound size={22} />}
           />
           <DefaultInput
             {...register("lastName")}
             placeholder={t("register.information.lastNameInput")}
             type="text"
-            icon={
-              <Image alt="mobile" src={"/tag-user.svg"} width={23} height={23} />
-            }
+            icon={<CircleUserRound size={22} />}
           />
         </>
       )}
