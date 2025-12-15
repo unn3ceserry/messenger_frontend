@@ -6,7 +6,8 @@
     "homeTitle": "Home",
     "registrationTitle": "Registration",
     "authorizationTitle": "Authorization",
-    "profileCompleteTitle": "Complete your profile"
+    "profileCompleteTitle": "Complete your profile",
+    "notFound": "Not Found Page"
   },
   "buttons": {
     "buttonBack": "Back",
@@ -16,7 +17,8 @@
     "buttonSignUp": "Sign Up",
     "buttonSignIn": "Sign In",
     "buttonIHaveAccount": "I have an account",
-    "buttonContinue": "Continue"
+    "buttonContinue": "Continue",
+    "buttonHome": "Home"
   },
   "home": {
     "heroDesc": "The best messenger of all time. Chat with friends, give gifts, and share photos, videos, and voice messages."
@@ -53,5 +55,9 @@
     "birthdayDesc": "Your birthday",
     "passwordTitle": "Cloud password",
     "passwordDesc": "Cloud password for account security."
+  },
+  "notFound": {
+    "title": "Ooops",
+    "desc": "It looks like the page you're looking for has gotten lost in the vastness of the internet. Try returning to the home page or using the navigation menu to find the information you need."
   }
 }
