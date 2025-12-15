@@ -9,6 +9,7 @@ import {
   OTPInput,
 } from "@/shared";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { KeyRound, Smartphone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -58,7 +59,7 @@ const LoginFormNumber = () => {
           placeholder={t("auth.phoneInput")}
           type="number"
           icon={
-            <Image alt="mobile" src={"/mobile.svg"} width={23} height={23} />
+            <Smartphone size={22} />
           }
         />
       ) : whoVisible === "code" ? (
@@ -73,7 +74,7 @@ const LoginFormNumber = () => {
           {...register("cloudPassword")}
           placeholder={t("auth.password.passwordInput")}
           type="password"
-          icon={<Image alt="mobile" src={"/key.svg"} width={23} height={23} />}
+          icon={<KeyRound size={22} />}
         />
       )}
 

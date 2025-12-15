@@ -61,14 +61,7 @@ const CompleteProfile = () => {
                 setWhoVisible={setWhoVisible}
                 title={el.title}
                 desc={el.desc}
-                icon={
-                  <Image
-                    src={el.icon}
-                    alt={`slot${i}`}
-                    width={27}
-                    height={27}
-                  />
-                }
+                icon={el.icon}
                 tag={el.tag}
               />
             ))}

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { SetStateAction, Dispatch, useState, FC } from "react";
 import { useUserCompleteDataStore } from "@/app";
+import { Calendar1, KeyRound, Mail } from "lucide-react";
 
 interface ICompleteModal {
   setWhoVisible: Dispatch<
@@ -31,11 +32,13 @@ const CompleteModal: FC<ICompleteModal> = ({ whoVisible, setWhoVisible }) => {
       : "email";
 
   const inputIcon =
-    whoVisible === "birthday"
-      ? "/calendar.svg"
-      : whoVisible === "password"
-      ? "/key.svg"
-      : "/sms-tracking.svg";
+    whoVisible === "birthday" ? (
+      <Calendar1 size={22} />
+    ) : whoVisible === "password" ? (
+      <KeyRound size={22} />
+    ) : (
+      <Mail size={22} />
+    );
 
   const inputPlaceholder =
     whoVisible === "birthday"
@@ -50,7 +53,7 @@ const CompleteModal: FC<ICompleteModal> = ({ whoVisible, setWhoVisible }) => {
       className="flex flex-col items-center justify-center w-full gap-10"
     >
       <DefaultInput
-        icon={<Image src={inputIcon} alt={inputIcon} width={23} height={23} />}
+        icon={inputIcon}
         type={inputType}
         placeholder={inputPlaceholder}
         value={value}
