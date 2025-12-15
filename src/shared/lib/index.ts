@@ -7,4 +7,4 @@ export {
   useRouter,
   getPathname,
 } from "./i18n";
-export {isErrorWithMessageAndType, isFetchBaseQueryError} from './utils'
+export {isErrorWithMessageAndType, isFetchBaseQueryError, isErrorWithMessage} from './utils'

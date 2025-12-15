@@ -5,6 +5,7 @@ import { handleRegisterUser, schemaSignUp } from "@/features";
 import {
   Button,
   DefaultInput,
+  FieldInput,
   isErrorWithMessageAndType,
   OTPInput,
 } from "@/shared";
@@ -14,18 +15,25 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface IRegisterFormNumber {
-  setIsVisible: Dispatch<SetStateAction<boolean>>
+  setIsVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const RegisterFormNumber: FC<IRegisterFormNumber> = ({setIsVisible}) => {
+const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
   const router = useRouter();
   const t = useTranslations();
 
   const [whoVisible, setWhoVisible] = useState<"code" | "info" | null>(null);
 
-  const { register, handleSubmit, watch, setValue } = useForm<SignUpType>({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<SignUpType>({
     resolver: zodResolver(schemaSignUp),
   });
 
@@ -71,11 +79,17 @@ const RegisterFormNumber: FC<IRegisterFormNumber> = ({setIsVisible}) => {
         />
       ) : (
         <>
-          <DefaultInput
-            {...register("username")}
-            placeholder={t("register.information.usernameInput")}
-            type="text"
-            icon={<CircleUserRound size={22} />}
+          <FieldInput<SignUpType>
+            errors={errors}
+            input={
+              <DefaultInput
+                {...register("username")}
+                placeholder={t("register.information.usernameInput")}
+                type="text"
+                icon={<CircleUserRound size={22} />}
+              />
+            }
+            field="username"
           />
           <DefaultInput
             {...register("firstName")}

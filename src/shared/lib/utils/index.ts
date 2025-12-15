@@ -1,1 +1,1 @@
-export {isErrorWithMessageAndType, isFetchBaseQueryError} from './isRtkQueryError'
+export {isErrorWithMessageAndType, isFetchBaseQueryError, isErrorWithMessage} from './isRtkQueryError'

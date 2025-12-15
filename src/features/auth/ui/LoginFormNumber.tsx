@@ -11,7 +11,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyRound, Smartphone } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -25,7 +24,12 @@ const LoginFormNumber = () => {
     null
   );
 
-  const { register, handleSubmit, watch, setValue } = useForm<SignInType>({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+  } = useForm<SignInType>({
     resolver: zodResolver(schemaSignIn),
   });
 
@@ -58,9 +62,7 @@ const LoginFormNumber = () => {
           {...register("number", { required: true })}
           placeholder={t("auth.phoneInput")}
           type="number"
-          icon={
-            <Smartphone size={22} />
-          }
+          icon={<Smartphone size={22} />}
         />
       ) : whoVisible === "code" ? (
         <OTPInput
@@ -70,19 +72,25 @@ const LoginFormNumber = () => {
           placeholder="1A2B3C"
         />
       ) : (
-        <DefaultInput
-          {...register("cloudPassword")}
-          placeholder={t("auth.password.passwordInput")}
-          type="password"
-          icon={<KeyRound size={22} />}
-        />
+        <div className="flex flex-col w-full items-center justify-center">
+          <DefaultInput
+            {...register("cloudPassword")}
+            placeholder={t("auth.password.passwordInput")}
+            type="password"
+            icon={<KeyRound size={22} />}
+          />
+        </div>
       )}
 
       {/* buttons */}
       <div className="flex flex-col items-center justify-center gap-3 w-full">
         <Button
           type="submit"
-          label={!whoVisible ? t("buttons.buttonSendCode") : t("buttons.buttonContinue")}
+          label={
+            !whoVisible
+              ? t("buttons.buttonSendCode")
+              : t("buttons.buttonContinue")
+          }
           className="w-full p-2.5"
         />
         <button
