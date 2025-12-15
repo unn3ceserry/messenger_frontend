@@ -8,7 +8,7 @@ export const schemaSignIn = z.object({
 
 export const schemaSignUp = z.object({
   number: z.string().nonoptional(),
-  username: z.string().optional(),
+  username: z.string().regex(/^[a-zA-Z0-9]+$/).optional(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
   code: z.string().min(6).max(6).optional(),

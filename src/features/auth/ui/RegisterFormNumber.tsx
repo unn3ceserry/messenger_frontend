@@ -11,14 +11,16 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleUserRound, Smartphone } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 
-const RegisterFormNumber = () => {
+interface IRegisterFormNumber {
+  setIsVisible: Dispatch<SetStateAction<boolean>>
+}
+
+const RegisterFormNumber: FC<IRegisterFormNumber> = ({setIsVisible}) => {
   const router = useRouter();
-  const params = useParams();
   const t = useTranslations();
 
   const [whoVisible, setWhoVisible] = useState<"code" | "info" | null>(null);
@@ -36,7 +38,7 @@ const RegisterFormNumber = () => {
         username: data.username,
         code: data.code,
       });
-      router.replace(`/${params.locale}/complete`);
+      setIsVisible(true);
     } catch (error) {
       if (isErrorWithMessageAndType(error)) {
         if (error.data.type === "NON_CODE") {
