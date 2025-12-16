@@ -12,10 +12,11 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleUserRound, Smartphone } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 
 interface IRegisterFormNumber {
   setIsVisible: Dispatch<SetStateAction<boolean>>;
@@ -24,6 +25,7 @@ interface IRegisterFormNumber {
 const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
   const router = useRouter();
   const t = useTranslations();
+  const params = useParams();
 
   const [whoVisible, setWhoVisible] = useState<"code" | "info" | null>(null);
 
@@ -107,7 +109,7 @@ const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
       )}
 
       {/* buttons */}
-      <div className="flex flex-col items-center justify-center gap-3 w-full">
+      <div className="flex flex-col items-center text-center justify-center gap-3 w-full">
         <Button
           type="submit"
           label={
@@ -124,6 +126,15 @@ const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
         >
           {t("buttons.buttonBack")}
         </button>
+        <p className="text-[.8rem] text-text/50">
+          {t("register.agreeWith")}{" "}
+          <Link
+            href={`/${params.locale}/terms`}
+            className="cursor-pointer text-accent hover:opacity-70 duration-500"
+          >
+            {t("pagesTitle.termsOfUse")}
+          </Link>
+        </p>
       </div>
     </form>
   );
