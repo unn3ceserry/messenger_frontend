@@ -39,7 +39,7 @@
 }
 
 body {
-  background: var(--background-color);
+  background: white;
   color: var(--text-color);
   overflow-x: hidden;
 }

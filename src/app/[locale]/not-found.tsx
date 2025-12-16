@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/shared";
+import { Button, ShaderDarkVeil } from "@/shared";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import AOS from "aos";
@@ -20,6 +20,16 @@ export default function NotFoundPage() {
 
   return (
     <div className="flex flex-col items-center justify-center mx-auto h-screen w-full p-5">
+      <div className="w-full h-screen fixed top-0 left-0 -z-10">
+        <ShaderDarkVeil
+          speed={2}
+          hueShift={9}
+          noiseIntensity={0.1}
+          scanlineFrequency={3.8}
+          scanlineIntensity={1}
+          warpAmount={1}
+        />
+      </div>
       <h1 className="absolute inset-0 w-full h-screen flex items-center justify-center text-[38rem] text-accent/3">
         404
       </h1>
