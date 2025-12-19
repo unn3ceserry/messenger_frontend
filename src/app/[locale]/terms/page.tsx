@@ -20,7 +20,7 @@ export async function generateMetadata(
 
 export default function Page() {
   return (
-    <div className="flex w-full h-screen items-start justify-center select-none">
+    <div className="min-h-screen w-full bg-white flex items-start justify-center select-none">
       <TermsOfUse/>
     </div>
   )
