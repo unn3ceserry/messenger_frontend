@@ -16,7 +16,7 @@ const SearchInput: FC<IDefaultInput> = ({
     <div
       className={`${
         classNameDiv ? classNameDiv : ""
-      } flex items-center justify-center gap-3 p-3 bg-white/5 backdrop-blur-xl rounded-full ring-2 ring-white/7 focus-within:ring-accent duration-500 w-full text-white`}
+      } flex items-center justify-center gap-2.5 p-2.5 bg-white/5 backdrop-blur-xl rounded-full ring-2 ring-white/7 focus-within:ring-accent duration-500 w-full text-white`}
     >
       {icon}
       <input
