@@ -7,7 +7,8 @@
     "registrationTitle": "Регистрация",
     "authorizationTitle": "Авторизация",
     "profileCompleteTitle": "Заполните ваш профиль",
-    "termsOfUse": "Пользовательское соглашение"
+    "termsOfUse": "Пользовательское соглашение",
+    "myChats": "Messages"
   },
   "buttons": {
     "buttonBack": "Назад",
