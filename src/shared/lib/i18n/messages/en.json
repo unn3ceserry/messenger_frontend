@@ -126,5 +126,8 @@
     "contactst3": "For security, rule violations, or privacy concerns, use: privacy@fluent.com",
     "contactst4": "For legal questions or official correspondence regarding the agreement, send to: legal@fluent.com",
     "contactst5": "We recommend including as much information as possible about your issue or question, including account links, situation descriptions, and screenshots if necessary. This helps us process your request faster and provide accurate answers."
+  },
+  "chat": {
+    "searchPlaceholder": "Search"
   }
 }

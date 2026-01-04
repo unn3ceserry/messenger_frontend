@@ -2,7 +2,7 @@
 
 :root {
   --ff-main: "DMSans", sans-serif;
-  --accent-color: #3549ff;
+  --accent-color: #8166fa;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
   --switcher-bg-color: color-mix(in srgb, var(--accent-color) 10%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 2%, #000000);
