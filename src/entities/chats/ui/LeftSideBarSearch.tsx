@@ -9,7 +9,7 @@ const LeftSideBarSearch = () => {
 
   return (
     <div className="flex w-full items-center justify-between p-3 gap-3">
-      <div className="flex p-2.5 items-center justify-center cursor-pointer hover:bg-white/6 bg-transparent rounded-full">
+      <div className="flex p-1.5 items-center justify-center cursor-pointer hover:bg-white/6 bg-transparent rounded-full">
         <Equal className="text-white/70" />
       </div>
       <SearchInput
