@@ -3,13 +3,18 @@
 import { SearchInput } from "@/shared";
 import { Equal, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Dispatch, FC, SetStateAction } from "react";
 
-const LeftSideBarSearch = () => {
+interface ILeftSideBarSearch {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const LeftSideBarSearch: FC<ILeftSideBarSearch> = ({setIsOpen}) => {
   const t = useTranslations();
 
   return (
     <div className="flex w-full items-center justify-between p-3 gap-3">
-      <div className="flex p-1.5 items-center justify-center cursor-pointer hover:bg-white/6 bg-transparent rounded-full">
+      <div onClick={() => setIsOpen(prev => !prev)} className="flex p-1.5 items-center justify-center cursor-pointer hover:bg-white/6 bg-transparent rounded-full">
         <Equal className="text-white/70" />
       </div>
       <SearchInput
