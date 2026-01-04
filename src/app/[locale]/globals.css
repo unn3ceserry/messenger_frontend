@@ -5,7 +5,7 @@
   --accent-color: #3549ff;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
   --switcher-bg-color: color-mix(in srgb, var(--accent-color) 10%, #000000);
-  --background-color: color-mix(in srgb, var(--accent-color) 3%, #000000);
+  --background-color: color-mix(in srgb, var(--accent-color) 2%, #000000);
   --rect-background-color: color-mix(
     in srgb,
     var(--accent-color) 1%,

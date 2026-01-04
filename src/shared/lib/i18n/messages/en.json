@@ -8,7 +8,8 @@
     "authorizationTitle": "Authorization",
     "profileCompleteTitle": "Complete your profile",
     "notFound": "Not Found Page",
-    "termsOfUse": "Terms Of Use"
+    "termsOfUse": "Terms Of Use",
+    "myChats": "Messages"
   },
   "buttons": {
     "buttonBack": "Back",
