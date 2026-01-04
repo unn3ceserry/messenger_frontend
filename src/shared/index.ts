@@ -20,4 +20,5 @@ export {
   OTPInput,
   Notification,
   FieldInput,
+  SearchInput,
 } from "./ui";
