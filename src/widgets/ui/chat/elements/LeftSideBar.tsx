@@ -45,7 +45,7 @@ const LeftSideBar = () => {
       ></div>
       <div
         onMouseDown={() => (isResizing.current = true)}
-        className="w-[1px] bg-[#313131] h-screen cursor-e-resize"
+        className="w-0.5 bg-[#313131]/90 h-screen cursor-e-resize"
       ></div>
     </>
   );
