@@ -5,13 +5,14 @@ import { userApi } from "../api";
 import ActionsPopupElement from "./elements/ActionsPopupElement";
 import { motion } from "framer-motion";
 import { userActionsElements } from "../config";
-import { configApp } from "@/app";
-import { userActionsPopupStore } from "../model";
+import { configApp, useAppDispatch } from "@/app";
+import { setIsOpenMyProfile } from "../model";
 
 const ActionsPopup = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
+  const dispatch = useAppDispatch();
 
-  // сделать лоадер
+  {/* сделать тут лоадер в будущем */}
   if (isLoading || !data) {
     return null;
   }
@@ -25,7 +26,7 @@ const ActionsPopup = () => {
       className="flex flex-col items-center justify-center p-1.5 backdrop-blur-lg rounded-xl text-white w-full gap-0.5 shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)]"
     >
       {/* user short info */}
-      <div onClick={() => userActionsPopupStore.getState().setIsOpenMyProfile(true)} className="flex items-center w-full gap-2.5 cursor-pointer hover:bg-black/30 p-2 rounded-[10px] duration-300">
+      <div onClick={() => dispatch(setIsOpenMyProfile({isOpenMyProfile: true}))} className="flex items-center w-full gap-2.5 cursor-pointer hover:bg-black/30 p-2 rounded-[10px] duration-300">
         {data.avatars ? (
           <Image
             src={data.avatars[0]}

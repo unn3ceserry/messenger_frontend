@@ -1,3 +1,4 @@
+import { userActionsReducer } from "@/entities";
 import { mainApi } from "@/shared";
 import { configureStore } from "@reduxjs/toolkit";
 import {
@@ -9,6 +10,7 @@ import {
 
 export const makeStore = configureStore({
   reducer: {
+    useractions: userActionsReducer,
     [mainApi.reducerPath]: mainApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
