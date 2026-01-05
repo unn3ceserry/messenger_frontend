@@ -23,12 +23,16 @@ export const userActionsSlice = createSlice({
   reducers: {
     setIsNightMode: (state, payload: PayloadAction<{isNightMode: boolean}>) => {
       state.isNightMode = payload.payload.isNightMode;
+      state.isOpenMyProfile = false;
+      state.isOpenUserSettings = false;
     },
     setIsOpenMyProfile: (state, payload: PayloadAction<{isOpenMyProfile: boolean}>) => {
       state.isOpenMyProfile = payload.payload.isOpenMyProfile;
+      state.isOpenUserSettings = false
     },
     setIsOpenUserSettings: (state, payload: PayloadAction<{isOpenUserSettings: boolean}>) => {
       state.isOpenUserSettings = payload.payload.isOpenUserSettings;
+      state.isOpenMyProfile = false;
     },
   },
 });

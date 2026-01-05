@@ -136,5 +136,13 @@
       "nightMode": "Night Mode",
       "installApp": "Install App"
     }
+  },
+  "profile": {
+    "number": "Phone",
+    "email": "Email",
+    "bio": "Bio",
+    "notSpecifid": "Не указан.",
+    "birthday": "Birthday",
+    "noBioYet": "No bio yet."
   }
 }
