@@ -5,6 +5,7 @@ import { userApi } from "../api";
 import ActionsPopupElement from "./elements/ActionsPopupElement";
 import { motion } from "framer-motion";
 import { userActionsElements } from "../config";
+import { configApp } from "@/app";
 
 const ActionsPopup = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
@@ -43,6 +44,8 @@ const ActionsPopup = () => {
       {userActionsElements.map((el, i) => (
         <ActionsPopupElement key={i} onClick={el.onClick} icon={el.icon} title={el.title} />
       ))}
+
+      <p className="text-[.8rem] text-white/50">Fluent Web {configApp.VERSION()}</p>
 
     </motion.div>
   );

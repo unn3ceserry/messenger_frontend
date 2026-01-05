@@ -55,7 +55,7 @@ const LeftSideBar = () => {
       {/* actions modal */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed top-18 left-3 w-full max-w-60">
+          <div className="fixed top-18 left-3 w-full max-w-80">
             <ActionsPopup />
           </div>
         )}
