@@ -1,0 +1,1 @@
+export {modalContainerDefault, modalDefault} from './modalAnimationConfig'
