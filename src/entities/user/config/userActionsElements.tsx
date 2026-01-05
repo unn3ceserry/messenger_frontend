@@ -6,7 +6,7 @@ export const userActionsElements = [
   {
     icon: <Plus size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.addAccount",
-    onClick: () => userActionsPopupStore.getState().setIsOpenAddAccount(true),
+    onClick: () => window.open('/add'),
   },
   {
     icon: <CircleUser size={20} className="text-[#818181]" />,
