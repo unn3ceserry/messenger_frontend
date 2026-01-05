@@ -134,5 +134,13 @@
       "nightMode": "Ночной режим",
       "installApp": "Установить приложение"
     }
+  },
+  "profile": {
+    "number": "Номер",
+    "email": "Почти",
+    "birthday": "День рождения",
+    "notSpecifid": "Not specified",
+    "bio": "О себе",
+    "noBioYet": "Био ещё нет."
   }
 }

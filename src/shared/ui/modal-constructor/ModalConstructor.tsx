@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { modalContainerDefault, modalDefault } from "@/shared";
 
 interface IModalConstructor {
-  setIsOpen: Dispatch<SetStateAction<boolean>> | ((bool: boolean) => void);
+  setIsOpen: Dispatch<SetStateAction<boolean>> | ((isOpenMyProfile: boolean) => void);
   content?: ReactNode;
 }
 
@@ -19,7 +19,7 @@ const ModalConstructor: FC<IModalConstructor> = ({ setIsOpen, content }) => {
       layout
       transition={{ duration: 0.5 }}
       onClick={() => setIsOpen(false)}
-      className="fixed inset-0 bg-black/40 z-[1931283123] flex items-center justify-center p-10"
+      className="fixed inset-0 bg-black/40 z-[1931283123] flex items-center justify-center p-10 backdrop-blur-xs"
     >
       <motion.div
         variants={modalDefault}
@@ -27,7 +27,7 @@ const ModalConstructor: FC<IModalConstructor> = ({ setIsOpen, content }) => {
         animate="animate"
         exit="initial"
         onClick={(e) => e.stopPropagation()}
-        className="flex relative flex-col items-center justify-center max-w-100 w-full space-y-4 bg-rect-bg ring ring-rect-boder/50 p-4 rounded-lg backdrop-blur-xl"
+        className="flex relative flex-col items-center justify-center max-w-150 w-full space-y-4 bg-rect-bg p-1 rounded-xl backdrop-blur-xl"
       >
         {content}
       </motion.div>
