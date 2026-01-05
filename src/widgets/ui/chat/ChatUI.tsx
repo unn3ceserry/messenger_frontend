@@ -1,13 +1,24 @@
 "use client";
 
-import { useState } from "react";
 import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
 import { ModalConstructor } from "@/shared";
-import { UserProfileModal } from "@/entities";
+import {
+  setIsOpenMyProfile,
+  userActionsPopupStore,
+  userActionsSlice,
+  UserProfileModal,
+} from "@/entities";
+import { useAppDispatch, useAppSelector } from "@/app";
+import { useState } from "react";
 
 const ChatUI = () => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(true);
+  const isOpenMyProfile = useAppSelector(
+    userActionsSlice.selectors.selectIsOpenMyProfile
+  );
+  
+  const dispatch = useAppDispatch();
+  const setIsOpenMyProfileModal = (_: boolean) => dispatch(setIsOpenMyProfile({isOpenMyProfile: false}));
 
   return (
     <>
@@ -17,11 +28,12 @@ const ChatUI = () => {
 
       {/* modals */}
       <AnimatePresence>
-        {
-          isOpenModal && (
-            <ModalConstructor setIsOpen={setIsOpenModal} content={<UserProfileModal/>} />
-          )
-        }
+        {isOpenMyProfile && (
+          <ModalConstructor
+            setIsOpen={setIsOpenMyProfileModal}
+            content={<UserProfileModal />}
+          />
+        )}
       </AnimatePresence>
     </>
   );

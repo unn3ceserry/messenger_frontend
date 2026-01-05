@@ -1,34 +1,56 @@
-import { CirclePlus, CircleUser, CloudMoonRain, Plus, Settings } from "lucide-react";
-import { userActionsPopupStore } from "../model";
-import { configApp } from "@/app";
+import {
+  CirclePlus,
+  CircleUser,
+  CloudMoonRain,
+  Plus,
+  Settings,
+} from "lucide-react";
+import {
+  setIsNightMode,
+  setIsOpenMyProfile,
+  setIsOpenUserSettings,
+} from "../model";
+import { configApp, makeStore } from "@/app";
 
 export const userActionsElements = [
   {
     icon: <Plus size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.addAccount",
-    onClick: () => window.open('/add'),
+    onClick: () => window.open("/add"),
   },
   {
     icon: <CircleUser size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.myProfile",
-    onClick: () => userActionsPopupStore.getState().setIsOpenMyProfile(true),
+    onClick: () =>
+      makeStore.dispatch(
+        setIsOpenMyProfile({
+          isOpenMyProfile: true,
+        })
+      ),
   },
   {
     icon: <Settings size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.settings",
-    onClick: () => userActionsPopupStore.getState().setIsOpenUserSettings(true),
+    onClick: () =>
+      makeStore.dispatch(
+        setIsOpenUserSettings({
+          isOpenUserSettings: true,
+        })
+      ),
   },
   {
     icon: <CloudMoonRain size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.nightMode",
-    onClick: () => {
-      const { isNightMode, setIsNightMode } = userActionsPopupStore.getState();
-      setIsNightMode(!isNightMode);
-    },
+    onClick: () =>
+      makeStore.dispatch(
+        setIsNightMode({
+          isNightMode: true,
+        })
+      ),
   },
   {
     icon: <CirclePlus size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.installApp",
-    onClick: () => window.open(configApp.APP_LINK())
+    onClick: () => window.open(configApp.APP_LINK()),
   },
 ];

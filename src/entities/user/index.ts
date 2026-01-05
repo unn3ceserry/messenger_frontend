@@ -2,4 +2,4 @@ export type {FindUserType, UserCompleteData, UserType, WhoCanSeen, VisibilityFie
 export {userApi} from './api'
 export {ActionsPopup, UserProfileModal} from './ui'
 export {userActionsElements} from './config'
-export {userActionsPopupStore} from './model'
+export { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, userActionsReducer, userActionsSlice, userActionsPopupStore } from './model'
