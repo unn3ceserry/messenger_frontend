@@ -20,5 +20,7 @@ export {
   OTPInput,
   Notification,
   FieldInput,
+  ModalConstructor,
   SearchInput,
 } from "./ui";
+export {modalContainerDefault, modalDefault} from './config'

@@ -1,5 +1,5 @@
 export type {SignInType, SignUpType} from './session'
 export type {FindUserType, UserCompleteData, UserType, WhoCanSeen, VisibilityField} from './user'
-export {userApi, ActionsPopup, userActionsElements, userActionsPopupStore} from './user'
+export {userApi, ActionsPopup, userActionsElements, userActionsPopupStore, UserProfileModal} from './user'
 export {sessionApi} from './session'
 export {LeftSideBarSearch} from './chats'
