@@ -1,4 +1,4 @@
-import { userActionsReducer } from "@/entities";
+import { userActionsReducer, userCompleteDataReducer } from "@/entities";
 import { useResizingReducer } from "@/features";
 import { mainApi } from "@/shared";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -21,7 +21,8 @@ import {
 } from "redux-persist";
 
 const reducers = combineReducers({
-  useractions: userActionsReducer,
+  userActions: userActionsReducer,
+  userCompleteData: userCompleteDataReducer,
   resizing: useResizingReducer,
   [mainApi.reducerPath]: mainApi.reducer,
 });

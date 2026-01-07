@@ -15,8 +15,5 @@ export {
 } from "./store/userActionsSlice";
 
 export {
-  type UserCompleteDataStore,
-  getUserData,
-  setUserCompleteData,
-  useUserCompleteDataStore,
-} from "./store/userCompleteDataStore";
+  userCompleteDataReducer, setCompleteData, userCompleteDataSlice, type IUserCompleteData
+} from './store/userCompleteDataSlice'

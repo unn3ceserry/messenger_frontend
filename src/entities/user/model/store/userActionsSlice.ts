@@ -15,7 +15,7 @@ const initialState: IUserActionsPopupState = {
 };
 
 export const userActionsSlice = createSlice({
-  name: "useractions",
+  name: "userActions",
   initialState,
   selectors: {
     selectIsNightMode: (state) => state.isNightMode,

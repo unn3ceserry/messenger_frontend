@@ -2,10 +2,10 @@
 
 import { Button, DefaultInput } from "@/shared";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { SetStateAction, Dispatch, useState, FC } from "react";
-import { useUserCompleteDataStore } from "@/entities";
+import { IUserCompleteData, setCompleteData } from "@/entities";
 import { Calendar1, KeyRound, Mail } from "lucide-react";
+import { useAppDispatch } from "@/app";
 
 interface ICompleteModal {
   setWhoVisible: Dispatch<
@@ -16,7 +16,8 @@ interface ICompleteModal {
 
 const CompleteModal: FC<ICompleteModal> = ({ whoVisible, setWhoVisible }) => {
   const [value, setValue] = useState("");
-  const setData = useUserCompleteDataStore((s) => s.setData);
+  const dispatch = useAppDispatch()
+  const setData = (data: string, field: keyof IUserCompleteData) => dispatch(setCompleteData({data, field}));
   const t = useTranslations();
 
   const handleSave = async () => {

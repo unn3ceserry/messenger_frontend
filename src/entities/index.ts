@@ -17,10 +17,10 @@ export {
   userActionsReducer,
   setIsOpenUserSettings,
   setIsOpenMyProfile,
-  type UserCompleteDataStore,
-  getUserData,
-  setUserCompleteData,
-  useUserCompleteDataStore,
+  userCompleteDataReducer,
+  setCompleteData,
+  userCompleteDataSlice,
+  type IUserCompleteData,
 } from "./user";
 export { sessionApi } from "./session";
 export { LeftSideBarSearch } from "./chats";

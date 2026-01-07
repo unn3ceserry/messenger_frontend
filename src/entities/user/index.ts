@@ -15,8 +15,8 @@ export {
   userActionsReducer,
   userActionsSlice,
   setIsOpenActionPopup,
-  type UserCompleteDataStore,
-  getUserData,
-  setUserCompleteData,
-  useUserCompleteDataStore,
+  userCompleteDataReducer,
+  setCompleteData,
+  userCompleteDataSlice,
+  type IUserCompleteData,
 } from "./model";
