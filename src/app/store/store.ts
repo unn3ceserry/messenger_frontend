@@ -1,21 +1,50 @@
 import { userActionsReducer } from "@/entities";
+import { useResizingReducer } from "@/features";
 import { mainApi } from "@/shared";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   TypedUseSelectorHook,
   useDispatch,
   useSelector,
   useStore,
 } from "react-redux";
+import storage from "redux-persist/lib/storage";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+
+const reducers = combineReducers({
+  useractions: userActionsReducer,
+  resizing: useResizingReducer,
+  [mainApi.reducerPath]: mainApi.reducer,
+});
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["resizing"],
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const makeStore = configureStore({
-  reducer: {
-    useractions: userActionsReducer,
-    [mainApi.reducerPath]: mainApi.reducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(mainApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(mainApi.middleware),
 });
+
+export const persistor = persistStore(makeStore)
 
 export type AppStore = typeof makeStore;
 export type RootState = ReturnType<typeof makeStore.getState>;

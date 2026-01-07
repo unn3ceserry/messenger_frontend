@@ -1,5 +1,22 @@
-export type {FindUserType, UserCompleteData, UserType, WhoCanSeen, VisibilityField} from './model'
-export {userApi} from './api'
-export {ActionsPopup, UserProfileModal} from './ui'
-export {userActionsElements} from './config'
-export { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, userActionsReducer, userActionsSlice, setIsOpenActionPopup } from './model'
+export type {
+  FindUserType,
+  UserCompleteData,
+  UserType,
+  WhoCanSeen,
+  VisibilityField,
+} from "./model";
+export { userApi } from "./api";
+export { ActionsPopup, UserProfileModal } from "./ui";
+export { userActionsElements } from "./config";
+export {
+  setIsNightMode,
+  setIsOpenMyProfile,
+  setIsOpenUserSettings,
+  userActionsReducer,
+  userActionsSlice,
+  setIsOpenActionPopup,
+  type UserCompleteDataStore,
+  getUserData,
+  setUserCompleteData,
+  useUserCompleteDataStore,
+} from "./model";

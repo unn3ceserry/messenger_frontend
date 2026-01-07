@@ -4,7 +4,7 @@ import { Button, DefaultInput } from "@/shared";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { SetStateAction, Dispatch, useState, FC } from "react";
-import { useUserCompleteDataStore } from "@/app";
+import { useUserCompleteDataStore } from "@/entities";
 import { Calendar1, KeyRound, Mail } from "lucide-react";
 
 interface ICompleteModal {

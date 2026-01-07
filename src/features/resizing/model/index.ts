@@ -1,1 +1,1 @@
-export {useResizingStore} from './store/resizingStore'
+export {useResizingReducer, setWidth,  useResizingSlice} from './store/resizingSlice'

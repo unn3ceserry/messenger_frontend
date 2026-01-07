@@ -2,19 +2,25 @@
 
 import { useAppDispatch, useAppSelector } from "@/app";
 import { ActionsPopup, LeftSideBarSearch, setIsOpenActionPopup, userActionsSlice } from "@/entities";
-import { useResizingStore } from "@/features";
+import { useResizingSlice, setWidth } from "@/features";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const MIN_WIDTH = 240;
 const MAX_WIDTH = 680;
 
+// interface ILeftSideBar {
+//   MIN_WIDTH: number;
+//   MAX_WIDTH: number;
+//   width: number;
+// }
+
 const LeftSideBar = () => {
-  const width = useResizingStore((state) => state.width);
-  const setResizeValue = useResizingStore((state) => state.setWidth);
+  const dispatch = useAppDispatch();
+  const width = useAppSelector(useResizingSlice.selectors.selectWidth);
+  const setResizeValue = (v: number) => dispatch(setWidth({width: v}));
   const isResizing = useRef(false);
   const isOpen = useAppSelector(userActionsSlice.selectors.selectIsOpenActionPopup);
-  const dispatch = useAppDispatch();
   const setIsOpen = () => dispatch(setIsOpenActionPopup({isOpenActionPopup: !isOpen}))
 
   useEffect(() => {

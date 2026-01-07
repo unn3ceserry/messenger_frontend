@@ -1,1 +1,1 @@
-export {useResizingStore} from './model'
+export { useResizingReducer, setWidth, useResizingSlice } from "./model";

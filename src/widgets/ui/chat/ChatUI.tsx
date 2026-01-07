@@ -5,12 +5,11 @@ import { AnimatePresence } from "framer-motion";
 import { ModalConstructor } from "@/shared";
 import {
   setIsOpenMyProfile,
-  userActionsPopupStore,
   userActionsSlice,
   UserProfileModal,
 } from "@/entities";
 import { useAppDispatch, useAppSelector } from "@/app";
-import { useState } from "react";
+import UserSettings from "../settings/UserSettings";
 
 const ChatUI = () => {
   const isOpenMyProfile = useAppSelector(
@@ -23,6 +22,7 @@ const ChatUI = () => {
   return (
     <>
       <div className="flex items-center justify-start w-full">
+        {/* <UserSettings/> */}
         <LeftSideBar />
       </div>
 

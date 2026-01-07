@@ -9,7 +9,7 @@ import { CompletePane, handleSetCompleteData } from "@/features";
 import Image from "next/image";
 import { COMPLETE_CONFIG } from "@/widgets";
 import { CompleteModal } from "@/features";
-import { useUserCompleteDataStore } from "@/app";
+import { useUserCompleteDataStore } from "@/entities";
 import { Button } from "@/shared";
 
 const CompleteProfile = () => {

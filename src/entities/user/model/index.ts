@@ -13,3 +13,10 @@ export {
   userActionsSlice,
   setIsOpenActionPopup,
 } from "./store/userActionsSlice";
+
+export {
+  type UserCompleteDataStore,
+  getUserData,
+  setUserCompleteData,
+  useUserCompleteDataStore,
+} from "./store/userCompleteDataStore";
