@@ -6,6 +6,7 @@ interface IUserActionsPopupState {
   isOpenUserSettings: boolean;
   isNightMode: boolean;
   isOpenActionPopup: boolean;
+  isOpenUserContacts: boolean;
 }
 
 const initialState: IUserActionsPopupState = {
@@ -13,6 +14,7 @@ const initialState: IUserActionsPopupState = {
   isOpenMyProfile: false,
   isOpenUserSettings: false,
   isOpenActionPopup: false,
+  isOpenUserContacts: false,
 };
 
 export const userActionsSlice = createSlice({
@@ -38,6 +40,7 @@ export const userActionsSlice = createSlice({
       state.isOpenMyProfile = payload.payload.isOpenMyProfile;
       state.isOpenUserSettings = false;
       state.isOpenActionPopup = false;
+      state.isOpenUserContacts = false;
     },
     setIsOpenUserSettings: (
       state,
@@ -46,6 +49,7 @@ export const userActionsSlice = createSlice({
       state.isOpenUserSettings = payload.payload.isOpenUserSettings;
       state.isOpenMyProfile = false;
       state.isOpenActionPopup = false;
+      state.isOpenUserContacts = false;
     },
     setIsOpenActionPopup: (
       state,
@@ -54,12 +58,22 @@ export const userActionsSlice = createSlice({
       state.isOpenActionPopup = payload.payload.isOpenActionPopup;
       state.isOpenMyProfile = false;
       state.isOpenUserSettings = false;
+      state.isOpenUserContacts = false;
+    },
+    setIsOpenUserContacts: (
+      state,
+      payload: PayloadAction<{ isOpenUserContacts: boolean }>
+    ) => {
+      state.isOpenUserContacts = payload.payload.isOpenUserContacts;
+      state.isOpenActionPopup = false;
+      state.isOpenMyProfile = false;
+      state.isOpenUserSettings = false;
     },
   },
 });
 
 export const userActionsReducer = userActionsSlice.reducer;
-export const { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, setIsOpenActionPopup } =
+export const { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, setIsOpenActionPopup, setIsOpenUserContacts } =
   userActionsSlice.actions;
 
 export const selectIsOpenMyProfile = (state: RootState) =>
@@ -70,3 +84,5 @@ export const selectIsOpenActionPopup = (state: RootState) =>
   state.userActions.isOpenActionPopup;
 export const selectIsOpenUserSettings = (state: RootState) =>
   state.userActions.isOpenUserSettings;
+export const selectIsOpenUserContacts = (state: RootState) =>
+  state.userActions.isOpenUserContacts;

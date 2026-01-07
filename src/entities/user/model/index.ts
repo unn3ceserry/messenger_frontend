@@ -16,6 +16,8 @@ export {
   selectIsNightMode,
   selectIsOpenActionPopup,
   selectIsOpenUserSettings,
+  selectIsOpenUserContacts,
+  setIsOpenUserContacts,
 } from "./store/userActionsSlice";
 
 export {

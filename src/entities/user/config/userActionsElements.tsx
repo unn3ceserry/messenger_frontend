@@ -2,17 +2,20 @@ import {
   CirclePlus,
   CircleUser,
   CloudMoonRain,
+  FileUser,
   Plus,
   Settings,
 } from "lucide-react";
+import { configApp } from "@/app";
 import {
   setIsNightMode,
   setIsOpenMyProfile,
+  setIsOpenUserContacts,
   setIsOpenUserSettings,
 } from "../model";
-import { configApp, makeStore } from "@/app";
+import { AppDispatch } from "@/app/store/store";
 
-export const userActionsElements = [
+export const userActionsElements = (dispatch: AppDispatch) => [
   {
     icon: <Plus size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.addAccount",
@@ -22,30 +25,32 @@ export const userActionsElements = [
     icon: <CircleUser size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.myProfile",
     onClick: () =>
-      makeStore.dispatch(
-        setIsOpenMyProfile({
-          isOpenMyProfile: true,
-        })
+      dispatch(
+        setIsOpenMyProfile({ isOpenMyProfile: true })
       ),
   },
   {
     icon: <Settings size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.settings",
     onClick: () =>
-      makeStore.dispatch(
-        setIsOpenUserSettings({
-          isOpenUserSettings: true,
-        })
+      dispatch(
+        setIsOpenUserSettings({ isOpenUserSettings: true })
+      ),
+  },
+  {
+    icon: <FileUser size={20} className="text-[#818181]" />,
+    title: "chat.actionsPopup.contacts",
+    onClick: () =>
+      dispatch(
+        setIsOpenUserContacts({ isOpenUserContacts: true })
       ),
   },
   {
     icon: <CloudMoonRain size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.nightMode",
     onClick: () =>
-      makeStore.dispatch(
-        setIsNightMode({
-          isNightMode: true,
-        })
+      dispatch(
+        setIsNightMode({ isNightMode: true })
       ),
   },
   {
