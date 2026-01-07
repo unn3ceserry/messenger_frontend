@@ -1,52 +1,17 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/app";
-import { ActionsPopup, LeftSideBarSearch, setIsOpenActionPopup, userActionsSlice } from "@/entities";
-import { useResizingSlice, setWidth } from "@/features";
+import { ActionsPopup, LeftSideBarSearch } from "@/entities";
 import { AnimatePresence } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 
-const MIN_WIDTH = 240;
-const MAX_WIDTH = 680;
 
-// interface ILeftSideBar {
-//   MIN_WIDTH: number;
-//   MAX_WIDTH: number;
-//   width: number;
-// }
+interface ILeftSideBar {
+  width: number;
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-const LeftSideBar = () => {
-  const dispatch = useAppDispatch();
-  const width = useAppSelector(useResizingSlice.selectors.selectWidth);
-  const setResizeValue = (v: number) => dispatch(setWidth({width: v}));
-  const isResizing = useRef(false);
-  const isOpen = useAppSelector(userActionsSlice.selectors.selectIsOpenActionPopup);
-  const setIsOpen = () => dispatch(setIsOpenActionPopup({isOpenActionPopup: !isOpen}))
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isResizing.current) return;
-
-      const newWidth = e.clientX;
-      let nextWidth = newWidth;
-
-      if (newWidth < MIN_WIDTH) nextWidth = MIN_WIDTH;
-      else if (newWidth > MAX_WIDTH) nextWidth = MAX_WIDTH;
-
-      setResizeValue(nextWidth);
-    };
-
-    const handleMouseUp = () => {
-      isResizing.current = false;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, []);
-
+const LeftSideBar: FC<ILeftSideBar> = ({isOpen, width, setIsOpen}) => {
   return (
     <>
       <div
@@ -55,11 +20,6 @@ const LeftSideBar = () => {
       >
         <LeftSideBarSearch setIsOpen={setIsOpen} />
       </div>
-
-      <div
-        onMouseDown={() => (isResizing.current = true)}
-        className="w-0.5 bg-[#313131]/90 h-screen cursor-e-resize"
-      ></div>
 
       {/* actions modal */}
       <AnimatePresence>

@@ -12,8 +12,15 @@ export {
   userActionsReducer,
   userActionsSlice,
   setIsOpenActionPopup,
+  selectIsOpenMyProfile,
+  selectIsNightMode,
+  selectIsOpenActionPopup,
+  selectIsOpenUserSettings,
 } from "./store/userActionsSlice";
 
 export {
-  userCompleteDataReducer, setCompleteData, userCompleteDataSlice, type IUserCompleteData
-} from './store/userCompleteDataSlice'
+  userCompleteDataReducer,
+  setCompleteData,
+  userCompleteDataSlice,
+  type IUserCompleteData,
+} from "./store/userCompleteDataSlice";

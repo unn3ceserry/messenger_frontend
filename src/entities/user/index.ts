@@ -17,6 +17,10 @@ export {
   setIsOpenActionPopup,
   userCompleteDataReducer,
   setCompleteData,
+  selectIsOpenMyProfile,
+  selectIsNightMode,
+  selectIsOpenActionPopup,
+  selectIsOpenUserSettings,
   userCompleteDataSlice,
   type IUserCompleteData,
 } from "./model";

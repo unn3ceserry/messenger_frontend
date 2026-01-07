@@ -1,1 +1,1 @@
-export { useResizingReducer, setWidth, useResizingSlice } from "./model";
+export { useResizingReducer, setWidth, useResizingSlice, handleMouseMove } from "./model";

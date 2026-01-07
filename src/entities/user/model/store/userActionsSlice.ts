@@ -1,3 +1,4 @@
+import { RootState } from "@/app";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IUserActionsPopupState {
@@ -60,3 +61,12 @@ export const userActionsSlice = createSlice({
 export const userActionsReducer = userActionsSlice.reducer;
 export const { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, setIsOpenActionPopup } =
   userActionsSlice.actions;
+
+export const selectIsOpenMyProfile = (state: RootState) =>
+  state.userActions.isOpenMyProfile;
+export const selectIsNightMode = (state: RootState) =>
+  state.userActions.isNightMode;
+export const selectIsOpenActionPopup = (state: RootState) =>
+  state.userActions.isOpenActionPopup;
+export const selectIsOpenUserSettings = (state: RootState) =>
+  state.userActions.isOpenUserSettings;
