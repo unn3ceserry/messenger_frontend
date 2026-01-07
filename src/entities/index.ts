@@ -22,7 +22,9 @@ export {
   userCompleteDataSlice,
   selectIsOpenMyProfile,
   selectIsNightMode,
+  setIsOpenUserContacts,
   selectIsOpenActionPopup,
+  selectIsOpenUserContacts,
   selectIsOpenUserSettings,
   type IUserCompleteData,
 } from "./user";

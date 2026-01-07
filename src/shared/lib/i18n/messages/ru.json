@@ -130,6 +130,7 @@
     "actionsPopup": {
       "addAccount": "Добавить аккаунт",
       "myProfile": "Мой профиль",
+      "contacts": "Контакты",
       "settings": "Настройки",
       "nightMode": "Ночной режим",
       "installApp": "Установить приложение"

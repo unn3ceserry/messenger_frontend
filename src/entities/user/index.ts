@@ -16,11 +16,13 @@ export {
   userActionsSlice,
   setIsOpenActionPopup,
   userCompleteDataReducer,
+  setIsOpenUserContacts,
   setCompleteData,
   selectIsOpenMyProfile,
   selectIsNightMode,
   selectIsOpenActionPopup,
   selectIsOpenUserSettings,
+  selectIsOpenUserContacts,
   userCompleteDataSlice,
   type IUserCompleteData,
 } from "./model";
