@@ -1,9 +1,10 @@
 "use client";
 
-import { ActionsPopup, LeftSideBarSearch } from "@/entities";
+import { useAppDispatch, useAppSelector } from "@/app";
+import { ActionsPopup, LeftSideBarSearch, setIsOpenActionPopup, userActionsSlice } from "@/entities";
 import { useResizingStore } from "@/features";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const MIN_WIDTH = 240;
 const MAX_WIDTH = 680;
@@ -12,7 +13,9 @@ const LeftSideBar = () => {
   const width = useResizingStore((state) => state.width);
   const setResizeValue = useResizingStore((state) => state.setWidth);
   const isResizing = useRef(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const isOpen = useAppSelector(userActionsSlice.selectors.selectIsOpenActionPopup);
+  const dispatch = useAppDispatch();
+  const setIsOpen = () => dispatch(setIsOpenActionPopup({isOpenActionPopup: !isOpen}))
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
