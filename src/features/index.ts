@@ -8,4 +8,4 @@ export {
   RegisterFormNumber,
 } from "./auth";
 export { CompleteModal, CompletePane, handleSetCompleteData } from "./complete";
-export {useResizingStore} from './resizing'
+export { useResizingReducer, useResizingSlice, setWidth, handleMouseMove } from "./resizing";

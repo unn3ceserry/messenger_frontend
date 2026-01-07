@@ -1,43 +1,17 @@
 "use client";
 
 import { ActionsPopup, LeftSideBarSearch } from "@/entities";
-import { useResizingStore } from "@/features";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { Dispatch, FC, SetStateAction } from "react";
 
-const MIN_WIDTH = 240;
-const MAX_WIDTH = 680;
 
-const LeftSideBar = () => {
-  const width = useResizingStore((state) => state.width);
-  const setResizeValue = useResizingStore((state) => state.setWidth);
-  const isResizing = useRef(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+interface ILeftSideBar {
+  width: number;
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isResizing.current) return;
-
-      const newWidth = e.clientX;
-      let nextWidth = newWidth;
-
-      if (newWidth < MIN_WIDTH) nextWidth = MIN_WIDTH;
-      else if (newWidth > MAX_WIDTH) nextWidth = MAX_WIDTH;
-
-      setResizeValue(nextWidth);
-    };
-
-    const handleMouseUp = () => {
-      isResizing.current = false;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, []);
-
+const LeftSideBar: FC<ILeftSideBar> = ({isOpen, width, setIsOpen}) => {
   return (
     <>
       <div
@@ -47,15 +21,10 @@ const LeftSideBar = () => {
         <LeftSideBarSearch setIsOpen={setIsOpen} />
       </div>
 
-      <div
-        onMouseDown={() => (isResizing.current = true)}
-        className="w-0.5 bg-[#313131]/90 h-screen cursor-e-resize"
-      ></div>
-
       {/* actions modal */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed top-18 left-3 w-full max-w-80">
+          <div className="fixed top-18 left-3 w-full max-w-65 ">
             <ActionsPopup />
           </div>
         )}

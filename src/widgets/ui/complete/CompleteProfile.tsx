@@ -6,11 +6,10 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { CompletePane, handleSetCompleteData } from "@/features";
-import Image from "next/image";
 import { COMPLETE_CONFIG } from "@/widgets";
 import { CompleteModal } from "@/features";
-import { useUserCompleteDataStore } from "@/app";
 import { Button } from "@/shared";
+import { useAppSelector } from "@/app";
 
 const CompleteProfile = () => {
   const t = useTranslations();
@@ -27,7 +26,7 @@ const CompleteProfile = () => {
       once: true,
     });
   }, []);
-  const getData = useUserCompleteDataStore((s) => s.data);
+  const getData = useAppSelector((state) => state.userCompleteData.data);
 
   const handleSave = async () => {
     await handleSetCompleteData({
