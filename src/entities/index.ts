@@ -26,6 +26,8 @@ export {
   selectIsOpenActionPopup,
   selectIsOpenUserContacts,
   selectIsOpenUserSettings,
+  setIsOpenEditProfile,
+  selectIsOpenEditProfile,
   type IUserCompleteData,
 } from "./user";
 export { sessionApi } from "./session";

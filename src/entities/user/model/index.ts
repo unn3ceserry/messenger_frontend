@@ -18,6 +18,8 @@ export {
   selectIsOpenUserSettings,
   selectIsOpenUserContacts,
   setIsOpenUserContacts,
+  setIsOpenEditProfile,
+  selectIsOpenEditProfile
 } from "./store/userActionsSlice";
 
 export {
