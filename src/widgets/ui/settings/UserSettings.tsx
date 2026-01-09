@@ -55,7 +55,11 @@ const UserSettings: FC<IUserSettings> = ({ width }) => {
             <p className="text-white/50 text-[.8rem]">тут будет статус</p>
           </div>
         </div>
-        <UserSettingsShortInfo number={data.number} username={data.username} email={data.email} />
+        <UserSettingsShortInfo
+          number={data.number}
+          username={data.username}
+          email={data.email}
+        />
       </motion.div>
     </div>
   );
