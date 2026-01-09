@@ -142,6 +142,10 @@
     "birthday": "День рождения",
     "notSpecifid": "Not specified",
     "bio": "О себе",
-    "noBioYet": "Био ещё нет."
+    "noBioYet": "Био ещё нет.",
+    "username": "Имя пользователя"
+  },
+  "settings": {
+    "logout": "Выйти"
   }
 }

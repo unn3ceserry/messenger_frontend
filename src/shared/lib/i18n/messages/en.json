@@ -144,6 +144,10 @@
     "bio": "Bio",
     "notSpecifid": "Не указан.",
     "birthday": "Birthday",
-    "noBioYet": "No bio yet."
+    "noBioYet": "No bio yet.",
+    "username": "Username"
+  },
+  "settings": {
+    "logout": "Logout"
   }
 }
