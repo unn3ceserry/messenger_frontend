@@ -7,4 +7,4 @@ export {
   ChatUI,
   UserSettings,
 } from "./ui";
-export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG } from "./config";
+export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG, userSettingsCategoriesConfig } from "./config";
