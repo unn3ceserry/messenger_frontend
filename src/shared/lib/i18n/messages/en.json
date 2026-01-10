@@ -179,6 +179,8 @@
       "cloudPassword": "Cloud Password",
       "enabled": "Enabled",
       "disabled": "Disabled"
-    }
+    },
+    "termOfUse": "Term Of Use",
+    "online": "online"
   }
 }

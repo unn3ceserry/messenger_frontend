@@ -9,7 +9,7 @@ const UserSettingsCategories = () => {
   const dispatch = useAppDispatch();
   const elements = userSettingsCategoriesConfig(dispatch);
   const t = useTranslations();
-  const locale = useLocale()
+  const locale = useLocale();
   return (
     <div className="flex flex-col items-center justify-center w-full">
       {elements.map((el, i) => (
@@ -24,7 +24,11 @@ const UserSettingsCategories = () => {
           {el.icon}
           <div className="flex items-center justify-between w-full">
             <p>{t(el.title)}</p>
-            {el.isLanguage && <p className="text-white/50 text-[.9rem]">{i18nPattern(locale as TLocales)}</p>}
+            {el.isLanguage && (
+              <p className="text-white/50 text-[.9rem]">
+                {i18nPattern(locale as TLocales)}
+              </p>
+            )}
           </div>
         </div>
       ))}
