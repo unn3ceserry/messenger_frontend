@@ -60,7 +60,7 @@ const UserSettings: FC<IUserSettings> = ({ width }) => {
               <p className="text-xl">
                 {data.firstName} {data.lastName}
               </p>
-              <p className="text-white/50 text-[.8rem]">тут будет статус</p>
+              <p className="text-white/50 text-[.85rem]">{t('settings.online')}</p>
             </div>
           </div>
 

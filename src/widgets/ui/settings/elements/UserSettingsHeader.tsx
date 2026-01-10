@@ -29,7 +29,7 @@ const UserSettingsHeader = () => {
   } 
 
   return (
-    <header className="flex w-full justify-between items-center text-[#919191] sticky top-0 bg-[#212121] z-123123123 p-1.5">
+    <header className="flex w-full justify-between items-center text-[#919191] sticky top-0 bg-[#212121] z-123123123 p-2">
       <div className="flex items-center justify-center gap-3">
         {/* back */}
         <div

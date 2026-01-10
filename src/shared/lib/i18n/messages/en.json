@@ -180,6 +180,7 @@
       "enabled": "Enabled",
       "disabled": "Disabled"
     },
-    "termOfUse": "Term Of Use"
+    "termOfUse": "Term Of Use",
+    "online": "online"
   }
 }
