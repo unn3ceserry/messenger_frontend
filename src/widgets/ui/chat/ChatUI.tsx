@@ -67,7 +67,7 @@ const isOpenEditProfile = useAppSelector(selectIsOpenEditProfile);
 
   return (
     <>
-      <div className="flex items-center justify-start w-full">
+      <div className="flex items-center justify-start w-full h-screen">
         <AnimatePresence>
           {isOpenSettings && !isOpenEditProfile && (
             <UserSettings width={width} />
@@ -78,7 +78,7 @@ const isOpenEditProfile = useAppSelector(selectIsOpenEditProfile);
         </AnimatePresence>
         <div
           onMouseDown={() => (isResizing.current = true)}
-          className="w-0.5 bg-[#313131]/90 h-screen cursor-e-resize"
+          className="w-0.5 bg-[#313131]/90 self-stretch cursor-e-resize"
         ></div>
       </div>
 
