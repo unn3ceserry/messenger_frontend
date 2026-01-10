@@ -7,6 +7,7 @@ interface IUserActionsPopupState {
   isNightMode: boolean;
   isOpenActionPopup: boolean;
   isOpenUserContacts: boolean;
+  isOpenEditProfile: boolean;
 }
 
 const initialState: IUserActionsPopupState = {
@@ -15,6 +16,7 @@ const initialState: IUserActionsPopupState = {
   isOpenUserSettings: false,
   isOpenActionPopup: false,
   isOpenUserContacts: false,
+  isOpenEditProfile: false,
 };
 
 export const userActionsSlice = createSlice({
@@ -25,6 +27,7 @@ export const userActionsSlice = createSlice({
     selectIsOpenMyProfile: (state) => state.isOpenMyProfile,
     selectIsOpenUserSettings: (state) => state.isOpenUserSettings,
     selectIsOpenActionPopup: (state) => state.isOpenActionPopup,
+    selectIsOpenEditProfile: (state) => state.isOpenEditProfile,
   },
   reducers: {
     setIsNightMode: (
@@ -69,11 +72,21 @@ export const userActionsSlice = createSlice({
       state.isOpenMyProfile = false;
       state.isOpenUserSettings = false;
     },
+    setIsOpenEditProfile: (
+      state,
+      payload: PayloadAction<{ isOpenEditProfile: boolean }>
+    ) => {
+      state.isOpenEditProfile = payload.payload.isOpenEditProfile;
+      state.isOpenUserSettings = false;
+      state.isOpenActionPopup = false;
+      state.isOpenMyProfile = false;
+      state.isOpenUserContacts = false;
+    },
   },
 });
 
 export const userActionsReducer = userActionsSlice.reducer;
-export const { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, setIsOpenActionPopup, setIsOpenUserContacts } =
+export const { setIsNightMode, setIsOpenMyProfile, setIsOpenUserSettings, setIsOpenActionPopup, setIsOpenUserContacts, setIsOpenEditProfile } =
   userActionsSlice.actions;
 
 export const selectIsOpenMyProfile = (state: RootState) =>
@@ -86,3 +99,5 @@ export const selectIsOpenUserSettings = (state: RootState) =>
   state.userActions.isOpenUserSettings;
 export const selectIsOpenUserContacts = (state: RootState) =>
   state.userActions.isOpenUserContacts;
+export const selectIsOpenEditProfile = (state: RootState) =>
+  state.userActions.isOpenEditProfile;

@@ -24,5 +24,12 @@ export {
   selectIsOpenUserSettings,
   selectIsOpenUserContacts,
   userCompleteDataSlice,
+  setIsOpenEditProfile,
+  selectIsOpenEditProfile,
+  setActiveSection,
+  resetActiveSection,
+  userSettingsReducer,
+  selectWhoCategoryIsOpen,
+  userSettingsSlice,
   type IUserCompleteData,
 } from "./model";

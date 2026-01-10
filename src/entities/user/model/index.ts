@@ -18,6 +18,8 @@ export {
   selectIsOpenUserSettings,
   selectIsOpenUserContacts,
   setIsOpenUserContacts,
+  setIsOpenEditProfile,
+  selectIsOpenEditProfile
 } from "./store/userActionsSlice";
 
 export {
@@ -26,3 +28,5 @@ export {
   userCompleteDataSlice,
   type IUserCompleteData,
 } from "./store/userCompleteDataSlice";
+
+export {setActiveSection, resetActiveSection, userSettingsReducer, selectWhoCategoryIsOpen, userSettingsSlice} from './store/userSettingsSlice'
