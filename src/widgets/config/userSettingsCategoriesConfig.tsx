@@ -1,5 +1,5 @@
 import { AppDispatch } from "@/app";
-import { setActiveSection } from "@/entities";
+import { openComponent } from "@/entities";
 import {
   BrickWallShield,
   Languages,
@@ -12,27 +12,27 @@ export const userSettingsCategoriesConfig = (dispatch: AppDispatch) => [
   {
     icon: <Settings className="text-[#818181]" />,
     title: "settings.generalSettings.title",
-    onClick: () => dispatch(setActiveSection("general")),
+    onClick: () => dispatch(openComponent("userSettingsGeneral")),
   },
   {
     icon: <MonitorSmartphone className="text-[#818181]" />,
     title: "settings.sessionSettings.title",
-    onClick: () => dispatch(setActiveSection("sessions")),
+    onClick: () => dispatch(openComponent("userSettingsSessions")),
   },
   {
     icon: <BrickWallShield className="text-[#818181]" />,
     title: "settings.privacyAndSecurity.title",
-    onClick: () => dispatch(setActiveSection("privacy")),
+    onClick: () => dispatch(openComponent("userSettingsPrivacy")),
   },
   {
     icon: <Languages className="text-[#818181]" />,
     title: "settings.languageSettings.title",
-    onClick: () => dispatch(setActiveSection("language")),
+    onClick: () => dispatch(openComponent("userSettingsLanguage")),
     isLanguage: true,
   },
   {
     icon: <Workflow className="text-[#818181]" />,
     title: "settings.otherSettings.title",
-    onClick: () => dispatch(setActiveSection("other")),
+    onClick: () => dispatch(openComponent("userSettingsOther")),
   },
 ];

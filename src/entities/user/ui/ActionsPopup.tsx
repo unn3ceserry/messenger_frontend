@@ -6,7 +6,7 @@ import { userApi } from "../api";
 import ActionsPopupElement from "./elements/ActionsPopupElement";
 import { userActionsElements } from "../config";
 import { useAppDispatch } from "@/app";
-import { setIsOpenMyProfile } from "../model";
+import { openComponent } from "../model";
 import { configApp } from "@/app";
 import { RenderAvatarElement } from "@/shared";
 
@@ -28,7 +28,7 @@ const ActionsPopup = () => {
     >
       {/* user short info */}
       <div
-        onClick={() => dispatch(setIsOpenMyProfile({ isOpenMyProfile: true }))}
+        onClick={() => dispatch(openComponent('myProfile'))}
         className="flex items-center w-full gap-2.5 cursor-pointer hover:bg-black/30 p-2 rounded-[10px] duration-300"
       >
         <RenderAvatarElement
@@ -47,7 +47,7 @@ const ActionsPopup = () => {
       ))}
 
       <p className="text-[.8rem] text-white/50">
-        Fluent Web {configApp.VERSION()}
+        {configApp.NAME()} {configApp.TYPE_APP()} {configApp.VERSION()}
       </p>
     </motion.div>
   );

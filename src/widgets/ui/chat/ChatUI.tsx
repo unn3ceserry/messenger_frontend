@@ -4,20 +4,14 @@ import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
 import { ModalConstructor } from "@/shared";
 import {
-  selectIsOpenEditProfile,
-  selectIsOpenUserSettings,
-  setIsOpenActionPopup,
-  setIsOpenMyProfile,
-  userActionsSlice,
+  closeAll,
+  openComponent,
+  selectOpenComponent,
   UserProfileModal,
 } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
-import {
-  useResizingSlice,
-  setWidth,
-  handleMouseMove,
-} from "@/features";
+import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import UserSettings from "../settings/UserSettings";
 
 const MIN_WIDTH = 300;
@@ -25,29 +19,14 @@ const MAX_WIDTH = 680;
 
 const ChatUI = () => {
   // getters
-  const isOpen = useAppSelector(
-    userActionsSlice.selectors.selectIsOpenActionPopup
-  );
-  const isOpenMyProfile = useAppSelector(
-    userActionsSlice.selectors.selectIsOpenMyProfile
-  );
 
+  const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
-
-const isOpenSettings = useAppSelector(selectIsOpenUserSettings);
-const isOpenEditProfile = useAppSelector(selectIsOpenEditProfile);
-
 
   // setters
   const dispatch = useAppDispatch();
-  const setIsOpen = () =>
-    dispatch(setIsOpenActionPopup({ isOpenActionPopup: !isOpen }));
-
-  const setIsOpenMyProfileModal = (_: boolean) =>
-    dispatch(setIsOpenMyProfile({ isOpenMyProfile: false }));
 
   const setResizeValue = (v: number) => dispatch(setWidth({ width: v }));
-
   const isResizing = useRef(false);
 
   useEffect(() => {
@@ -69,12 +48,34 @@ const isOpenEditProfile = useAppSelector(selectIsOpenEditProfile);
     <>
       <div className="flex items-center justify-start w-full h-screen">
         <AnimatePresence>
-          {isOpenSettings && !isOpenEditProfile && (
-            <UserSettings width={width} />
-          )}
-          {!isOpenSettings ? (
-            <LeftSideBar setIsOpen={setIsOpen} width={width} isOpen={isOpen} />
-          ) : null}
+          {(() => {
+            switch (whoIsOpenWithUiComponents) {
+              case "userSettingsGeneral":
+              case "userSettingsLanguage":
+              case "userSettingsOther":
+              case "userSettingsPrivacy":
+              case "userSettingsSessions":
+              case "userSettings":
+                return <UserSettings width={width} />;
+
+              default:
+                return (
+                  <LeftSideBar
+                    setIsOpen={() =>
+                      dispatch(
+                        openComponent(
+                          whoIsOpenWithUiComponents === "actionPopup"
+                            ? null
+                            : "actionPopup"
+                        )
+                      )
+                    }
+                    width={width}
+                    isOpen={whoIsOpenWithUiComponents === "actionPopup"}
+                  />
+                );
+            }
+          })()}
         </AnimatePresence>
         <div
           onMouseDown={() => (isResizing.current = true)}
@@ -84,9 +85,9 @@ const isOpenEditProfile = useAppSelector(selectIsOpenEditProfile);
 
       {/* modals */}
       <AnimatePresence>
-        {isOpenMyProfile && (
+        {whoIsOpenWithUiComponents === "myProfile" && (
           <ModalConstructor
-            setIsOpen={setIsOpenMyProfileModal}
+            setIsOpen={() => dispatch(closeAll())}
             content={<UserProfileModal />}
           />
         )}

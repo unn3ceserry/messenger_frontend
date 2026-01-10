@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { userApi } from "../api";
-import { setIsOpenUserSettings, UserType } from "../model";
+import { openComponent, UserType } from "../model";
 import { ReactNode } from "react";
 import { Calendar1, Mail, Phone, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -82,7 +81,7 @@ const UserProfileModal = () => {
       {/* settings */}
       <div
         onClick={() =>
-          dispatch(setIsOpenUserSettings({ isOpenUserSettings: true }))
+          dispatch(openComponent('userSettings'))
         }
         className="flex items-center justify-start w-full gap-3 bg-black/30 p-3 rounded-t-[5px] rounded-b-[10px] text-[.95rem] hover:bg-accent/10 duration-300 cursor-pointer"
       >
