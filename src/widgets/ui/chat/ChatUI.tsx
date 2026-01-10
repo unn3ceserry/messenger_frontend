@@ -19,7 +19,6 @@ const MAX_WIDTH = 680;
 
 const ChatUI = () => {
   // getters
-
   const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
 
@@ -46,7 +45,7 @@ const ChatUI = () => {
 
   return (
     <>
-      <div className="flex items-center justify-start w-full h-screen">
+      <div style={{width}} className="flex items-center justify-center w-full h-screen bg-[#212121]">
         <AnimatePresence>
           {(() => {
             switch (whoIsOpenWithUiComponents) {

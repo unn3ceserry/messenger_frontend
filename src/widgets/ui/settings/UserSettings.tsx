@@ -31,8 +31,7 @@ const UserSettings: FC<IUserSettings> = ({ width }) => {
 
   return (
     <div
-      style={{ width }}
-      className="z-1233 flex flex-col items-center justify-start gap-5 bg-[#212121] h-screen overflow-y-auto text-white scrollbar-thin"
+      className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full"
     >
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}

@@ -15,8 +15,7 @@ const LeftSideBar: FC<ILeftSideBar> = ({isOpen, width, setIsOpen}) => {
   return (
     <>
       <div
-        style={{ width }}
-        className="flex flex-col items-center justify-start gap-5 bg-[#212121] h-screen text-white"
+        className="flex flex-col items-center justify-start gap-5 h-screen text-white w-full"
       >
         <LeftSideBarSearch setIsOpen={setIsOpen} />
       </div>
