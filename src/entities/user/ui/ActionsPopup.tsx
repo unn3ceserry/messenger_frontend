@@ -8,6 +8,7 @@ import { userActionsElements } from "../config";
 import { useAppDispatch } from "@/app";
 import { setIsOpenMyProfile } from "../model";
 import { configApp } from "@/app";
+import { RenderAvatarElement } from "@/shared";
 
 const ActionsPopup = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
@@ -30,11 +31,12 @@ const ActionsPopup = () => {
         onClick={() => dispatch(setIsOpenMyProfile({ isOpenMyProfile: true }))}
         className="flex items-center w-full gap-2.5 cursor-pointer hover:bg-black/30 p-2 rounded-[10px] duration-300"
       >
-        {data.avatars?.[0] ? (
-          <Image src={data.avatars[0]} alt={data.username} width={24} height={24} />
-        ) : (
-          <div className="w-6 aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"></div>
-        )}
+        <RenderAvatarElement
+          hasAvatar={!!data.avatars}
+          size={24}
+          avatar={data.avatars[0]}
+        />
+
         <p className="text-[.9rem]">
           {data.firstName} {data.lastName}
         </p>
@@ -44,7 +46,9 @@ const ActionsPopup = () => {
         <ActionsPopupElement key={i} {...el} />
       ))}
 
-      <p className="text-[.8rem] text-white/50">Fluent Web {configApp.VERSION()}</p>
+      <p className="text-[.8rem] text-white/50">
+        Fluent Web {configApp.VERSION()}
+      </p>
     </motion.div>
   );
 };

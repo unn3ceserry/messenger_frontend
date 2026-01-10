@@ -24,6 +24,7 @@ export {
   Notification,
   FieldInput,
   ModalConstructor,
+  RenderAvatarElement,
   SearchInput,
 } from "./ui";
 export {modalContainerDefault, modalDefault} from './config'
