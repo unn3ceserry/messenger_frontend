@@ -142,12 +142,43 @@
     "number": "Phone",
     "email": "Email",
     "bio": "Bio",
-    "notSpecifid": "Не указан.",
+    "notSpecifid": "Not specified.",
     "birthday": "Birthday",
     "noBioYet": "No bio yet.",
     "username": "Username"
   },
   "settings": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "generalSettings": {
+      "title": "General Settings",
+      "theme": "Theme",
+      "themeDark": "Dark",
+      "themeLight": "Light",
+      "chatWallpaper": "Chat Wallpaper"
+    },
+    "languageSettings": {
+      "title": "Language",
+      "interfaceLanguage": "Interface Language"
+    },
+    "otherSettings": {
+      "title": "Other Settings",
+      "hideStatus": "Hide Status"
+    },
+    "sessionSettings": {
+      "title": "Active Sessions",
+      "terminateAllOther": "Terminate All Other Sessions",
+      "thisDevice": "This Device",
+      "activeSessions": "Active Sessions",
+      "terminate": "Terminate"
+    },
+    "privacyAndSecurity": {
+      "title": "Privacy and Security",
+      "blockedUsers": "Blocked Users",
+      "linkEmail": "Link Email",
+      "notLinked": "Not Linked",
+      "cloudPassword": "Cloud Password",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    }
   }
 }

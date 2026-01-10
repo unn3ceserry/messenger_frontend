@@ -140,12 +140,43 @@
     "number": "Номер",
     "email": "Почти",
     "birthday": "День рождения",
-    "notSpecifid": "Not specified",
+    "notSpecifid": "Не указан.",
     "bio": "О себе",
     "noBioYet": "Био ещё нет.",
     "username": "Имя пользователя"
   },
   "settings": {
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "generalSettings": {
+      "title": "Общие настройки",
+      "theme": "Тема",
+      "themeDark": "Тёмная",
+      "themeLight": "Светлая",
+      "chatWallpaper": "Обои чата"
+    },
+    "languageSettings": {
+      "title": "Язык",
+      "interfaceLanguage": "Язык интерфейса"
+    },
+    "otherSettings": {
+      "title": "Другие настройки",
+      "hideStatus": "Скрыть статус"
+    },
+    "sessionSettings": {
+      "title": "Активные сессии",
+      "terminateAllOther": "Завершить все другие сессии",
+      "thisDevice": "Это устройство",
+      "activeSessions": "Активные сессии",
+      "terminate": "Завершить"
+    },
+    "privacyAndSecurity": {
+      "title": "Конфиденциальность и безопасность",
+      "blockedUsers": "Заблокированные пользователи",
+      "linkEmail": "Привязать email",
+      "notLinked": "Не привязан",
+      "cloudPassword": "Облачный пароль",
+      "enabled": "Включён",
+      "disabled": "Выключен"
+    }
   }
 }
