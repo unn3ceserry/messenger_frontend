@@ -45,7 +45,11 @@ const UserSettings: FC<IUserSettings> = ({ width }) => {
         {/* avatar & names */}
         <div className="w-full flex flex-col items-center justify-center p-2 gap-3">
           <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3">
-          <RenderAvatarElement hasAvatar={!!data.avatars} size={130} avatar={data.avatars[data.avatars.length -1]} />
+            <RenderAvatarElement
+              hasAvatar={!!data.avatars}
+              size={130}
+              avatar={data.avatars[data.avatars.length - 1]}
+            />
             <div className="flex flex-col items-center justify-center">
               <p className="text-xl">
                 {data.firstName} {data.lastName}

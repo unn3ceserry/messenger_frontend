@@ -19,12 +19,8 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
   const t = useTranslations();
 
   // сделать в будущем уведомление на то что скопировано
-  const handleCopy = async (
-    result: string,
-    title: "number" | "email" | "username"
-  ) => {
+  const handleCopy = async (result: string) => {
     try {
-      setWhoCopied(title);
       await navigator.clipboard.writeText(result.toString());
     } catch (err) {
       console.error("Clipboard error:", err);
@@ -56,14 +52,13 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
         .map((el, i) => (
           <div
             key={i}
-            onClick={(e) => {
-              handleCopy(
-                el.data ?? "",
-                el.title as "number" | "email" | "username"
-              );
+            onClick={async (e) => {
+              handleCopy(el.data ?? "");
               createRipple(e);
             }}
-            className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-2 flex items-center justify-start gap-5 cursor-pointer"
+            className={`relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-2 flex items-center justify-start gap-5 cursor-pointer ${
+              whoCopied === el.title ? "bg-accent" : ""
+            }`}
           >
             {el.icon}
             <div className="flex flex-col items-start justify-center">
