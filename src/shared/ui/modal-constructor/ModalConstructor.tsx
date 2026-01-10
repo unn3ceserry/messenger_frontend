@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { modalContainerDefault, modalDefault } from "@/shared";
 
 interface IModalConstructor {
-  setIsOpen: Dispatch<SetStateAction<boolean>> | ((isOpenMyProfile: boolean) => void);
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
   content?: ReactNode;
 }
 

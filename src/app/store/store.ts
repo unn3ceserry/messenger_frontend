@@ -1,4 +1,4 @@
-import { userActionsReducer, userCompleteDataReducer } from "@/entities";
+import { userCompleteDataReducer, userUiReducer  } from "@/entities";
 import { useResizingReducer } from "@/features";
 import { mainApi } from "@/shared";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -19,11 +19,9 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { userSettingsReducer } from "@/entities/user/model/store/userSettingsSlice";
 
 const reducers = combineReducers({
-  userActions: userActionsReducer,
-  userSettings: userSettingsReducer,
+  userUiOpenComponent: userUiReducer,
   userCompleteData: userCompleteDataReducer,
   resizing: useResizingReducer,
   [mainApi.reducerPath]: mainApi.reducer,

@@ -1,7 +1,6 @@
 "use client";
 
 import { useAppDispatch } from "@/app";
-import { setIsOpenEditProfile, setIsOpenUserSettings } from "@/entities";
 import { handleLogout } from "@/features";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, EllipsisVertical, LogOut, Pencil } from "lucide-react";
@@ -9,14 +8,11 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useLocale } from "next-intl";
+import { closeAll, openComponent } from "@/entities";
 
 const UserSettingsHeader = () => {
   // actions
   const dispatch = useAppDispatch();
-  const closeSettings = () =>
-    dispatch(setIsOpenUserSettings({ isOpenUserSettings: false }));
-  const setOpenEditProfile = () =>
-    dispatch(setIsOpenEditProfile({ isOpenEditProfile: true }));
 
   const t = useTranslations();
   const router = useRouter();
@@ -33,7 +29,7 @@ const UserSettingsHeader = () => {
       <div className="flex items-center justify-center gap-3">
         {/* back */}
         <div
-          onClick={closeSettings}
+          onClick={() => dispatch(closeAll())}
           className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-white/6 bg-transparent rounded-full duration-300"
         >
           <ArrowLeft size={22} />
@@ -46,7 +42,7 @@ const UserSettingsHeader = () => {
       <div className="flex gap-1 items-center justify-center relative">
         {/* edit-profile */}
         <div
-          onClick={setOpenEditProfile}
+          onClick={() => dispatch(openComponent('editProfile'))}
           className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-white/6 bg-transparent rounded-full duration-300"
         >
           <Pencil size={22} />

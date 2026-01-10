@@ -18,7 +18,7 @@ export type UserType = {
   lastName: string;
   id: string;
   email: string | null;
-  avatars: string | null;
+  avatars: string[] | [];
   bio: string | null;
   birthday: Date | null;
   blockedUsers: string[];

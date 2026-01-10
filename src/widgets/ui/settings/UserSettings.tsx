@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { ReceiptText } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "use-intl";
-import { createRipple } from "@/shared";
+import { createRipple, RenderAvatarElement } from "@/shared";
 
 interface IUserSettings {
   width: number;
@@ -45,22 +45,18 @@ const UserSettings: FC<IUserSettings> = ({ width }) => {
         {/* avatar & names */}
         <div className="w-full flex flex-col items-center justify-center p-2 gap-3">
           <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3">
-            {data.avatars ? (
-              <Image
-                src={data.avatars[0]}
-                alt={data.username}
-                width={30}
-                height={30}
-              />
-            ) : (
-              <div className="w-30 aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"></div>
-            )}
-
+            <RenderAvatarElement
+              hasAvatar={!!data.avatars}
+              size={130}
+              avatar={data.avatars[data.avatars.length - 1]}
+            />
             <div className="flex flex-col items-center justify-center">
               <p className="text-xl">
                 {data.firstName} {data.lastName}
               </p>
-              <p className="text-white/50 text-[.85rem]">{t('settings.online')}</p>
+              <p className="text-white/50 text-[.85rem]">
+                {t("settings.online")}
+              </p>
             </div>
           </div>
 

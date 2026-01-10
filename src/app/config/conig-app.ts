@@ -3,7 +3,7 @@ class CONFIG_APP {
     return "Fluent";
   }
   VERSION() {
-    return "1.0.0";
+    return "1.0.0b";
   }
   BRANCH() {
     return "Beta";
@@ -13,6 +13,9 @@ class CONFIG_APP {
   }
   APP_LINK() {
     return 'https://play.google.com/store/apps'
+  }
+  TYPE_APP() {
+    return 'Web'
   }
 }
 
