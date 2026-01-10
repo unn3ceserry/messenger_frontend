@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 import { Calendar1, Mail, Phone, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useDispatch } from "react-redux";
+import { RenderAvatarElement } from "@/shared";
 
 type TypeShortInfo = {
   icon: ReactNode;
@@ -36,17 +37,7 @@ const UserProfileModal = () => {
     <div className="flex flex-col items-center justify-center p-1 backdrop-blur-2xl w-full gap-1 text-white">
       {/* avatar & names */}
       <div className="flex items-center w-full gap-2.5 cursor-pointer bg-black/30 p-3 rounded-t-[10px] rounded-b-[5px]">
-        {data.avatars ? (
-          <Image
-            src={data.avatars[0]}
-            alt={data.username}
-            width={15}
-            height={15}
-          />
-        ) : (
-          <div className="w-15 aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"></div>
-        )}
-
+        <RenderAvatarElement hasAvatar={!!data.avatars} size={60} avatar={data.avatars[data.avatars.length -1]} />
         <div className="flex flex-col items-start justify-center">
           <p className="">
             {data.firstName} {data.lastName}

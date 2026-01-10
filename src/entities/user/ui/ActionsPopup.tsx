@@ -34,7 +34,7 @@ const ActionsPopup = () => {
         <RenderAvatarElement
           hasAvatar={!!data.avatars}
           size={24}
-          avatar={data.avatars[0]}
+          avatar={data.avatars[data.avatars.length -1]}
         />
 
         <p className="text-[.9rem]">
