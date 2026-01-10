@@ -28,6 +28,11 @@ export {
   selectIsOpenUserSettings,
   setIsOpenEditProfile,
   selectIsOpenEditProfile,
+  setActiveSection,
+  resetActiveSection,
+  userSettingsReducer,
+  selectWhoCategoryIsOpen,
+  userSettingsSlice,
   type IUserCompleteData,
 } from "./user";
 export { sessionApi } from "./session";
