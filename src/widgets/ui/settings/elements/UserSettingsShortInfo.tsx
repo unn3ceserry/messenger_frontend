@@ -1,5 +1,6 @@
 "use client";
 
+import { createRipple } from "@/shared";
 import { AtSign, Mail, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FC, MouseEvent, useRef } from "react";
@@ -17,6 +18,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
 }) => {
   const t = useTranslations();
 
+  // сделать в будущем уведомление на то что скопировано
   const handleCopy = async (result: string) => {
     try {
       await navigator.clipboard.writeText(result.toString());
@@ -25,27 +27,6 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
     }
   };
 
-  const createRipple = (e: MouseEvent<HTMLDivElement>) => {
-    const button = e.currentTarget;
-    const circle = document.createElement("span");
-    const rect = button.getBoundingClientRect();
-
-    const size = Math.max(rect.width, rect.height) * 2;
-    const x = e.clientX - rect.left - size / 2;
-    const y = e.clientY - rect.top - size / 2;
-
-    circle.style.width = circle.style.height = `${size}px`;
-    circle.style.left = `${x}px`;
-    circle.style.top = `${y}px`;
-    circle.className =
-      "absolute bg-white/30 rounded-full pointer-events-none ripple";
-
-    button.appendChild(circle);
-
-    circle.addEventListener("animationend", () => {
-      circle.remove();
-    });
-  };
 
   const elements = [
     { title: "number", icon: <Phone className="text-[#818181]" />, data: number },

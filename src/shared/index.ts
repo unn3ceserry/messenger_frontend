@@ -10,6 +10,9 @@ export {
   isErrorWithMessageAndType,
   isFetchBaseQueryError,
   isErrorWithMessage,
+  createRipple,
+  i18nPattern,
+  type TLocales,
 } from "./lib";
 export {
   ShaderDarkVeil,

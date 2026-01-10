@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import UserSettingsHeader from "./elements/UserSettingsHeader";
 import UserSettingsShortInfo from "./elements/UserSettingsShortInfo";
+import UserSettingsCategories from "./elements/UserSettingsCategories";
 
 interface IUserSettings {
   width: number;
@@ -55,11 +56,15 @@ const UserSettings: FC<IUserSettings> = ({ width }) => {
             <p className="text-white/50 text-[.8rem]">тут будет статус</p>
           </div>
         </div>
+
         <UserSettingsShortInfo
           number={data.number}
           username={data.username}
           email={data.email}
         />
+        <hr className="w-full border-3 border-black/15" />
+
+        <UserSettingsCategories/>
       </motion.div>
     </div>
   );

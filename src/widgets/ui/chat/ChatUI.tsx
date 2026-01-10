@@ -17,11 +17,10 @@ import {
   useResizingSlice,
   setWidth,
   handleMouseMove,
-  useResizingReducer,
 } from "@/features";
 import UserSettings from "../settings/UserSettings";
 
-const MIN_WIDTH = 240;
+const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
 const ChatUI = () => {
