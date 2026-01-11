@@ -47,7 +47,7 @@ const UserSettingsHeader = () => {
         >
           <Pencil size={22} />
         </div>
-        {/* settings */}
+        {/* logout */}
         <div
           onClick={() => setIsOpen((prev) => !prev)}
           className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-white/6 bg-transparent rounded-full duration-300"

@@ -104,3 +104,5 @@ input[type="number"] {
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background-color: #000;
 }
+
+.text-myred { color: #ed2424; } 

@@ -34,11 +34,6 @@ export const userActionsElements = (dispatch: AppDispatch) => [
     onClick: () => dispatch(openComponent("userContacts")),
   },
   {
-    icon: <CloudMoonRain size={20} className="text-[#818181]" />,
-    title: "chat.actionsPopup.nightMode",
-    onClick: () => ({}),
-  },
-  {
     icon: <CirclePlus size={20} className="text-[#818181]" />,
     title: "chat.actionsPopup.installApp",
     onClick: () => window.open(configApp.APP_LINK()),

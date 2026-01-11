@@ -1,1 +1,1 @@
-export type {SignInType, SignUpType} from './types/sessionsTypes'
+export type {SignInType, SignUpType, Session, SessionCookie, SessionDevice, SessionLocation, SessionMetadata} from './types/sessionsTypes'

@@ -1,4 +1,12 @@
-export type { SignInType, SignUpType } from "./session";
+export type {
+  SignInType,
+  SignUpType,
+  Session,
+  SessionCookie,
+  SessionDevice,
+  SessionLocation,
+  SessionMetadata,
+} from "./session";
 export type {
   FindUserType,
   UserCompleteData,

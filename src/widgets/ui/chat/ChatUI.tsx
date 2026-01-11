@@ -14,6 +14,8 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import UserSettings from "../settings/UserSettings";
 import UserLanguageSettings from "../settings/UserLanguageSettings";
+import UserOtherSettings from "../settings/UserOtherSettings";
+import UserSessionsSettings from "../settings/UserSessionsSettings";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -53,12 +55,14 @@ const ChatUI = () => {
         <AnimatePresence>
           {(() => {
             switch (whoIsOpenWithUiComponents) {
+              case "userSettingsOther":
+                return <UserOtherSettings />;
               case "userSettingsLanguage":
                 return <UserLanguageSettings />;
-              case "userSettingsGeneral":
-              case "userSettingsOther":
-              case "userSettingsPrivacy":
               case "userSettingsSessions":
+                return <UserSessionsSettings />;
+              case "userSettingsGeneral":
+              case "userSettingsPrivacy":
               case "userSettings":
                 return <UserSettings />;
 
