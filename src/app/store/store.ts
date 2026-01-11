@@ -1,4 +1,4 @@
-import { userCompleteDataReducer, userUiReducer  } from "@/entities";
+import { userCompleteDataReducer, userThemeReducer, userUiReducer  } from "@/entities";
 import { useResizingReducer } from "@/features";
 import { mainApi } from "@/shared";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -23,6 +23,7 @@ import {
 const reducers = combineReducers({
   userUiOpenComponent: userUiReducer,
   userCompleteData: userCompleteDataReducer,
+  userTheme: userThemeReducer,
   resizing: useResizingReducer,
   [mainApi.reducerPath]: mainApi.reducer,
 });
@@ -30,7 +31,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["resizing"],
+  whitelist: ["resizing", 'userTheme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
