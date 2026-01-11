@@ -170,7 +170,8 @@
       "terminateAllOther": "Terminate All Other Sessions",
       "thisDevice": "This Device",
       "activeSessions": "Active Sessions",
-      "terminate": "Terminate"
+      "terminate": "Terminate",
+      "noActiveSession": "There are no active sessions right now."
     },
     "privacyAndSecurity": {
       "title": "Privacy and Security",

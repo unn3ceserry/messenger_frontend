@@ -168,7 +168,8 @@
       "terminateAllOther": "Завершить все другие сессии",
       "thisDevice": "Это устройство",
       "activeSessions": "Активные сессии",
-      "terminate": "Завершить"
+      "terminate": "Завершить",
+      "noActiveSession": "Активных сессий сейчас нет."
     },
     "privacyAndSecurity": {
       "title": "Конфиденциальность и безопасность",

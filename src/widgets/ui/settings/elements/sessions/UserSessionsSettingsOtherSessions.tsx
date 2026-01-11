@@ -20,6 +20,11 @@ const UserSessionsSettingsOtherSessions: FC<
         {t("settings.sessionSettings.activeSessions")}
       </p>
       <div className="flex flex-col items-center justify-center gap-3">
+        {!data.length && (
+          <div className="flex items-center justify-start w-full text-white/50 text-[.8rem]">
+            <p>{t('settings.sessionSettings.noActiveSession')}</p>
+          </div>
+        )}
         {data.map((el, i) => (
           <UserSessionsSettingsDevice
             key={i}
