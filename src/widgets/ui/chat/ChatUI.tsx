@@ -13,13 +13,13 @@ import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import UserSettings from "../settings/UserSettings";
+import UserLanguageSettings from "../settings/UserLanguageSettings";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
 const ChatUI = () => {
   // getters
-
   const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
 
@@ -46,17 +46,21 @@ const ChatUI = () => {
 
   return (
     <>
-      <div className="flex items-center justify-start w-full h-screen">
+      <div
+        style={{ width }}
+        className="flex items-center justify-center w-full h-screen bg-[#212121]"
+      >
         <AnimatePresence>
           {(() => {
             switch (whoIsOpenWithUiComponents) {
-              case "userSettingsGeneral":
               case "userSettingsLanguage":
+                return <UserLanguageSettings />;
+              case "userSettingsGeneral":
               case "userSettingsOther":
               case "userSettingsPrivacy":
               case "userSettingsSessions":
               case "userSettings":
-                return <UserSettings width={width} />;
+                return <UserSettings />;
 
               default:
                 return (
@@ -70,7 +74,6 @@ const ChatUI = () => {
                         )
                       )
                     }
-                    width={width}
                     isOpen={whoIsOpenWithUiComponents === "actionPopup"}
                   />
                 );

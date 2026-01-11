@@ -42,6 +42,7 @@ body {
   background: var(--background-color);
   color: var(--text-color);
   overflow-x: hidden;
+  user-select: none;
 }
 
 .Toastify__close-button {

@@ -1,0 +1,58 @@
+"use client";
+
+import { motion } from "framer-motion";
+import UserLanguageSettingsHeader from "./elements/language/UserLanguageSettingsHeader";
+import { CheckboxLanguage, i18nPattern, routing, TLocales } from "@/shared";
+import { useLocale, useTranslations } from "next-intl";
+import { setCookie } from "cookies-next";
+import { usePathname, useRouter } from "next/navigation";
+
+const UserLanguageSettings = () => {
+  const locales = routing.locales;
+  const locale = useLocale();
+  const t = useTranslations();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function handleSwitchLanguage(nextLocale: TLocales) {
+    setCookie("NEXT_LOCALE", nextLocale);
+
+    const segments = pathname.split("/");
+    segments[1] = nextLocale;
+
+    router.replace(segments.join("/"));
+  }
+
+  return (
+    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">
+      <motion.div
+        exit={{ opacity: 0, scale: 0.8, x: -300 }}
+        initial={{ opacity: 0, scale: 0.8, x: -300 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.2 }}
+        className="w-full flex flex-col items-center justify-start"
+      >
+        <UserLanguageSettingsHeader />
+        <hr className="w-full border-3 border-black/15" />
+        <div className="flex flex-col items-center justify-center w-full p-2">
+          <div className="w-full flex flex-col items-start justify-center gap-3">
+            <p className="text-white/50 text-md ml-5">
+              {t("settings.languageSettings.interfaceLanguage")}
+            </p>
+            {locales.map((el, i) => (
+              <CheckboxLanguage
+                key={i}
+                content={i18nPattern(el).orig}
+                contentEn={i18nPattern(el).en}
+                isActive={el === locale}
+                onClick={() => handleSwitchLanguage(el)}
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default UserLanguageSettings;

@@ -6,17 +6,15 @@ import { Dispatch, FC, SetStateAction } from "react";
 
 
 interface ILeftSideBar {
-  width: number;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const LeftSideBar: FC<ILeftSideBar> = ({isOpen, width, setIsOpen}) => {
+const LeftSideBar: FC<ILeftSideBar> = ({isOpen, setIsOpen}) => {
   return (
     <>
       <div
-        style={{ width }}
-        className="flex flex-col items-center justify-start gap-5 bg-[#212121] h-screen text-white"
+        className="flex flex-col items-center justify-start gap-5 h-screen text-white w-full"
       >
         <LeftSideBarSearch setIsOpen={setIsOpen} />
       </div>
