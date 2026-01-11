@@ -31,11 +31,9 @@ const UserSessionsSettings = () => {
       >
         <UserSessionsSettingsHeader />
         <div className="flex flex-col items-start justify-center w-full p-2 px-3 gap-3">
-          {/* this device */}
           <UserSessionsSettingsThisSession data={data} />
           <hr className="w-full border-3 border-black/15" />
           <UserSessionsSettingsOtherSessions data={dataSessions} />
-          {/* other devices */}
         </div>
       </motion.div>
     </div>
