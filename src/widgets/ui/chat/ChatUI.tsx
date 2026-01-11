@@ -15,6 +15,7 @@ import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import UserSettings from "../settings/UserSettings";
 import UserLanguageSettings from "../settings/UserLanguageSettings";
 import UserOtherSettings from "../settings/UserOtherSettings";
+import UserSessionsSettings from "../settings/UserSessionsSettings";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -58,9 +59,10 @@ const ChatUI = () => {
                 return <UserOtherSettings />;
               case "userSettingsLanguage":
                 return <UserLanguageSettings />;
+              case "userSettingsSessions":
+                return <UserSessionsSettings />;
               case "userSettingsGeneral":
               case "userSettingsPrivacy":
-              case "userSettingsSessions":
               case "userSettings":
                 return <UserSettings />;
 

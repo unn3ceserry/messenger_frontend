@@ -164,6 +164,7 @@
     },
     "sessionSettings": {
       "title": "Активные сессии",
+      "devices": "Устройства",
       "terminateAllOther": "Завершить все другие сессии",
       "thisDevice": "Это устройство",
       "activeSessions": "Активные сессии",

@@ -1,6 +1,6 @@
 import { mainApi } from "@/shared";
 import { SignInType, SignUpType } from "../model";
-import { FindUserType } from "@/entities/user";
+import { Session } from "@/entities";
 
 export const sessionApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -21,20 +21,21 @@ export const sessionApi = mainApi.injectEndpoints({
     logout: builder.query<void, void>({
       query: () => "/session/logout",
     }),
-    getMyAccountSessions: builder.query<Array<FindUserType>, void>({
+    getMyAccountSessions: builder.query<Array<Session>, void>({
       query: () => "/session/get/all",
       providesTags: ['sessions'],
     }),
-    getMySession: builder.query<Array<FindUserType>, void>({
-      query: () => "/session/get/all",
+    getMySession: builder.query<Session, void>({
+      query: () => "/session/get/current",
       providesTags: ['sessions'],
     }),
     removeSessionById: builder.mutation<void, string>({
       query: (id) => ({
-        url: `/session/remove/${id}`,
+        url: `/session/remove/`,
         method: "DELETE",
+        body: {id}
       }),
-      invalidatesTags: (_,__, id) => [{type: "sessions", id}],
+      invalidatesTags: ['sessions'],
     }),
     clearAllSessionsWithoutMy: builder.mutation<void, void>({
       query: () => ({

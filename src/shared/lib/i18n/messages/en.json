@@ -166,6 +166,7 @@
     },
     "sessionSettings": {
       "title": "Active Sessions",
+      "devices": "Devices",
       "terminateAllOther": "Terminate All Other Sessions",
       "thisDevice": "This Device",
       "activeSessions": "Active Sessions",
