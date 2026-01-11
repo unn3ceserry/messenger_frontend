@@ -2,7 +2,12 @@
 
 import { motion } from "framer-motion";
 import UserLanguageSettingsHeader from "./elements/language/UserLanguageSettingsHeader";
-import { CheckboxLanguage, i18nPattern, routing, TLocales } from "@/shared";
+import {
+  CheckboxLanguage,
+  i18nPattern,
+  routing,
+  TLocales,
+} from "@/shared";
 import { useLocale, useTranslations } from "next-intl";
 import { setCookie } from "cookies-next";
 import { usePathname, useRouter } from "next/navigation";
