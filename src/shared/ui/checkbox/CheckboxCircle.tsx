@@ -19,7 +19,7 @@ const CheckboxCircle: FC<ICheckboxCircle> = ({
       onClick={(e) => {
         onClick(), createRipple(e);
       }}
-      className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-2 flex items-center justify-start gap-5 cursor-pointer w-full"
+      className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-3 flex items-center justify-start gap-5 cursor-pointer w-full"
     >
       {/* checkbox */}
       <div
