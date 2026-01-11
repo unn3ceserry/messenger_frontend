@@ -27,6 +27,7 @@ export {
   RenderAvatarElement,
   SearchInput,
   CheckboxLanguage,
+  CheckboxCircle,
   CheckboxDefault,
 } from "./ui";
 export {modalContainerDefault, modalDefault} from './config'

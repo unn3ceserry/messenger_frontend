@@ -8,6 +8,7 @@ export {
   UserSettings,
   UserLanguageSettings,
   UserOtherSettings,
-  UserSessionsSettings
+  UserSessionsSettings,
+  UserGeneralSettings
 } from "./ui";
-export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG, userSettingsCategoriesConfig } from "./config";
+export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG, userSettingsCategoriesConfig, THEME_CONFIG } from "./config";
