@@ -24,7 +24,7 @@ const UserSessionsSettingsThisSession: FC<IUserSessionsSettingsThisSession> = ({
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <p className="text-white/70 text-lg">
+      <p className="text-white/60 text-md">
         {t("settings.sessionSettings.thisDevice").toUpperCase()}
       </p>
       <UserSessionsSettingsDevice

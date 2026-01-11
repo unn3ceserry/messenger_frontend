@@ -16,7 +16,7 @@ const UserSessionsSettingsOtherSessions: FC<
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <p className="text-white/70 text-lg">
+      <p className="text-white/60 text-md">
         {t("settings.sessionSettings.activeSessions")}
       </p>
       <div className="flex flex-col items-center justify-center gap-3">
