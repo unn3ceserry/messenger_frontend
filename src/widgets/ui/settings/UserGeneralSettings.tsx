@@ -10,7 +10,7 @@ import { getCurrentTheme } from "@/entities";
 
 const UserGeneralSettings = () => {
   const t = useTranslations();
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const elements = THEME_CONFIG(dispatch);
   const currentTheme = useAppSelector(getCurrentTheme);
 
@@ -29,9 +29,16 @@ const UserGeneralSettings = () => {
             <p className="text-white/50 text-md ml-5">
               {t("settings.generalSettings.theme")}
             </p>
-            {elements.map((el,i) => (
-              <CheckboxCircle key={i} content={t(el.title)} isActive={currentTheme === el.tag.theme} onClick={el.onClick} />
-            ))}
+            <div className="flex flex-col items-center justify-center w-full">
+              {elements.map((el, i) => (
+                <CheckboxCircle
+                  key={i}
+                  content={t(el.title)}
+                  isActive={currentTheme === el.tag.theme}
+                  onClick={el.onClick}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
