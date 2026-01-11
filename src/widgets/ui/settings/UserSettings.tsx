@@ -1,23 +1,17 @@
 "use client";
 
 import { userApi } from "@/entities";
-import { FC } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import UserSettingsHeader from "./elements/UserSettingsHeader";
-import UserSettingsShortInfo from "./elements/UserSettingsShortInfo";
-import UserSettingsCategories from "./elements/UserSettingsCategories";
+import UserSettingsHeader from "./elements/default/UserSettingsHeader";
+import UserSettingsShortInfo from "./elements/default/UserSettingsShortInfo";
+import UserSettingsCategories from "./elements/default/UserSettingsCategories";
 import { useRouter } from "next/navigation";
 import { ReceiptText } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "use-intl";
 import { createRipple, RenderAvatarElement } from "@/shared";
 
-interface IUserSettings {
-  width: number;
-}
-
-const UserSettings: FC<IUserSettings> = ({ width }) => {
+const UserSettings = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
   const router = useRouter();
   const t = useTranslations();

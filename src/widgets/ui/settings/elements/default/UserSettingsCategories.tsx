@@ -26,7 +26,7 @@ const UserSettingsCategories = () => {
             <p>{t(el.title)}</p>
             {el.isLanguage && (
               <p className="text-white/50 text-[.9rem]">
-                {i18nPattern(locale as TLocales)}
+                {i18nPattern(locale as TLocales).orig}
               </p>
             )}
           </div>

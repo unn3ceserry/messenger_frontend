@@ -6,12 +6,11 @@ import { Dispatch, FC, SetStateAction } from "react";
 
 
 interface ILeftSideBar {
-  width: number;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const LeftSideBar: FC<ILeftSideBar> = ({isOpen, width, setIsOpen}) => {
+const LeftSideBar: FC<ILeftSideBar> = ({isOpen, setIsOpen}) => {
   return (
     <>
       <div
