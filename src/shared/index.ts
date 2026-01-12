@@ -27,6 +27,7 @@ export {
   RenderAvatarElement,
   SearchInput,
   CheckboxLanguage,
+  AppInput,
   CheckboxCircle,
   CheckboxDefault,
 } from "./ui";
