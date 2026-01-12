@@ -141,6 +141,19 @@ export const userApi = mainApi.injectEndpoints({
       query: (username) => `/account/get-user-data?${username}=username`,
       providesTags: ["users"],
     }),
+    // AVATAR REQUESTS
+    featAvatar: builder.mutation<{ url: string }, File>({
+      query: (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        return {
+          method: "POST",
+          body: formData,
+          url: '/account/feat-avatar'
+        };
+      },
+      invalidatesTags: ['users']
+    }),
   }),
   overrideExisting: true,
 });
