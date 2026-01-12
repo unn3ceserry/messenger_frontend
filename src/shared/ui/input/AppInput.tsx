@@ -16,7 +16,7 @@ const AppInput: FC<IAppInput> = ({
     <div
       className={`${
         classNameDiv ? classNameDiv : ""
-      } flex items-center justify-center gap-2.5 p-3 rounded-xl ring-2 ring-white/7 focus-within:ring-accent duration-500 w-full text-white`}
+      } flex items-center justify-center gap-2.5 p-3 px-5 rounded-xl ring-2 ring-white/7 focus-within:ring-accent duration-500 w-full text-white`}
     >
       {icon}
       <input
