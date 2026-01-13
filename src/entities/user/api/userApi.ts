@@ -103,9 +103,7 @@ export const userApi = mainApi.injectEndpoints({
         method: "PATCH",
         body: { username },
       }),
-      invalidatesTags: (_, __, username) => [
-        { type: "sessions", id: username },
-      ],
+      invalidatesTags: ['sessions'],
     }),
     // BLOCK USERS REQUESTS
     blockUsers: builder.mutation<boolean, string>({

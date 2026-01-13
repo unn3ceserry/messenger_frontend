@@ -17,6 +17,7 @@ import UserLanguageSettings from "../settings/UserLanguageSettings";
 import UserOtherSettings from "../settings/UserOtherSettings";
 import UserSessionsSettings from "../settings/UserSessionsSettings";
 import UserGeneralSettings from "../settings/UserGeneralSettings";
+import UserEdtirProfileSettings from "../settings/UserEdtirProfileSettings";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -64,6 +65,8 @@ const ChatUI = () => {
                 return <UserSessionsSettings />;
               case "userSettingsGeneral":
                 return <UserGeneralSettings />;
+              case "editProfile":
+                return <UserEdtirProfileSettings />;
               case "userSettingsPrivacy":
               case "userSettings":
                 return <UserSettings />;

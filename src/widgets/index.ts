@@ -9,6 +9,7 @@ export {
   UserLanguageSettings,
   UserOtherSettings,
   UserSessionsSettings,
-  UserGeneralSettings
+  UserGeneralSettings,
+  UserEdtirProfileSettings
 } from "./ui";
 export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG, userSettingsCategoriesConfig, THEME_CONFIG } from "./config";

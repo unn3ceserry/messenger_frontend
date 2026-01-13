@@ -182,6 +182,17 @@
       "enabled": "Enabled",
       "disabled": "Disabled"
     },
+    "editProfileSettings": {
+      "title": "Edit Profile",
+      "inputFirstNamePlaceholder": "First name (required)",
+      "inputLastNamePlaceholder": "Last name (required)",
+      "inputUsernamePlaceholder": "Username (required)",
+      "inputBioPlaceholder": "Bio (optional)",
+      "chooseBirthday": "Choose your birthday date",
+      "usernameSubtext": "If you set a username, people will be able to find and contact you without needing your phone number.",
+      "usernameSubtextTwo": "You can use letters (a–z), numbers (0–9), and underscores. The username must be at least 5 characters long.",
+      "bioSubtext": "Any details such as age, occupation, or city. Example: 23 y.o. designer from San Francisco"
+    },
     "termOfUse": "Term Of Use",
     "online": "online"
   }
