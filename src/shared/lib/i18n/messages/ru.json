@@ -138,12 +138,14 @@
   },
   "profile": {
     "number": "Номер",
-    "email": "Почти",
+    "email": "Почта",
     "birthday": "День рождения",
     "notSpecifid": "Не указан.",
     "bio": "О себе",
     "noBioYet": "Био ещё нет.",
-    "username": "Имя пользователя"
+    "username": "Имя пользователя",
+    "title": "Мой профиль",
+    "lastAvatars": "Последние фото профиля"
   },
   "settings": {
     "logout": "Выйти",

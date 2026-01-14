@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { userApi } from "../api";
-import ActionsPopupElement from "./elements/ActionsPopupElement";
+import ActionsPopupElement from "./elements/actionspopup/ActionsPopupElement";
 import { userActionsElements } from "../config";
 import { useAppDispatch } from "@/app";
 import { openComponent } from "../model";

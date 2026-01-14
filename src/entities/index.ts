@@ -29,6 +29,7 @@ export {
   closeAll,
   type IUserCompleteData,
   handleSaveDataEditProfile,
+  UserProfile,
 } from "./user";
 export {
   userThemeSlice,
