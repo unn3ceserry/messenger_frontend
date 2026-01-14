@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+import AppInput from "../AppInput";
 import Button from "../../button/Button";
 import { expect } from "storybook/test";
-import SearchInput from "../SearchInput";
 
 const meta = {
-  title: "UIComponents/SearchInput",
-  component: SearchInput,
+  title: "UIComponents/AppInput",
+  component: AppInput,
   parameters: {
     layout: "centered",
     docs: {
@@ -23,7 +23,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   argTypes: {},
-} satisfies Meta<typeof SearchInput>;
+} satisfies Meta<typeof AppInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -5,7 +5,7 @@ import { FC } from "react";
 
 interface ICheckboxCircle {
   isActive: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   content: string;
 }
 
@@ -17,7 +17,7 @@ const CheckboxCircle: FC<ICheckboxCircle> = ({
   return (
     <div
       onClick={(e) => {
-        onClick(), createRipple(e);
+        onClick && onClick(), createRipple(e);
       }}
       className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-3 flex items-center justify-start gap-5 cursor-pointer w-full"
     >
