@@ -191,7 +191,8 @@
       "chooseBirthday": "Choose your birthday date",
       "usernameSubtext": "If you set a username, people will be able to find and contact you without needing your phone number.",
       "usernameSubtextTwo": "You can use letters (a–z), numbers (0–9), and underscores. The username must be at least 5 characters long.",
-      "bioSubtext": "Any details such as age, occupation, or city. Example: 23 y.o. designer from San Francisco"
+      "bioSubtext": "Any details such as age, occupation, or city. Example: 23 y.o. designer from San Francisco",
+      "removeDateOfBirth": "Remove date of birth"
     },
     "termOfUse": "Term Of Use",
     "online": "online"
