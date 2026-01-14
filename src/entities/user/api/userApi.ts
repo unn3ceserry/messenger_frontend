@@ -112,7 +112,7 @@ export const userApi = mainApi.injectEndpoints({
         method: "POST",
         body: { id },
       }),
-      invalidatesTags: (_, __, id) => [{ type: "users", id }],
+      invalidatesTags: ['sessions'],
     }),
     unBlockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
@@ -120,7 +120,7 @@ export const userApi = mainApi.injectEndpoints({
         method: "POST",
         body: { id },
       }),
-      invalidatesTags: (_, __, id) => [{ type: "users", id }],
+      invalidatesTags: ['sessions'],
     }),
     // VISIBILITY REQUETS
     setVisibility: builder.mutation<
@@ -135,8 +135,8 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: ["users"],
     }),
     // USER DATA REQUESTS
-    getUserData: builder.query<boolean, string>({
-      query: (username) => `/account/get-user-data?${username}=username`,
+    getUserData: builder.query<Partial<UserType>, string>({
+      query: (id) => `/account/get-user-data?id=${id}`,
       providesTags: ["users"],
     }),
     // AVATAR REQUESTS

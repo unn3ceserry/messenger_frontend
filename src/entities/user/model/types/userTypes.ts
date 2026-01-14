@@ -33,9 +33,9 @@ export type UserType = {
 };
 
 export enum WhoCanSeen {
-  ALL,
-  CONTACTS,
-  I
+  ALL = 'settings.privacyAndSecurity.types.all',
+  CONTACTS = 'settings.privacyAndSecurity.types.contacts',
+  I = 'settings.privacyAndSecurity.types.i'
 }
 
 export enum VisibilityField {

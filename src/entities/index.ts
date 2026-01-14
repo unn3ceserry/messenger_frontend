@@ -7,13 +7,7 @@ export type {
   SessionLocation,
   SessionMetadata,
 } from "./session";
-export type {
-  FindUserType,
-  UserCompleteData,
-  UserType,
-  WhoCanSeen,
-  VisibilityField,
-} from "./user";
+export type { FindUserType, UserCompleteData, UserType } from "./user";
 export {
   userApi,
   ActionsPopup,
@@ -29,6 +23,8 @@ export {
   type IUserCompleteData,
   handleSaveDataEditProfile,
   UserProfile,
+  WhoCanSeen,
+  VisibilityField,
 } from "./user";
 export {
   userThemeSlice,

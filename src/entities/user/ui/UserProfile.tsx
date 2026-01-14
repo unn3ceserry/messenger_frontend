@@ -32,7 +32,7 @@ const UserProfile = () => {
           {/* avatar */}
           <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3">
             <RenderAvatarElement
-              hasAvatar={!!data.avatars}
+              hasAvatar={!!data.avatars.length}
               size={130}
               avatar={data.avatars[data.avatars.length - 1]}
             />
