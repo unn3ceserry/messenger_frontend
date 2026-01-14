@@ -2,9 +2,9 @@ export type {
   FindUserType,
   UserCompleteData,
   UserType,
-  WhoCanSeen,
-  VisibilityField,
 } from "./types/userTypes";
+
+export { WhoCanSeen, VisibilityField } from "./types/userTypes";
 
 export {
   userCompleteDataReducer,
@@ -13,6 +13,12 @@ export {
   type IUserCompleteData,
 } from "./store/userCompleteDataSlice";
 
-export {userUiSlice, userUiReducer, openComponent, selectOpenComponent, closeAll} from './store/userUiSlice'
+export {
+  userUiSlice,
+  userUiReducer,
+  openComponent,
+  selectOpenComponent,
+  closeAll,
+} from "./store/userUiSlice";
 
-export {handleSaveDataEditProfile} from './handlers/handleSaveDataEditProfile'
+export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
