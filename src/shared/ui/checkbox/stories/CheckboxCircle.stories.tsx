@@ -7,12 +7,6 @@ import { useState } from "react";
 const meta = {
   title: "UIComponents/CheckboxCircle",
   component: CheckboxCircle,
-  parameters: {
-    layout: "centered",
-    docs: {
-      codePanel: true,
-    },
-  },
   tags: ["autodocs"],
   argTypes: {},
   args: { onClick: fn() },

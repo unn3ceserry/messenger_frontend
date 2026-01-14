@@ -7,12 +7,6 @@ import { useState } from "react";
 const meta = {
   title: "UIComponents/CheckboxDefault",
   component: CheckboxDefault,
-  parameters: {
-    layout: "centered",
-    docs: {
-      codePanel: true,
-    },
-  },
   tags: ["autodocs"],
   argTypes: {},
   args: { onClick: fn() },
