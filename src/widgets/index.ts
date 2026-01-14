@@ -10,6 +10,7 @@ export {
   UserOtherSettings,
   UserSessionsSettings,
   UserGeneralSettings,
-  UserEdtirProfileSettings
+  UserEdtirProfileSettings,
+  UserSettingsShortInfo
 } from "./ui";
 export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG, userSettingsCategoriesConfig, THEME_CONFIG } from "./config";

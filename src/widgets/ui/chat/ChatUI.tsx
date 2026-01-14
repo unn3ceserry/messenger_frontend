@@ -2,12 +2,10 @@
 
 import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
-import { ModalConstructor } from "@/shared";
 import {
-  closeAll,
   openComponent,
   selectOpenComponent,
-  UserProfileModal,
+  UserProfile,
 } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
@@ -67,6 +65,8 @@ const ChatUI = () => {
                 return <UserGeneralSettings />;
               case "editProfile":
                 return <UserEdtirProfileSettings />;
+              case "myProfile":
+                return <UserProfile />;
               case "userSettingsPrivacy":
               case "userSettings":
                 return <UserSettings />;
@@ -94,16 +94,6 @@ const ChatUI = () => {
           className="w-0.5 bg-[#313131]/90 self-stretch cursor-e-resize"
         ></div>
       </div>
-
-      {/* modals */}
-      <AnimatePresence>
-        {whoIsOpenWithUiComponents === "myProfile" && (
-          <ModalConstructor
-            setIsOpen={() => dispatch(closeAll())}
-            content={<UserProfileModal />}
-          />
-        )}
-      </AnimatePresence>
     </>
   );
 };

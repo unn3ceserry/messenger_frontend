@@ -18,7 +18,6 @@ export {
   userApi,
   ActionsPopup,
   userActionsElements,
-  UserProfileModal,
   userCompleteDataReducer,
   setCompleteData,
   userCompleteDataSlice,
@@ -29,6 +28,7 @@ export {
   closeAll,
   type IUserCompleteData,
   handleSaveDataEditProfile,
+  UserProfile,
 } from "./user";
 export {
   userThemeSlice,
