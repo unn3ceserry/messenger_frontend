@@ -12,7 +12,7 @@ const UserProfileHeader = () => {
   const t = useTranslations();
 
   return (
-    <header className="flex w-full justify-between items-center text-[#919191] sticky top-0 bg-[#212121] z-1 p-2">
+    <header className="flex w-full justify-between items-center text-[#919191] sticky top-0 bg-[#212121] z-1231 p-2">
       <div className="flex items-center justify-center gap-3">
         {/* back */}
         <div

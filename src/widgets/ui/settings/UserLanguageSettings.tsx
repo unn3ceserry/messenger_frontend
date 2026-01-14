@@ -2,12 +2,7 @@
 
 import { motion } from "framer-motion";
 import UserLanguageSettingsHeader from "./elements/language/UserLanguageSettingsHeader";
-import {
-  CheckboxLanguage,
-  i18nPattern,
-  routing,
-  TLocales,
-} from "@/shared";
+import { CheckboxLanguage, i18nPattern, routing, TLocales } from "@/shared";
 import { useLocale, useTranslations } from "next-intl";
 import { setCookie } from "cookies-next";
 import { usePathname, useRouter } from "next/navigation";
@@ -44,15 +39,17 @@ const UserLanguageSettings = () => {
             <p className="text-white/50 text-md ml-5">
               {t("settings.languageSettings.interfaceLanguage")}
             </p>
-            {locales.map((el, i) => (
-              <CheckboxLanguage
-                key={i}
-                content={i18nPattern(el).orig}
-                contentEn={i18nPattern(el).en}
-                isActive={el === locale}
-                onClick={() => handleSwitchLanguage(el)}
-              />
-            ))}
+            <div className="w-full flex flex-col items-start justify-center gap-1">
+              {locales.map((el, i) => (
+                <CheckboxLanguage
+                  key={i}
+                  content={i18nPattern(el).orig}
+                  contentEn={i18nPattern(el).en}
+                  isActive={el === locale}
+                  onClick={() => handleSwitchLanguage(el)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
