@@ -28,6 +28,7 @@ export {
   selectOpenComponent,
   closeAll,
   type IUserCompleteData,
+  handleSaveDataEditProfile,
 } from "./user";
 export {
   userThemeSlice,
