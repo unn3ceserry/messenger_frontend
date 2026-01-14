@@ -6,7 +6,7 @@ export type {
   VisibilityField,
 } from "./model";
 export { userApi } from "./api";
-export { ActionsPopup, UserProfileModal, UserProfile } from "./ui";
+export { ActionsPopup, UserProfile } from "./ui";
 export { userActionsElements } from "./config";
 export {
   userCompleteDataReducer,

@@ -18,7 +18,6 @@ export {
   userApi,
   ActionsPopup,
   userActionsElements,
-  UserProfileModal,
   userCompleteDataReducer,
   setCompleteData,
   userCompleteDataSlice,
