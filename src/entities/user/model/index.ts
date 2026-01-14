@@ -14,3 +14,5 @@ export {
 } from "./store/userCompleteDataSlice";
 
 export {userUiSlice, userUiReducer, openComponent, selectOpenComponent, closeAll} from './store/userUiSlice'
+
+export {handleSaveDataEditProfile} from './handlers/handleSaveDataEditProfile'

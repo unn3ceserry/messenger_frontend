@@ -18,4 +18,5 @@ export {
   selectOpenComponent,
   closeAll,
   type IUserCompleteData,
+  handleSaveDataEditProfile,
 } from "./model";

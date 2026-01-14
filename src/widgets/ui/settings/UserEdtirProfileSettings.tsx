@@ -1,29 +1,19 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, CircleCheck } from "lucide-react";
-import { userApi } from "@/entities";
+import { Check } from "lucide-react";
+import { userApi, handleSaveDataEditProfile } from "@/entities";
 
 import UserEdtirProfileSettingsHeader from "./elements/editprofile/UserEdtirProfileSettingsHeader";
 import UserEdtirProfileSettingsChooseAvatar from "./elements/editprofile/UserEdtirProfileSettingsChooseAvatar";
 import UserEdtirProfileSettingsChangeNames from "./elements/editprofile/UserEdtirProfileSettingsChangeNames";
 import UserEdtirProfileSettingsChangeUsername from "./elements/editprofile/UserEdtirProfileSettingsChangeUsername";
-import {
-  isErrorWithMessage,
-  isErrorWithMessageAndType,
-  Notification,
-} from "@/shared";
 import UserEdtirProfileSettingsEditBio from "./elements/editprofile/UserEdtirProfileSettingsEditBio";
 import { useProfileForm } from "./elements/editprofile/useProfileForm";
 import UserEdtirProfileSettingsSetBirthday from "./elements/editprofile/UserEdtirProfileSettingsSetBirthday";
 
 const UserEdtirProfileSettings = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
-
-  const [setName] = userApi.useSetNameMutation();
-  const [setUsername] = userApi.useChangeUsernameMutation();
-  const [setBio] = userApi.useSetBioMutation();
-  const [setBirthday] = userApi.useSetBirthdayMutation();
 
   const { form, dirty, onChange, setDirty, isDirty } = useProfileForm({
     firstName: data?.firstName ?? "",
@@ -36,44 +26,11 @@ const UserEdtirProfileSettings = () => {
   if (isLoading || !data) return null;
 
   const handleSave = async () => {
-    try {
-      if (dirty.firstName || dirty.lastName) {
-        await setName({
-          firstname: form.firstName,
-          lastname: form.lastName,
-        }).unwrap();
-      }
-      if (dirty.username) {
-        await setUsername(form.username).unwrap();
-      }
-      if (dirty.bio) {
-        await setBio(form.bio ?? "").unwrap();
-      }
-      if (dirty.birthday) {
-        await setBirthday(form.birthday ?? "").unwrap();
-      }
-    } catch (error: unknown) {
-      if (isErrorWithMessageAndType(error)) {
-        Notification(error.data.message);
-      } else if (isErrorWithMessage(error)) {
-        const msg = Array.isArray((error as any).data?.message ?? error.message)
-          ? ((error as any).data?.message ?? error.message)[0]
-          : (error as any).data?.message ?? error.message;
-        Notification(msg);
-      }
-    }
-
-    setDirty({
-      firstName: false,
-      lastName: false,
-      username: false,
-      bio: false,
-      birthday: false,
-    });
-  };
+    await handleSaveDataEditProfile(dirty, form, setDirty);
+  }
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full relative">
+    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">
       <motion.div
         initial={{ opacity: 0, x: -300, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -82,7 +39,7 @@ const UserEdtirProfileSettings = () => {
       >
         <UserEdtirProfileSettingsHeader />
 
-        <div className="w-full flex flex-col items-center gap-5 pt-3 px-2">
+        <div className="w-full flex flex-col items-center gap-5 pt-3 px-2 relative">
           <UserEdtirProfileSettingsChooseAvatar
             size={130}
             avatar={data.avatars[data.avatars.length - 1]}

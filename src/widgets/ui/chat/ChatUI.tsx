@@ -52,7 +52,7 @@ const ChatUI = () => {
     <>
       <div
         style={{ width }}
-        className="flex items-center justify-center w-full h-screen bg-[#212121]"
+        className="flex items-center justify-center w-full h-screen bg-[#212121] relative"
       >
         <AnimatePresence>
           {(() => {
