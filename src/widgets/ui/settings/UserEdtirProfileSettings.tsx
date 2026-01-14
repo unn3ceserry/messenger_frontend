@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, CircleCheck } from "lucide-react";
 import { userApi } from "@/entities";
 
 import UserEdtirProfileSettingsHeader from "./elements/editprofile/UserEdtirProfileSettingsHeader";
@@ -30,7 +30,7 @@ const UserEdtirProfileSettings = () => {
     lastName: data?.lastName ?? "",
     username: data?.username ?? "",
     bio: data?.bio ?? "",
-    birthday: data?.birthday?.toString() ?? ''
+    birthday: data?.birthday?.toString() ?? "",
   });
 
   if (isLoading || !data) return null;
@@ -117,12 +117,12 @@ const UserEdtirProfileSettings = () => {
 
           <hr className="w-full border-3 border-black/15" />
 
-          <UserEdtirProfileSettingsSetBirthday 
+          <UserEdtirProfileSettingsSetBirthday
             birthday={form.birthday}
             onChange={(v) => {
               if (v !== undefined) onChange("birthday", v);
             }}
-            />
+          />
         </div>
       </motion.div>
       <AnimatePresence>
@@ -133,9 +133,9 @@ const UserEdtirProfileSettings = () => {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2 }}
             onClick={handleSave}
-            className="absolute bottom-5 right-5 p-3 bg-accent rounded-full cursor-pointer"
+            className="absolute bottom-5 right-5 p-3 bg-accent flex items-center justify-center rounded-full cursor-pointer"
           >
-            <Check size={28} />
+            <Check size={25} />
           </motion.button>
         )}
       </AnimatePresence>
