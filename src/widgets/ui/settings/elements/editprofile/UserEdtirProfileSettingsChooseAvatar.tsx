@@ -10,7 +10,9 @@ interface IUserEditProfileSettingsChooseAvatar {
   size: number;
 }
 
-const UserEditProfileSettingsChooseAvatar: FC<IUserEditProfileSettingsChooseAvatar> = ({ avatar, size }) => {
+const UserEditProfileSettingsChooseAvatar: FC<
+  IUserEditProfileSettingsChooseAvatar
+> = ({ avatar, size }) => {
   const [featAvatar] = userApi.useFeatAvatarMutation();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,10 +28,12 @@ const UserEditProfileSettingsChooseAvatar: FC<IUserEditProfileSettingsChooseAvat
   return (
     <div
       onClick={() => inputRef.current?.click()}
-      className={`flex aspect-square rounded-full items-center justify-center w-[${size}px] cursor-pointer hover:opacity-80 duration-300`}
       style={{
-        background: avatar ? "none" : "var(--tw-bg-accent)",
+        width: size,
+        height: size,
+        background: avatar ? "none" : "var(--color-accent)",
       }}
+      className={`flex aspect-square rounded-full items-center justify-center cursor-pointer hover:opacity-80 duration-300`}
     >
       {avatar && (
         <Image
@@ -45,7 +49,9 @@ const UserEditProfileSettingsChooseAvatar: FC<IUserEditProfileSettingsChooseAvat
         ref={inputRef}
         type="file"
         className="hidden"
-        onChange={(e) => e.target.files?.[0] && handleChangeAvatar(e.target.files[0])}
+        onChange={(e) =>
+          e.target.files?.[0] && handleChangeAvatar(e.target.files[0])
+        }
       />
     </div>
   );

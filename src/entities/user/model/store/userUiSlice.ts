@@ -12,6 +12,14 @@ export type IIsOpenUIComponent =
   | "actionPopup"
   | "userContacts"
   | "editProfile"
+  | "blockedUsers"
+  | "cloudPassword"
+  | "userModalEmail"
+  | "phoneVisible"
+  | "emailVisible"
+  | "bioVisible"
+  | "avatarsVisible"
+  | "birthdayVisible"
   | null;
 
 interface IUIState {
