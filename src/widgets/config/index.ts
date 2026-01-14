@@ -1,4 +1,6 @@
 export {COMPLETE_CONFIG} from './compelte-config'
 export {TERMOFUSE_NAVBAR_CONFIG} from './termofusenavbar-config'
 export {userSettingsCategoriesConfig} from './userSettingsCategoriesConfig'
+export {userSecuritySettingsCategoriesConfig} from './userSecuritySettingsCategoriesConfig'
+export {userPrivacySettingsCategoriesConfig} from './userPrivacySettingsCategoriesConfig'
 export {THEME_CONFIG} from './theme-config'

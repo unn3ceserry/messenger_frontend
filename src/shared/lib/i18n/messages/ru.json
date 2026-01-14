@@ -176,11 +176,26 @@
     "privacyAndSecurity": {
       "title": "Конфиденциальность и безопасность",
       "blockedUsers": "Заблокированные пользователи",
-      "linkEmail": "Привязать email",
-      "notLinked": "Не привязан",
+      "linkEmail": "Привязаная почта",
+      "notLinked": "Не привязана",
       "cloudPassword": "Облачный пароль",
+      "unblock": "Разблокировать",
       "enabled": "Включён",
-      "disabled": "Выключен"
+      "blockListEmpty": "Список заблокированных пользователей пуст.",
+      "disabled": "Выключен",
+      "privacy": "Конфиденциальность",
+      "privacyWhoCanSee": {
+        "phoneVisible": "Кто может видеть мой номер телефона?",
+        "emailVisible": "Кто может видеть мою электронную почту?",
+        "bioVisible": "Кто может видеть мою биографию?",
+        "avatarsVisible": "Кто может видеть мои фото профиля?",
+        "birthdayVisible": "Кто может видеть мою дату рождения?",
+        "types": {
+          "all": "Каждый",
+          "i": "Никто",
+          "contacts": "Контакты"
+        }
+      }
     },
     "editProfileSettings": {
       "title": "Редактировать профиль",

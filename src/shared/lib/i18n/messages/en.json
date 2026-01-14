@@ -178,11 +178,26 @@
     "privacyAndSecurity": {
       "title": "Privacy and Security",
       "blockedUsers": "Blocked Users",
-      "linkEmail": "Link Email",
+      "linkEmail": "Linked Email",
       "notLinked": "Not Linked",
       "cloudPassword": "Cloud Password",
       "enabled": "Enabled",
-      "disabled": "Disabled"
+      "disabled": "Disabled",
+      "unblock": "Unblock",
+      "privacy": "Privacy",
+      "blockListEmpty": "You haven't blocked any users yet.",
+      "privacyWhoCanSee": {
+        "phoneVisible": "Who can see my phone number?",
+        "emailVisible": "Who can see my email?",
+        "bioVisible": "Who can see my bio?",
+        "avatarsVisible": "Who can see my profile photos?",
+        "birthdayVisible": "Who can see my birthday?",
+        "types": {
+          "all": "Everybody",
+          "i": "Nobody",
+          "contacts": "Contacts"
+        }
+      }
     },
     "editProfileSettings": {
       "title": "Edit Profile",

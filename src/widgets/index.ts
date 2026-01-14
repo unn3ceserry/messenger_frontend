@@ -11,6 +11,15 @@ export {
   UserSessionsSettings,
   UserGeneralSettings,
   UserEdtirProfileSettings,
-  UserSettingsShortInfo
+  UserSettingsShortInfo,
+  UserPrivacyAndSecuritySettings,
+  UserPrivacyAndSecuritySettingsBlockedUsers
 } from "./ui";
-export { COMPLETE_CONFIG, TERMOFUSE_NAVBAR_CONFIG, userSettingsCategoriesConfig, THEME_CONFIG } from "./config";
+export {
+  COMPLETE_CONFIG,
+  TERMOFUSE_NAVBAR_CONFIG,
+  userSettingsCategoriesConfig,
+  THEME_CONFIG,
+  userSecuritySettingsCategoriesConfig,
+  userPrivacySettingsCategoriesConfig,
+} from "./config";
