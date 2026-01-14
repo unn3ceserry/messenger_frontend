@@ -32,7 +32,7 @@ const ActionsPopup = () => {
         className="flex items-center w-full gap-2.5 cursor-pointer hover:bg-black/30 p-2 rounded-[10px] duration-300"
       >
         <RenderAvatarElement
-          hasAvatar={!!data.avatars}
+          hasAvatar={!!data.avatars.length}
           size={24}
           avatar={data.avatars[data.avatars.length -1]}
         />
