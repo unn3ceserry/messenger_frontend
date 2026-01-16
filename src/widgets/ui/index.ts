@@ -14,3 +14,4 @@ export {default as UserPrivacyAndSecuritySettings} from './settings/UserPrivacyA
 export {default as UserSettingsShortInfo} from './settings/elements/default/UserSettingsShortInfo'
 export {default as UserPrivacyAndSecuritySettingsBlockedUsers} from './settings/elements/privacy/blocked-users/UserPrivacyAndSecuritySettingsBlockedUsers'
 export {default as UserPrivacyAndSecuritySettingsSetPassword} from './settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword'
+export {default as UserPrivacyAndSecuritySettingsPrivacyEmail} from './settings/elements/privacy/email/UserPrivacyAndSecuritySettingsPrivacyEmail'

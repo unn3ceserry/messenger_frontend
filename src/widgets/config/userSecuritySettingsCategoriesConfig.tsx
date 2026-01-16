@@ -17,7 +17,7 @@ export const userSecuritySettingsCategoriesConfig = (dispatch: AppDispatch) => [
   {
     icon: <Mail className="text-[#818181]" size={26} />,
     title: "settings.privacyAndSecurity.linkEmail",
-    onClick: () => dispatch(openComponent("userModalEmail")),
+    onClick: () => dispatch(openComponent("userEmail")),
     isLinkEmail: true,
   },
 ];

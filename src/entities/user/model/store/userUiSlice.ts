@@ -14,7 +14,7 @@ export type IIsOpenUIComponent =
   | "editProfile"
   | "blockedUsers"
   | "cloudPassword"
-  | "userModalEmail"
+  | "userEmail"
   | "phoneVisible"
   | "emailVisible"
   | "bioVisible"

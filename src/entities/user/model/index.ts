@@ -24,3 +24,5 @@ export {
 
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
 export {handleSetPassword} from './handlers/handleSetPassword'
+export {handleSetEmail} from './handlers/handleSetEmail'
+export {handleChangeEmail} from './handlers/handleChangeEmail'

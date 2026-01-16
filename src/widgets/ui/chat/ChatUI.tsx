@@ -20,6 +20,7 @@ import UserEdtirProfileSettings from "../settings/UserEdtirProfileSettings";
 import UserPrivacyAndSecuritySettings from "../settings/UserPrivacyAndSecuritySettings";
 import UserPrivacyAndSecuritySettingsBlockedUsers from "../settings/elements/privacy/blocked-users/UserPrivacyAndSecuritySettingsBlockedUsers";
 import UserPrivacyAndSecuritySettingsSetPassword from "../settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword";
+import UserPrivacyAndSecuritySettingsPrivacyEmail from "../settings/elements/privacy/email/UserPrivacyAndSecuritySettingsPrivacyEmail";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -73,6 +74,8 @@ const ChatUI = () => {
                 return <UserProfile />;
               case "cloudPassword":
                 return <UserPrivacyAndSecuritySettingsSetPassword />;
+              case "userEmail":
+                return <UserPrivacyAndSecuritySettingsPrivacyEmail />;
               case "userSettingsPrivacy":
                 return <UserPrivacyAndSecuritySettings />;
               case "blockedUsers":

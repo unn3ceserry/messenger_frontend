@@ -191,6 +191,10 @@
       "cloudPasswordInputPlaceholder": "Cloud Password",
       "cloudConfirmPasswordInputPlaceholder": "Confirm Cloud Password",
       "createCloudPasswordSubtext": "You can use letters (a–z), numbers (0–9), and other symbols. The cloud password must be at least 6 characters long.",
+      "linkEmailSubtext": "Once you link an email address, you won’t be able to remove it — only change it. Please use a valid email address.",
+      "linkEmailToAccount": "Link Email To Account",
+      "changeEmail": "Change Email",
+      "linkEmailInputPlaceholder": "Email",
       "privacyWhoCanSee": {
         "phoneVisible": "Who can see my phone number?",
         "emailVisible": "Who can see my email?",
