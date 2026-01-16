@@ -22,3 +22,4 @@ export {
 } from "./store/userUiSlice";
 
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
+export {handleSetPassword} from './handlers/handleSetPassword'

@@ -19,4 +19,5 @@ export {
   closeAll,
   type IUserCompleteData,
   handleSaveDataEditProfile,
+  handleSetPassword
 } from "./model";

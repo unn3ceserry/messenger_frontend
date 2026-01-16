@@ -25,6 +25,7 @@ export {
   UserProfile,
   WhoCanSeen,
   VisibilityField,
+  handleSetPassword
 } from "./user";
 export {
   userThemeSlice,

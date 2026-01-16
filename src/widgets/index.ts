@@ -13,7 +13,8 @@ export {
   UserEdtirProfileSettings,
   UserSettingsShortInfo,
   UserPrivacyAndSecuritySettings,
-  UserPrivacyAndSecuritySettingsBlockedUsers
+  UserPrivacyAndSecuritySettingsBlockedUsers,
+  UserPrivacyAndSecuritySettingsSetPassword
 } from "./ui";
 export {
   COMPLETE_CONFIG,
