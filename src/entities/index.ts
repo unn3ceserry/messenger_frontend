@@ -26,7 +26,9 @@ export {
   WhoCanSeen,
   VisibilityField,
   handleSetPassword,
-  type IIsOpenUIComponent
+  type IIsOpenUIComponent,
+  handleSetEmail,
+  handleChangeEmail
 } from "./user";
 export {
   userThemeSlice,

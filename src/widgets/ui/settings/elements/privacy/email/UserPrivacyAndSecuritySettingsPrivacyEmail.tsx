@@ -1,0 +1,49 @@
+"use client";
+
+import { userApi } from "@/entities";
+import { UserSettingsHeaderConstructor } from "@/shared";
+import { motion } from "framer-motion";
+import UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail from "./UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail";
+import UserPrivacyAndSecuritySettingsPrivacyEmailSetEmailChangeEmail from "./UserPrivacyAndSecuritySettingsPrivacyEmailSetEmailChangeEmail";
+const UserPrivacyAndSecuritySettingsPrivacyEmail = () => {
+  const { data, isLoading } = userApi.useGetMeQuery();
+
+  {
+    /* сделать тут лоадер в будущем */
+  }
+  if (isLoading || !data) {
+    return null;
+  }
+  return (
+    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">
+      <motion.div
+        exit={{ opacity: 0, scale: 0.8, x: -300 }}
+        initial={{ opacity: 0, scale: 0.8, x: -300 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.2 }}
+        className="w-full flex flex-col items-center justify-start"
+      >
+        <UserSettingsHeaderConstructor
+          backUI={"userSettingsPrivacy"}
+          title={
+            !!data.email
+              ? "settings.privacyAndSecurity.changeEmail"
+              : "settings.privacyAndSecurity.linkEmailToAccount"
+          }
+          typeHeader="default"
+        />
+        <div className="flex flex-col items-start justify-center w-full p-2 px-2 gap-3">
+          {!!data.email ? (
+            <UserPrivacyAndSecuritySettingsPrivacyEmailSetEmailChangeEmail
+              cloudPassword={!!data.cloudPassword}
+            />
+          ) : (
+            <UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail />
+          )}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default UserPrivacyAndSecuritySettingsPrivacyEmail;

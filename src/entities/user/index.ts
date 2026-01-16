@@ -20,5 +20,7 @@ export {
   closeAll,
   type IUserCompleteData,
   handleSaveDataEditProfile,
-  handleSetPassword
+  handleSetPassword,
+  handleSetEmail,
+  handleChangeEmail
 } from "./model";

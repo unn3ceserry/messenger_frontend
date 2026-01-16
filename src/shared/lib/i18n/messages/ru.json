@@ -186,9 +186,13 @@
       "disabled": "Выключен",
       "privacy": "Конфиденциальность",
       "disableCloudPassword": "Выключить облачный пароль",
+      "changeEmail": "Изменить почту",
       "cloudPasswordInputPlaceholder": "Облачный пароль",
       "cloudConfirmPasswordInputPlaceholder": "Подтвердите облачный пароль",
+      "linkEmailToAccount": "Привязать почту к аккаунту",
       "createCloudPasswordSubtext": "Можно использовать буквы (a–z), цифры (0–9) и другие символы. Облачный пароль должен содержать не менее 6 символов.",
+      "linkEmailInputPlaceholder": "Почта",
+      "linkEmailSubtext": "Привязав электронную почту, вы не сможете её отключить — только изменить. Указывайте действующий адрес.",
       "privacyWhoCanSee": {
         "phoneVisible": "Кто может видеть мой номер телефона?",
         "emailVisible": "Кто может видеть мою электронную почту?",
