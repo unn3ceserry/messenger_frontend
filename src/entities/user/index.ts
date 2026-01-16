@@ -22,5 +22,6 @@ export {
   handleSaveDataEditProfile,
   handleSetPassword,
   handleSetEmail,
-  handleChangeEmail
+  handleChangeEmail,
+  WhoCanSeeLabels
 } from "./model";

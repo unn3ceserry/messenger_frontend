@@ -28,7 +28,8 @@ export {
   handleSetPassword,
   type IIsOpenUIComponent,
   handleSetEmail,
-  handleChangeEmail
+  handleChangeEmail,
+  WhoCanSeeLabels
 } from "./user";
 export {
   userThemeSlice,

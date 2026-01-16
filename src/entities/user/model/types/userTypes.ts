@@ -33,16 +33,21 @@ export type UserType = {
 };
 
 export enum WhoCanSeen {
-  ALL = 'settings.privacyAndSecurity.types.all',
-  CONTACTS = 'settings.privacyAndSecurity.types.contacts',
-  I = 'settings.privacyAndSecurity.types.i'
+  ALL = "ALL",
+  CONTACTS = "CONTACTS",
+  I = "I",
 }
+
+export const WhoCanSeeLabels: Record<WhoCanSeen, string> = {
+  [WhoCanSeen.ALL]: "settings.privacyAndSecurity.privacyWhoCanSee.types.all",
+  [WhoCanSeen.CONTACTS]: "settings.privacyAndSecurity.privacyWhoCanSee.types.contacts",
+  [WhoCanSeen.I]: "settings.privacyAndSecurity.privacyWhoCanSee.types.i",
+};
 
 export enum VisibilityField {
-  Phone = 'phoneVisible',
-  Email = 'emailVisible',
-  Bio = 'bioVisible',
-  Avatars = 'avatarsVisible',
-  Birthday = 'birthdayVisible',
+  Phone = "phoneVisible",
+  Email = "emailVisible",
+  Bio = "bioVisible",
+  Avatars = "avatarsVisible",
+  Birthday = "birthdayVisible",
 }
-

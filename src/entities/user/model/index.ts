@@ -4,7 +4,7 @@ export type {
   UserType,
 } from "./types/userTypes";
 
-export { WhoCanSeen, VisibilityField } from "./types/userTypes";
+export { WhoCanSeen, VisibilityField, WhoCanSeeLabels } from "./types/userTypes";
 
 export {
   userCompleteDataReducer,

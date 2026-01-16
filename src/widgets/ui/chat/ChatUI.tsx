@@ -8,6 +8,7 @@ import {
   selectOpenComponent,
   userApi,
   UserProfile,
+  VisibilityField,
 } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
@@ -22,6 +23,7 @@ import UserPrivacyAndSecuritySettings from "../settings/UserPrivacyAndSecuritySe
 import UserPrivacyAndSecuritySettingsBlockedUsers from "../settings/elements/privacy/blocked-users/UserPrivacyAndSecuritySettingsBlockedUsers";
 import UserPrivacyAndSecuritySettingsSetPassword from "../settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword";
 import UserPrivacyAndSecuritySettingsPrivacyEmail from "../settings/elements/privacy/email/UserPrivacyAndSecuritySettingsPrivacyEmail";
+import UserPrivacyAndSecuritySettingsPrivacyVisibility from "../settings/elements/privacy/visibility/UserPrivacyAndSecuritySettingsPrivacyVisibility";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -84,6 +86,16 @@ const ChatUI = () => {
                 return <UserProfile data={data} />;
               case "cloudPassword":
                 return <UserPrivacyAndSecuritySettingsSetPassword />;
+              case "phoneVisible":
+                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Phone} />;
+              case "avatarsVisible":
+                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Avatars} />;
+              case "birthdayVisible":
+                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Birthday} />;
+              case "emailVisible":
+                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Email} />;
+              case "bioVisible":
+                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Bio} />;
               case "userEmail":
                 return (
                   <UserPrivacyAndSecuritySettingsPrivacyEmail data={data} />
