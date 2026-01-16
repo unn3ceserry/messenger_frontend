@@ -1,21 +1,19 @@
 "use client";
 
-import { userApi } from "@/entities";
 import { motion } from "framer-motion";
 import { useTranslations } from "use-intl";
 import { RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
 import { UserSettingsShortInfo } from "@/widgets";
 import UserProfileLastAvatars from "./elements/userprofile/UserProfileLastAvatars";
+import { UserType } from "../model";
+import { FC } from "react";
 
-const UserProfile = () => {
-  const { data, isLoading } = userApi.useGetMeQuery();
+interface IUserProfile {
+  data: UserType
+}
+
+const UserProfile: FC<IUserProfile> = ({data}) => {
   const t = useTranslations();
-  {
-    /* сделать тут лоадер в будущем */
-  }
-  if (isLoading || !data) {
-    return null;
-  }
 
   return (
     <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">

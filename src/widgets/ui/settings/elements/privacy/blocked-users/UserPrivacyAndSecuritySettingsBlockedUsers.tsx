@@ -1,21 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { userApi } from "@/entities";
 import UserPrivacyAndSecuritySettingsBlockedUsersPain from "./UserPrivacyAndSecuritySettingsBlockedUsersPain";
 import { useTranslations } from "next-intl";
 import { UserSettingsHeaderConstructor } from "@/shared";
+import { UserType } from "@/entities";
+import { FC } from "react";
 
-const UserPrivacyAndSecuritySettingsBlockedUsers = () => {
+interface IUserPrivacyAndSecuritySettingsBlockedUsers {
+  data: UserType
+}
+
+const UserPrivacyAndSecuritySettingsBlockedUsers: FC<IUserPrivacyAndSecuritySettingsBlockedUsers> = ({data}) => {
   const t = useTranslations();
-  const { data, isLoading } = userApi.useGetMeQuery();
-
-  {
-    /* сделать тут лоадер в будущем */
-  }
-  if (isLoading || !data) {
-    return null;
-  }
 
   return (
     <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">

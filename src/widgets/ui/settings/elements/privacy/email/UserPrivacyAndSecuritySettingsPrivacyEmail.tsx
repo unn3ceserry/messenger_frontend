@@ -1,19 +1,17 @@
 "use client";
 
-import { userApi } from "@/entities";
+import { UserType } from "@/entities";
 import { UserSettingsHeaderConstructor } from "@/shared";
 import { motion } from "framer-motion";
 import UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail from "./UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail";
 import UserPrivacyAndSecuritySettingsPrivacyEmailSetEmailChangeEmail from "./UserPrivacyAndSecuritySettingsPrivacyEmailSetEmailChangeEmail";
-const UserPrivacyAndSecuritySettingsPrivacyEmail = () => {
-  const { data, isLoading } = userApi.useGetMeQuery();
+import { FC } from "react";
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
-  if (isLoading || !data) {
-    return null;
-  }
+interface IUserPrivacyAndSecuritySettingsPrivacyEmail {
+  data: UserType
+}
+
+const UserPrivacyAndSecuritySettingsPrivacyEmail: FC<IUserPrivacyAndSecuritySettingsPrivacyEmail> = ({data}) => {
   return (
     <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">
       <motion.div

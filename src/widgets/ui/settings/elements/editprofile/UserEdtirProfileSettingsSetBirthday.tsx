@@ -15,7 +15,6 @@ const UserEdtirProfileSettingsSetBirthday: FC<
   IUserEdtirProfileSettingsSetBirthday
 > = ({ birthday, onChange }) => {
   const [deleteBirthday] = userApi.useDeleteBirthdayMutation();
-  const { refetch } = userApi.useGetMeQuery();
 
   const t = useTranslations();
 
@@ -33,7 +32,6 @@ const UserEdtirProfileSettingsSetBirthday: FC<
 
   const handleClick = async () => {
     await deleteBirthday();
-    refetch()
   };
 
   return (

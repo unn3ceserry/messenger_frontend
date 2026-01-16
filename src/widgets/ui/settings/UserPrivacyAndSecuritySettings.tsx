@@ -1,20 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { userApi } from "@/entities";
 import UserPrivacyAndSecuritySettingsCategories from "./elements/privacy/UserPrivacyAndSecuritySettingsCategories";
 import UserPrivacyAndSecuritySettingsPrivacy from "./elements/privacy/UserPrivacyAndSecuritySettingsPrivacy";
 import { UserSettingsHeaderConstructor } from "@/shared";
+import { UserType } from "@/entities";
+import { FC } from "react";
 
-const UserPrivacyAndSecuritySettings = () => {
-  const { data, isLoading } = userApi.useGetMeQuery();
+interface IUserPrivacyAndSecuritySettings {
+  data: UserType
+}
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
-  if (isLoading || !data) {
-    return null;
-  }
+const UserPrivacyAndSecuritySettings: FC<IUserPrivacyAndSecuritySettings> = ({data}) => {
 
   return (
     <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">

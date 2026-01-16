@@ -1,20 +1,20 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { userApi } from "../api";
 import ActionsPopupElement from "./elements/actionspopup/ActionsPopupElement";
 import { userActionsElements } from "../config";
 import { useAppDispatch } from "@/app";
-import { openComponent } from "../model";
+import { openComponent, UserType } from "../model";
 import { configApp } from "@/app";
 import { RenderAvatarElement } from "@/shared";
+import { FC } from "react";
 
-const ActionsPopup = () => {
-  const { data, isLoading } = userApi.useGetMeQuery();
+interface IActionsPopup {
+  data: UserType
+}
+
+const ActionsPopup: FC<IActionsPopup> = ({data}) => {
   const dispatch = useAppDispatch();
-
-  if (isLoading || !data) return null;
 
   const actions = userActionsElements(dispatch);
 

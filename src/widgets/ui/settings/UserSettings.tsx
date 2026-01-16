@@ -1,6 +1,6 @@
 "use client";
 
-import { userApi } from "@/entities";
+import { UserType } from "@/entities";
 import { motion } from "framer-motion";
 import UserSettingsShortInfo from "./elements/default/UserSettingsShortInfo";
 import UserSettingsCategories from "./elements/default/UserSettingsCategories";
@@ -9,18 +9,17 @@ import { ReceiptText } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "use-intl";
 import { createRipple, RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
+import { FC } from "react";
 
-const UserSettings = () => {
-  const { data, isLoading } = userApi.useGetMeQuery();
+interface IUserSettings {
+  data: UserType
+}
+
+const UserSettings: FC<IUserSettings> = ({data}) => {
   const router = useRouter();
   const t = useTranslations();
   const locale = useLocale();
-  {
-    /* сделать тут лоадер в будущем */
-  }
-  if (isLoading || !data) {
-    return null;
-  }
+
 
   return (
     <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">

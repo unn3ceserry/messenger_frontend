@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { sessionApi } from "@/entities";
 import UserSessionsSettingsThisSession from "./elements/sessions/UserSessionsSettingsThisSession";
@@ -8,7 +7,6 @@ import UserSessionsSettingsOtherSessions from "./elements/sessions/UserSessionsS
 import { UserSettingsHeaderConstructor } from "@/shared";
 
 const UserSessionsSettings = () => {
-  const t = useTranslations();
   const { data: dataSessions, isLoading: isLoadingSessions } =
     sessionApi.useGetMyAccountSessionsQuery();
   const { data, isLoading } = sessionApi.useGetMySessionQuery();
