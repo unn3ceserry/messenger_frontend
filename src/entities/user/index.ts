@@ -2,6 +2,7 @@ export type {
   FindUserType,
   UserCompleteData,
   UserType,
+  IIsOpenUIComponent
 } from "./model";
 export { WhoCanSeen, VisibilityField } from "./model";
 
@@ -19,4 +20,5 @@ export {
   closeAll,
   type IUserCompleteData,
   handleSaveDataEditProfile,
+  handleSetPassword
 } from "./model";

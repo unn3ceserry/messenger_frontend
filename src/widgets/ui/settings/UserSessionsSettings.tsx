@@ -2,10 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import UserSessionsSettingsHeader from "./elements/sessions/UserSessionsSettingsHeader";
 import { sessionApi } from "@/entities";
 import UserSessionsSettingsThisSession from "./elements/sessions/UserSessionsSettingsThisSession";
 import UserSessionsSettingsOtherSessions from "./elements/sessions/UserSessionsSettingsOtherSessions";
+import { UserSettingsHeaderConstructor } from "@/shared";
 
 const UserSessionsSettings = () => {
   const t = useTranslations();
@@ -29,7 +29,12 @@ const UserSessionsSettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserSessionsSettingsHeader />
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.sessionSettings.devices"
+          typeHeader="default"
+        />
+
         <div className="flex flex-col items-start justify-center w-full p-2 px-3 gap-3">
           <UserSessionsSettingsThisSession data={data} />
           <hr className="w-full border-3 border-black/15" />

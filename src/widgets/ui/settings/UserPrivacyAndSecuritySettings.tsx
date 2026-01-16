@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { userApi } from "@/entities";
-import UserPrivacyAndSecuritySettingsHeader from "./elements/privacy/UserPrivacyAndSecuritySettingsHeader";
 import UserPrivacyAndSecuritySettingsCategories from "./elements/privacy/UserPrivacyAndSecuritySettingsCategories";
 import UserPrivacyAndSecuritySettingsPrivacy from "./elements/privacy/UserPrivacyAndSecuritySettingsPrivacy";
+import { UserSettingsHeaderConstructor } from "@/shared";
 
 const UserPrivacyAndSecuritySettings = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
@@ -25,9 +25,17 @@ const UserPrivacyAndSecuritySettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserPrivacyAndSecuritySettingsHeader />
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.privacyAndSecurity.title"
+          typeHeader="default"
+        />
         <div className="flex flex-col items-start justify-center w-full p-2 px-3 gap-3">
-          <UserPrivacyAndSecuritySettingsCategories cloudPassword={!!data.cloudPassword} email={data.email} blockedUsers={data.blockedUsers.length} />
+          <UserPrivacyAndSecuritySettingsCategories
+            cloudPassword={!!data.cloudPassword}
+            email={data.email}
+            blockedUsers={data.blockedUsers.length}
+          />
           <hr className="w-full border-3 border-black/15" />
           <UserPrivacyAndSecuritySettingsPrivacy data={data} />
         </div>

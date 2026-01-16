@@ -19,6 +19,8 @@ export {
   openComponent,
   selectOpenComponent,
   closeAll,
+  type IIsOpenUIComponent
 } from "./store/userUiSlice";
 
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
+export {handleSetPassword} from './handlers/handleSetPassword'

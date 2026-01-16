@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppDispatch } from "@/app";
-import { UserType, WhoCanSeen } from "@/entities";
+import { UserType } from "@/entities";
 import { createRipple } from "@/shared";
 import { userPrivacySettingsCategoriesConfig } from "@/widgets/config";
 import { useTranslations } from "next-intl";

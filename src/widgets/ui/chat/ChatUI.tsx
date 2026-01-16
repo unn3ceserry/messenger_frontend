@@ -2,7 +2,12 @@
 
 import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
-import { openComponent, selectOpenComponent, UserProfile } from "@/entities";
+import {
+  closeAll,
+  openComponent,
+  selectOpenComponent,
+  UserProfile,
+} from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
@@ -14,6 +19,7 @@ import UserGeneralSettings from "../settings/UserGeneralSettings";
 import UserEdtirProfileSettings from "../settings/UserEdtirProfileSettings";
 import UserPrivacyAndSecuritySettings from "../settings/UserPrivacyAndSecuritySettings";
 import UserPrivacyAndSecuritySettingsBlockedUsers from "../settings/elements/privacy/blocked-users/UserPrivacyAndSecuritySettingsBlockedUsers";
+import UserPrivacyAndSecuritySettingsSetPassword from "../settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -65,6 +71,8 @@ const ChatUI = () => {
                 return <UserEdtirProfileSettings />;
               case "myProfile":
                 return <UserProfile />;
+              case "cloudPassword":
+                return <UserPrivacyAndSecuritySettingsSetPassword />;
               case "userSettingsPrivacy":
                 return <UserPrivacyAndSecuritySettings />;
               case "blockedUsers":

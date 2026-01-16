@@ -27,7 +27,7 @@ const ModalConstructor: FC<IModalConstructor> = ({ setIsOpen, content }) => {
         animate="animate"
         exit="initial"
         onClick={(e) => e.stopPropagation()}
-        className="flex relative flex-col items-center justify-center max-w-150 w-full space-y-4 bg-rect-bg p-1 rounded-xl backdrop-blur-xl"
+        className="flex relative flex-col items-center justify-center max-w-150 w-full space-y-4 p-1 rounded-xl"
       >
         {content}
       </motion.div>

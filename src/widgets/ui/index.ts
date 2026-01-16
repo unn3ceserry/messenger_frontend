@@ -13,3 +13,4 @@ export {default as UserEdtirProfileSettings} from './settings/UserEdtirProfileSe
 export {default as UserPrivacyAndSecuritySettings} from './settings/UserPrivacyAndSecuritySettings'
 export {default as UserSettingsShortInfo} from './settings/elements/default/UserSettingsShortInfo'
 export {default as UserPrivacyAndSecuritySettingsBlockedUsers} from './settings/elements/privacy/blocked-users/UserPrivacyAndSecuritySettingsBlockedUsers'
+export {default as UserPrivacyAndSecuritySettingsSetPassword} from './settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword'

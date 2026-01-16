@@ -32,11 +32,10 @@ export const userApi = mainApi.injectEndpoints({
       }),
       invalidatesTags: ["sessions"],
     }),
-    removePassowrd: builder.mutation<boolean, string>({
-      query: (password) => ({
+    removePassowrd: builder.mutation<boolean, void>({
+      query: () => ({
         url: "/account/remove-password",
         method: "DELETE",
-        body: { password },
       }),
       invalidatesTags: ["sessions"],
     }),
