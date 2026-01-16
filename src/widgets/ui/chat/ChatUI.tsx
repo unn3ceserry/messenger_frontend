@@ -6,6 +6,7 @@ import {
   closeAll,
   openComponent,
   selectOpenComponent,
+  userApi,
   UserProfile,
 } from "@/entities";
 import { useEffect, useRef } from "react";
@@ -26,6 +27,8 @@ const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
 const ChatUI = () => {
+  const { data, isLoading } = userApi.useGetMeQuery();
+
   // getters
   const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
@@ -51,6 +54,13 @@ const ChatUI = () => {
     };
   }, []);
 
+  {
+    /* сделать тут лоадер в будущем */
+  }
+  if (isLoading || !data) {
+    return null;
+  }
+
   return (
     <>
       <div
@@ -69,23 +79,28 @@ const ChatUI = () => {
               case "userSettingsGeneral":
                 return <UserGeneralSettings />;
               case "editProfile":
-                return <UserEdtirProfileSettings />;
+                return <UserEdtirProfileSettings data={data} />;
               case "myProfile":
-                return <UserProfile />;
+                return <UserProfile data={data} />;
               case "cloudPassword":
                 return <UserPrivacyAndSecuritySettingsSetPassword />;
               case "userEmail":
-                return <UserPrivacyAndSecuritySettingsPrivacyEmail />;
+                return (
+                  <UserPrivacyAndSecuritySettingsPrivacyEmail data={data} />
+                );
               case "userSettingsPrivacy":
-                return <UserPrivacyAndSecuritySettings />;
+                return <UserPrivacyAndSecuritySettings data={data} />;
               case "blockedUsers":
-                return <UserPrivacyAndSecuritySettingsBlockedUsers />;
+                return (
+                  <UserPrivacyAndSecuritySettingsBlockedUsers data={data} />
+                );
               case "userSettings":
-                return <UserSettings />;
+                return <UserSettings data={data} />;
 
               default:
                 return (
                   <LeftSideBar
+                    data={data}
                     setIsOpen={() =>
                       dispatch(
                         openComponent(

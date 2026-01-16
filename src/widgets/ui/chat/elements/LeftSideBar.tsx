@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionsPopup, LeftSideBarSearch } from "@/entities";
+import { ActionsPopup, LeftSideBarSearch, UserType } from "@/entities";
 import { AnimatePresence } from "framer-motion";
 import { Dispatch, FC, SetStateAction } from "react";
 
@@ -8,9 +8,10 @@ import { Dispatch, FC, SetStateAction } from "react";
 interface ILeftSideBar {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  data: UserType
 }
 
-const LeftSideBar: FC<ILeftSideBar> = ({isOpen, setIsOpen}) => {
+const LeftSideBar: FC<ILeftSideBar> = ({isOpen, setIsOpen, data}) => {
   return (
     <>
       <div
@@ -23,7 +24,7 @@ const LeftSideBar: FC<ILeftSideBar> = ({isOpen, setIsOpen}) => {
       <AnimatePresence>
         {isOpen && (
           <div className="fixed top-18 left-3 w-full max-w-65 ">
-            <ActionsPopup />
+            <ActionsPopup data={data} />
           </div>
         )}
       </AnimatePresence>

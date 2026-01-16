@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
-import { userApi, handleSaveDataEditProfile } from "@/entities";
+import { handleSaveDataEditProfile, UserType } from "@/entities";
 
 import UserEdtirProfileSettingsChooseAvatar from "./elements/editprofile/UserEdtirProfileSettingsChooseAvatar";
 import UserEdtirProfileSettingsChangeNames from "./elements/editprofile/UserEdtirProfileSettingsChangeNames";
@@ -11,9 +11,13 @@ import UserEdtirProfileSettingsEditBio from "./elements/editprofile/UserEdtirPro
 import { useProfileForm } from "./elements/editprofile/useProfileForm";
 import UserEdtirProfileSettingsSetBirthday from "./elements/editprofile/UserEdtirProfileSettingsSetBirthday";
 import { UserSettingsHeaderConstructor } from "@/shared";
+import { FC } from "react";
 
-const UserEdtirProfileSettings = () => {
-  const { data, isLoading } = userApi.useGetMeQuery();
+interface IUserEdtirProfileSettings {
+  data: UserType
+}
+
+const UserEdtirProfileSettings: FC<IUserEdtirProfileSettings> = ({data}) => {
 
   const { form, dirty, onChange, setDirty, isDirty } = useProfileForm({
     firstName: data?.firstName ?? "",
@@ -22,8 +26,6 @@ const UserEdtirProfileSettings = () => {
     bio: data?.bio ?? "",
     birthday: data?.birthday?.toString() ?? "",
   });
-
-  if (isLoading || !data) return null;
 
   const handleSave = async () => {
     await handleSaveDataEditProfile(dirty, form, setDirty);
