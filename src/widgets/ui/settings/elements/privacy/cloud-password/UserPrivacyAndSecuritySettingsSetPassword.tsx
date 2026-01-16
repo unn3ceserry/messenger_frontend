@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import UserPrivacyAndSecuritySettingsSetPasswordHeader from "./UserPrivacyAndSecuritySettingsSetPasswordHeader";
 import { useTranslations } from "next-intl";
-import { AppInput, Button } from "@/shared";
+import { AppInput, Button, UserSettingsHeaderConstructor } from "@/shared";
 import { useState } from "react";
 import { handleSetPassword } from "@/entities";
 
@@ -26,7 +25,11 @@ const UserPrivacyAndSecuritySettingsSetPassword = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserPrivacyAndSecuritySettingsSetPasswordHeader />
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.privacyAndSecurity.cloudPasswordCreate"
+          typeHeader="default"
+        />
         <div className="flex flex-col items-start justify-center w-full p-2 px-2 gap-3">
           <div className="flex flex-col items-center justify-center w-full px-5 gap-5">
             <AppInput

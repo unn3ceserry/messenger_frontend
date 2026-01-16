@@ -28,6 +28,7 @@ export {
   SearchInput,
   CheckboxLanguage,
   AppInput,
+  UserSettingsHeaderConstructor,
   CheckboxCircle,
   CheckboxDefault,
 } from "./ui";

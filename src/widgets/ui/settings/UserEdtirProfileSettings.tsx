@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 import { userApi, handleSaveDataEditProfile } from "@/entities";
 
-import UserEdtirProfileSettingsHeader from "./elements/editprofile/UserEdtirProfileSettingsHeader";
 import UserEdtirProfileSettingsChooseAvatar from "./elements/editprofile/UserEdtirProfileSettingsChooseAvatar";
 import UserEdtirProfileSettingsChangeNames from "./elements/editprofile/UserEdtirProfileSettingsChangeNames";
 import UserEdtirProfileSettingsChangeUsername from "./elements/editprofile/UserEdtirProfileSettingsChangeUsername";
 import UserEdtirProfileSettingsEditBio from "./elements/editprofile/UserEdtirProfileSettingsEditBio";
 import { useProfileForm } from "./elements/editprofile/useProfileForm";
 import UserEdtirProfileSettingsSetBirthday from "./elements/editprofile/UserEdtirProfileSettingsSetBirthday";
+import { UserSettingsHeaderConstructor } from "@/shared";
 
 const UserEdtirProfileSettings = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
@@ -27,7 +27,7 @@ const UserEdtirProfileSettings = () => {
 
   const handleSave = async () => {
     await handleSaveDataEditProfile(dirty, form, setDirty);
-  }
+  };
 
   return (
     <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">
@@ -37,8 +37,11 @@ const UserEdtirProfileSettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center"
       >
-        <UserEdtirProfileSettingsHeader />
-
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.editProfileSettings.title"
+          typeHeader="default"
+        />
         <div className="w-full flex flex-col items-center gap-5 pt-3 px-2 relative">
           <UserEdtirProfileSettingsChooseAvatar
             size={130}

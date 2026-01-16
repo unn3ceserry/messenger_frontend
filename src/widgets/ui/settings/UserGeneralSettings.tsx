@@ -2,9 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import UserGeneralSettingsHeader from "./elements/general/UserGeneralSettingsHeader";
 import { THEME_CONFIG } from "@/widgets/config";
-import { CheckboxCircle } from "@/shared";
+import { CheckboxCircle, UserSettingsHeaderConstructor } from "@/shared";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { getCurrentTheme } from "@/entities";
 
@@ -23,7 +22,11 @@ const UserGeneralSettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserGeneralSettingsHeader />
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.generalSettings.title"
+          typeHeader="default"
+        />
         <div className="flex flex-col items-start justify-center w-full p-2 px-3 gap-3">
           <div className="w-full flex flex-col items-start justify-center gap-3">
             <p className="text-white/50 text-md ml-5">

@@ -1,9 +1,8 @@
-'use client'
+"use client";
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import UserOtherSettingsHeader from "./elements/other/UserOtherSettingsHeader";
-import { CheckboxDefault } from "@/shared";
+import { CheckboxDefault, UserSettingsHeaderConstructor } from "@/shared";
 import { useState } from "react";
 
 const UserOtherSettings = () => {
@@ -19,13 +18,17 @@ const UserOtherSettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserOtherSettingsHeader />
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.otherSettings.title"
+          typeHeader="default"
+        />
         <hr className="w-full border-3 border-black/15" />
         <div className="flex flex-col items-center justify-center w-full p-2">
           <CheckboxDefault
-            content={t('settings.otherSettings.hideStatus')}
+            content={t("settings.otherSettings.hideStatus")}
             isActive={isHide}
-            onClick={() => setIsHide(prev => !prev)}
+            onClick={() => setIsHide((prev) => !prev)}
           />
         </div>
       </motion.div>

@@ -1,8 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import UserLanguageSettingsHeader from "./elements/language/UserLanguageSettingsHeader";
-import { CheckboxLanguage, i18nPattern, routing, TLocales } from "@/shared";
+import {
+  CheckboxLanguage,
+  i18nPattern,
+  routing,
+  TLocales,
+  UserSettingsHeaderConstructor,
+} from "@/shared";
 import { useLocale, useTranslations } from "next-intl";
 import { setCookie } from "cookies-next";
 import { usePathname, useRouter } from "next/navigation";
@@ -32,7 +37,11 @@ const UserLanguageSettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserLanguageSettingsHeader />
+        <UserSettingsHeaderConstructor
+          backUI={"userSettings"}
+          title="settings.languageSettings.title"
+          typeHeader="default"
+        />
         <hr className="w-full border-3 border-black/15" />
         <div className="flex flex-col items-center justify-center w-full p-2">
           <div className="w-full flex flex-col items-start justify-center gap-3">

@@ -2,14 +2,13 @@
 
 import { userApi } from "@/entities";
 import { motion } from "framer-motion";
-import UserSettingsHeader from "./elements/default/UserSettingsHeader";
 import UserSettingsShortInfo from "./elements/default/UserSettingsShortInfo";
 import UserSettingsCategories from "./elements/default/UserSettingsCategories";
 import { useRouter } from "next/navigation";
 import { ReceiptText } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "use-intl";
-import { createRipple, RenderAvatarElement } from "@/shared";
+import { createRipple, RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
 
 const UserSettings = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
@@ -32,7 +31,7 @@ const UserSettings = () => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserSettingsHeader />
+        <UserSettingsHeaderConstructor backUI={null} title="chat.actionsPopup.settings" typeHeader="settings" />
         {/* avatar & names */}
         <div className="w-full flex flex-col items-center justify-center p-2 gap-3">
           <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3">
