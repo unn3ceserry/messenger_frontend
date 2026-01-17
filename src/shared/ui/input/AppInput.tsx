@@ -16,14 +16,14 @@ const AppInput: FC<IAppInput> = ({
     <div
       className={`${
         classNameDiv ? classNameDiv : ""
-      } flex items-center justify-center gap-2.5 p-3 px-5 rounded-xl ring-2 ring-white/7 focus-within:ring-accent duration-500 w-full text-white`}
+      } flex items-center justify-center gap-2.5 p-3 px-5 rounded-xl ring-2 ring-inputs-ring-color focus-within:ring-accent duration-500 w-full text-default-text-color`}
     >
       {icon}
       <input
         {...props}
         className={`${
           className ? className : ""
-        } text-white outline-none flex-1 placeholder:text-white/50 w-full text-[.9rem]`}
+        } text-default-text-color outline-none flex-1 placeholder:text-app-inputs-placeholder w-full text-[.9rem]`}
       />
     </div>
   );

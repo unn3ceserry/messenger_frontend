@@ -19,7 +19,7 @@ const UserSessionsSettings = () => {
   }
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
@@ -35,7 +35,7 @@ const UserSessionsSettings = () => {
 
         <div className="flex flex-col items-start justify-center w-full p-2 px-3 gap-3">
           <UserSessionsSettingsThisSession data={data} />
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
           <UserSessionsSettingsOtherSessions data={dataSessions} />
         </div>
       </motion.div>

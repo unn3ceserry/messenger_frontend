@@ -22,7 +22,7 @@ const UserSettings: FC<IUserSettings> = ({data}) => {
 
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
@@ -43,7 +43,7 @@ const UserSettings: FC<IUserSettings> = ({data}) => {
               <p className="text-xl">
                 {data.firstName} {data.lastName}
               </p>
-              <p className="text-white/50 text-[.85rem]">
+              <p className="text-icons-color text-[.85rem]">
                 {t("settings.online")}
               </p>
             </div>
@@ -54,9 +54,9 @@ const UserSettings: FC<IUserSettings> = ({data}) => {
             username={data.username}
             email={data.email}
           />
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
           <UserSettingsCategories />
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
 
           {/* terms of use */}
           <div
@@ -64,9 +64,9 @@ const UserSettings: FC<IUserSettings> = ({data}) => {
               createRipple(e);
               router.push(`/${locale}/terms`);
             }}
-            className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-4 flex items-center justify-start gap-5 cursor-pointer w-full"
+            className="relative overflow-hidden hover:bg-checkbox-hover rounded-2xl px-5 py-4 flex items-center justify-start gap-5 cursor-pointer w-full"
           >
-            <ReceiptText className={"text-[#818181]"} />
+            <ReceiptText className={"text-icons-color"} />
             <p>{t("settings.termOfUse")}</p>
           </div>
         </div>

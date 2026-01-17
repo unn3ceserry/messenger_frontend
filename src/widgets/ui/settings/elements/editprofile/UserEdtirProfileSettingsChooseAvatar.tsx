@@ -44,7 +44,7 @@ const UserEditProfileSettingsChooseAvatar: FC<
           className="rounded-full object-cover aspect-square opacity-65"
         />
       )}
-      <Camera size={50} className="absolute" />
+      <Camera size={50} className="absolute text-white" />
       <input
         ref={inputRef}
         type="file"

@@ -19,7 +19,7 @@ const UserSettingsCategories = () => {
             createRipple(e);
           }}
           key={i}
-          className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-4 flex items-center justify-start gap-5 cursor-pointer w-full"
+          className="relative overflow-hidden hover:bg-checkbox-hover rounded-2xl px-5 py-4 flex items-center justify-start gap-5 cursor-pointer w-full"
         >
           {el.icon}
           <div className="flex items-center justify-between w-full">

@@ -47,8 +47,8 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
         setPosition({ x: e.clientX + 5, y: e.clientY + 5 });
         setIsOpen((prev) => !prev);
       }}
-      className="flex items-center justify-center w-full hover:bg-white/5 rounded-2xl p-3 cursor-pointer gap-3"
-    >
+      className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-3 text-default-text-color"
+    > 
       <RenderAvatarElement
         hasAvatar={!!data.avatars?.length}
         size={55}
@@ -58,7 +58,7 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
         <p className="text-[1.1rem]">
           {data.firstName} {data.lastName}
         </p>
-        <p className="text-white/50 text-[.9rem]">@{data.username}</p>
+        <p className="text-icons-color text-[.9rem]">@{data.username}</p>
       </div>
       <AnimatePresence>
         {isOpen && (
@@ -72,7 +72,7 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
           >
             <div
               onClick={handleClick}
-              className="flex items-center justify-start hover:bg-black/30 p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
+              className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
             >
               <CircleOff size={19} />
               <p>{t("settings.privacyAndSecurity.unblock")}</p>

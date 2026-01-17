@@ -3,7 +3,6 @@
 import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
 import {
-  closeAll,
   openComponent,
   selectOpenComponent,
   userApi,
@@ -67,7 +66,7 @@ const ChatUI = () => {
     <>
       <div
         style={{ width }}
-        className="flex items-center justify-center w-full h-screen bg-[#212121] relative"
+        className="flex items-center justify-center w-full h-screen bg-chatui-bg relative"
       >
         <AnimatePresence>
           {(() => {
@@ -87,15 +86,40 @@ const ChatUI = () => {
               case "cloudPassword":
                 return <UserPrivacyAndSecuritySettingsSetPassword />;
               case "phoneVisible":
-                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Phone} />;
+                return (
+                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
+                    data={data}
+                    field={VisibilityField.Phone}
+                  />
+                );
               case "avatarsVisible":
-                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Avatars} />;
+                return (
+                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
+                    data={data}
+                    field={VisibilityField.Avatars}
+                  />
+                );
               case "birthdayVisible":
-                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Birthday} />;
+                return (
+                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
+                    data={data}
+                    field={VisibilityField.Birthday}
+                  />
+                );
               case "emailVisible":
-                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Email} />;
+                return (
+                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
+                    data={data}
+                    field={VisibilityField.Email}
+                  />
+                );
               case "bioVisible":
-                return <UserPrivacyAndSecuritySettingsPrivacyVisibility data={data} field={VisibilityField.Bio} />;
+                return (
+                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
+                    data={data}
+                    field={VisibilityField.Bio}
+                  />
+                );
               case "userEmail":
                 return (
                   <UserPrivacyAndSecuritySettingsPrivacyEmail data={data} />
@@ -118,8 +142,8 @@ const ChatUI = () => {
                         openComponent(
                           whoIsOpenWithUiComponents === "actionPopup"
                             ? null
-                            : "actionPopup"
-                        )
+                            : "actionPopup",
+                        ),
                       )
                     }
                     isOpen={whoIsOpenWithUiComponents === "actionPopup"}
@@ -130,7 +154,7 @@ const ChatUI = () => {
         </AnimatePresence>
         <div
           onMouseDown={() => (isResizing.current = true)}
-          className="w-0.5 bg-[#313131]/90 self-stretch cursor-e-resize"
+          className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
     </>

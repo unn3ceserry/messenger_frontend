@@ -57,7 +57,7 @@ const UserPrivacyAndSecuritySettingsPrivacyEmailSetEmailChangeEmail: FC<
         label={t("settings.privacyAndSecurity.changeEmail")}
         className="w-full rounded-2xl py-2"
       />
-      <p className="text-white/50 text-[.8rem]">
+      <p className="text-icons-color text-[.8rem]">
         {t("settings.privacyAndSecurity.linkEmailSubtext")}
       </p>
     </form>

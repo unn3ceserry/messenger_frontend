@@ -16,12 +16,12 @@ const UserSessionsSettingsOtherSessions: FC<
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <p className="text-white/60 text-md">
+      <p className="text-icons-color text-md">
         {t("settings.sessionSettings.activeSessions")}
       </p>
       <div className="flex flex-col items-center justify-center gap-3">
         {!data.length && (
-          <div className="flex items-center justify-start w-full text-white/50 text-[.8rem]">
+          <div className="flex items-center justify-start w-full text-icons-color text-[.8rem]">
             <p>{t('settings.sessionSettings.noActiveSession')}</p>
           </div>
         )}

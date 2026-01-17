@@ -14,7 +14,7 @@ const ActionsPopupElement: FC<IActionsPopupElement> = ({ icon, title, onClick })
   const t = useTranslations()
 
   return (
-    <div onClick={onClick} className="flex items-center w-full gap-2.5 cursor-pointer hover:bg-black/30 p-2 rounded-[10px] duration-300">
+    <div onClick={onClick} className="flex items-center w-full gap-3 cursor-pointer hover:bg-actions-popup-hover p-2 rounded-[10px] duration-300">
       {icon}
       <p className="text-[.9rem]">{t(title)}</p>
     </div>

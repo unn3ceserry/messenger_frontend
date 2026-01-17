@@ -10,7 +10,7 @@ const UserOtherSettings = () => {
   const [isHide, setIsHide] = useState<boolean>(false);
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
@@ -23,7 +23,7 @@ const UserOtherSettings = () => {
           title="settings.otherSettings.title"
           typeHeader="default"
         />
-        <hr className="w-full border-3 border-black/15" />
+        <hr className="w-full border-3 border-black/5" />
         <div className="flex flex-col items-center justify-center w-full p-2">
           <CheckboxDefault
             content={t("settings.otherSettings.hideStatus")}

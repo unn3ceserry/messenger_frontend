@@ -32,7 +32,7 @@ const UserEdtirProfileSettings: FC<IUserEdtirProfileSettings> = ({data}) => {
   };
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-eazye@gmail.com scrollbar-thin w-full">
       <motion.div
         initial={{ opacity: 0, x: -300, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -59,7 +59,7 @@ const UserEdtirProfileSettings: FC<IUserEdtirProfileSettings> = ({data}) => {
             }}
           />
 
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
 
           <UserEdtirProfileSettingsChangeUsername
             username={form.username}
@@ -68,7 +68,7 @@ const UserEdtirProfileSettings: FC<IUserEdtirProfileSettings> = ({data}) => {
             }}
           />
 
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
 
           <UserEdtirProfileSettingsEditBio
             bio={form.bio}
@@ -77,7 +77,7 @@ const UserEdtirProfileSettings: FC<IUserEdtirProfileSettings> = ({data}) => {
             }}
           />
 
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
 
           <UserEdtirProfileSettingsSetBirthday
             birthday={form.birthday}
@@ -97,7 +97,7 @@ const UserEdtirProfileSettings: FC<IUserEdtirProfileSettings> = ({data}) => {
             onClick={handleSave}
             className="absolute bottom-5 right-5 p-3 bg-accent flex items-center justify-center rounded-full cursor-pointer"
           >
-            <Check size={25} />
+            <Check size={25} className="text-white" />
           </motion.button>
         )}
       </AnimatePresence>
