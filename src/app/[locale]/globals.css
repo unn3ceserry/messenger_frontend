@@ -14,7 +14,6 @@
   --text-color: color-mix(in srgb, var(--accent-color) 25%, #ffffff);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 35%, #ffffff80);
   --chatui-bg: #212121;
-  /* --chatui-bg: #db1515; */
   --actions-popup-hover: #00000030;
   --checkbox-hover: #ffffff05;
   --inputs-ring-color: #ffffff07;
