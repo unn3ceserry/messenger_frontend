@@ -47,7 +47,7 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
         setPosition({ x: e.clientX + 5, y: e.clientY + 5 });
         setIsOpen((prev) => !prev);
       }}
-      className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-3 text-default-text-color"
+      className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-5 text-default-text-color"
     > 
       <RenderAvatarElement
         hasAvatar={!!data.avatars?.length}
