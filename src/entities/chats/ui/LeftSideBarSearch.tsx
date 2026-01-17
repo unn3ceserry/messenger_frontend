@@ -14,11 +14,11 @@ const LeftSideBarSearch: FC<ILeftSideBarSearch> = ({setIsOpen}) => {
 
   return (
     <div className="flex w-full items-center justify-between p-3 gap-3">
-      <div onClick={() => setIsOpen(prev => !prev)} className="flex p-1.5 items-center justify-center cursor-pointer hover:bg-white/6 bg-transparent rounded-full">
-        <Equal className="text-white/70" />
+      <div onClick={() => setIsOpen(prev => !prev)} className="flex p-1.5 items-center justify-center cursor-pointer hover:bg-checkbox-hover bg-transparent rounded-full">
+        <Equal className="text-icons-color" />
       </div>
       <SearchInput
-        icon={<Search className="text-[#717171]" />}
+        icon={<Search className="text-input-icons-color" size={22} />}
         placeholder={t("chat.searchPlaceholder")}
       />
     </div>

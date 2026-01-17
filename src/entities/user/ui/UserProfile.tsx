@@ -16,7 +16,7 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
   const t = useTranslations();
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-white scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
@@ -41,7 +41,7 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
               <p className="text-xl">
                 {data.firstName} {data.lastName}
               </p>
-              <p className="text-white/50 text-[.85rem]">
+              <p className="text-icons-color text-[.85rem]">
                 {t("settings.online")}
               </p>
             </div>
@@ -54,16 +54,16 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
             email={data.email}
           />
 
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
 
           <div className="flex flex-col items-start justify-center text-start px-2 gap-1">
-            <h2 className="text-white/50 text-[1.1rem]">{t("profile.bio")}:</h2>
+            <h2 className="text-icons-color text-[1.1rem]">{t("profile.bio")}:</h2>
             <p className="text-[.9rem]">
               {data.bio ? data.bio : t("profile.noBioYet")}
             </p>
           </div>
 
-          <hr className="w-full border-3 border-black/15" />
+          <hr className="w-full border-3 border-black/5" />
 
           <UserProfileLastAvatars avataras={data.avatars} />
         </div>

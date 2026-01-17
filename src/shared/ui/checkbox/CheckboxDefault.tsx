@@ -20,13 +20,13 @@ const CheckboxDefault: FC<ICheckboxDefault> = ({
       onClick={(e) => {
         onClick(), createRipple(e);
       }}
-      className="relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-3 flex items-center justify-start gap-5 cursor-pointer w-full"
+      className="relative overflow-hidden hover:bg-checkbox-hover rounded-2xl px-5 py-3 flex items-center justify-start gap-5 cursor-pointer w-full"
     >
       {/* checkbox */}
       <div
-        className={`w-5 h-5 rounded-md flex items-center justify-center ${!isActive ? 'border-2 border-white/40' : ''}`}
+        className={`w-5 h-5 rounded-md flex items-center justify-center ${!isActive ? 'border-2 border-checkbox-border' : ''}`}
       >
-        {isActive && <div className="w-5 h-5 bg-accent rounded-md flex items-center justify-center"><Check size={17} /></div>}
+        {isActive && <div className="w-5 h-5 bg-accent rounded-md flex items-center justify-center"><Check size={17} className="text-white" /></div>}
       </div>
       <p>{content}</p>
     </div>

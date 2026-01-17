@@ -34,15 +34,15 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
   const elements = [
     {
       title: "number",
-      icon: <Phone className="text-[#818181]" />,
+      icon: <Phone className="text-icons-color" />,
       data: number,
     },
     {
       title: "username",
-      icon: <AtSign className="text-[#818181]" />,
+      icon: <AtSign className="text-icons-color" />,
       data: username,
     },
-    { title: "email", icon: <Mail className="text-[#818181]" />, data: email },
+    { title: "email", icon: <Mail className="text-icons-color" />, data: email },
   ];
 
   return (
@@ -56,7 +56,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
               handleCopy(el.data ?? "");
               createRipple(e);
             }}
-            className={`relative overflow-hidden hover:bg-white/5 rounded-2xl px-5 py-2 flex items-center justify-start gap-5 cursor-pointer ${
+            className={`relative overflow-hidden hover:bg-checkbox-hover rounded-2xl px-5 py-2 flex items-center justify-start gap-5 cursor-pointer ${
               whoCopied === el.title ? "bg-accent" : ""
             }`}
           >
@@ -70,7 +70,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
                   : ""}
                 {el.data}
               </p>
-              <p className="text-[.95rem] text-white/50">
+              <p className="text-[.95rem] text-icons-color">
                 {t(`profile.${el.title}`)}
               </p>
             </div>

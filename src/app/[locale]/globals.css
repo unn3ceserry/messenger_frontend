@@ -4,7 +4,6 @@
   --ff-main: "DMSans", sans-serif;
   --accent-color: #8166fa;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
-  --switcher-bg-color: color-mix(in srgb, var(--accent-color) 10%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 2%, #000000);
   --rect-background-color: color-mix(
     in srgb,
@@ -14,17 +13,42 @@
   --rect-border-color: color-mix(in srgb, var(--accent-color) 8%, #ffffff01);
   --text-color: color-mix(in srgb, var(--accent-color) 25%, #ffffff);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 35%, #ffffff80);
-  --line-color: color-mix(in srgb, var(--accent-color) 5%, #ffffff01);
-  --background-slider-color: color-mix(
-    in srgb,
-    var(--accent-color) 10%,
-    #ffffff01
-  );
-  --background-thumb-color: color-mix(
-    in srgb,
-    var(--accent-color) 15%,
-    #ffffff01
-  );
+  --chatui-bg: #212121;
+  /* --chatui-bg: #db1515; */
+  --actions-popup-hover: #00000030;
+  --checkbox-hover: #ffffff05;
+  --inputs-ring-color: #ffffff07;
+  --icons-color: #818181;
+  --input-icons-color: #818181;
+  --app-inputs-placeholder: #ffffff40;
+  --default-text-color: #ffffff;
+  --line-color: #00000060;
+  --scrollbar-color: #ffffff10;
+  --ripple-bg: #ffffff30;
+  --checkbox-border: #ffffff40;
+}
+
+:root[data-theme="light"] {
+  --ff-main: "DMSans", sans-serif;
+  --accent-color: #8166fa;
+  --accent-button-color: color-mix(in srgb, var(--accent-color) 85%, #000000);
+  --background-color: color-mix(in srgb, var(--accent-color) 3%, #ffffff);
+  --rect-background-color: color-mix(in srgb, var(--accent-color) 6%, #ffffff);
+  --rect-border-color: color-mix(in srgb, var(--accent-color) 12%, #00000010);
+  --text-color: color-mix(in srgb, var(--accent-color) 18%, #000000);
+  --sub-text-color: color-mix(in srgb, var(--accent-color) 25%, #00000080);
+  --chatui-bg: #ffffff;
+  --actions-popup-hover: #00000010;
+  --checkbox-hover: #00000008;
+  --inputs-ring-color: #00000010;
+  --icons-color: #777777;
+  --input-icons-color: #b6b5b5;
+  --app-inputs-placeholder: #00000050;
+  --default-text-color: #000000;
+  --line-color: #e7e6e690;
+  --scrollbar-color: #00000010;
+  --ripple-bg: #00000030;
+  --checkbox-border: #00000040;
 }
 
 @theme inline {
@@ -34,8 +58,17 @@
   --color-subtext: var(--sub-text-color);
   --color-rect-bg: var(--rect-background-color);
   --color-rect-boder: var(--rect-border-color);
-  --color-hr: var(--line-color);
-  --text-header: 2rem;
+  --color-chatui-bg: var(--chatui-bg);
+  --color-actions-popup-hover: var(--actions-popup-hover);
+  --color-checkbox-hover: var(--checkbox-hover);
+  --color-inputs-ring-color: var(--inputs-ring-color);
+  --color-icons-color: var(--icons-color);
+  --color-app-inputs-placeholder: var(--app-inputs-placeholder);
+  --color-default-text-color: var(--default-text-color);
+  --color-input-icons-color: var(--input-icons-color);
+  --color-line-color: var(--line-color);
+  --color-ripple-bg: var(--ripple-bg);
+  --color-checkbox-border: var(--checkbox-border);
 }
 
 body {
@@ -84,7 +117,7 @@ input[type="number"] {
 
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  scrollbar-color: var(--scrollbar-color) transparent; 
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -101,8 +134,6 @@ input[type="number"] {
   border: 1px solid transparent;
 }
 
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background-color: #000;
+.text-myred {
+  color: #ed2424;
 }
-
-.text-myred { color: #ed2424; } 

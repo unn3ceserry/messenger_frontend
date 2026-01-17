@@ -29,7 +29,7 @@ const UserLanguageSettings = () => {
   }
 
   return (
-    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-white scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
@@ -42,10 +42,10 @@ const UserLanguageSettings = () => {
           title="settings.languageSettings.title"
           typeHeader="default"
         />
-        <hr className="w-full border-3 border-black/15" />
+        <hr className="w-full border-3 border-black/5" />
         <div className="flex flex-col items-center justify-center w-full p-2">
           <div className="w-full flex flex-col items-start justify-center gap-3">
-            <p className="text-white/50 text-md ml-5">
+            <p className="text-icons-color text-md ml-5">
               {t("settings.languageSettings.interfaceLanguage")}
             </p>
             <div className="w-full flex flex-col items-start justify-center gap-1">
