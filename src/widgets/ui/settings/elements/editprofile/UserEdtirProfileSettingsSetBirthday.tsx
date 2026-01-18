@@ -46,7 +46,7 @@ const UserEdtirProfileSettingsSetBirthday: FC<
       <div className="relative w-full" onClick={handleClickRef}>
         <div className="relative hover:bg-checkbox-hover rounded-2xl px-5 py-4 flex items-center justify-start gap-5 cursor-pointer w-full">
           <Gift className="text-icons-color" />
-          <p className="pointer-events-none">
+          <p className="pointer-events-none text-default-text-color">
             {birthday
               ? new Date(birthday).toLocaleDateString("ru-RU")
               : t("profile.birthday")}
