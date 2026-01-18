@@ -1,0 +1,1 @@
+export type {ContactsType, ContactType, CreatedContactType} from './types/contactsTypes'
