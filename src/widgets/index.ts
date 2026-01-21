@@ -15,7 +15,8 @@ export {
   UserPrivacyAndSecuritySettings,
   UserPrivacyAndSecuritySettingsBlockedUsers,
   UserPrivacyAndSecuritySettingsSetPassword,
-  UserPrivacyAndSecuritySettingsPrivacyEmail
+  UserPrivacyAndSecuritySettingsPrivacyEmail,
+  UserContacts
 } from "./ui";
 export {
   COMPLETE_CONFIG,

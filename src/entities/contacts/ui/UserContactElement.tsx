@@ -1,21 +1,21 @@
 "use client";
 
-import { userApi } from "@/entities";
+import { contactsApi, userApi } from "@/entities";
 import { RenderAvatarElement } from "@/shared";
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CircleOff } from "lucide-react";
+import { CircleMinus } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-interface IUserPrivacyAndSecuritySettingsBlockedUsersPain {
-  userId: string;
+interface Props {
+  username: string;
 }
 
-const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
-  IUserPrivacyAndSecuritySettingsBlockedUsersPain
-> = ({ userId }) => {
-  const { data, isLoading } = userApi.useGetUserDataQuery({id: userId});
-  const [unBlock] = userApi.useUnBlockUsersMutation();
+const UserContactElement: FC<Props> = ({ username }) => {
+  const { data, isLoading } = userApi.useGetUserDataQuery({
+    username: username,
+  });
+  const [deleteContact] = contactsApi.useDeleteContactMutation();
 
   const t = useTranslations();
 
@@ -26,7 +26,7 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
   });
 
   const handleClick = async () => {
-    await unBlock(userId);
+    await deleteContact(username);
   };
 
   {
@@ -35,6 +35,7 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
   if (isLoading || !data) {
     return null;
   }
+
   return (
     <div
       onContextMenu={(e) => {
@@ -48,7 +49,7 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
         setIsOpen((prev) => !prev);
       }}
       className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-5 text-default-text-color"
-    > 
+    >
       <RenderAvatarElement
         hasAvatar={!!data.avatars?.length}
         size={55}
@@ -68,14 +69,14 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2 }}
             style={{ top: position.y, left: position.x }}
-            className="fixed p-0.5 backdrop-blur-lg rounded-xl w-max shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)] z-50 cursor-pointer"
+            className="fixed p-0.5 backdrop-blur-lg rounded-xl w-max shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)] z-50 cursor-pointer text-myred"
           >
             <div
               onClick={handleClick}
               className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
             >
-              <CircleOff size={19} />
-              <p>{t("settings.privacyAndSecurity.unblock")}</p>
+              <CircleMinus size={19} />
+              <p>{t("contacts.removeContact")}</p>
             </div>
           </motion.div>
         )}
@@ -84,4 +85,4 @@ const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
   );
 };
 
-export default UserPrivacyAndSecuritySettingsBlockedUsersPain;
+export default UserContactElement;

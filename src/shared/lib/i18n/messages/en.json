@@ -138,6 +138,11 @@
       "installApp": "Install App"
     }
   },
+  "contacts": {
+    "title": "Contacts",
+    "removeContact": "Remove contact",
+    "contactsListEmpty": "You haven't contacts yet."
+  },
   "profile": {
     "number": "Phone",
     "email": "Email",
