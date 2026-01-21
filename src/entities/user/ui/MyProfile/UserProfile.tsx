@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "use-intl";
 import { RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
 import { UserSettingsShortInfo } from "@/widgets";
-import UserProfileLastAvatars from "./elements/userprofile/UserProfileLastAvatars";
+import UserProfileLastAvatars from "./MyProfile/UserProfileLastAvatars";
 import { UserType } from "../model";
 import { FC } from "react";
 

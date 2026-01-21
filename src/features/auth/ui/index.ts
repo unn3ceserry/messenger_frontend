@@ -1,2 +1,2 @@
-export {default as LoginFormNumber} from './LoginFormNumber'
-export {default as RegisterFormNumber} from './RegisterFormNumber'
+export {default as LoginFormNumber} from './SignIn/LoginFormNumber'
+export {default as RegisterFormNumber} from './SignUp/RegisterFormNumber'

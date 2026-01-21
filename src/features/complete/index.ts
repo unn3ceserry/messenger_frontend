@@ -1,2 +1,2 @@
 export {CompleteModal, CompletePane} from './ui'
-export {handleSetCompleteData} from './lib'
+export {handleSetCompleteData} from './model'
