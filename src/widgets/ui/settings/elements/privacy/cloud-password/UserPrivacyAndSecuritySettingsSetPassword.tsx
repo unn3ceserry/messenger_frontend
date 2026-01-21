@@ -36,7 +36,7 @@ const UserPrivacyAndSecuritySettingsSetPassword = () => {
               type="password"
               value={passwords?.password}
               placeholder={t(
-                "settings.privacyAndSecurity.cloudPasswordInputPlaceholder"
+                "settings.privacyAndSecurity.cloudPasswordInputPlaceholder",
               )}
               onChange={(e) =>
                 setPasswords((prev) => ({ ...prev, password: e.target.value }))
@@ -46,7 +46,7 @@ const UserPrivacyAndSecuritySettingsSetPassword = () => {
               type="password"
               value={passwords?.confirmPassword}
               placeholder={t(
-                "settings.privacyAndSecurity.cloudConfirmPasswordInputPlaceholder"
+                "settings.privacyAndSecurity.cloudConfirmPasswordInputPlaceholder",
               )}
               onChange={(e) =>
                 setPasswords((prev) => ({
@@ -55,16 +55,17 @@ const UserPrivacyAndSecuritySettingsSetPassword = () => {
                 }))
               }
             />
-            <Button
+            <button
               onClick={async () =>
                 await handleSetPassword({
                   confirmPassword: passwords.confirmPassword,
                   password: passwords.password,
                 })
               }
-              label={t("settings.privacyAndSecurity.cloudPasswordCreate")}
-              className="w-full rounded-2xl py-2"
-            />
+              className="flex w-full bg-accent/80 p-3 rounded-xl py-3 cursor-pointer hover:opacity-80 duration-500 text-[.9rem] items-center justify-center border border-white/20"
+            >
+              <p>{t("settings.privacyAndSecurity.cloudPasswordCreate")}</p>
+            </button>
             <p className="text-white/50 text-[.8rem]">
               {t("settings.privacyAndSecurity.createCloudPasswordSubtext")}
             </p>

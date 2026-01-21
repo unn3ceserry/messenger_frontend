@@ -5,7 +5,6 @@ import { AppInput, Button } from "@/shared";
 import { useState } from "react";
 import { handleSetEmail } from "@/entities";
 
-
 const UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail = () => {
   const t = useTranslations();
   const [email, setEmail] = useState<string>("");
@@ -23,11 +22,12 @@ const UserPrivacyAndSecuritySettingsPrivacyEmailSetEmail = () => {
         placeholder={t("settings.privacyAndSecurity.linkEmailInputPlaceholder")}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <Button
+      <button
         type="submit"
-        label={t("settings.privacyAndSecurity.linkEmailToAccount")}
-        className="w-full rounded-2xl py-2"
-      />
+        className="flex w-full bg-accent/80 p-3 rounded-xl py-3 cursor-pointer hover:opacity-80 duration-500 text-[.9rem] items-center justify-center border border-white/20"
+      >
+        <p>{t("settings.privacyAndSecurity.linkEmailToAccount")}</p>
+      </button>
       <p className="text-icons-color text-[.8rem]">
         {t("settings.privacyAndSecurity.linkEmailSubtext")}
       </p>
