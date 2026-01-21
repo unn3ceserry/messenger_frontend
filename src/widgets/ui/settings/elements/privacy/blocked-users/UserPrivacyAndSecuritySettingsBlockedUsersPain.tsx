@@ -14,7 +14,7 @@ interface IUserPrivacyAndSecuritySettingsBlockedUsersPain {
 const UserPrivacyAndSecuritySettingsBlockedUsersPain: FC<
   IUserPrivacyAndSecuritySettingsBlockedUsersPain
 > = ({ userId }) => {
-  const { data, isLoading } = userApi.useGetUserDataQuery(userId);
+  const { data, isLoading } = userApi.useGetUserDataQuery({id: userId});
   const [unBlock] = userApi.useUnBlockUsersMutation();
 
   const t = useTranslations();

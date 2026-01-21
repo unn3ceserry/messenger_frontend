@@ -134,8 +134,8 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: ["users"],
     }),
     // USER DATA REQUESTS
-    getUserData: builder.query<Partial<UserType>, string>({
-      query: (id) => `/account/get-user-data?id=${id}`,
+    getUserData: builder.query<Partial<UserType>, {id?: string, username?: string}>({
+      query: ({id, username}) => `/account/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
       providesTags: ["users"],
     }),
     // AVATAR REQUESTS
