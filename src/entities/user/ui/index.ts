@@ -1,2 +1,2 @@
-export {default as ActionsPopup} from './ActionsPopup'
-export {default as UserProfile} from './UserProfile'
+export {default as ActionsPopup} from './ActionsPopup/ActionsPopup'
+export {default as UserProfile} from './MyProfile/UserProfile'

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { useTranslations } from "use-intl";
 import { RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
 import { UserSettingsShortInfo } from "@/widgets";
-import UserProfileLastAvatars from "./MyProfile/UserProfileLastAvatars";
-import { UserType } from "../model";
 import { FC } from "react";
+import { UserType } from "../../model";
+import UserProfileLastAvatars from "./UserProfileLastAvatars";
 
 interface IUserProfile {
   data: UserType
