@@ -2,7 +2,6 @@
 
 import { Redo } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { Dispatch, FC, ReactNode, SetStateAction } from "react";
 
 interface ICompletePane {

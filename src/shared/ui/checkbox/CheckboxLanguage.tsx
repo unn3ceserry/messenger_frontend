@@ -1,6 +1,6 @@
 "use client";
 
-import { createRipple } from "@/shared/lib";
+import { createRipple } from "@/shared/model";
 import { FC } from "react";
 
 interface ICheckboxLanguage {

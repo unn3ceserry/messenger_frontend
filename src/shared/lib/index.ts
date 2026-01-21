@@ -10,4 +10,3 @@ export {
   type TLocales,
 } from "./i18n";
 export {isErrorWithMessageAndType, isFetchBaseQueryError, isErrorWithMessage} from './utils'
-export {createRipple} from './handlers/animationRipple'

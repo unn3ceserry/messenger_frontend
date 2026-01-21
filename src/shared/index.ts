@@ -10,7 +10,6 @@ export {
   isErrorWithMessageAndType,
   isFetchBaseQueryError,
   isErrorWithMessage,
-  createRipple,
   i18nPattern,
   type TLocales,
 } from "./lib";
@@ -33,3 +32,4 @@ export {
   CheckboxDefault,
 } from "./ui";
 export {modalContainerDefault, modalDefault} from './config'
+export {createRipple} from './model'

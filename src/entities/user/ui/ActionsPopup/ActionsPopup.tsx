@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ActionsPopupElement from "./elements/actionspopup/ActionsPopupElement";
-import { userActionsElements } from "../config";
 import { useAppDispatch } from "@/app";
-import { openComponent, UserType } from "../model";
 import { configApp } from "@/app";
 import { RenderAvatarElement } from "@/shared";
 import { FC } from "react";
+import { userActionsElements } from "../../config";
+import { openComponent, UserType } from "../../model";
+import ActionsPopupElement from "./ActionsPopupElement";
 
 interface IActionsPopup {
   data: UserType
