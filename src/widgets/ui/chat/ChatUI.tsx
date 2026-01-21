@@ -23,6 +23,7 @@ import UserPrivacyAndSecuritySettingsBlockedUsers from "../settings/elements/pri
 import UserPrivacyAndSecuritySettingsSetPassword from "../settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword";
 import UserPrivacyAndSecuritySettingsPrivacyEmail from "../settings/elements/privacy/email/UserPrivacyAndSecuritySettingsPrivacyEmail";
 import UserPrivacyAndSecuritySettingsPrivacyVisibility from "../settings/elements/privacy/visibility/UserPrivacyAndSecuritySettingsPrivacyVisibility";
+import UserContacts from "../contacts/UserContacts";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -71,6 +72,8 @@ const ChatUI = () => {
         <AnimatePresence>
           {(() => {
             switch (whoIsOpenWithUiComponents) {
+              case "userContacts":
+                return <UserContacts />;
               case "userSettingsOther":
                 return <UserOtherSettings />;
               case "userSettingsLanguage":

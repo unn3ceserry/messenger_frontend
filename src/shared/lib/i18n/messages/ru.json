@@ -136,6 +136,11 @@
       "installApp": "Установить приложение"
     }
   },
+  "contacts": {
+    "title": "Контакты",
+    "removeContact": "Удалить контакт",
+    "contactsListEmpty": "Список контактов пуст."
+  },
   "profile": {
     "number": "Номер",
     "email": "Почта",
