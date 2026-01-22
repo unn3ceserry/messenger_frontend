@@ -2,12 +2,12 @@ export type {
   FindUserType,
   UserCompleteData,
   UserType,
-  IIsOpenUIComponent
+  IIsOpenUIComponent,
 } from "./model";
 export { WhoCanSeen, VisibilityField } from "./model";
 
 export { userApi } from "./api";
-export { ActionsPopup, UserProfile } from "./ui";
+export { ActionsPopup, UserProfile, OtherUsersProfile } from "./ui";
 export { userActionsElements } from "./config";
 export {
   userCompleteDataReducer,
@@ -23,5 +23,9 @@ export {
   handleSetPassword,
   handleSetEmail,
   handleChangeEmail,
-  WhoCanSeeLabels
+  WhoCanSeeLabels,
+  setIsOpenOtherUsersProfile,
+  getOtherProfileStatus,
+  usersProfileStastusReducer,
+  usersProfileStastusSlice,
 } from "./model";

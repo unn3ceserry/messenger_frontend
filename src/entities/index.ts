@@ -29,7 +29,12 @@ export {
   type IIsOpenUIComponent,
   handleSetEmail,
   handleChangeEmail,
-  WhoCanSeeLabels
+  WhoCanSeeLabels,
+  OtherUsersProfile,
+  setIsOpenOtherUsersProfile,
+  getOtherProfileStatus,
+  usersProfileStastusReducer,
+  usersProfileStastusSlice,
 } from "./user";
 export {
   userThemeSlice,
@@ -40,5 +45,5 @@ export {
 } from "./themes";
 export { sessionApi } from "./session";
 export { LeftSideBarSearch } from "./chats";
-export {UserContactElement, contactsApi} from './contacts'
-export type {ContactType, ContactsType, CreatedContactType} from './contacts'
+export { UserContactElement, contactsApi } from "./contacts";
+export type { ContactType, ContactsType, CreatedContactType } from "./contacts";

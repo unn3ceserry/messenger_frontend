@@ -1,4 +1,4 @@
-import { userCompleteDataReducer, userThemeReducer, userUiReducer  } from "@/entities";
+import { userCompleteDataReducer, usersProfileStastusReducer, userThemeReducer, userUiReducer  } from "@/entities";
 import { useResizingReducer } from "@/features";
 import { mainApi } from "@/shared";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -23,6 +23,7 @@ import {
 const reducers = combineReducers({
   userUiOpenComponent: userUiReducer,
   userCompleteData: userCompleteDataReducer,
+  usersProfileStastus: usersProfileStastusReducer,
   userTheme: userThemeReducer,
   resizing: useResizingReducer,
   [mainApi.reducerPath]: mainApi.reducer,
