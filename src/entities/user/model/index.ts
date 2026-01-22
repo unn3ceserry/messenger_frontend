@@ -4,7 +4,11 @@ export type {
   UserType,
 } from "./types/userTypes";
 
-export { WhoCanSeen, VisibilityField, WhoCanSeeLabels } from "./types/userTypes";
+export {
+  WhoCanSeen,
+  VisibilityField,
+  WhoCanSeeLabels,
+} from "./types/userTypes";
 
 export {
   userCompleteDataReducer,
@@ -19,10 +23,17 @@ export {
   openComponent,
   selectOpenComponent,
   closeAll,
-  type IIsOpenUIComponent
+  type IIsOpenUIComponent,
 } from "./store/userUiSlice";
 
+export {
+  setIsOpenOtherUsersProfile,
+  getOtherProfileStatus,
+  usersProfileStastusReducer,
+  usersProfileStastusSlice,
+} from "./store/usersProfileStastusSlice";
+
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
-export {handleSetPassword} from './handlers/handleSetPassword'
-export {handleSetEmail} from './handlers/handleSetEmail'
-export {handleChangeEmail} from './handlers/handleChangeEmail'
+export { handleSetPassword } from "./handlers/handleSetPassword";
+export { handleSetEmail } from "./handlers/handleSetEmail";
+export { handleChangeEmail } from "./handlers/handleChangeEmail";
