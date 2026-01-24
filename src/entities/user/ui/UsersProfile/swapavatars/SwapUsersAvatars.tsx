@@ -82,14 +82,24 @@ const SwapUsersAvatars: FC<Props> = ({
           </motion.div>
         </motion.div>
       ) : (
-        <div
-          style={{ width: size }}
-          className="relative flex flex-col items-center justify-center mx-auto pt-4"
-        >
+        <div className="flex w-full flex-col items-center justify-center pt-4 gap-3">
           <div
             style={{ width: size }}
-            className="aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"
-          ></div>
+            className="relative flex flex-col items-center justify-center mx-auto"
+          >
+            <div
+              style={{ width: size }}
+              className="aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"
+            ></div>
+          </div>
+          <div
+            className={`flex flex-col justify-center items-center relative`}
+          >
+            <p className="text-xl">
+              {firstName} {lastName}
+            </p>
+            <p className="text-icons-color text-[.85rem]">{t(status)}</p>
+          </div>
         </div>
       )}
     </div>

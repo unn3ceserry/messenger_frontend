@@ -18,7 +18,6 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
     username: username,
   });
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   {
     /* сделать тут лоадер в будущем */
   }
