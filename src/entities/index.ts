@@ -47,5 +47,5 @@ export {
 } from "./themes";
 export { sessionApi } from "./session";
 export { LeftSideBarSearch } from "./chats";
-export { UserContactElement, contactsApi } from "./contacts";
+export { UserContactElement, contactsApi, AddContactModal, handleAddContact } from "./contacts";
 export type { ContactType, ContactsType, CreatedContactType } from "./contacts";

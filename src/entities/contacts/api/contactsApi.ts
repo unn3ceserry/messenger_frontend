@@ -7,11 +7,11 @@ export const contactsApi = mainApi.injectEndpoints({
       query: () => "/contacts/get-contacts",
       providesTags: ["contacts"],
     }),
-    addToContact: builder.mutation<CreatedContactType, string>({
-      query: (username) => ({
+    addToContact: builder.mutation<CreatedContactType, {username: string, firstName?: string, lastName?: string}>({
+      query: ({username, firstName, lastName}) => ({
         url: "/contacts/add-to-contact",
         method: "POST",
-        body: { username },
+        body: { username, firstName, lastName },
       }),
       invalidatesTags: ["contacts"],
     }),
