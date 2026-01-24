@@ -13,7 +13,6 @@ type Props = {
 };
 
 const OtherUsersProfile: FC<Props> = ({ username }) => {
-  const t = useTranslations();
 
   const { data, isLoading } = userApi.useGetUserDataQuery({
     username: username,
@@ -34,7 +33,7 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
       exit={{ x: "100%" }}
       transition={{ duration: 0.25 }}
       layout
-      className="fixed right-0 top-0 z-12312312123 h-screen max-w-100 w-full bg-chatui-bg overflow-y-auto text-default-text-color scrollbar-thin otherprofile:border-l border-line-color shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)]"
+      className="fixed right-0 top-0 z-12313 h-screen max-w-100 w-full bg-chatui-bg overflow-y-auto text-default-text-color scrollbar-thin otherprofile:border-l border-line-color shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)]"
     >
       <div className="w-full flex flex-col items-center justify-start">
         <OtherUsersProfileHeader />
