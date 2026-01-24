@@ -3,14 +3,15 @@
 import { useAppDispatch } from "@/app";
 import { UserRoundPen, UserRoundPlus, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { openComponent, closeOtherProfile, userApi } from "@/entities";
-import { FC } from "react";
+import { closeOtherProfile, userApi } from "@/entities";
+import { Dispatch, FC, SetStateAction } from "react";
 
 interface Props {
   username: string;
+  setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const OtherUsersProfileHeader: FC<Props> = ({ username }) => {
+const OtherUsersProfileHeader: FC<Props> = ({ username, setIsOpen }) => {
   // actions
   const dispatch = useAppDispatch();
 
@@ -39,9 +40,9 @@ const OtherUsersProfileHeader: FC<Props> = ({ username }) => {
       </div>
 
       <div className="flex gap-1 items-center justify-center relative">
-        {/* edit-profile */}
+        {/* contact actions */}
         <div
-          onClick={() => dispatch(openComponent("editProfile"))}
+          onClick={() => data ? setIsOpen(true) : setIsOpen(true)}
           className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
         >
           {data ? <UserRoundPen size={22} /> : <UserRoundPlus size={22} />}
