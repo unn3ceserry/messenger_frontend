@@ -154,6 +154,9 @@
     "title": "My Profile",
     "lastAvatars": "Last avatars"
   },
+  "otherProfile": {
+    "title": "User Info"
+  },
   "settings": {
     "logout": "Log Out",
     "generalSettings": {

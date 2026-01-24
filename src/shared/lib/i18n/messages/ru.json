@@ -152,6 +152,9 @@
     "title": "Мой профиль",
     "lastAvatars": "Последние фото профиля"
   },
+  "otherProfile": {
+    "title": "Информация о пользователе"
+  },
   "settings": {
     "logout": "Выйти",
     "generalSettings": {

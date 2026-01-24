@@ -31,6 +31,7 @@ export {
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,
+  closeOtherProfile
 } from "./store/usersProfileStastusSlice";
 
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";

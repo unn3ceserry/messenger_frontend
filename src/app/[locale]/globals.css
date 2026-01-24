@@ -21,7 +21,7 @@
   --input-icons-color: #818181;
   --app-inputs-placeholder: #ffffff40;
   --default-text-color: #ffffff;
-  --line-color: #00000060;
+  --line-color: #ffffff20;
   --scrollbar-color: #ffffff10;
   --ripple-bg: #ffffff30;
   --checkbox-border: #ffffff40;
@@ -68,6 +68,7 @@
   --color-line-color: var(--line-color);
   --color-ripple-bg: var(--ripple-bg);
   --color-checkbox-border: var(--checkbox-border);
+  --breakpoint-otherprofile: 25rem;
 }
 
 body {
