@@ -158,6 +158,16 @@ export const userApi = mainApi.injectEndpoints({
       },
       invalidatesTags: ["users"],
     }),
+    removeAvatar: builder.mutation<boolean, number>({
+      query: (index) => {
+        return {
+          method: "POST",
+          body: { index },
+          url: "/account/remove-avatar",
+        };
+      },
+      invalidatesTags: ["users"],
+    }),
   }),
   overrideExisting: true,
 });

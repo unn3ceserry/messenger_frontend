@@ -30,7 +30,7 @@ const SwapUsersAvatars: FC<Props> = ({
     avatars ? avatars.length - 1 : 0,
   );
   return (
-    <div className={`flex w-full flex-col ${isFull ? '' : 'pt-4'}`}>
+    <div className={`flex w-full flex-col ${isFull ? "" : "pt-4"}`}>
       {hasAvatar ? (
         <motion.div
           className="w-full flex flex-col justify-center relative gap-3"
@@ -83,9 +83,14 @@ const SwapUsersAvatars: FC<Props> = ({
         </motion.div>
       ) : (
         <div
-          className="flex flex-col items-center justify-center aspect-square bg-linear-190 from-accent to-accent/20 w-full rounded-full mx-auto pt-4"
           style={{ width: size }}
-        ></div>
+          className="relative flex flex-col items-center justify-center mx-auto pt-4"
+        >
+          <div
+            style={{ width: size }}
+            className="aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"
+          ></div>
+        </div>
       )}
     </div>
   );

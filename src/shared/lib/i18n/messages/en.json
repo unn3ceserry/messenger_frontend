@@ -152,7 +152,8 @@
     "noBioYet": "No bio yet.",
     "username": "Username",
     "title": "My Profile",
-    "lastAvatars": "Last avatars"
+    "lastAvatars": "Last avatars",
+    "removeAvatar": "Remove"
   },
   "otherProfile": {
     "title": "User Info"

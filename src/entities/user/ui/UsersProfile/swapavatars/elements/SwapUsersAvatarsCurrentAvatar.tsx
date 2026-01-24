@@ -12,7 +12,15 @@ interface Props {
   avatars?: string[]
 }
 
-const SwapUsersAvatarsCurrentAvatar: FC<Props> = ({size, avatars, currentImage, isFull, setIsFull}) => {
+const SwapUsersAvatarsCurrentAvatar: FC<Props> = ({
+  size,
+  avatars,
+  currentImage,
+  isFull,
+  setIsFull,
+}) => {
+  const avatarSrc = avatars?.[currentImage];
+
   return (
     <motion.div
       onClick={() => setIsFull((prev) => !prev)}
@@ -26,13 +34,15 @@ const SwapUsersAvatarsCurrentAvatar: FC<Props> = ({size, avatars, currentImage, 
       layout
       transition={{ duration: 0.2 }}
     >
-      <Image
-        src={avatars ? avatars[currentImage] : ""}
-        alt="avatar"
-        width={size}
-        height={size}
-        className="aspect-square object-cover w-full h-full"
-      />
+      {typeof avatarSrc === "string" && avatarSrc.length > 0 && (
+        <Image
+          src={avatarSrc}
+          alt="avatar"
+          width={size}
+          height={size}
+          className="aspect-square object-cover w-full h-full"
+        />
+      )}
     </motion.div>
   );
 };
