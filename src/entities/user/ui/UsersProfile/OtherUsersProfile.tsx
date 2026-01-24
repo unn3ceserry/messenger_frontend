@@ -54,6 +54,7 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
             <UserSettingsShortInfo
               number={data.number}
               username={data.username}
+              bio={data.bio}
               email={data.email}
             />
 

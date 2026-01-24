@@ -51,6 +51,7 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
           <UserSettingsShortInfo
             number={data.number}
             username={data.username}
+            bio={data.bio ?? 'd'}
             email={data.email}
           />
 

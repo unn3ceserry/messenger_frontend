@@ -1,20 +1,22 @@
 "use client";
 
 import { createRipple } from "@/shared";
-import { AtSign, Mail, Phone } from "lucide-react";
+import { AtSign, Info, Mail, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { FC, MouseEvent, useRef, useState } from "react";
+import { FC, useState } from "react";
 
 interface IUserSettingsShortInfo {
-  number: string | null | undefined;
-  username: string | null | undefined;
-  email: string | null | undefined;
+  number?: string;
+  username?: string;
+  bio?: string | null;
+  email?: string | null;
 }
 
 const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
   number,
   username,
   email,
+  bio
 }) => {
   const t = useTranslations();
 
@@ -28,7 +30,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
   };
 
   const [whoCopied, setWhoCopied] = useState<
-    null | "number" | "email" | "username"
+    null | "number" | "email" | "username" | "bio"
   >(null);
 
   const elements = [
@@ -42,6 +44,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
       icon: <AtSign className="text-icons-color" />,
       data: username,
     },
+    { title: "bio", icon: <Info className="text-icons-color" />, data: bio },
     { title: "email", icon: <Mail className="text-icons-color" />, data: email },
   ];
 
@@ -61,7 +64,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
             }`}
           >
             {el.icon}
-            <div className="flex flex-col items-start justify-center">
+            <div className="flex flex-col items-start justify-center text-[.98rem]">
               <p>
                 {el.title === "number"
                   ? "+"
@@ -70,7 +73,7 @@ const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({
                   : ""}
                 {el.data}
               </p>
-              <p className="text-[.95rem] text-icons-color">
+              <p className="text-[.9rem] text-icons-color">
                 {t(`profile.${el.title}`)}
               </p>
             </div>
