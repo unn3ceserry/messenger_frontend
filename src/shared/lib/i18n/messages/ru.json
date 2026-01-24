@@ -215,6 +215,7 @@
       }
     },
     "editProfileSettings": {
+      "maxBioChars": "максимам 70 символов",
       "title": "Редактировать профиль",
       "inputFirstNamePlaceholder": "Имя (обязательно)",
       "inputLastNamePlaceholder": "Фамилия (обязательно)",
