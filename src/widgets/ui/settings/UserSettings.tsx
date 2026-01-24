@@ -8,18 +8,21 @@ import { useRouter } from "next/navigation";
 import { ReceiptText } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "use-intl";
-import { createRipple, RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
+import {
+  createRipple,
+  RenderAvatarElement,
+  UserSettingsHeaderConstructor,
+} from "@/shared";
 import { FC } from "react";
 
 interface IUserSettings {
-  data: UserType
+  data: UserType;
 }
 
-const UserSettings: FC<IUserSettings> = ({data}) => {
+const UserSettings: FC<IUserSettings> = ({ data }) => {
   const router = useRouter();
   const t = useTranslations();
   const locale = useLocale();
-
 
   return (
     <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
@@ -30,7 +33,11 @@ const UserSettings: FC<IUserSettings> = ({data}) => {
         transition={{ duration: 0.2 }}
         className="w-full flex flex-col items-center justify-start"
       >
-        <UserSettingsHeaderConstructor backUI={null} title="chat.actionsPopup.settings" typeHeader="settings" />
+        <UserSettingsHeaderConstructor
+          backUI={null}
+          title="chat.actionsPopup.settings"
+          typeHeader="settings"
+        />
         {/* avatar & names */}
         <div className="w-full flex flex-col items-center justify-center p-2 gap-3">
           <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3">
@@ -52,6 +59,7 @@ const UserSettings: FC<IUserSettings> = ({data}) => {
           <UserSettingsShortInfo
             number={data.number}
             username={data.username}
+            bio={data.bio}
             email={data.email}
           />
           <hr className="w-full border-3 border-black/5" />
