@@ -94,7 +94,7 @@ export const userApi = mainApi.injectEndpoints({
           body: { firstname, lastname },
         }),
         invalidatesTags: ["sessions"],
-      }
+      },
     ),
     changeUsername: builder.mutation<boolean, string>({
       query: (username) => ({
@@ -102,7 +102,7 @@ export const userApi = mainApi.injectEndpoints({
         method: "PATCH",
         body: { username },
       }),
-      invalidatesTags: ['sessions'],
+      invalidatesTags: ["sessions"],
     }),
     // BLOCK USERS REQUESTS
     blockUsers: builder.mutation<boolean, string>({
@@ -111,7 +111,7 @@ export const userApi = mainApi.injectEndpoints({
         method: "POST",
         body: { id },
       }),
-      invalidatesTags: ['sessions'],
+      invalidatesTags: ["sessions"],
     }),
     unBlockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
@@ -119,7 +119,7 @@ export const userApi = mainApi.injectEndpoints({
         method: "POST",
         body: { id },
       }),
-      invalidatesTags: ['sessions'],
+      invalidatesTags: ["sessions"],
     }),
     // VISIBILITY REQUETS
     setVisibility: builder.mutation<
@@ -134,9 +134,16 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: ["users"],
     }),
     // USER DATA REQUESTS
-    getUserData: builder.query<Partial<UserType>, {id?: string, username?: string}>({
-      query: ({id, username}) => `/account/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
+    getUserData: builder.query<
+      Partial<UserType>,
+      { id?: string; username?: string }
+    >({
+      query: ({ id, username }) =>
+        `/account/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
       providesTags: ["users"],
+    }),
+    isMyContact: builder.query<boolean, string>({
+      query: (username) => `/account/is-my-contact?username=${username}`,
     }),
     // AVATAR REQUESTS
     featAvatar: builder.mutation<{ url: string }, File>({
@@ -146,10 +153,10 @@ export const userApi = mainApi.injectEndpoints({
         return {
           method: "POST",
           body: formData,
-          url: '/account/feat-avatar'
+          url: "/account/feat-avatar",
         };
       },
-      invalidatesTags: ['users']
+      invalidatesTags: ["users"],
     }),
   }),
   overrideExisting: true,

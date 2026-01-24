@@ -1,18 +1,27 @@
 "use client";
 
 import { useAppDispatch } from "@/app";
-import { Pencil, X } from "lucide-react";
+import { UserRoundPen, UserRoundPlus, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import {
-  openComponent,
-   closeOtherProfile,
-} from "@/entities";
+import { openComponent, closeOtherProfile, userApi } from "@/entities";
+import { FC } from "react";
 
-const OtherUsersProfileHeader = () => {
+interface Props {
+  username: string;
+}
+
+const OtherUsersProfileHeader: FC<Props> = ({ username }) => {
   // actions
   const dispatch = useAppDispatch();
 
   const t = useTranslations();
+  const { data, isLoading } = userApi.useIsMyContactQuery(username);
+  {
+    /* сделать тут лоадер в будущем */
+  }
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <header className="flex w-full justify-between items-center text-icons-color sticky top-0 bg-chatui-bg z-123123123 p-2 px-3">
@@ -35,7 +44,7 @@ const OtherUsersProfileHeader = () => {
           onClick={() => dispatch(openComponent("editProfile"))}
           className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
         >
-          <Pencil size={22} />
+          {data ? <UserRoundPen size={22} /> : <UserRoundPlus size={22} />}
         </div>
       </div>
     </header>
