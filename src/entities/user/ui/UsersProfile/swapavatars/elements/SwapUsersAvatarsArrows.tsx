@@ -31,7 +31,7 @@ const SwapUsersAvatarsArrows: FC<Props> = ({avatars, currentImage, setCurrentIma
   return (
     <>
       <motion.div
-        className="absolute flex justify-center items-center left-2"
+        className="absolute flex justify-center items-center left-2 text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -43,7 +43,7 @@ const SwapUsersAvatarsArrows: FC<Props> = ({avatars, currentImage, setCurrentIma
         />
       </motion.div>
       <motion.div
-        className="absolute flex justify-center items-center right-2"
+        className="absolute flex justify-center items-center right-2 text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}

@@ -51,17 +51,9 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
           <UserSettingsShortInfo
             number={data.number}
             username={data.username}
+            bio={data.bio}
             email={data.email}
           />
-
-          <hr className="w-full border-3 border-black/5" />
-
-          <div className="flex flex-col items-start justify-center text-start px-2 gap-1">
-            <h2 className="text-icons-color text-[1.1rem]">{t("profile.bio")}:</h2>
-            <p className="text-[.9rem]">
-              {data.bio ? data.bio : t("profile.noBioYet")}
-            </p>
-          </div>
 
           <hr className="w-full border-3 border-black/5" />
 
