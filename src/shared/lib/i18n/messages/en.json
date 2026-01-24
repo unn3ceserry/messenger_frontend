@@ -217,6 +217,7 @@
       }
     },
     "editProfileSettings": {
+      "maxBioChars": "max 70 chars",
       "title": "Edit Profile",
       "inputFirstNamePlaceholder": "First name (required)",
       "inputLastNamePlaceholder": "Last name (required)",

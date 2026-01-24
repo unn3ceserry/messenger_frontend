@@ -25,7 +25,7 @@ const UserSettingsCategories = () => {
           <div className="flex items-center justify-between w-full">
             <p>{t(el.title)}</p>
             {el.isLanguage && (
-              <p className="text-white/50 text-[.9rem]">
+              <p className="text-icons-color text-[.9rem]">
                 {i18nPattern(locale as TLocales).orig}
               </p>
             )}

@@ -16,7 +16,12 @@ const UserEdtirProfileSettingsEditBio: FC<IUserEdtirProfileSettingsEditBio> = ({
 
   return (
     <div className="flex flex-col items-start justify-center w-full px-5 gap-3">
-      <p className="text-icons-color">{t("profile.bio")}</p>
+      <p className="flex items-center justify-between w-full text-icons-color">
+        {t("profile.bio")}{" "}
+        <span className="text-[.8rem]">
+          ({t("settings.editProfileSettings.maxBioChars")})
+        </span>
+      </p>
       <div className="flex flex-col items-center justify-center gap-5">
         <textarea
           className="resize-none outline-0 block p-3 px-5 rounded-xl ring-2 ring-inputs-ring-color focus:ring-accent duration-300 w-full h-20 text-default-text-color placeholder:text-icons-color text-[.9rem]"
