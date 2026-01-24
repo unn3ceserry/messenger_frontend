@@ -35,6 +35,8 @@ export {
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,
+  closeOtherProfile,
+  framerSwtihAvatarsOpacityConfig
 } from "./user";
 export {
   userThemeSlice,

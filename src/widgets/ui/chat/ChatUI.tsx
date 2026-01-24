@@ -3,7 +3,9 @@
 import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
 import {
+  getOtherProfileStatus,
   openComponent,
+  OtherUsersProfile,
   selectOpenComponent,
   userApi,
   UserProfile,
@@ -33,6 +35,7 @@ const ChatUI = () => {
 
   // getters
   const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
+  const isOpenOtherOsersProfile = useAppSelector(getOtherProfileStatus);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
 
   // setters
@@ -64,7 +67,7 @@ const ChatUI = () => {
   }
 
   return (
-    <>
+    <div className="flex w-full items-center justify-between h-screen relative">
       <div
         style={{ width }}
         className="flex items-center justify-center w-full h-screen bg-chatui-bg relative"
@@ -160,7 +163,12 @@ const ChatUI = () => {
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
-    </>
+      <AnimatePresence>
+        {isOpenOtherOsersProfile.status && (
+          <OtherUsersProfile username={isOpenOtherOsersProfile.username} />
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl";
 import { FC, MouseEvent, useRef, useState } from "react";
 
 interface IUserSettingsShortInfo {
-  number: string;
-  username: string;
-  email: string | null;
+  number: string | null | undefined;
+  username: string | null | undefined;
+  email: string | null | undefined;
 }
 
 const UserSettingsShortInfo: FC<IUserSettingsShortInfo> = ({

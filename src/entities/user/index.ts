@@ -8,7 +8,7 @@ export { WhoCanSeen, VisibilityField } from "./model";
 
 export { userApi } from "./api";
 export { ActionsPopup, UserProfile, OtherUsersProfile } from "./ui";
-export { userActionsElements } from "./config";
+export { userActionsElements, framerSwtihAvatarsOpacityConfig } from "./config";
 export {
   userCompleteDataReducer,
   setCompleteData,
@@ -28,4 +28,5 @@ export {
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,
+  closeOtherProfile,
 } from "./model";
