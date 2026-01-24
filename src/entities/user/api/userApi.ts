@@ -142,7 +142,7 @@ export const userApi = mainApi.injectEndpoints({
         `/account/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
       providesTags: ["users"],
     }),
-    isMyContact: builder.query<Partial<UserType>, string>({
+    isMyContact: builder.query<boolean, string>({
       query: (username) => `/account/is-my-contact?username=${username}`,
     }),
     // AVATAR REQUESTS
