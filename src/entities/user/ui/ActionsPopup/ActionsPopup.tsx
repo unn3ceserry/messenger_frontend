@@ -6,7 +6,7 @@ import { configApp } from "@/app";
 import { RenderAvatarElement } from "@/shared";
 import { FC } from "react";
 import { userActionsElements } from "../../config";
-import { openComponent, setIsOpenOtherUsersProfile, UserType } from "../../model";
+import { setOpenComponentOtherUsersProfile, UserType } from "../../model";
 import ActionsPopupElement from "./ActionsPopupElement";
 
 interface IActionsPopup {
@@ -28,7 +28,7 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
     >
       {/* user short info */}
       <div
-        onClick={() => dispatch(setIsOpenOtherUsersProfile({isOpen: true, username: data.username}))}
+        onClick={() => dispatch(setOpenComponentOtherUsersProfile({openComponent: "userProfile", username: data.username}))}
         className="flex items-center w-full gap-3 cursor-pointer hover:bg-actions-popup-hover p-2 rounded-[10px] duration-300"
       >
         <RenderAvatarElement

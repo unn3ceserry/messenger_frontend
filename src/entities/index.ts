@@ -31,7 +31,7 @@ export {
   handleChangeEmail,
   WhoCanSeeLabels,
   OtherUsersProfile,
-  setIsOpenOtherUsersProfile,
+  setOpenComponentOtherUsersProfile,
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,
@@ -47,5 +47,5 @@ export {
 } from "./themes";
 export { sessionApi } from "./session";
 export { LeftSideBarSearch } from "./chats";
-export { UserContactElement, contactsApi, AddContactModal, handleAddContact } from "./contacts";
+export { UserContactElement, contactsApi, AddContactModal, handleAddContact, EditContact, handleEditContact } from "./contacts";
 export type { ContactType, ContactsType, CreatedContactType } from "./contacts";

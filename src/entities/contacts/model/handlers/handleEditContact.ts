@@ -7,7 +7,7 @@ import {
 } from "@/shared";
 import { Dispatch, SetStateAction } from "react";
 
-export const handleAddContact = async ({
+export const handleEditContact = async ({
   firstName,
   lastName,
   username,
@@ -21,7 +21,7 @@ export const handleAddContact = async ({
   try {
     await makeStore
       .dispatch(
-        contactsApi.endpoints.addToContact.initiate({
+        contactsApi.endpoints.editContact.initiate({
           username,
           firstName,
           lastName,

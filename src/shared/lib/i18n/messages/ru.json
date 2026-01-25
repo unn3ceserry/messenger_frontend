@@ -156,6 +156,9 @@
   "otherProfile": {
     "title": "Информация о пользователе"
   },
+  "editContact": {
+    "title": "Редактирование"
+  },
   "settings": {
     "logout": "Выйти",
     "generalSettings": {
@@ -219,7 +222,7 @@
       "maxBioChars": "макс. 70 символов",
       "title": "Редактировать профиль",
       "inputFirstNamePlaceholder": "Имя (обязательно)",
-      "inputLastNamePlaceholder": "Фамилия (обязательно)",
+      "inputLastNamePlaceholder": "Фамилия (необязательно)",
       "inputBioPlaceholder": "О себе (необязательно)",
       "inputUsernamePlaceholder": "Имя пользователя (обязательно)",
       "chooseBirthday": "Выберите дату рождения",

@@ -27,7 +27,7 @@ export {
 } from "./store/userUiSlice";
 
 export {
-  setIsOpenOtherUsersProfile,
+  setOpenComponentOtherUsersProfile,
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,
