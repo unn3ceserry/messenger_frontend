@@ -33,7 +33,7 @@ const SwapUsersAvatars: FC<Props> = ({
     <div className={`flex w-full flex-col ${isFull ? "" : "pt-4"}`}>
       {hasAvatar ? (
         <motion.div
-          className="w-full flex flex-col justify-center relative gap-3"
+          className="w-full flex flex-col justify-center gap-3"
           style={{
             alignItems: isFull ? "flex-start" : "center",
             paddingTop: isFull ? 0 : "16px",

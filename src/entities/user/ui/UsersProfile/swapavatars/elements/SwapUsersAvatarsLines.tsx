@@ -13,9 +13,10 @@ const SwapUsersAvatarsLines: FC<Props> = ({currentImage, setCurrentImage, avatar
   return (
     <motion.div
       className="flex w-full items-center justify-center gap-1 absolute p-2 top-0 z-1233"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, scale: 0 }}
+      exit={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.2 }}
     >
       {avatars &&
         avatars.map((_, i) => (

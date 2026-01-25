@@ -165,7 +165,7 @@ const ChatUI = () => {
       </div>
       <AnimatePresence>
         {isOpenOtherOsersProfile.status && (
-          <OtherUsersProfile username={'durov'} />
+          <OtherUsersProfile username={isOpenOtherOsersProfile.username} />
         )}
       </AnimatePresence>
     </div>
