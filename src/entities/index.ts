@@ -31,7 +31,7 @@ export {
   handleChangeEmail,
   WhoCanSeeLabels,
   OtherUsersProfile,
-  setIsOpenOtherUsersProfile,
+  setOpenComponentOtherUsersProfile,
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,

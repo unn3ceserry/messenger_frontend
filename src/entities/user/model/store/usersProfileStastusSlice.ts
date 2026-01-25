@@ -1,13 +1,15 @@
 import { RootState } from "@/app";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type OpenComponent = "userProfile" | "editContact" | null
+
 type OtherUsersProfileType = {
-  isOpen: boolean,
+  openComponent: OpenComponent
   username: string,
 };
 
 const initialState: OtherUsersProfileType = {
-  isOpen: false,
+  openComponent: null,
   username: '',
 }
 
@@ -15,20 +17,20 @@ export const usersProfileStastusSlice = createSlice({
   name: 'userOtherUsersProfile',
   initialState,
   reducers: {
-    setIsOpenOtherUsersProfile: (state, actions: PayloadAction<{username: string, isOpen: boolean}>) => {
-      state.isOpen = actions.payload.isOpen;
+    setOpenComponentOtherUsersProfile: (state, actions: PayloadAction<{username: string, openComponent: OpenComponent}>) => {
+      state.openComponent = actions.payload.openComponent;
       state.username = actions.payload.username;
     },
     closeOtherProfile: (state) => {
-      state.isOpen = false;
+      state.openComponent = null;
       state.username = ''
     }
   }
 })
 
 export const usersProfileStastusReducer = usersProfileStastusSlice.reducer;
-export const {setIsOpenOtherUsersProfile, closeOtherProfile} = usersProfileStastusSlice.actions;
+export const {setOpenComponentOtherUsersProfile, closeOtherProfile} = usersProfileStastusSlice.actions;
 export const getOtherProfileStatus = (store: RootState) => ({
-  status: store.usersProfileStastus.isOpen,
+  status: store.usersProfileStastus.openComponent,
   username: store.usersProfileStastus.username
 });
