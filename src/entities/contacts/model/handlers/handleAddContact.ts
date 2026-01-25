@@ -1,20 +1,34 @@
 import { makeStore } from "@/app";
 import { contactsApi } from "../../api";
-import { isErrorWithMessage, isErrorWithMessageAndType, Notification } from "@/shared";
+import {
+  isErrorWithMessage,
+  isErrorWithMessageAndType,
+  Notification,
+} from "@/shared";
+import { Dispatch, SetStateAction } from "react";
 
 export const handleAddContact = async ({
   firstName,
   lastName,
   username,
+  setIsOpen,
 }: {
   firstName?: string;
   lastName?: string;
   username: string;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   try {
     await makeStore
-      .dispatch(contactsApi.endpoints.addToContact.initiate({ username, firstName, lastName }))
+      .dispatch(
+        contactsApi.endpoints.addToContact.initiate({
+          username,
+          firstName,
+          lastName,
+        }),
+      )
       .unwrap();
+    setIsOpen(false);
   } catch (error: unknown) {
     if (isErrorWithMessageAndType(error)) {
       Notification(error.data.message);

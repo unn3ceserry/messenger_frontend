@@ -83,6 +83,7 @@ const AddContactModal: FC<Props> = ({
           submitCallback={() =>
             handleAddContact({
               username,
+              setIsOpen,
               firstName: values.firstname,
               lastName: values.lastname,
             })

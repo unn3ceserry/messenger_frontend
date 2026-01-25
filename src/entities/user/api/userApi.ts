@@ -144,6 +144,7 @@ export const userApi = mainApi.injectEndpoints({
     }),
     isMyContact: builder.query<boolean, string>({
       query: (username) => `/account/is-my-contact?username=${username}`,
+      providesTags: ['users', 'contacts']
     }),
     // AVATAR REQUESTS
     featAvatar: builder.mutation<{ url: string }, File>({
