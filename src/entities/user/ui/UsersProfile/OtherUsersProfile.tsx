@@ -37,7 +37,7 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
     >
       <div className="w-full flex flex-col items-center justify-start">
         <OtherUsersProfileHeader username={username} setIsOpen={setIsOpen} />
-        <div className="w-full flex flex-col items-start justify-center gap-3">
+        <div className="w-full flex flex-col items-start justify-center relative gap-3">
           {/* avatar */}
           <SwapUsersAvatars
             hasAvatar={!!data?.avatars?.length}
