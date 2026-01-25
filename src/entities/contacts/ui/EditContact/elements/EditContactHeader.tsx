@@ -1,0 +1,44 @@
+"use client";
+
+import { useAppDispatch } from "@/app";
+import { ArrowLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { setOpenComponentOtherUsersProfile } from "@/entities";
+import { FC } from "react";
+
+interface Props {
+  username: string;
+}
+
+const EditContactHeader: FC<Props> = ({ username }) => {
+  // actions
+  const dispatch = useAppDispatch();
+
+  const t = useTranslations();
+
+  return (
+    <header className="flex w-full justify-between items-center text-icons-color sticky top-0 bg-chatui-bg z-123123123 p-2 px-3">
+      <div className="flex items-center justify-center gap-3">
+        {/* back */}
+        <div
+          onClick={() =>
+            dispatch(
+              setOpenComponentOtherUsersProfile({
+                openComponent: "userProfile",
+                username,
+              }),
+            )
+          }
+          className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+        >
+          <ArrowLeft size={22} />
+        </div>
+        <h1 className="text-default-text-color font-medium text-xl">
+          {t("editContact.title")}
+        </h1>
+      </div>
+    </header>
+  );
+};
+
+export default EditContactHeader;

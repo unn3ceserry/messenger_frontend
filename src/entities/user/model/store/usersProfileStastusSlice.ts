@@ -31,6 +31,6 @@ export const usersProfileStastusSlice = createSlice({
 export const usersProfileStastusReducer = usersProfileStastusSlice.reducer;
 export const {setOpenComponentOtherUsersProfile, closeOtherProfile} = usersProfileStastusSlice.actions;
 export const getOtherProfileStatus = (store: RootState) => ({
-  status: store.usersProfileStastus.openComponent,
+  component: store.usersProfileStastus.openComponent,
   username: store.usersProfileStastus.username
 });

@@ -1,31 +1,17 @@
 "use client";
 
-import LeftSideBar from "./elements/LeftSideBar";
 import { AnimatePresence } from "framer-motion";
 import {
+  EditContact,
   getOtherProfileStatus,
-  openComponent,
   OtherUsersProfile,
-  selectOpenComponent,
   userApi,
-  UserProfile,
-  VisibilityField,
 } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
-import UserSettings from "../settings/UserSettings";
-import UserLanguageSettings from "../settings/UserLanguageSettings";
-import UserOtherSettings from "../settings/UserOtherSettings";
-import UserSessionsSettings from "../settings/UserSessionsSettings";
-import UserGeneralSettings from "../settings/UserGeneralSettings";
-import UserEdtirProfileSettings from "../settings/UserEdtirProfileSettings";
-import UserPrivacyAndSecuritySettings from "../settings/UserPrivacyAndSecuritySettings";
-import UserPrivacyAndSecuritySettingsBlockedUsers from "../settings/elements/privacy/blocked-users/UserPrivacyAndSecuritySettingsBlockedUsers";
-import UserPrivacyAndSecuritySettingsSetPassword from "../settings/elements/privacy/cloud-password/UserPrivacyAndSecuritySettingsSetPassword";
-import UserPrivacyAndSecuritySettingsPrivacyEmail from "../settings/elements/privacy/email/UserPrivacyAndSecuritySettingsPrivacyEmail";
-import UserPrivacyAndSecuritySettingsPrivacyVisibility from "../settings/elements/privacy/visibility/UserPrivacyAndSecuritySettingsPrivacyVisibility";
-import UserContacts from "../contacts/UserContacts";
+import { motion } from "framer-motion";
+import RenderChatUIComponent from "./elements/RenderChatUIComponent";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -34,7 +20,6 @@ const ChatUI = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
 
   // getters
-  const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
   const isOpenOtherOsersProfile = useAppSelector(getOtherProfileStatus);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
 
@@ -73,99 +58,38 @@ const ChatUI = () => {
         className="flex items-center justify-center w-full h-screen bg-chatui-bg relative"
       >
         <AnimatePresence>
-          {(() => {
-            switch (whoIsOpenWithUiComponents) {
-              case "userContacts":
-                return <UserContacts />;
-              case "userSettingsOther":
-                return <UserOtherSettings />;
-              case "userSettingsLanguage":
-                return <UserLanguageSettings />;
-              case "userSettingsSessions":
-                return <UserSessionsSettings />;
-              case "userSettingsGeneral":
-                return <UserGeneralSettings />;
-              case "editProfile":
-                return <UserEdtirProfileSettings data={data} />;
-              case "myProfile":
-                return <UserProfile data={data} />;
-              case "cloudPassword":
-                return <UserPrivacyAndSecuritySettingsSetPassword />;
-              case "phoneVisible":
-                return (
-                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
-                    data={data}
-                    field={VisibilityField.Phone}
-                  />
-                );
-              case "avatarsVisible":
-                return (
-                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
-                    data={data}
-                    field={VisibilityField.Avatars}
-                  />
-                );
-              case "birthdayVisible":
-                return (
-                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
-                    data={data}
-                    field={VisibilityField.Birthday}
-                  />
-                );
-              case "emailVisible":
-                return (
-                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
-                    data={data}
-                    field={VisibilityField.Email}
-                  />
-                );
-              case "bioVisible":
-                return (
-                  <UserPrivacyAndSecuritySettingsPrivacyVisibility
-                    data={data}
-                    field={VisibilityField.Bio}
-                  />
-                );
-              case "userEmail":
-                return (
-                  <UserPrivacyAndSecuritySettingsPrivacyEmail data={data} />
-                );
-              case "userSettingsPrivacy":
-                return <UserPrivacyAndSecuritySettings data={data} />;
-              case "blockedUsers":
-                return (
-                  <UserPrivacyAndSecuritySettingsBlockedUsers data={data} />
-                );
-              case "userSettings":
-                return <UserSettings data={data} />;
-
-              default:
-                return (
-                  <LeftSideBar
-                    data={data}
-                    setIsOpen={() =>
-                      dispatch(
-                        openComponent(
-                          whoIsOpenWithUiComponents === "actionPopup"
-                            ? null
-                            : "actionPopup",
-                        ),
-                      )
-                    }
-                    isOpen={whoIsOpenWithUiComponents === "actionPopup"}
-                  />
-                );
-            }
-          })()}
+          <RenderChatUIComponent data={data} />
         </AnimatePresence>
         <div
           onMouseDown={() => (isResizing.current = true)}
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
-      <AnimatePresence>
-        {isOpenOtherOsersProfile.status && (
-          <OtherUsersProfile username={'durov'} />
+      <AnimatePresence mode="wait">
+        {!!isOpenOtherOsersProfile.component && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.25 }}
+            layout
+            className="fixed right-0 top-0 z-12313 h-screen max-w-100 w-full bg-chatui-bg overflow-y-auto text-default-text-color scrollbar-thin otherprofile:border-l border-line-color shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)]"
+          >
+            {(() => {
+              switch (isOpenOtherOsersProfile.component) {
+                case "userProfile":
+                  return (
+                    <OtherUsersProfile
+                      username={'durov'}
+                    />
+                  );
+                case "editContact":
+                  return (
+                    <EditContact username={'durov'} />
+                  );
+              }
+            })()}
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

@@ -158,6 +158,9 @@
   "otherProfile": {
     "title": "User Info"
   },
+  "editContact": {
+    "title": "Edit"
+  },
   "settings": {
     "logout": "Log Out",
     "generalSettings": {
@@ -221,7 +224,7 @@
       "maxBioChars": "max 70 chars",
       "title": "Edit Profile",
       "inputFirstNamePlaceholder": "First name (required)",
-      "inputLastNamePlaceholder": "Last name (required)",
+      "inputLastNamePlaceholder": "Last name (optional)",
       "inputUsernamePlaceholder": "Username (required)",
       "inputBioPlaceholder": "Bio (optional)",
       "chooseBirthday": "Choose your birthday date",
