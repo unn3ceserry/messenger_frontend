@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "use-intl";
 import { RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
-import { UserSettingsShortInfo } from "@/widgets";
 import { FC } from "react";
 import { UserType } from "../../model";
 import UserProfileLastAvatars from "./UserProfileLastAvatars";
+import UserDataShortInfo from "../ShortInfo/UserDataShortInfo";
 
 interface IUserProfile {
   data: UserType
@@ -48,7 +48,7 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
           </div>
 
           {/* short infop */}
-          <UserSettingsShortInfo
+          <UserDataShortInfo
             number={data.number}
             username={data.username}
             bio={data.bio}

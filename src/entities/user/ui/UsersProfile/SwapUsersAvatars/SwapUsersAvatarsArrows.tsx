@@ -1,17 +1,20 @@
 "use client";
 
 import { Dispatch, FC, SetStateAction } from "react";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
   avatars?: string[];
-  currentImage: number,
-  setCurrentImage: Dispatch<SetStateAction<number>>
-
+  currentImage: number;
+  setCurrentImage: Dispatch<SetStateAction<number>>;
 }
 
-const SwapUsersAvatarsArrows: FC<Props> = ({avatars, currentImage, setCurrentImage}) => {
+const SwapUsersAvatarsArrows: FC<Props> = ({
+  avatars,
+  currentImage,
+  setCurrentImage,
+}) => {
   const handleLeft = () => {
     setCurrentImage(
       currentImage === 0
@@ -32,9 +35,10 @@ const SwapUsersAvatarsArrows: FC<Props> = ({avatars, currentImage, setCurrentIma
     <>
       <motion.div
         className="absolute flex justify-center items-center left-2 text-white"
+        exit={{ opacity: 0 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
       >
         <ChevronLeft
           onClick={handleLeft}
@@ -44,9 +48,10 @@ const SwapUsersAvatarsArrows: FC<Props> = ({avatars, currentImage, setCurrentIma
       </motion.div>
       <motion.div
         className="absolute flex justify-center items-center right-2 text-white"
+        exit={{ opacity: 0 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
       >
         <ChevronRight
           size={55}

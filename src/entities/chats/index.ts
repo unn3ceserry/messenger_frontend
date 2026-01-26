@@ -1,1 +1,1 @@
-export {LeftSideBarSearch} from './ui'
+export {LeftSideBarSearch, LeftSideBar} from './ui'
