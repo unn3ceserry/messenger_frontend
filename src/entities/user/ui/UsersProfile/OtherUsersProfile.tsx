@@ -30,7 +30,7 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
       <div className="w-full flex flex-col items-center justify-start">
         <OtherUsersProfileHeader username={username} setIsOpen={setIsOpen} />
         <motion.div
-          className="w-full flex flex-col items-start justify-center  gap-3"
+          className="w-full flex flex-col items-start justify-center relative gap-3"
           exit={{ opacity: 0, scale: 0.8, x: 300 }}
           initial={{ opacity: 0, scale: 0.8, x: 300 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
