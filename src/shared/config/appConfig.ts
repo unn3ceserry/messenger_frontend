@@ -1,4 +1,4 @@
-class CONFIG_APP {
+class APP_CONFIG {
   NAME() {
     return "Fluent";
   }
@@ -19,4 +19,4 @@ class CONFIG_APP {
   }
 }
 
-export const configApp = new CONFIG_APP();
+export const appConfig = new APP_CONFIG();

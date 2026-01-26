@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useAppDispatch } from "@/app";
-import { configApp } from "@/app";
+import { appConfig } from "@/shared";
 import { RenderAvatarElement } from "@/shared";
 import { FC } from "react";
 import { userActionsElements } from "../../config";
@@ -47,7 +47,7 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
       ))}
 
       <p className="text-[.8rem] text-icons-color">
-        {configApp.NAME()} {configApp.TYPE_APP()} {configApp.VERSION()}
+        {appConfig.NAME()} {appConfig.TYPE_APP()} {appConfig.VERSION()}
       </p>
     </motion.div>
   );

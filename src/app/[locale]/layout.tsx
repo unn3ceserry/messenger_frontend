@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import { configApp } from "../config/conig-app";
 import StoreProvider from "../store/StoreProvider";
-import { routing } from "@/shared";
+import { appConfig, routing } from "@/shared";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -24,10 +23,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale });
   return {
     title: {
-      template: `%s - ${configApp.NAME()}`,
-      default: `${t("pagesTitle.homeTitle")} - ${configApp.NAME()}`,
+      template: `%s - ${appConfig.NAME()}`,
+      default: `${t("pagesTitle.homeTitle")} - ${appConfig.NAME()}`,
     },
-    description: `The best messanger in the industry - ${configApp.NAME()}`,
+    description: `The best messanger in the industry - ${appConfig.NAME()}`,
   };
 }
 

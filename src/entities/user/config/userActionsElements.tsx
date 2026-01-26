@@ -1,12 +1,11 @@
 import {
   CirclePlus,
   CircleUser,
-  CloudMoonRain,
   FileUser,
   Plus,
   Settings,
 } from "lucide-react";
-import { configApp } from "@/app";
+import { appConfig } from "@/shared";
 import {
   openComponent,
 } from "../model";
@@ -36,6 +35,6 @@ export const userActionsElements = (dispatch: AppDispatch) => [
   {
     icon: <CirclePlus size={20} className="text-icons-color" />,
     title: "chat.actionsPopup.installApp",
-    onClick: () => window.open(configApp.APP_LINK()),
+    onClick: () => window.open(appConfig.APP_LINK()),
   },
 ];

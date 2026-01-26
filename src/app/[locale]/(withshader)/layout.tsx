@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ToastContainer } from "react-toastify";
 import StoreProvider from "@/app/store/StoreProvider";
-import { configApp } from "@/app/config";
+import { appConfig } from "@/shared";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -23,10 +23,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale });
   return {
     title: {
-      template: `%s - ${configApp.NAME()}`,
-      default: `${t("pagesTitle.homeTitle")} - ${configApp.NAME()}`,
+      template: `%s - ${appConfig.NAME()}`,
+      default: `${t("pagesTitle.homeTitle")} - ${appConfig.NAME()}`,
     },
-    description: `The best messanger in the industry - ${configApp.NAME()}`,
+    description: `The best messanger in the industry - ${appConfig.NAME()}`,
   };
 }
 

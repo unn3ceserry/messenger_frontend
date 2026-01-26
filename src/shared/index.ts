@@ -31,5 +31,5 @@ export {
   CheckboxCircle,
   CheckboxDefault,
 } from "./ui";
-export {modalContainerDefault, modalDefault} from './config'
+export {modalContainerDefault, modalDefault, appConfig} from './config'
 export {createRipple} from './model'

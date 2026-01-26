@@ -36,7 +36,8 @@ export {
   usersProfileStastusReducer,
   usersProfileStastusSlice,
   closeOtherProfile,
-  framerSwtihAvatarsOpacityConfig
+  framerSwtihAvatarsOpacityConfig,
+  UserContactElement,
 } from "./user";
 export {
   userThemeSlice,
@@ -47,5 +48,11 @@ export {
 } from "./themes";
 export { sessionApi } from "./session";
 export { LeftSideBarSearch } from "./chats";
-export { UserContactElement, contactsApi, AddContactModal, handleAddContact, EditContact, handleEditContact } from "./contacts";
+export {
+  contactsApi,
+  AddContactModal,
+  handleAddContact,
+  EditContact,
+  handleEditContact,
+} from "./contacts";
 export type { ContactType, ContactsType, CreatedContactType } from "./contacts";

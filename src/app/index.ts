@@ -7,4 +7,3 @@ export {
   useAppSelector,
   useAppStore,
 } from "./store";
-export { configApp } from "./config";

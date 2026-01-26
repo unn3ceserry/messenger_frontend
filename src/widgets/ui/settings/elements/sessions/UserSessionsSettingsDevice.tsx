@@ -1,6 +1,6 @@
 "use client";
 
-import { configApp } from "@/app";
+import { appConfig } from "@/shared";
 import { Chromium, CircleMinus } from "lucide-react";
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -58,7 +58,7 @@ const UserSessionsSettingsDevice: FC<IUserSessionsSettingsDevice> = ({
       <div className="flex flex-col items-start justify-center w-full text-[.95rem]">
         <p>{browser}</p>
         <p>
-          {configApp.NAME()} {configApp.TYPE_APP()} {configApp.VERSION()}, {os}
+          {appConfig.NAME()} {appConfig.TYPE_APP()} {appConfig.VERSION()}, {os}
         </p>
         <p className="text-icons-color text-[.85rem]">
           {isMySession && "-"} {city}, {country}

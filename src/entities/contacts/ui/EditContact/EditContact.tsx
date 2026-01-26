@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, FC, useState } from "react";
-import EditContactHeader from "./elements/EditContactHeader";
+import EditContactHeader from "./EditContactHeader";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppInput, RenderAvatarElement } from "@/shared";
 import { useTranslations } from "next-intl";

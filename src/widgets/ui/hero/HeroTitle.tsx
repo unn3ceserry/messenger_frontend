@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Button } from "@/shared";
-import { configApp } from "@/app/config";
+import { appConfig } from "@/shared";
 import { useParams, useRouter } from "next/navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -23,7 +23,7 @@ const HeroTitle = () => {
   return (
     <div data-aos="zoom-out" className="flex flex-col items-start justify-center gap-5 w-full max-w-100">
       <div className="flex flex-col items-start justify-center gap-1">
-        <h1 className="text-2xl text-white">{configApp.NAME()}  —</h1>
+        <h1 className="text-2xl text-white">{appConfig.NAME()}  —</h1>
         <p className="text-white text-[.8rem]">{t("home.heroDesc")}</p>
       </div>
       <div className="flex flex-col items-center justify-center gap-3 w-full">

@@ -4,8 +4,8 @@ import { FC, useState } from "react";
 import { userApi } from "../../api";
 import { motion } from "framer-motion";
 import { UserSettingsShortInfo } from "@/widgets";
-import OtherUsersProfileHeader from "./header/OtherUsersProfileHeader";
-import SwapUsersAvatars from "./swapavatars/SwapUsersAvatars";
+import OtherUsersProfileHeader from "./OtherUsersProfileHeader";
+import SwapUsersAvatars from "./SwapUsersAvatars/SwapUsersAvatars";
 
 type Props = {
   username: string;

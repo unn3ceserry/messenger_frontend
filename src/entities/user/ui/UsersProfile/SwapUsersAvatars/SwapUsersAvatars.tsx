@@ -3,9 +3,9 @@
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import SwapUsersAvatarsArrows from "./elements/SwapUsersAvatarsArrows";
-import SwapUsersAvatarsCurrentAvatar from "./elements/SwapUsersAvatarsCurrentAvatar";
-import SwapUsersAvatarsLines from "./elements/SwapUsersAvatarsLines";
+import SwapUsersAvatarsLines from "./SwapUsersAvatarsLines";
+import SwapUsersAvatarsArrows from "./SwapUsersAvatarsArrows";
+import SwapUsersAvatarsCurrentAvatar from "./SwapUsersAvatarsCurrentAvatar";
 
 interface Props {
   hasAvatar: boolean;
