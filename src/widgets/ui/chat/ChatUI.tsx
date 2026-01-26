@@ -11,7 +11,7 @@ import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import { motion } from "framer-motion";
-import RenderChatUIComponent from "./elements/RenderChatUIComponent";
+import ChatUICompoonent from "./ChatUICompoonent";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -58,7 +58,7 @@ const ChatUI = () => {
         className="flex items-center justify-center w-full h-screen bg-chatui-bg relative"
       >
         <AnimatePresence>
-          <RenderChatUIComponent data={data} />
+          <ChatUICompoonent data={data} />
         </AnimatePresence>
         <div
           onMouseDown={() => (isResizing.current = true)}

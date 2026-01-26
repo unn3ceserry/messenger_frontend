@@ -3,9 +3,9 @@
 import { FC, useState } from "react";
 import { userApi } from "../../api";
 import { motion } from "framer-motion";
-import { UserSettingsShortInfo } from "@/widgets";
 import OtherUsersProfileHeader from "./OtherUsersProfileHeader";
 import SwapUsersAvatars from "./SwapUsersAvatars/SwapUsersAvatars";
+import UserDataShortInfo from "../ShortInfo/UserDataShortInfo";
 
 type Props = {
   username: string;
@@ -46,7 +46,7 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
 
           <div className="flex flex-col items-start justify-center p-2 gap-3 w-full py-2">
             {/* short infop */}
-            <UserSettingsShortInfo
+            <UserDataShortInfo
               number={data.number}
               username={data.username}
               bio={data.bio}

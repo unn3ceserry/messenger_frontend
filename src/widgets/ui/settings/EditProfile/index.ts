@@ -1,0 +1,6 @@
+export {ChangeNames} from './ChangeNames'
+export {ChangeUsername} from './ChangeUsername'
+export {ChooseAvatar} from './ChooseAvatar'
+export {EditBio} from './EditBio'
+export {SetBirthday} from './SetBirthday'
+export {default as UserEditorProfileSettings} from './UserEditorProfileSettings'

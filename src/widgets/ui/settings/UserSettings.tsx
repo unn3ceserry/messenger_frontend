@@ -1,9 +1,8 @@
 "use client";
 
-import { UserType } from "@/entities";
+import { UserDataShortInfo, UserType } from "@/entities";
 import { motion } from "framer-motion";
-import UserSettingsShortInfo from "./elements/default/UserSettingsShortInfo";
-import UserSettingsCategories from "./elements/default/UserSettingsCategories";
+import UserSettingsCategories from "./UserSettingsCategories";
 import { useRouter } from "next/navigation";
 import { ReceiptText } from "lucide-react";
 import { useLocale } from "next-intl";
@@ -56,7 +55,7 @@ const UserSettings: FC<IUserSettings> = ({ data }) => {
             </div>
           </div>
 
-          <UserSettingsShortInfo
+          <UserDataShortInfo
             number={data.number}
             username={data.username}
             bio={data.bio}

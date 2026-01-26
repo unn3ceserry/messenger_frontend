@@ -38,6 +38,7 @@ export {
   closeOtherProfile,
   framerSwtihAvatarsOpacityConfig,
   UserContactElement,
+  UserDataShortInfo
 } from "./user";
 export {
   userThemeSlice,
@@ -47,7 +48,7 @@ export {
   type TUserTheme,
 } from "./themes";
 export { sessionApi } from "./session";
-export { LeftSideBarSearch } from "./chats";
+export { LeftSideBar, LeftSideBarSearch} from "./chats";
 export {
   contactsApi,
   AddContactModal,
