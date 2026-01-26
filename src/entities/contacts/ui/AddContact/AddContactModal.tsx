@@ -5,7 +5,7 @@ import { Dispatch, FC, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
 import { modalDefault } from "@/shared";
 import { useTranslations } from "next-intl";
-import AddContactModalButtons from "./elements/AddContactModalButtons";
+import AddContactModalButtons from "./AddContactModalButtons";
 import { handleAddContact } from "../../model";
 
 interface Props {

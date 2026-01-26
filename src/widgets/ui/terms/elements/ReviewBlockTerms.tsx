@@ -1,6 +1,6 @@
 "use client";
 
-import { configApp } from "@/app";
+import { appConfig } from "@/shared";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 
@@ -17,7 +17,7 @@ const ReviewBlockTerms = () => {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
-              }).format(configApp.TERMS_DATA())}
+              }).format(appConfig.TERMS_DATA())}
             </p>
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <p key={i}>{t(`termsOfUse.reviewd${i}`)}</p>

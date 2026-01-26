@@ -1,1 +1,1 @@
-export {default as LeftSideBarSearch} from './LeftSideBarSearch'
+export {default as LeftSideBarSearch} from './LeftSideBar/LeftSideBarSearch'
