@@ -8,7 +8,7 @@ export { WhoCanSeen, VisibilityField } from "./model";
 
 export { userApi } from "./api";
 export { ActionsPopup, UserProfile, OtherUsersProfile, UserContactElement, UserDataShortInfo } from "./ui";
-export { userActionsElements, framerSwtihAvatarsOpacityConfig } from "./config";
+export { userActionsElements } from "./config";
 export {
   userCompleteDataReducer,
   setCompleteData,

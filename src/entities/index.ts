@@ -36,7 +36,6 @@ export {
   usersProfileStastusReducer,
   usersProfileStastusSlice,
   closeOtherProfile,
-  framerSwtihAvatarsOpacityConfig,
   UserContactElement,
   UserDataShortInfo
 } from "./user";
