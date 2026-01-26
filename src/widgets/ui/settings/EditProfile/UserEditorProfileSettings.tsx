@@ -4,21 +4,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 import { handleSaveDataEditProfile, UserType } from "@/entities";
 
-import {ChooseAvatar} from "./ChooseAvatar";
-import {ChangeNames} from "./ChangeNames";
-import {ChangeUsername} from "./ChangeUsername";
-import {EditBio} from "./EditBio";
+import { ChooseAvatar } from "./ChooseAvatar";
+import { ChangeNames } from "./ChangeNames";
+import { ChangeUsername } from "./ChangeUsername";
+import { EditBio } from "./EditBio";
 import { useProfileForm } from "../../../model";
-import {SetBirthday} from "./SetBirthday";
-import { UserSettingsHeaderConstructor } from "@/shared";
+import { SetBirthday } from "./SetBirthday";
+import { CirclePopup, UserSettingsHeaderConstructor } from "@/shared";
 import { FC } from "react";
 
 interface Props {
-  data: UserType
+  data: UserType;
 }
 
-const UserEditorProfileSettings: FC<Props> = ({data}) => {
-
+const UserEditorProfileSettings: FC<Props> = ({ data }) => {
   const { form, dirty, onChange, setDirty, isDirty } = useProfileForm({
     firstName: data?.firstName ?? "",
     lastName: data?.lastName ?? "",
@@ -87,20 +86,10 @@ const UserEditorProfileSettings: FC<Props> = ({data}) => {
           />
         </div>
       </motion.div>
-      <AnimatePresence>
-        {isDirty && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.2 }}
-            onClick={handleSave}
-            className="absolute bottom-5 right-5 p-3 bg-accent flex items-center justify-center rounded-full cursor-pointer"
-          >
-            <Check size={25} className="text-white" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+
+      <div className="sticky bottom-5 w-full px-5">
+        <CirclePopup isDirty={isDirty} onClick={handleSave} />
+      </div>
     </div>
   );
 };
