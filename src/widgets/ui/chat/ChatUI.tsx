@@ -80,12 +80,12 @@ const ChatUI = () => {
                 case "userProfile":
                   return (
                     <OtherUsersProfile
-                      username={'durov'}
+                      username={isOpenOtherOsersProfile.username}
                     />
                   );
                 case "editContact":
                   return (
-                    <EditContact username={'durov'} />
+                    <EditContact username={isOpenOtherOsersProfile.username} />
                   );
               }
             })()}

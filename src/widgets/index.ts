@@ -1,2 +1,2 @@
-export { TermsOfUse, ChatUI } from "./ui";
+export { TermsOfUse, ChatUI, HeroTitle, LoginTitle, RegisterTitle } from "./ui";
 export { COMPLETE_CONFIG, THEME_CONFIG } from "./config";

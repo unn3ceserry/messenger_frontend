@@ -2,10 +2,12 @@
 
 import { FC, useState } from "react";
 import { userApi } from "../../api";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import OtherUsersProfileHeader from "./OtherUsersProfileHeader";
 import SwapUsersAvatars from "./SwapUsersAvatars/SwapUsersAvatars";
 import UserDataShortInfo from "../ShortInfo/UserDataShortInfo";
+import { ModalConstructor } from "@/shared";
+import { AddContactModal } from "@/entities/contacts";
 
 type Props = {
   username: string;
@@ -55,6 +57,24 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
           </div>
         </motion.div>
       </div>
+      <AnimatePresence>
+        {isOpen && (
+          <ModalConstructor
+            setIsOpen={setIsOpen}
+            content={
+              <AddContactModal
+                setIsOpen={setIsOpen}
+                username={username}
+                avatar={
+                  data.avatars ? data.avatars[data.avatars?.length - 1] : ""
+                }
+                firstName={data.firstName}
+                lastName={data.lastName}
+              />
+            }
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };
