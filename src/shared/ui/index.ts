@@ -8,9 +8,10 @@ export { default as Notification } from "./notification/Notification";
 export { default as FieldInput } from "./input/error/FieldInput";
 export { default as AppInput } from "./input/AppInput";
 export { default as SearchInput } from "./input/SearchInput";
-export { default as ModalConstructor } from "./modal-constructor/ModalConstructor";
-export { default as RenderAvatarElement } from "./render-avatar/RenderAvatarElement";
+export { default as ModalConstructor } from "./modalConstructor/ModalConstructor";
+export { default as RenderAvatarElement } from "./renderAvatar/RenderAvatarElement";
 export { default as CheckboxLanguage } from "./checkbox/CheckboxLanguage";
 export { default as CheckboxDefault } from "./checkbox/CheckboxDefault";
 export { default as CheckboxCircle } from "./checkbox/CheckboxCircle";
-export { default as UserSettingsHeaderConstructor } from "./settings-header/UserSettingsHeaderConstructor";
+export { default as UserSettingsHeaderConstructor } from "./settingsHeader/UserSettingsHeaderConstructor";
+export {default as CirclePopup} from './circlePopup/CirclePopup'
