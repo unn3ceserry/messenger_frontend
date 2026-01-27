@@ -25,6 +25,7 @@
   --scrollbar-color: #ffffff10;
   --ripple-bg: #ffffff30;
   --checkbox-border: #ffffff40;
+  --modal-bg: #00000035;
 }
 
 :root[data-theme="light"] {
@@ -48,6 +49,7 @@
   --scrollbar-color: #00000010;
   --ripple-bg: #00000030;
   --checkbox-border: #00000040;
+  --modal-bg: #ffffff35;
 }
 
 @theme inline {
@@ -68,6 +70,7 @@
   --color-line-color: var(--line-color);
   --color-ripple-bg: var(--ripple-bg);
   --color-checkbox-border: var(--checkbox-border);
+  --color-modal-bg: var(--modal-bg);
   --breakpoint-otherprofile: 25rem;
 }
 
