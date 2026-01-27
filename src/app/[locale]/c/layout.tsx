@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
-import StoreProvider from "../store/StoreProvider";
+import "../globals.css";
 import { appConfig, routing } from "@/shared";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ToastContainer } from "react-toastify";
-import ThemeProvider from "../providers/ThemeProvider";
+import bg from "@/app/assets/imgs/fr.svg";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -46,17 +44,15 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
   return (
-    <html lang="en">
-      <body className={`${fontRoboto.className} antialiased`}>
-        <StoreProvider>
-          <ThemeProvider>
-            <NextIntlClientProvider locale={locale}>
-              {children}
-              <ToastContainer position="bottom-right" />
-            </NextIntlClientProvider>
-          </ThemeProvider>
-        </StoreProvider>
-      </body>
-    </html>
+    <div className={`${fontRoboto.className} antialiased`}>
+      <div
+        className="absolute inset-0 w-full h-full bg-linear-to-b from-accent/70 to-accent/20"
+        style={{
+          WebkitMaskImage: `url(${bg.src})`,
+          maskImage: `url(${bg.src})`,
+        }}
+      ></div>
+      {children}
+    </div>
   );
 }
