@@ -40,7 +40,7 @@ const ChatUI = () => {
   }, []);
 
   if (isLoading || !data) {
-    return <Spinner/>;
+    return <Spinner />;
   }
 
   return (
@@ -52,12 +52,13 @@ const ChatUI = () => {
         <AnimatePresence>
           <ChatUICompoonent data={data} />
         </AnimatePresence>
+        <ChatUIUserProfileComponent />
+
         <div
           onMouseDown={() => (isResizing.current = true)}
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
-      <ChatUIUserProfileComponent />
     </div>
   );
 };

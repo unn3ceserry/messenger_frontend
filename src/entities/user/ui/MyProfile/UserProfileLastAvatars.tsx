@@ -3,17 +3,17 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { CircleMinus } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { userApi } from "../../api";
 
 interface IUserProfileLastAvatars {
   avataras: string[] | [];
+  setOpenedAvatar: Dispatch<SetStateAction<string | null>>
 }
 
-const UserProfileLastAvatars: FC<IUserProfileLastAvatars> = ({ avataras }) => {
+const UserProfileLastAvatars: FC<IUserProfileLastAvatars> = ({ avataras, setOpenedAvatar }) => {
   const t = useTranslations();
 
-  const [openedAvatar, setOpenedAvatar] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -56,26 +56,7 @@ const UserProfileLastAvatars: FC<IUserProfileLastAvatars> = ({ avataras }) => {
         )}
 
         <AnimatePresence>
-          {openedAvatar && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setOpenedAvatar(null)}
-              className="fixed inset-0 bg-black/50 flex items-center justify-center p-5 z-[12312312313]"
-            >
-              <motion.img
-                initial={{ y: 50 }}
-                animate={{ y: 0 }}
-                exit={{ y: 50 }}
-                transition={{ duration: 0.2 }}
-                src={openedAvatar}
-                onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-150 aspect-square object-cover rounded-xl cursor-pointer"
-              />
-            </motion.div>
-          )}
+         
           {isOpen && (
             <motion.div
               exit={{ opacity: 0, scale: 0.9 }}
