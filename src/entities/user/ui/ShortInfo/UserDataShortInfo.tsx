@@ -1,7 +1,7 @@
 "use client";
 
-import { createRipple } from "@/shared";
-import { AtSign, Info, Mail, Phone } from "lucide-react";
+import { appNotification, createRipple } from "@/shared";
+import { AtSign, Info, InfoIcon, Mail, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
@@ -12,18 +12,16 @@ interface Props {
   email?: string | null;
 }
 
-const UserDataShortInfo: FC<Props> = ({
-  number,
-  username,
-  email,
-  bio
-}) => {
+const UserDataShortInfo: FC<Props> = ({ number, username, email, bio }) => {
   const t = useTranslations();
 
-  // сделать в будущем уведомление на то что скопировано
-  const handleCopy = async (result: string) => {
+  const handleCopy = async (result: string, type: "phone" | "username" | "bio" | "email") => {
     try {
       await navigator.clipboard.writeText(result.toString());
+      appNotification({
+        icon: <InfoIcon size={24} className="text-white" />,
+        text: `${t(`profile.${type}`)} ${t('notify.wasCopied')}!`,
+      });
     } catch (err) {
       console.error("Clipboard error:", err);
     }
@@ -40,8 +38,16 @@ const UserDataShortInfo: FC<Props> = ({
       icon: <AtSign className="text-icons-color shrink-0" />,
       data: username,
     },
-    { title: "bio", icon: <Info className="text-icons-color shrink-0" />, data: bio },
-    { title: "email", icon: <Mail className="text-icons-color shrink-0" />, data: email },
+    {
+      title: "bio",
+      icon: <Info className="text-icons-color shrink-0" />,
+      data: bio,
+    },
+    {
+      title: "email",
+      icon: <Mail className="text-icons-color shrink-0" />,
+      data: email,
+    },
   ];
 
   return (
@@ -52,7 +58,7 @@ const UserDataShortInfo: FC<Props> = ({
           <div
             key={i}
             onClick={async (e) => {
-              handleCopy(el.data ?? "");
+              handleCopy(el.data ?? "", el.title as "phone" | "username" | "bio" | "email");
               createRipple(e);
             }}
             className={`relative overflow-hidden hover:bg-checkbox-hover rounded-2xl px-5 py-2 flex items-center justify-start gap-5 cursor-pointer`}
@@ -63,8 +69,8 @@ const UserDataShortInfo: FC<Props> = ({
                 {el.title === "number"
                   ? "+"
                   : el.title === "username"
-                  ? "@"
-                  : ""}
+                    ? "@"
+                    : ""}
                 {el.data}
               </p>
               <p className="text-[.9rem] text-icons-color">

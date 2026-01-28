@@ -1,6 +1,7 @@
 {
   "notify": {
-    "title": "Уведомление"
+    "title": "Уведомление",
+    "wasCopied": "был скопирован"
   },
   "pagesTitle": {
     "homeTitle": "Главная",
