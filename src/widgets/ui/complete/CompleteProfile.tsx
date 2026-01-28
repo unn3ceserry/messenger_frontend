@@ -29,11 +29,18 @@ const CompleteProfile = () => {
   const getData = useAppSelector((state) => state.userCompleteData.data);
 
   const handleSave = async () => {
-    await handleSetCompleteData({
+    const payload: Record<string, string | undefined> = {
       birthday: getData.birthday,
       cloudPassword: getData.password,
       email: getData.email,
+    };
+
+    Object.keys(payload).forEach((key) => {
+      if (!payload[key]) {
+        delete payload[key];
+      }
     });
+    await handleSetCompleteData(payload);
   };
 
   return (
