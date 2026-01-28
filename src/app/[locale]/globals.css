@@ -17,7 +17,7 @@
   --actions-popup-hover: #00000030;
   --checkbox-hover: #ffffff05;
   --inputs-ring-color: #ffffff07;
-  --icons-color: #818181;
+  --icons-color: color-mix(in srgb, var(--accent-color) 20%, #818181);
   --input-icons-color: #818181;
   --app-inputs-placeholder: #ffffff40;
   --default-text-color: #ffffff;
@@ -26,6 +26,9 @@
   --ripple-bg: #ffffff30;
   --checkbox-border: #ffffff40;
   --modal-bg: #00000035;
+
+  --button-main-bg: color-mix(in srgb, var(--accent-color) 1%, transparent);
+  --button-text-color: color-mix(in srgb, var(--accent-color) 25%, #ffffff);
 }
 
 :root[data-theme="light"] {
@@ -71,6 +74,8 @@
   --color-ripple-bg: var(--ripple-bg);
   --color-checkbox-border: var(--checkbox-border);
   --color-modal-bg: var(--modal-bg);
+  --color-button-main-bg: var(--button-main-bg);
+  --color-button-text-color: var(--button-text-color);
   --breakpoint-otherprofile: 25rem;
 }
 
@@ -120,7 +125,7 @@ input[type="number"] {
 
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-color) transparent; 
+  scrollbar-color: var(--scrollbar-color) transparent;
 }
 
 .scrollbar-thin::-webkit-scrollbar {

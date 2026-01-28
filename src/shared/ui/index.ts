@@ -2,6 +2,7 @@ export { default as ShaderDarkVeil } from "./shader/ShaderDarkVeil";
 export { default as GlassReactangle } from "./glass/GlassReactangle";
 export { default as DefaultInput } from "./input/DefaultInput";
 export { default as Button } from "./button/Button";
+export { default as DefaultButton } from "./button/DefaultButton";
 export { default as TimeClient } from "./timeClient/TimeClient";
 export { default as OTPInput } from "./input/OtpInput";
 export { default as Notification } from "./notification/Notification";
