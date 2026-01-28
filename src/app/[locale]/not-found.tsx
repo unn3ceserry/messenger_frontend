@@ -41,7 +41,7 @@ export default function NotFoundPage() {
           <h1 className="text-7xl bg-clip-text text-transparent bg-linear-to-b from-accent/70 to-accent/20">
             {t("notFound.title")}
           </h1>
-          <p className="max-w-120 text-[.8rem] text-text/50">
+          <p className="max-w-120 text-[.8rem] text-button-text-color/50">
             {t("notFound.desc")}
           </p>
         </div>
