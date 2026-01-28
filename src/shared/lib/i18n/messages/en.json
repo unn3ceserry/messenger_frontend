@@ -1,6 +1,7 @@
 {
   "notify": {
-    "title": "Notification"
+    "title": "Notification",
+    "wasCopied": "was copied"
   },
   "pagesTitle": {
     "homeTitle": "Home",

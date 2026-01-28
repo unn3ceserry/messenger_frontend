@@ -5,7 +5,7 @@ export { default as Button } from "./button/Button";
 export { default as DefaultButton } from "./button/DefaultButton";
 export { default as TimeClient } from "./timeClient/TimeClient";
 export { default as OTPInput } from "./input/OtpInput";
-export { default as Notification } from "./notification/Notification";
+export { Notification } from "./notification/Notification";
 export { default as FieldInput } from "./input/error/FieldInput";
 export { default as AppInput } from "./input/AppInput";
 export { default as SearchInput } from "./input/SearchInput";
@@ -16,4 +16,5 @@ export { default as CheckboxDefault } from "./checkbox/CheckboxDefault";
 export { default as CheckboxCircle } from "./checkbox/CheckboxCircle";
 export { default as UserSettingsHeaderConstructor } from "./settingsHeader/UserSettingsHeaderConstructor";
 export {default as Spinner} from './spinner/Spinner'
+export {appNotification} from './notification/AppNotification'
 export {default as CirclePopup} from './circlePopup/CirclePopup'

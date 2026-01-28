@@ -6,6 +6,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import bg from "@/app/assets/imgs/fr.svg";
+import {Toaster} from 'react-hot-toast'
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -53,6 +54,7 @@ export default async function RootLayout({
         }}
       ></div>
       {children}
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 }

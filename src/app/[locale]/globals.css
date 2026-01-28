@@ -17,7 +17,7 @@
   --actions-popup-hover: #00000030;
   --checkbox-hover: #ffffff05;
   --inputs-ring-color: #ffffff07;
-  --icons-color: color-mix(in srgb, var(--accent-color) 20%, #818181);
+  --icons-color: #818181;
   --input-icons-color: #818181;
   --app-inputs-placeholder: #ffffff40;
   --default-text-color: #ffffff;
