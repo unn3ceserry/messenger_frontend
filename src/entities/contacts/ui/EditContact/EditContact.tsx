@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import EditContactHeader from "./EditContactHeader";
 import { motion } from "framer-motion";
-import {  CirclePopup, RenderAvatarElement } from "@/shared";
+import {  CirclePopup, RenderAvatarElement, Spinner } from "@/shared";
 import { userApi } from "@/entities/user";
 import { handleEditContact } from "../../model";
 import EditContactForm from "./EditContactForm";
@@ -25,11 +25,8 @@ const EditContact: FC<Props> = ({ username }) => {
     },
   );
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
   if (isLoading || !data) {
-    return null;
+    return <Spinner/>;
   }
 
   return (

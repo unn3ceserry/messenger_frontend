@@ -9,6 +9,7 @@ import {
   userApi,
 } from "@/entities";
 import { Dispatch, FC, SetStateAction } from "react";
+import { Spinner } from "@/shared";
 
 interface Props {
   username: string;
@@ -21,11 +22,9 @@ const OtherUsersProfileHeader: FC<Props> = ({ username, setIsOpen }) => {
 
   const t = useTranslations();
   const { data, isLoading } = userApi.useIsMyContactQuery(username);
-  {
-    /* сделать тут лоадер в будущем */
-  }
+
   if (isLoading) {
-    return null;
+    return <Spinner/>;
   }
 
   return (

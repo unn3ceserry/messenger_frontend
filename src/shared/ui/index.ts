@@ -14,4 +14,5 @@ export { default as CheckboxLanguage } from "./checkbox/CheckboxLanguage";
 export { default as CheckboxDefault } from "./checkbox/CheckboxDefault";
 export { default as CheckboxCircle } from "./checkbox/CheckboxCircle";
 export { default as UserSettingsHeaderConstructor } from "./settingsHeader/UserSettingsHeaderConstructor";
+export {default as Spinner} from './spinner/Spinner'
 export {default as CirclePopup} from './circlePopup/CirclePopup'

@@ -1,7 +1,7 @@
 "use client";
 
 import { contactsApi, userApi } from "@/entities";
-import { RenderAvatarElement } from "@/shared";
+import { RenderAvatarElement, Spinner } from "@/shared";
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CircleMinus } from "lucide-react";
@@ -29,11 +29,8 @@ const UserContactElement: FC<Props> = ({ username }) => {
     await deleteContact(username);
   };
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
   if (isLoading || !data) {
-    return null;
+    return <Spinner/>;
   }
 
   return (

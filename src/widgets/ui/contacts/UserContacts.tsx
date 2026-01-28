@@ -1,7 +1,7 @@
 "use client";
 
 import { contactsApi, UserContactElement } from "@/entities";
-import { UserSettingsHeaderConstructor } from "@/shared";
+import { Spinner, UserSettingsHeaderConstructor } from "@/shared";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -10,11 +10,8 @@ const UserContacts = () => {
 
   const { data, isLoading } = contactsApi.useGetMyContactsQuery();
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
   if (isLoading || !data) {
-    return null;
+    return <Spinner/>;
   }
 
   return (
