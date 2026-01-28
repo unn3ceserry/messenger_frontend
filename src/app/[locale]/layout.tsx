@@ -52,7 +52,6 @@ export default async function RootLayout({
           <ThemeProvider>
             <NextIntlClientProvider locale={locale}>
               {children}
-              <ToastContainer position="bottom-right" />
             </NextIntlClientProvider>
           </ThemeProvider>
         </StoreProvider>
