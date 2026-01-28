@@ -6,7 +6,6 @@ import { appConfig, routing } from "@/shared";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ToastContainer } from "react-toastify";
 import ThemeProvider from "../providers/ThemeProvider";
 
 const fontRoboto = Roboto({

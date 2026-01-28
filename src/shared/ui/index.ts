@@ -5,7 +5,7 @@ export { default as Button } from "./button/Button";
 export { default as DefaultButton } from "./button/DefaultButton";
 export { default as TimeClient } from "./timeClient/TimeClient";
 export { default as OTPInput } from "./input/OtpInput";
-export { default as Notification } from "./notification/Notification";
+export { Notification } from "./notification/Notification";
 export { default as FieldInput } from "./input/error/FieldInput";
 export { default as AppInput } from "./input/AppInput";
 export { default as SearchInput } from "./input/SearchInput";

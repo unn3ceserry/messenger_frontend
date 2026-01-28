@@ -30,7 +30,6 @@
     "react-hook-form": "^7.68.0",
     "react-hot-toast": "^2.6.0",
     "react-redux": "^9.2.0",
-    "react-toastify": "^11.0.5",
     "reactjs-otp-input": "^2.0.10",
     "redux-persist": "^6.0.0",
     "storybook": "^10.1.10",

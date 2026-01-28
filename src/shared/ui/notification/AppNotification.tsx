@@ -10,6 +10,7 @@ export const appNotification = ({ icon, text }: Props) => {
   toast(text, {
     icon,
     style: {
+      textAlign: 'end',
       borderRadius: "9999px",
       background: "#212121",
       color: "#fff",

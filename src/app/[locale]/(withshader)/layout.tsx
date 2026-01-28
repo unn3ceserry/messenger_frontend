@@ -5,8 +5,8 @@ import { ShaderDarkVeil, TimeClient, routing } from "@/shared";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ToastContainer } from "react-toastify";
 import { appConfig } from "@/shared";
+import { Toaster } from "react-hot-toast";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -59,7 +59,7 @@ export default async function RootLayout({
       </div>
       <TimeClient initialTime={now} />
       {children}
-      <ToastContainer position="bottom-right" />
+      <Toaster position="bottom-right" reverseOrder={false} />
     </div>
   );
 }
