@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { sessionApi } from "@/entities";
-import { UserSettingsHeaderConstructor } from "@/shared";
+import { Spinner, UserSettingsHeaderConstructor } from "@/shared";
 import ThisSession from "./ThisSession";
 import OtherSessions from "./OtherSessions";
 
@@ -11,11 +11,8 @@ const UserSessionsSettings = () => {
     sessionApi.useGetMyAccountSessionsQuery();
   const { data, isLoading } = sessionApi.useGetMySessionQuery();
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
   if (isLoading || !data || !dataSessions || isLoadingSessions) {
-    return null;
+    return <Spinner/>;
   }
 
   return (

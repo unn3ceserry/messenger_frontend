@@ -4,6 +4,7 @@ import { SignInType } from "@/entities";
 import { handleAuthUser, schemaSignIn } from "@/features";
 import {
   Button,
+  DefaultButton,
   DefaultInput,
   isErrorWithMessageAndType,
   OTPInput,
@@ -93,13 +94,11 @@ const LoginFormNumber = () => {
           }
           className="w-full p-2.5"
         />
-        <button
+        <DefaultButton
           type="button"
           onClick={() => router.back()}
-          className="bg-rect-bg ring ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-2.5 items-center justify-center w-full"
-        >
-          {t("buttons.buttonBack")}
-        </button>
+          text="buttons.buttonBack"
+        />
       </div>
     </form>
   );

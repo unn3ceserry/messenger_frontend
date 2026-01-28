@@ -30,7 +30,9 @@ export {
   UserSettingsHeaderConstructor,
   CheckboxCircle,
   CheckboxDefault,
-  CirclePopup
+  CirclePopup,
+  Spinner,
+  DefaultButton
 } from "./ui";
 export {modalContainerDefault, modalDefault, appConfig} from './config'
 export {createRipple} from './model'

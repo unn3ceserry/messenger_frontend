@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import OtherUsersProfileHeader from "./OtherUsersProfileHeader";
 import SwapUsersAvatars from "./SwapUsersAvatars/SwapUsersAvatars";
 import UserDataShortInfo from "../ShortInfo/UserDataShortInfo";
-import { ModalConstructor } from "@/shared";
+import { ModalConstructor, Spinner } from "@/shared";
 import { AddContactModal } from "@/entities/contacts";
 
 type Props = {
@@ -18,11 +18,9 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
     username: username,
   });
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  {
-    /* сделать тут лоадер в будущем */
-  }
+
   if (isLoading || !data) {
-    return null;
+    return <Spinner/>;
   }
 
   return (

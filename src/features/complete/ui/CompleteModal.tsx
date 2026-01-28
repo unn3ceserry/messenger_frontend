@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, DefaultInput } from "@/shared";
+import { Button, DefaultButton, DefaultInput } from "@/shared";
 import { useTranslations } from "next-intl";
 import { SetStateAction, Dispatch, useState, FC } from "react";
 import { IUserCompleteData, setCompleteData } from "@/entities";
@@ -66,14 +66,11 @@ const CompleteModal: FC<ICompleteModal> = ({ whoVisible, setWhoVisible }) => {
           type="submit"
           className="p-2.5"
         />
-
-        <button
-          type="button"
+        <DefaultButton
+         type="button"
           onClick={() => setWhoVisible(null)}
-          className="bg-rect-bg ring-2 ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-2.5 items-center justify-center w-full"
-        >
-          {t("buttons.buttonBack")}
-        </button>
+          text="buttons.buttonBack"
+        />
       </div>
     </form>
   );

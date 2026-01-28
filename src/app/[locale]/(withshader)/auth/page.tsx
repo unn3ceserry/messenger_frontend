@@ -1,3 +1,4 @@
+import { Spinner } from "@/shared";
 import { LoginTitle } from "@/widgets";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -21,8 +22,7 @@ export async function generateMetadata(
 export default function Page() {
   return (
     <div className="flex w-full h-screen items-center justify-center p-5">
-      {/* сделать тут лоадер в будущем */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<Spinner/>}>
         <LoginTitle />
       </Suspense>
     </div>

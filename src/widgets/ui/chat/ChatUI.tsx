@@ -1,18 +1,13 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import {
-  EditContact,
-  getOtherProfileStatus,
-  OtherUsersProfile,
-  userApi,
-} from "@/entities";
+import { userApi } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
-import { motion } from "framer-motion";
 import ChatUICompoonent from "./ChatUICompoonent";
 import ChatUIUserProfileComponent from "./ChatUIUserProfileComponent";
+import { Spinner } from "@/shared";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -21,7 +16,6 @@ const ChatUI = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
 
   // getters
-  const isOpenOtherOsersProfile = useAppSelector(getOtherProfileStatus);
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
 
   // setters
@@ -45,11 +39,8 @@ const ChatUI = () => {
     };
   }, []);
 
-  {
-    /* сделать тут лоадер в будущем */
-  }
   if (isLoading || !data) {
-    return null;
+    return <Spinner />;
   }
 
   return (
@@ -61,12 +52,13 @@ const ChatUI = () => {
         <AnimatePresence>
           <ChatUICompoonent data={data} />
         </AnimatePresence>
+        <ChatUIUserProfileComponent />
+
         <div
           onMouseDown={() => (isResizing.current = true)}
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
-      <ChatUIUserProfileComponent/>
     </div>
   );
 };

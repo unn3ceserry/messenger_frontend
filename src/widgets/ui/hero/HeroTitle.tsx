@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Button } from "@/shared";
+import { Button, DefaultButton } from "@/shared";
 import { appConfig } from "@/shared";
 import { useParams, useRouter } from "next/navigation";
 import AOS from "aos";
@@ -21,7 +21,10 @@ const HeroTitle = () => {
   }, []);
 
   return (
-    <div data-aos="zoom-out" className="flex flex-col items-start justify-center gap-5 w-full max-w-100">
+    <div
+      data-aos="zoom-out"
+      className="flex flex-col items-start justify-center gap-5 w-full max-w-100"
+    >
       <div className="flex flex-col items-start justify-center gap-1">
         <h1 className="text-2xl text-white">{appConfig.NAME()}  —</h1>
         <p className="text-white text-[.8rem]">{t("home.heroDesc")}</p>
@@ -32,12 +35,10 @@ const HeroTitle = () => {
           label={t("buttons.buttonSignUp")}
           className="w-full p-2.5"
         />
-        <button
+        <DefaultButton
           onClick={() => router.push(`/${params.locale}/auth`)}
-          className="bg-rect-bg ring ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-2.5 items-center justify-center w-full"
-        >
-          {t("buttons.buttonIHaveAccount")}
-        </button>
+          text="buttons.buttonIHaveAccount"
+        />
       </div>
     </div>
   );

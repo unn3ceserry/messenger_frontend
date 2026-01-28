@@ -3,16 +3,17 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "use-intl";
 import { RenderAvatarElement, UserSettingsHeaderConstructor } from "@/shared";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { UserType } from "../../model";
 import UserProfileLastAvatars from "./UserProfileLastAvatars";
 import UserDataShortInfo from "../ShortInfo/UserDataShortInfo";
 
 interface IUserProfile {
-  data: UserType
+  data: UserType;
+  setOpenedAvatar: Dispatch<SetStateAction<string | null>>;
 }
 
-const UserProfile: FC<IUserProfile> = ({data}) => {
+const UserProfile: FC<IUserProfile> = ({ data, setOpenedAvatar }) => {
   const t = useTranslations();
 
   return (
@@ -57,7 +58,7 @@ const UserProfile: FC<IUserProfile> = ({data}) => {
 
           <hr className="w-full border-3 border-black/5" />
 
-          <UserProfileLastAvatars avataras={data.avatars} />
+          <UserProfileLastAvatars setOpenedAvatar={setOpenedAvatar} avataras={data.avatars} />
         </div>
       </motion.div>
     </div>

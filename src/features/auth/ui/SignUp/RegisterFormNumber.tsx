@@ -4,6 +4,7 @@ import { SignUpType } from "@/entities";
 import { handleRegisterUser, schemaSignUp } from "@/features";
 import {
   Button,
+  DefaultButton,
   DefaultInput,
   FieldInput,
   isErrorWithMessageAndType,
@@ -119,14 +120,12 @@ const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
           }
           className="w-full p-2.5"
         />
-        <button
+        <DefaultButton
           type="button"
           onClick={() => router.back()}
-          className="bg-rect-bg ring ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-2.5 items-center justify-center w-full"
-        >
-          {t("buttons.buttonBack")}
-        </button>
-        <p className="text-[.8rem] text-text/50">
+          text="buttons.buttonBack"
+        />
+        <p className="text-[.8rem] text-button-text-color/50">
           {t("register.agreeWith")}{" "}
           <Link
             href={`/${params.locale}/terms`}

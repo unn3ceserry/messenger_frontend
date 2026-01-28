@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 import { CompletePane, handleSetCompleteData } from "@/features";
 import { COMPLETE_CONFIG } from "@/widgets";
 import { CompleteModal } from "@/features";
-import { Button } from "@/shared";
+import { Button, DefaultButton } from "@/shared";
 import { useAppSelector } from "@/app";
 
 const CompleteProfile = () => {
@@ -52,7 +52,7 @@ const CompleteProfile = () => {
         <h1 className="text-white text-[1.55rem]">
           {t("profileComplete.title")}
         </h1>
-        <p className="text-[0.75rem] text-text/50 max-w-90">
+        <p className="text-[0.75rem] text-button-text-color/50 max-w-90">
           {t("profileComplete.desc")}
         </p>
       </header>
@@ -83,12 +83,10 @@ const CompleteProfile = () => {
               type="submit"
               className="p-2.5"
             />
-            <button
+            <DefaultButton
               onClick={() => router.replace(`/${params.locale}/c`)}
-              className="bg-rect-bg ring-2 ring-rect-boder cursor-pointer opacity-40 duration-500 hover:opacity-100 backdrop-blur-xl rounded-xl flex p-2.5 items-center justify-center w-full"
-            >
-              {t("buttons.buttonSkip")}
-            </button>
+              text="buttons.buttonSkip"
+            />
           </div>
         </>
       ) : (
