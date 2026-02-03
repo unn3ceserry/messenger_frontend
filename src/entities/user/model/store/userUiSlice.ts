@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type IIsOpenUIComponent =
   | "myProfile"
+  | "searchUsers"
   | "userSettingsGeneral"
   | "userSettingsLanguage"
   | "userSettingsOther"
