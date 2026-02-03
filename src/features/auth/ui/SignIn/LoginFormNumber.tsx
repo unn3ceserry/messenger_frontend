@@ -97,7 +97,7 @@ const LoginFormNumber = () => {
         <DefaultButton
           type="button"
           onClick={() => router.back()}
-          text="buttons.buttonBack"
+          text={t('buttons.buttonBack')}
         />
       </div>
     </form>

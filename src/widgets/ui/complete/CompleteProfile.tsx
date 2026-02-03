@@ -85,7 +85,7 @@ const CompleteProfile = () => {
             />
             <DefaultButton
               onClick={() => router.replace(`/${params.locale}/c`)}
-              text="buttons.buttonSkip"
+              text={t("buttons.buttonSkip")}
             />
           </div>
         </>

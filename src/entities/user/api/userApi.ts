@@ -8,6 +8,10 @@ import {
 
 export const userApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
+
+    searchUser: builder.query<Array<UserType>, string>({
+      query: (searchText) => `/users/search/user?searchText=${searchText}`
+    }),
     setCompleteData: builder.mutation<void, UserCompleteData>({
       query: ({ birthday, email, cloudPassword }) => ({
         url: "/account/set-complete-data",

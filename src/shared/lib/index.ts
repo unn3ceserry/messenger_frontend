@@ -10,3 +10,4 @@ export {
   type TLocales,
 } from "./i18n";
 export {isErrorWithMessageAndType, isFetchBaseQueryError, isErrorWithMessage} from './utils'
+export {useDebounce} from './hooks/useDebounce'

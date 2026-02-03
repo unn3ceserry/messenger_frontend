@@ -8,7 +8,7 @@ type OtherUsersProfileType = {
   username: string,
 };
 
-const initialState: OtherUsersProfileType = {
+export const initialState: OtherUsersProfileType = {
   openComponent: null,
   username: '',
 }

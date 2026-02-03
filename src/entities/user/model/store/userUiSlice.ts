@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type IIsOpenUIComponent =
   | "myProfile"
+  | "searchUsers"
   | "userSettingsGeneral"
   | "userSettingsLanguage"
   | "userSettingsOther"
@@ -26,7 +27,7 @@ interface IUIState {
   openComponent: IIsOpenUIComponent;
 }
 
-const initialState: IUIState = {
+export const initialState: IUIState = {
   openComponent: null,
 };
 

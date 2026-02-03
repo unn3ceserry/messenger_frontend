@@ -12,6 +12,7 @@ export {
   isErrorWithMessage,
   i18nPattern,
   type TLocales,
+  useDebounce
 } from "./lib";
 export {
   ShaderDarkVeil,
