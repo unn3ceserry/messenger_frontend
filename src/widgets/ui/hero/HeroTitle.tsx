@@ -37,7 +37,7 @@ const HeroTitle = () => {
         />
         <DefaultButton
           onClick={() => router.push(`/${params.locale}/auth`)}
-          text="buttons.buttonIHaveAccount"
+          text={t("buttons.buttonIHaveAccount")}
         />
       </div>
     </div>

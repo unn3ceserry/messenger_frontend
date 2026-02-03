@@ -69,7 +69,7 @@ const CompleteModal: FC<ICompleteModal> = ({ whoVisible, setWhoVisible }) => {
         <DefaultButton
          type="button"
           onClick={() => setWhoVisible(null)}
-          text="buttons.buttonBack"
+          text={t("buttons.buttonBack")}
         />
       </div>
     </form>

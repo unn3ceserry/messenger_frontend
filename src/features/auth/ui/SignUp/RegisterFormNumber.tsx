@@ -123,7 +123,7 @@ const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
         <DefaultButton
           type="button"
           onClick={() => router.back()}
-          text="buttons.buttonBack"
+          text={t("buttons.buttonBack")}
         />
         <p className="text-[.8rem] text-button-text-color/50">
           {t("register.agreeWith")}{" "}
