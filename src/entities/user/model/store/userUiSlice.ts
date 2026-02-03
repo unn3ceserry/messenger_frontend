@@ -26,7 +26,7 @@ interface IUIState {
   openComponent: IIsOpenUIComponent;
 }
 
-const initialState: IUIState = {
+export const initialState: IUIState = {
   openComponent: null,
 };
 

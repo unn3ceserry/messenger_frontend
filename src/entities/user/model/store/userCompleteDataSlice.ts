@@ -10,7 +10,7 @@ interface IUserCompleteDataState {
   data: IUserCompleteData;
 }
 
-const initialState: IUserCompleteDataState = {
+export const initialState: IUserCompleteDataState = {
   data: {
     email: undefined,
     birthday: undefined,
