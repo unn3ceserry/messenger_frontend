@@ -7,7 +7,8 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import ChatUICompoonent from "./ChatUICompoonent";
 import ChatUIUserProfileComponent from "./ChatUIUserProfileComponent";
-import { Spinner } from "@/shared";
+import { Spinner, getSocket } from "@/shared";
+import { Socket } from "socket.io-client";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -23,6 +24,13 @@ const ChatUI = () => {
 
   const setResizeValue = (v: number) => dispatch(setWidth({ width: v }));
   const isResizing = useRef(false);
+
+  const socketRef = useRef<Socket | null>(null);
+
+  useEffect(() => {
+    if (!data?.id) return;
+    socketRef.current = getSocket(data.id);
+  }, [data?.id]);
 
   useEffect(() => {
     const handleMouseUp = () => {

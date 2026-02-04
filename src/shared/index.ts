@@ -37,4 +37,4 @@ export {
   appNotification
 } from "./ui";
 export {modalContainerDefault, modalDefault, appConfig} from './config'
-export {createRipple} from './model'
+export {createRipple, getSocket} from './model'
