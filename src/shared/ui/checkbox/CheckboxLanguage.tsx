@@ -18,7 +18,7 @@ const CheckboxLanguage: FC<ICheckboxLanguage> = ({
 }) => {
   return (
     <div
-    data-testId="checkbox-language"
+    data-testid="checkbox-language"
       onClick={(e) => {
         onClick(), createRipple(e);
       }}
