@@ -19,10 +19,15 @@ const LeftSideBar: FC<ILeftSideBar> = ({ isOpen, setIsOpen, data }) => {
   return (
     <>
       <div className="flex flex-col items-center justify-start gap-1 h-screen text-white w-full">
-        <LeftSideBarSearch setIsOpen={setIsOpen} searchText={searchText} setSearchText={setSearchText} isOpenSearchUsers={isOpenSearchUsers}  />
-          {isOpenSearchUsers && (
-        <SearchUsers searchText={searchText} setSearchText={setSearchText} />
-      )}
+        <LeftSideBarSearch
+          setIsOpen={setIsOpen}
+          searchText={searchText}
+          setSearchText={setSearchText}
+          isOpenSearchUsers={isOpenSearchUsers}
+        />
+        {isOpenSearchUsers && searchText && (
+          <SearchUsers searchText={searchText} setSearchText={setSearchText} />
+        )}
       </div>
 
       {/* actions modal */}
