@@ -1,3 +1,5 @@
+import { ChatMember } from "@/entities/chats";
+
 export type FindUserType = {
   id: string;
   userId: string;
@@ -28,6 +30,7 @@ export type UserType = {
   avatarsVisible: WhoCanSeen;
   birthdayVisible: WhoCanSeen;
   cloudPassword: string | null;
+  members: ChatMember
   createdAt: Date;
   updatedAt: Date;
 };
