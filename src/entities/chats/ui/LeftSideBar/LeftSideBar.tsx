@@ -5,6 +5,7 @@ import { ActionsPopup, LeftSideBarSearch, UserType } from "@/entities";
 import { SearchUsers, selectOpenComponent } from "@/entities/user";
 import { AnimatePresence } from "framer-motion";
 import { Dispatch, FC, SetStateAction, useState } from "react";
+import ChatsSideBar from "../Chats/SideBar/ChatsSideBar";
 
 interface ILeftSideBar {
   isOpen: boolean;
@@ -18,18 +19,19 @@ const LeftSideBar: FC<ILeftSideBar> = ({ isOpen, setIsOpen, data }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start gap-1 h-screen text-white w-full">
+      <div className="flex flex-col items-center justify-start gap-1 h-screen text-white w-full overflow-y-auto scrollbar-thin">
         <LeftSideBarSearch
           setIsOpen={setIsOpen}
           searchText={searchText}
           setSearchText={setSearchText}
           isOpenSearchUsers={isOpenSearchUsers}
         />
-        {isOpenSearchUsers && searchText && (
+        {isOpenSearchUsers && searchText ? (
           <SearchUsers searchText={searchText} setSearchText={setSearchText} />
+        ) : (
+          <ChatsSideBar userId={data.id} />
         )}
       </div>
-
       {/* actions modal */}
       <AnimatePresence>
         {isOpen && (

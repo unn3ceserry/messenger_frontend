@@ -47,7 +47,7 @@ export {
   type TUserTheme,
 } from "./themes";
 export { sessionApi } from "./session";
-export { LeftSideBar, LeftSideBarSearch} from "./chats";
+export { LeftSideBar, LeftSideBarSearch, chatsApi} from "./chats";
 export {
   contactsApi,
   AddContactModal,
@@ -56,3 +56,5 @@ export {
   handleEditContact,
 } from "./contacts";
 export type { ContactType, ContactsType, CreatedContactType } from "./contacts";
+
+export type {Chat, ChatMember, Message} from './chats'
