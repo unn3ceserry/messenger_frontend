@@ -11,7 +11,7 @@ const ChatUIUserProfileComponent = () => {
 
   return (
     <AnimatePresence mode="wait">
-      {!!isOpenOtherOsersProfile.component && (
+      {!!isOpenOtherOsersProfile.openComponent && (
         <>
           <motion.div
             initial={{ x: "100%" }}
@@ -22,7 +22,7 @@ const ChatUIUserProfileComponent = () => {
             className="fixed right-0 top-0 z-1234 h-screen max-w-100 w-full bg-chatui-bg overflow-y-auto text-default-text-color scrollbar-thin otherprofile:border-l border-line-color shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)]"
           >
             {(() => {
-              switch (isOpenOtherOsersProfile.component) {
+              switch (isOpenOtherOsersProfile.openComponent) {
                 case "userProfile":
                   return (
                     <OtherUsersProfile

@@ -79,7 +79,7 @@ describe("usersProfileStastusSlice", () => {
     });
 
     expect(profile).not.toBeNull();
-    expect(profile.component).not.toBeNull();
+    expect(profile.openComponent).not.toBeNull();
     expect(profile).toBeDefined();
   });
 });
