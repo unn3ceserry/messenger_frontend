@@ -1,26 +1,36 @@
 "use client";
 
-import { RenderAvatarElement, Spinner, useDebounce } from "@/shared";
-import { Dispatch, FC, SetStateAction, useEffect } from "react";
-import { userApi } from "../../api";
-import { useTranslations } from "next-intl";
+import { FC, MouseEvent, useEffect } from "react";
 import { motion } from "framer-motion";
+import { createRipple, RenderAvatarElement, Spinner, useDebounce } from "@/shared";
+import { userApi } from "@/entities/user/api";
+import { chatsApi, Chat } from "@/entities/chats";
+import { useTranslations } from "next-intl";
 
 interface Props {
   searchText: string;
-  setSearchText: Dispatch<SetStateAction<string>>;
+  setMyDms: (chat: Chat) => void;
+  handleCloseSearch: () => void;
 }
 
-const SearchUsers: FC<Props> = ({ searchText }) => {
-  const debouncedSearchText = useDebounce(searchText, 500);
-  const [trigger, { isLoading, data }] = userApi.useLazySearchUserQuery();
+const SearchUsers: FC<Props> = ({ searchText, setMyDms, handleCloseSearch }) => {
   const t = useTranslations();
+  const debouncedSearchText = useDebounce(searchText, 500);
+
+  const [searchTrigger, { data, isLoading }] = userApi.useLazySearchUserQuery();
+  const [getDm] = chatsApi.useLazyGetDmQuery();
+
+  const handleClick = async (e: MouseEvent<HTMLDivElement>, targetId: string) => {
+    createRipple(e);
+    const chat = await getDm(targetId).unwrap();
+    setMyDms(chat);
+    handleCloseSearch();
+  };
 
   useEffect(() => {
     if (!debouncedSearchText) return;
-
-    trigger(debouncedSearchText);
-  }, [debouncedSearchText, trigger]);
+    searchTrigger(debouncedSearchText);
+  }, [debouncedSearchText, searchTrigger]);
 
   if (isLoading) return <Spinner />;
 
@@ -39,7 +49,8 @@ const SearchUsers: FC<Props> = ({ searchText }) => {
             {data.map((data) => (
               <div
                 key={data.id}
-                className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-5 text-default-text-color"
+                className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-5 text-default-text-color overflow-hidden relative"
+                onClick={(e) => handleClick(e, data.id)}
               >
                 <RenderAvatarElement
                   hasAvatar={!!data.avatars?.length}

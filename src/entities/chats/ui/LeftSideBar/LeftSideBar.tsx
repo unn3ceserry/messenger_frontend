@@ -1,38 +1,84 @@
 "use client";
 
-import { useAppSelector } from "@/app";
-import { ActionsPopup, LeftSideBarSearch, UserType } from "@/entities";
-import { SearchUsers, selectOpenComponent } from "@/entities/user";
+import {
+  FC,
+  useEffect,
+  useState,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { AnimatePresence } from "framer-motion";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/app";
+import { Spinner } from "@/shared";
+import {
+  chatsApi,
+  Chat,
+  UserType,
+  openComponent,
+  selectOpenComponent,
+  ActionsPopup,
+  LeftSideBarSearch,
+} from "@/entities";
+import { useChatSocket } from "../../model";
+import { SearchUsers } from "@/entities/user";
 import ChatsSideBar from "../Chats/SideBar/ChatsSideBar";
 
-interface ILeftSideBar {
+interface Props {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   data: UserType;
 }
 
-const LeftSideBar: FC<ILeftSideBar> = ({ isOpen, setIsOpen, data }) => {
+const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
+  const { data: dataDms, isLoading } = chatsApi.useGetMyDmsQuery();
+
+  const [myDms, setMyDms] = useState<Chat[]>([]);
   const [searchText, setSearchText] = useState<string>("");
+
   const isOpenSearchUsers = useAppSelector(selectOpenComponent);
+  const dispatch = useAppDispatch();
+
+  const addDm = useCallback((chat: Chat) => {
+    setMyDms((prev) =>
+      prev.some((c) => c.id === chat.id) ? prev : [chat, ...prev],
+    );
+  }, []);
+
+  const handleCloseSearch = () => {
+    setSearchText("");
+    dispatch(openComponent(null));
+  };
+
+  useChatSocket(data.id, addDm);
+
+  useEffect(() => {
+    if (dataDms) setMyDms((prev) => [...dataDms, ...prev]);
+  }, [dataDms]);
+
+  if (isLoading || !dataDms) return <Spinner />;
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start gap-1 h-screen text-white w-full overflow-y-auto scrollbar-thin">
+      <div className="flex flex-col items-center gap-1 h-screen w-full overflow-y-auto scrollbar-thin text-white">
         <LeftSideBarSearch
-          setIsOpen={setIsOpen}
-          searchText={searchText}
-          setSearchText={setSearchText}
           isOpenSearchUsers={isOpenSearchUsers}
+          searchText={searchText}
+          setIsOpen={setIsOpen}
+          setSearchText={setSearchText}
         />
         {isOpenSearchUsers && searchText ? (
-          <SearchUsers searchText={searchText} setSearchText={setSearchText} />
+          <SearchUsers
+            searchText={searchText}
+            setMyDms={addDm}
+            handleCloseSearch={handleCloseSearch}
+          />
         ) : (
-          <ChatsSideBar userId={data.id} />
+          <ChatsSideBar userId={data.id} myDms={myDms} />
         )}
       </div>
-      {/* actions modal */}
+
+      {/* modal */}
       <AnimatePresence>
         {isOpen && (
           <div className="fixed top-18 left-3 w-full max-w-65 z-123123123">
