@@ -51,9 +51,19 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
   };
 
   useChatSocket(data.id, addDm);
-
+  
   useEffect(() => {
-    if (dataDms) setMyDms((prev) => [...dataDms, ...prev]);
+    if (!dataDms) return;
+
+    setMyDms((prev) => {
+      const map = new Map<string, Chat>();
+
+      [...prev, ...dataDms].forEach((chat) => {
+        map.set(chat.id, chat);
+      });
+
+      return Array.from(map.values());
+    });
   }, [dataDms]);
 
   if (isLoading || !dataDms) return <Spinner />;
