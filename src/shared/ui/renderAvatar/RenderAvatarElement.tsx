@@ -18,10 +18,10 @@ const RenderAvatarElement: FC<IRenderAvatarElement> = ({hasAvatar, size, avatar}
           alt={'avatar'}
           width={size}
           height={size}
-          className="rounded-full select-none object-cover aspect-square"
+          className="rounded-full select-none object-cover aspect-square shrink-0"
         />
       ) : (
-        <div style={{width: size}} className="relative flex flex-col items-center justify-center">
+        <div style={{width: size}} className="relative flex flex-col items-center justify-center shrink-0">
           <div style={{width: size}} className="aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"></div>
         </div>
       )}
