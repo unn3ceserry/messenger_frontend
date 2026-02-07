@@ -48,7 +48,7 @@ const LeftSideBarSearch: FC<ILeftSideBarSearch> = ({
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         onClick={() => dispatch(openComponent("searchUsers"))}
-        icon={<Search className="text-input-icons-color" size={22} />}
+        icon={<Search className="text-app-inputs-placeholder" size={22} />}
         placeholder={t("chat.searchPlaceholder")}
       />
     </div>
