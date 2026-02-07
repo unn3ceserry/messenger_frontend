@@ -38,6 +38,7 @@ export {
   closeOtherProfile,
   UserContactElement,
   UserDataShortInfo,
+  SearchUsers
 } from "./user";
 export {
   userThemeSlice,
@@ -48,15 +49,15 @@ export {
 } from "./themes";
 export { sessionApi } from "./session";
 export {
-  LeftSideBar,
-  LeftSideBarSearch,
+  ChatsSideBar,
   chatsApi,
   currentChatReducer,
   closeCurrentChat,
   currentChatSlice,
   getCurrentChat,
   setCurrentChat,
-  ChatMessages
+  ChatMessages,
+  useChatSocket
 } from "./chats";
 export {
   contactsApi,

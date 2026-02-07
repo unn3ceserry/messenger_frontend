@@ -18,11 +18,9 @@ import {
   openComponent,
   selectOpenComponent,
   ActionsPopup,
-  LeftSideBarSearch,
 } from "@/entities";
-import { useChatSocket } from "../../model";
-import { SearchUsers } from "@/entities/user";
-import ChatsSideBar from "../Chats/SideBar/ChatsSideBar";
+import { SearchUsers, useChatSocket, ChatsSideBar } from "@/entities";
+import LeftSideBarSearch from "./LeftSideBarSearch";
 
 interface Props {
   isOpen: boolean;

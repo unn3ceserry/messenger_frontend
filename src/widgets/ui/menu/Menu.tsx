@@ -5,15 +5,15 @@ import { ChatMessages, getCurrentChat, userApi } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
-import ChatUICompoonent from "./ChatUICompoonent";
-import ChatUIUserProfileComponent from "./ChatUIUserProfileComponent";
+import MenuCompoonent from "./MenuCompoonent";
+import RightSideBar from "./RightSideBar/RightSideBar";
 import { Spinner, getSocket } from "@/shared";
 import { Socket } from "socket.io-client";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
-const ChatUI = () => {
+const Menu = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
 
   // getters
@@ -59,9 +59,9 @@ const ChatUI = () => {
         className="flex items-center justify-center w-full h-screen bg-chatui-bg relative shrink-0"
       >
         <AnimatePresence>
-          <ChatUICompoonent data={data} />
+          <MenuCompoonent data={data} />
         </AnimatePresence>
-        <ChatUIUserProfileComponent />
+        <RightSideBar />
 
         <div
           onMouseDown={() => (isResizing.current = true)}
@@ -73,4 +73,4 @@ const ChatUI = () => {
   );
 };
 
-export default ChatUI;
+export default Menu;

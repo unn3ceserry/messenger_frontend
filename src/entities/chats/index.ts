@@ -1,4 +1,4 @@
-export { LeftSideBarSearch, LeftSideBar, ChatMessages } from "./ui";
+export { ChatsSideBar, ChatMessages } from "./ui";
 export type { Chat, ChatMember, Message } from "./model";
 export {
   useChatSocket,

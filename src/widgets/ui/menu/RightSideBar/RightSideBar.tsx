@@ -6,7 +6,7 @@ import {
 } from "@/entities";
 import { AnimatePresence, motion } from "framer-motion";
 
-const ChatUIUserProfileComponent = () => {
+const RightSideBar = () => {
   const isOpenOtherOsersProfile = useAppSelector(getOtherProfileStatus);
 
   return (
@@ -42,4 +42,4 @@ const ChatUIUserProfileComponent = () => {
   );
 };
 
-export default ChatUIUserProfileComponent;
+export default RightSideBar;
