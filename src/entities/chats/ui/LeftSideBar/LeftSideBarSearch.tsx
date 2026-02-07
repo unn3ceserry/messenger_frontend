@@ -26,7 +26,7 @@ const LeftSideBarSearch: FC<ILeftSideBarSearch> = ({
   const handleClick = () => {
     if (isOpenSearchUsers === 'searchUsers') {
       setSearchText('');
-      openComponent(null);
+      dispatch(openComponent(null));
     } else {
       setIsOpen((prev) => !prev);
     }
