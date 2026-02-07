@@ -2,10 +2,16 @@
 
 import { FC, MouseEvent, useEffect } from "react";
 import { motion } from "framer-motion";
-import { createRipple, RenderAvatarElement, Spinner, useDebounce } from "@/shared";
+import {
+  createRipple,
+  RenderAvatarElement,
+  Spinner,
+  useDebounce,
+} from "@/shared";
 import { userApi } from "@/entities/user/api";
-import { chatsApi, Chat } from "@/entities/chats";
+import { chatsApi, Chat, setCurrentChat } from "@/entities/chats";
 import { useTranslations } from "next-intl";
+import { useAppDispatch } from "@/app";
 
 interface Props {
   searchText: string;
@@ -13,16 +19,25 @@ interface Props {
   handleCloseSearch: () => void;
 }
 
-const SearchUsers: FC<Props> = ({ searchText, setMyDms, handleCloseSearch }) => {
+const SearchUsers: FC<Props> = ({
+  searchText,
+  setMyDms,
+  handleCloseSearch,
+}) => {
   const t = useTranslations();
   const debouncedSearchText = useDebounce(searchText, 500);
 
+  const dispatch = useAppDispatch();
   const [searchTrigger, { data, isLoading }] = userApi.useLazySearchUserQuery();
   const [getDm] = chatsApi.useLazyGetDmQuery();
 
-  const handleClick = async (e: MouseEvent<HTMLDivElement>, targetId: string) => {
+  const handleClick = async (
+    e: MouseEvent<HTMLDivElement>,
+    targetId: string,
+  ) => {
     createRipple(e);
     const chat = await getDm(targetId).unwrap();
+    dispatch(setCurrentChat(chat));
     setMyDms(chat);
     handleCloseSearch();
   };

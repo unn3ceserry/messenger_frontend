@@ -26,11 +26,11 @@ const ChatUIUserProfileComponent = () => {
                 case "userProfile":
                   return (
                     <OtherUsersProfile
-                      username={"durov"}
+                      username={isOpenOtherOsersProfile.username}
                     />
                   );
                 case "editContact":
-                  return <EditContact username={"durov"} />;
+                  return <EditContact username={isOpenOtherOsersProfile.username} />;
                 default:
                   return null;
               }
