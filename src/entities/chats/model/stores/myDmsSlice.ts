@@ -6,7 +6,7 @@ interface IMyDmsState {
   myDms: Array<Chat>;
 }
 
-const initialState: IMyDmsState = {
+export const initialState: IMyDmsState = {
   myDms: [],
 };
 

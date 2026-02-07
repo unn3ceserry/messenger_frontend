@@ -6,7 +6,7 @@ interface ICurrentChat {
   chat: Chat | null;
 }
 
-const initialState: ICurrentChat = {
+export const initialState: ICurrentChat = {
   chat: null,
 };
 
