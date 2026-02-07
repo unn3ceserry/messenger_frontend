@@ -139,7 +139,8 @@
       "settings": "Настройки",
       "nightMode": "Ночной режим",
       "installApp": "Установить приложение"
-    }
+    },
+    "messagePlaceholder": "Сообщение"
   },
   "contacts": {
     "title": "Контакты",

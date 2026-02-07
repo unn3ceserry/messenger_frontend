@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { userApi } from "@/entities";
+import { ChatMessages, getCurrentChat, userApi } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
@@ -18,6 +18,7 @@ const ChatUI = () => {
 
   // getters
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
+  const currentChat = useAppSelector(getCurrentChat);
 
   // setters
   const dispatch = useAppDispatch();
@@ -52,10 +53,10 @@ const ChatUI = () => {
   }
 
   return (
-    <div className="flex w-full items-center justify-between h-screen relative">
+    <div className="flex w-full items-center justify-start h-screen relative">
       <div
         style={{ width }}
-        className="flex items-center justify-center w-full h-screen bg-chatui-bg relative"
+        className="flex items-center justify-center w-full h-screen bg-chatui-bg relative shrink-0"
       >
         <AnimatePresence>
           <ChatUICompoonent data={data} />
@@ -67,6 +68,7 @@ const ChatUI = () => {
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
+      {!!currentChat && <ChatMessages userId={data.id} />}
     </div>
   );
 };
