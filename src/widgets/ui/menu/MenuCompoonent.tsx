@@ -11,7 +11,6 @@ import {
   UserType,
   VisibilityField,
 } from "@/entities";
-import { LeftSideBar } from "@/entities";
 
 import UserContacts from "../contacts/UserContacts";
 import {
@@ -27,12 +26,13 @@ import {
   PrivacyEmail,
 } from "../settings";
 import { VisibilitySettings } from "../settings/PrivacyAndSecurity";
+import LeftSideBar from "./LeftSideBar/LeftSideBar";
 
 interface Props {
   data: UserType;
 }
 
-const ChatUIComponent: FC<Props> = ({ data }) => {
+const MenuCompoonent: FC<Props> = ({ data }) => {
   const whoIsOpenWithUiComponents = useAppSelector(selectOpenComponent);
   const dispatch = useAppDispatch();
 
@@ -127,4 +127,4 @@ const ChatUIComponent: FC<Props> = ({ data }) => {
   );
 };
 
-export default ChatUIComponent;
+export default MenuCompoonent;

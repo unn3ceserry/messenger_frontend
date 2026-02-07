@@ -1,4 +1,4 @@
-import { ChatUI } from "@/widgets";
+import { Menu } from "@/widgets";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function Page() {
   return (
     <div className="flex w-full h-screen items-center justify-start">
-      <ChatUI />
+      <Menu />
     </div>
   );
 }

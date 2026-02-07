@@ -11,22 +11,35 @@ interface Props {
   message: string;
   firstName?: string;
   lastName?: string;
+  onClick: () => void;
 }
 
-const ChatItem: FC<Props> = ({ hasAvatar, size, avatar, message, firstName, lastName }) => {
-
+const ChatItem: FC<Props> = ({
+  hasAvatar,
+  size,
+  avatar,
+  message,
+  firstName,
+  lastName,
+  onClick
+}) => {
   const t = useTranslations();
 
   return (
     <div
-      onClick={(e) => createRipple(e)}
-      className="flex w-full items-start gap-3 cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden"
+      onClick={(e) => {
+        onClick(),
+        createRipple(e)
+      }}
+      className="flex w-full items-start gap-3 cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color"
     >
       <RenderAvatarElement hasAvatar={hasAvatar} size={size} avatar={avatar} />
       <div className="flex flex-col items-start justify-center">
-        <h2>{firstName} {lastName}</h2>
+        <h2>
+          {firstName} {lastName}
+        </h2>
         <p className="line-clamp-1 text-icons-color text-[0.85rem]">
-          {message ? message : t('searchUsers.noResult')}
+          {message ? message : t("searchUsers.noResult")}
         </p>
       </div>
     </div>

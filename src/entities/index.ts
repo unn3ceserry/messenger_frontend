@@ -37,7 +37,8 @@ export {
   usersProfileStastusSlice,
   closeOtherProfile,
   UserContactElement,
-  UserDataShortInfo
+  UserDataShortInfo,
+  SearchUsers,
 } from "./user";
 export {
   userThemeSlice,
@@ -47,7 +48,21 @@ export {
   type TUserTheme,
 } from "./themes";
 export { sessionApi } from "./session";
-export { LeftSideBar, LeftSideBarSearch, chatsApi} from "./chats";
+export {
+  ChatsSideBar,
+  chatsApi,
+  currentChatReducer,
+  closeCurrentChat,
+  currentChatSlice,
+  getCurrentChat,
+  setCurrentChat,
+  ChatMessages,
+  useChatSocket,
+  getMyDms,
+  myDmsReducer,
+  myDmsSlice,
+  setNewDm,
+} from "./chats";
 export {
   contactsApi,
   AddContactModal,
@@ -57,4 +72,4 @@ export {
 } from "./contacts";
 export type { ContactType, ContactsType, CreatedContactType } from "./contacts";
 
-export type {Chat, ChatMember, Message} from './chats'
+export type { Chat, ChatMember, Message } from "./chats";

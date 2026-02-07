@@ -1,5 +1,5 @@
 export {default as TermsOfUse} from './terms/TermsOfUse'
-export {default as ChatUI} from './chat/ChatUI'
+export {default as Menu} from './menu/Menu'
 export {default as HeroTitle} from './hero/HeroTitle'
 export {default as LoginTitle} from './auth/login/LoginTitle'
 export {default as RegisterTitle} from './auth/register/RegisterTitle'

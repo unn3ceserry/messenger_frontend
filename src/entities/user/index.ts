@@ -36,4 +36,5 @@ export {
   usersProfileStastusReducer,
   usersProfileStastusSlice,
   closeOtherProfile,
+  
 } from "./model";

@@ -3,7 +3,8 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 import ChatItem from "../ChatItem/ChatItem";
-import { Chat } from "@/entities/chats/model";
+import { Chat, setCurrentChat } from "@/entities/chats/model";
+import { useAppDispatch } from "@/app";
 
 interface Props {
   userId: string;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
+  const dispatch = useAppDispatch();
   return (
     <motion.div
       exit={{ opacity: 0, scale: 0.8, y: 50 }}
@@ -21,10 +23,12 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
     >
       {myDms.map((chat) => {
         const user = chat.members?.find((m) => m.userId !== userId)?.user;
-        const lastMessage = chat.messages?.[chat.messages.length - 1]?.text ?? "";
+        const lastMessage =
+          chat.messages?.[chat.messages.length - 1]?.text ?? "";
 
         return (
           <ChatItem
+            onClick={() => dispatch(setCurrentChat(chat))}
             key={chat.id}
             firstName={user?.firstName}
             lastName={user?.lastName}

@@ -141,7 +141,8 @@
       "settings": "Settings",
       "nightMode": "Night Mode",
       "installApp": "Install App"
-    }
+    },
+    "messagePlaceholder": "Message"
   },
   "contacts": {
     "title": "Contacts",
@@ -240,5 +241,5 @@
     },
     "termOfUse": "Term Of Use",
     "online": "online"
-  }
+  } 
 }

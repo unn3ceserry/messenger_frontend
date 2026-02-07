@@ -6,7 +6,7 @@ import {
 } from "@/entities";
 import { AnimatePresence, motion } from "framer-motion";
 
-const ChatUIUserProfileComponent = () => {
+const RightSideBar = () => {
   const isOpenOtherOsersProfile = useAppSelector(getOtherProfileStatus);
 
   return (
@@ -26,11 +26,11 @@ const ChatUIUserProfileComponent = () => {
                 case "userProfile":
                   return (
                     <OtherUsersProfile
-                      username={"durov"}
+                      username={isOpenOtherOsersProfile.username}
                     />
                   );
                 case "editContact":
-                  return <EditContact username={"durov"} />;
+                  return <EditContact username={isOpenOtherOsersProfile.username} />;
                 default:
                   return null;
               }
@@ -42,4 +42,4 @@ const ChatUIUserProfileComponent = () => {
   );
 };
 
-export default ChatUIUserProfileComponent;
+export default RightSideBar;

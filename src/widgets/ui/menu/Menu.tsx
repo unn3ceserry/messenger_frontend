@@ -1,23 +1,24 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { userApi } from "@/entities";
+import { ChatMessages, getCurrentChat, userApi } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
-import ChatUICompoonent from "./ChatUICompoonent";
-import ChatUIUserProfileComponent from "./ChatUIUserProfileComponent";
+import MenuCompoonent from "./MenuCompoonent";
+import RightSideBar from "./RightSideBar/RightSideBar";
 import { Spinner, getSocket } from "@/shared";
 import { Socket } from "socket.io-client";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
-const ChatUI = () => {
+const Menu = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
 
   // getters
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
+  const currentChat = useAppSelector(getCurrentChat);
 
   // setters
   const dispatch = useAppDispatch();
@@ -52,23 +53,24 @@ const ChatUI = () => {
   }
 
   return (
-    <div className="flex w-full items-center justify-between h-screen relative">
+    <div className="flex w-full items-center justify-start h-screen relative">
       <div
         style={{ width }}
-        className="flex items-center justify-center w-full h-screen bg-chatui-bg relative"
+        className="flex items-center justify-center w-full h-screen bg-chatui-bg relative shrink-0"
       >
         <AnimatePresence>
-          <ChatUICompoonent data={data} />
+          <MenuCompoonent data={data} />
         </AnimatePresence>
-        <ChatUIUserProfileComponent />
+        <RightSideBar />
 
         <div
           onMouseDown={() => (isResizing.current = true)}
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
+      {!!currentChat && <ChatMessages userId={data.id} />}
     </div>
   );
 };
 
-export default ChatUI;
+export default Menu;

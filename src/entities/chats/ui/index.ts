@@ -1,2 +1,2 @@
-export {default as LeftSideBarSearch} from './LeftSideBar/LeftSideBarSearch'
-export {default as LeftSideBar} from './LeftSideBar/LeftSideBar'
+export {default as ChatMessages} from './Chat/Chat'
+export {default as ChatsSideBar} from './SideBar/ChatsSideBar'

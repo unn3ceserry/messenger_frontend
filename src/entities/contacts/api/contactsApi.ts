@@ -21,7 +21,7 @@ export const contactsApi = mainApi.injectEndpoints({
         method: "PATCH",
         body: { username, firstName, lastName },
       }),
-      invalidatesTags: ["contacts", "users"],
+      invalidatesTags: ["contacts", "users", 'chats'],
     }),
     deleteContact: builder.mutation<boolean, string>({
       query: (username) => ({

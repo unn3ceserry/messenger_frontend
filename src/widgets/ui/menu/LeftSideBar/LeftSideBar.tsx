@@ -4,7 +4,6 @@ import {
   FC,
   useEffect,
   useState,
-  useCallback,
   Dispatch,
   SetStateAction,
 } from "react";
@@ -18,11 +17,11 @@ import {
   openComponent,
   selectOpenComponent,
   ActionsPopup,
-  LeftSideBarSearch,
+  getMyDms,
+  setNewDm,
 } from "@/entities";
-import { useChatSocket } from "../../model";
-import { SearchUsers } from "@/entities/user";
-import ChatsSideBar from "../Chats/SideBar/ChatsSideBar";
+import { SearchUsers, useChatSocket, ChatsSideBar } from "@/entities";
+import LeftSideBarSearch from "./LeftSideBarSearch";
 
 interface Props {
   isOpen: boolean;
@@ -33,27 +32,24 @@ interface Props {
 const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
   const { data: dataDms, isLoading } = chatsApi.useGetMyDmsQuery();
 
-  const [myDms, setMyDms] = useState<Chat[]>([]);
-  const [searchText, setSearchText] = useState<string>("");
-
+  const myDms = useAppSelector(getMyDms);
   const isOpenSearchUsers = useAppSelector(selectOpenComponent);
+
   const dispatch = useAppDispatch();
 
-  const addDm = useCallback((chat: Chat) => {
-    setMyDms((prev) =>
-      prev.some((c) => c.id === chat.id) ? prev : [chat, ...prev],
-    );
-  }, []);
+  const [searchText, setSearchText] = useState<string>("");
 
   const handleCloseSearch = () => {
     setSearchText("");
     dispatch(openComponent(null));
   };
 
-  useChatSocket(data.id, addDm);
+  useChatSocket(data.id);
 
   useEffect(() => {
-    if (dataDms) setMyDms((prev) => [...dataDms, ...prev]);
+    if (!dataDms) return;
+
+    dispatch(setNewDm(dataDms));
   }, [dataDms]);
 
   if (isLoading || !dataDms) return <Spinner />;
@@ -70,7 +66,6 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
         {isOpenSearchUsers && searchText ? (
           <SearchUsers
             searchText={searchText}
-            setMyDms={addDm}
             handleCloseSearch={handleCloseSearch}
           />
         ) : (
