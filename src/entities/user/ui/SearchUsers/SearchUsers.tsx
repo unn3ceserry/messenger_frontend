@@ -9,19 +9,17 @@ import {
   useDebounce,
 } from "@/shared";
 import { userApi } from "@/entities/user/api";
-import { chatsApi, Chat, setCurrentChat } from "@/entities/chats";
+import { chatsApi, Chat, setCurrentChat, setNewDm } from "@/entities/chats";
 import { useTranslations } from "next-intl";
 import { useAppDispatch } from "@/app";
 
 interface Props {
   searchText: string;
-  setMyDms: (chat: Chat) => void;
   handleCloseSearch: () => void;
 }
 
 const SearchUsers: FC<Props> = ({
   searchText,
-  setMyDms,
   handleCloseSearch,
 }) => {
   const t = useTranslations();
@@ -38,7 +36,7 @@ const SearchUsers: FC<Props> = ({
     createRipple(e);
     const chat = await getDm(targetId).unwrap();
     dispatch(setCurrentChat(chat));
-    setMyDms(chat);
+    dispatch(setNewDm(chat));
     handleCloseSearch();
   };
 

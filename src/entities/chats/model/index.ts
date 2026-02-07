@@ -7,3 +7,9 @@ export {
   getCurrentChat,
   setCurrentChat,
 } from "./stores/currentChatSlice";
+export {
+  getMyDms,
+  myDmsReducer,
+  myDmsSlice,
+  setNewDm,
+} from "./stores/myDmsSlice";

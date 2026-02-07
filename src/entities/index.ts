@@ -38,7 +38,7 @@ export {
   closeOtherProfile,
   UserContactElement,
   UserDataShortInfo,
-  SearchUsers
+  SearchUsers,
 } from "./user";
 export {
   userThemeSlice,
@@ -57,7 +57,11 @@ export {
   getCurrentChat,
   setCurrentChat,
   ChatMessages,
-  useChatSocket
+  useChatSocket,
+  getMyDms,
+  myDmsReducer,
+  myDmsSlice,
+  setNewDm,
 } from "./chats";
 export {
   contactsApi,

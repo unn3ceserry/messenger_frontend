@@ -6,6 +6,10 @@ export {
   closeCurrentChat,
   currentChatSlice,
   getCurrentChat,
+  getMyDms,
+  myDmsReducer,
+  myDmsSlice,
+  setNewDm,
   setCurrentChat,
 } from "./model";
 export { chatsApi } from "./api";
