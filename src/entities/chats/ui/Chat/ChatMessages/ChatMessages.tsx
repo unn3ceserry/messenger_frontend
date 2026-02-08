@@ -1,8 +1,10 @@
-'use client'
+"use client";
 
 import { FC, useEffect, useRef } from "react";
 import { useAppSelector } from "@/app";
-import { getCurrentChat, useMessageSocket } from "@/entities/chats/model";
+import {
+  getCurrentChat,
+} from "@/entities/chats/model";
 import ChatMessagesItem from "./ChatMessagesItem";
 
 interface Props {
@@ -10,9 +12,8 @@ interface Props {
 }
 
 const ChatMessages: FC<Props> = ({ userId }) => {
+  
   const currentChat = useAppSelector(getCurrentChat);
-  useMessageSocket(userId);
-
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const ChatMessages: FC<Props> = ({ userId }) => {
       className="flex flex-col w-full max-w-170 h-screen p-3 overflow-y-auto hidden-scroll"
     >
       <div className="mt-auto flex flex-col gap-2">
-        {currentChat?.messages?.map(el => (
+        {currentChat?.messages?.map((el) => (
           <ChatMessagesItem
             key={el.id}
             message={el.text}

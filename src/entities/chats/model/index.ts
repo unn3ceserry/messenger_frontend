@@ -11,6 +11,7 @@ export {
 } from "./stores/currentChatSlice";
 export {
   getMyDms,
+  addNewMessageInDm,
   myDmsReducer,
   myDmsSlice,
   setNewDm,

@@ -1,7 +1,7 @@
 "use client";
 
 import { Forward, Paperclip, Smile } from "lucide-react";
-import { FC, useMemo, useState } from "react";
+import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { getSocket } from "@/shared";
@@ -13,18 +13,17 @@ interface Props {
 }
 
 const ChatInput: FC<Props> = ({ userId }) => {
-  const [value, setValue] = useState<string>("");
   const t = useTranslations();
+  const [value, setValue] = useState<string>("");
 
   const currentChat = useAppSelector(getCurrentChat);
   const socket = getSocket(userId);
+
   const handleSendMsg = () => {
-    console.log("send message");
     socket.emit("sendMessage", {
       chatId: currentChat?.id,
       text: value,
     });
-    console.log(value);
     setValue("");
   };
 

@@ -1,10 +1,20 @@
-'use client'
+"use client";
 
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { getSocket } from "@/shared";
-import { addNewMessage, deleteMessage, editMessage, getCurrentChat } from "../stores/currentChatSlice";
+import {
+  addNewMessage,
+  deleteMessage,
+  editMessage,
+  getCurrentChat,
+} from "../stores/currentChatSlice";
 import { Message } from "../types/chatsTypes";
+import {
+  addNewMessageInDm,
+  deleteMessageInDm,
+  editMessageInDm,
+} from "../stores/myDmsSlice";
 
 export function useMessageSocket(userId: string) {
   const dispatch = useAppDispatch();
@@ -16,21 +26,26 @@ export function useMessageSocket(userId: string) {
     const socket = getSocket(userId);
 
     const handleAddMessage = (message: Message) => {
-      if (currentChat?.id !== message.chatId) return;
-
-      dispatch(addNewMessage(message));
+      if (currentChat?.id === message.chatId) {
+        dispatch(addNewMessage(message));
+      }
+      dispatch(addNewMessageInDm({ chatId: message.chatId, message }));
     };
 
     const handleEditMessage = (message: Message) => {
-      if (currentChat?.id !== message.chatId) return;
-
-      dispatch(editMessage(message));
+      if (currentChat?.id === message.chatId) {
+        dispatch(editMessage(message));
+      }
+      dispatch(editMessageInDm(message));
     };
 
     const handleDeleteMessage = (message: Message) => {
-      if (currentChat?.id !== message.chatId) return;
-
-      dispatch(deleteMessage(message.id));
+      if (currentChat?.id === message.chatId) {
+        dispatch(deleteMessage(message.id));
+      }
+      dispatch(
+        deleteMessageInDm({ chatId: message.chatId, messageId: message.id }),
+      );
     };
 
     socket.on("message:created", handleAddMessage);
@@ -43,13 +58,4 @@ export function useMessageSocket(userId: string) {
       socket.off("message:deleted", handleDeleteMessage);
     };
   }, [userId, currentChat?.id, dispatch]);
-
-  useEffect(() => {
-    if (!userId || !currentChat?.id) return;
-
-    const socket = getSocket(userId);
-
-    socket.emit("joinChat", { chatId: currentChat.id });
-
-  }, [userId, currentChat?.id]);
 }

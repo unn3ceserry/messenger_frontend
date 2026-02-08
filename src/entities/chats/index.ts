@@ -7,6 +7,7 @@ export {
   currentChatSlice,
   getCurrentChat,
   getMyDms,
+  addNewMessageInDm,
   myDmsReducer,
   myDmsSlice,
   setNewDm,

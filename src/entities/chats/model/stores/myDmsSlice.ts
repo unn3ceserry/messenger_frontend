@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Chat } from "../types/chatsTypes";
+import { Chat, Message } from "../types/chatsTypes";
 import { RootState } from "@/app";
 
 interface IMyDmsState {
@@ -29,9 +29,37 @@ export const myDmsSlice = createSlice({
         }
       });
     },
+    addNewMessageInDm: (
+      state,
+      action: PayloadAction<{ chatId: string; message: Message }>,
+    ) => {
+      const chat = state.myDms.find((el) => el.id === action.payload.chatId);
+      if (!chat) return;
+
+      if (!chat.messages) chat.messages = [];
+      chat.messages.push(action.payload.message);
+    },
+    editMessageInDm: (state, action: PayloadAction<Message>) => {
+      const chat = state.myDms.find((el) => el.id === action.payload.chatId);
+      if (!chat?.messages) return;
+
+      const index = chat.messages.findIndex((m) => m.id === action.payload.id);
+
+      if (index !== -1) {
+        chat.messages[index] = action.payload;
+      }
+    },
+    deleteMessageInDm: (state, action: PayloadAction<{chatId: string, messageId: string}>) => {
+      const chat = state.myDms.find((el) => el.id === action.payload.chatId);
+      if (!chat?.messages) return;
+
+      chat.messages = chat.messages.filter(
+        (m) => m.id !== action.payload.messageId,
+      );
+    },
   },
 });
 
 export const myDmsReducer = myDmsSlice.reducer;
-export const { setNewDm } = myDmsSlice.actions;
+export const { setNewDm, addNewMessageInDm, editMessageInDm, deleteMessageInDm } = myDmsSlice.actions;
 export const getMyDms = (state: RootState) => state.myDms.myDms;

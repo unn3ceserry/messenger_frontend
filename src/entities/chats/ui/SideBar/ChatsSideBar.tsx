@@ -1,11 +1,10 @@
 "use client";
 
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { motion } from "framer-motion";
 import ChatItem from "../ChatItem/ChatItem";
-import { Chat, getCurrentChat, setCurrentChat } from "@/entities/chats/model";
-import { useAppDispatch, useAppSelector } from "@/app";
-import { getSocket } from "@/shared";
+import { Chat, setCurrentChat } from "@/entities/chats/model";
+import { useAppDispatch } from "@/app";
 
 interface Props {
   userId: string;
@@ -15,12 +14,7 @@ interface Props {
 const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
   const dispatch = useAppDispatch();
 
-  const socket = getSocket(userId);
-  const currentChat = useAppSelector(getCurrentChat)
   const handleOnClick = (chat: Chat) => {
-    socket.emit("joinChat", {
-      chatId: currentChat?.id,
-    });
     dispatch(setCurrentChat(chat))
   };
   return (

@@ -29,6 +29,7 @@ const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch, userId }) => {
   const [getDm] = chatsApi.useLazyGetDmQuery();
 
   const socket = getSocket(userId);
+  
   const handleClick = async (
     e: MouseEvent<HTMLDivElement>,
     targetId: string,

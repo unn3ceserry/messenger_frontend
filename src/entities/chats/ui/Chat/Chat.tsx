@@ -9,6 +9,7 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatMessages from "./ChatMessages/ChatMessages";
+import { chatsApi } from "../../api";
 
 interface Props {
   userId: string;
@@ -16,6 +17,7 @@ interface Props {
 
 const Chat: FC<Props> = ({ userId }) => {
   const currentChat = useAppSelector(getCurrentChat);
+  
   if (!currentChat) return <Spinner />;
 
   const user = currentChat.members?.find((m) => m.userId !== userId)?.user;
