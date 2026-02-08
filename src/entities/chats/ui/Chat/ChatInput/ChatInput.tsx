@@ -20,6 +20,7 @@ const ChatInput: FC<Props> = ({ userId }) => {
   const socket = getSocket(userId);
 
   const handleSendMsg = () => {
+    if(!value) return;
     socket.emit("sendMessage", {
       chatId: currentChat?.id,
       text: value,
@@ -33,6 +34,7 @@ const ChatInput: FC<Props> = ({ userId }) => {
       handleSendMsg();
     }
   };
+  
   return (
     <div className="flex w-full items-center justify-center gap-3 mb-5">
       {/* INPUT */}
