@@ -1,5 +1,5 @@
 import { mainApi } from "@/shared";
-import type { Chat } from "../model";
+import type { Chat, Message } from "../model";
 
 export const chatsApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,6 +10,9 @@ export const chatsApi = mainApi.injectEndpoints({
       query: () => "/chat/get/my-dms",
       providesTags: ["chats"],
     }),
+    getMessages: builder.query<Array<Message>, string>({
+      query: (chatId) => `/chat/get/messages?chatId=${chatId}`
+    })
   }),
   overrideExisting: true,
 });

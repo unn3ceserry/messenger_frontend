@@ -1,18 +1,35 @@
 "use client";
 
 import { Forward, Paperclip, Smile } from "lucide-react";
-import { useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { getSocket } from "@/shared";
+import { useAppSelector } from "@/app";
+import { getCurrentChat } from "@/entities/chats/model";
 
-const ChatInput = () => {
+interface Props {
+  userId: string;
+}
+
+const ChatInput: FC<Props> = ({ userId }) => {
   const [value, setValue] = useState<string>("");
   const t = useTranslations();
+
+  const currentChat = useAppSelector(getCurrentChat);
+  const socket = getSocket(userId);
+  const handleSendMsg = () => {
+    console.log('send message')
+    socket.emit("sendMessage", {
+      chatId: currentChat?.id,
+      text: value,
+    });
+  };
 
   return (
     <div className="flex w-full items-center justify-center gap-3 mb-5">
       {/* INPUT */}
-      <div className="flex w-full max-w-160 backdrop-blur-xl p-3 gap-3 px-4 rounded-2xl bg-chatui-bg">
+      <div className="flex w-full backdrop-blur-xl p-3 gap-3 px-4 rounded-2xl bg-chatui-bg">
         <Smile className="text-input-icons-color cursor-pointer hover:text-accent duration-300" />
         <div className="w-full relative">
           <AnimatePresence>
@@ -33,6 +50,7 @@ const ChatInput = () => {
             id="inputForMessage"
             onChange={(e) => setValue(e.target.value)}
             value={value}
+            autoComplete="off"
             type="text"
             className="outline-0 w-full"
           />
@@ -41,7 +59,7 @@ const ChatInput = () => {
       </div>
 
       {/* SEND */}
-      <div className="flex items-center justify-center p-3 bg-chatui-bg rounded-2xl cursor-pointer">
+      <div onClick={handleSendMsg} className="flex items-center justify-center p-3 bg-chatui-bg rounded-2xl cursor-pointer">
         <Forward className="text-input-icons-color hover:text-accent duration-300" />
       </div>
     </div>

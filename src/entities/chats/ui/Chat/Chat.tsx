@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import ChatInput from "./ChatInput/ChatInput";
+import ChatMessages from "./ChatMessages/ChatMessages";
 
 interface Props {
   userId: string;
@@ -24,7 +25,7 @@ const Chat: FC<Props> = ({ userId }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col items-center justify-between h-screen w-full text-default-text-color">
+    <div className="flex flex-col items-center justify-between h-screen w-full text-default-text-color gap-5">
       <div
         onClick={() =>
           dispatch(
@@ -51,9 +52,11 @@ const Chat: FC<Props> = ({ userId }) => {
         </div>
       </div>
 
+      <ChatMessages userId={user?.id ?? ''} />
+
       {/* input */}
-      <div className="flex w-full items-center justify-center px-5">
-        <ChatInput />
+      <div className="flex w-full items-center justify-center px-5 max-w-175">
+        <ChatInput userId={user?.id ?? ''} />
       </div>
     </div>
   );

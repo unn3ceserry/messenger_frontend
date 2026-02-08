@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  FC,
-  useEffect,
-  useState,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { FC, useEffect, useState, Dispatch, SetStateAction } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { Spinner } from "@/shared";
@@ -65,6 +59,7 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
         />
         {isOpenSearchUsers && searchText ? (
           <SearchUsers
+            userId={data.id}
             searchText={searchText}
             handleCloseSearch={handleCloseSearch}
           />

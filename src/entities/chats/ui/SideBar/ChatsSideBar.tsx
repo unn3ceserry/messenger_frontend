@@ -1,10 +1,11 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { motion } from "framer-motion";
 import ChatItem from "../ChatItem/ChatItem";
-import { Chat, setCurrentChat } from "@/entities/chats/model";
-import { useAppDispatch } from "@/app";
+import { Chat, getCurrentChat, setCurrentChat } from "@/entities/chats/model";
+import { useAppDispatch, useAppSelector } from "@/app";
+import { getSocket } from "@/shared";
 
 interface Props {
   userId: string;
@@ -13,6 +14,15 @@ interface Props {
 
 const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
   const dispatch = useAppDispatch();
+
+  const socket = getSocket(userId);
+  const currentChat = useAppSelector(getCurrentChat)
+  const handleOnClick = (chat: Chat) => {
+    socket.emit("joinChat", {
+      chatId: currentChat?.id,
+    });
+    dispatch(setCurrentChat(chat))
+  };
   return (
     <motion.div
       exit={{ opacity: 0, scale: 0.8, y: 50 }}
@@ -28,7 +38,7 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
 
         return (
           <ChatItem
-            onClick={() => dispatch(setCurrentChat(chat))}
+            onClick={() => handleOnClick(chat)}
             key={chat.id}
             firstName={user?.firstName}
             lastName={user?.lastName}
