@@ -34,7 +34,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["resizing", 'userTheme', 'myDms'],
+  whitelist: ["resizing", 'userTheme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
