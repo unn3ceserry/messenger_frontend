@@ -13,6 +13,10 @@ interface Props {
 
 const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
   const dispatch = useAppDispatch();
+
+  const handleOnClick = (chat: Chat) => {
+    dispatch(setCurrentChat(chat))
+  };
   return (
     <motion.div
       exit={{ opacity: 0, scale: 0.8, y: 50 }}
@@ -28,7 +32,7 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
 
         return (
           <ChatItem
-            onClick={() => dispatch(setCurrentChat(chat))}
+            onClick={() => handleOnClick(chat)}
             key={chat.id}
             firstName={user?.firstName}
             lastName={user?.lastName}

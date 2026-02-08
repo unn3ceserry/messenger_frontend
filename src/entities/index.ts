@@ -61,6 +61,7 @@ export {
   getMyDms,
   myDmsReducer,
   myDmsSlice,
+  addNewMessageInDm,
   setNewDm,
 } from "./chats";
 export {

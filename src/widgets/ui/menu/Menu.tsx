@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import MenuCompoonent from "./MenuCompoonent";
 import RightSideBar from "./RightSideBar/RightSideBar";
-import { Spinner, getSocket } from "@/shared";
-import { Socket } from "socket.io-client";
+import { Spinner } from "@/shared";
+import { useMessageSocket } from "@/entities/chats/model";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -26,12 +26,7 @@ const Menu = () => {
   const setResizeValue = (v: number) => dispatch(setWidth({ width: v }));
   const isResizing = useRef(false);
 
-  const socketRef = useRef<Socket | null>(null);
-
-  useEffect(() => {
-    if (!data?.id) return;
-    socketRef.current = getSocket(data.id);
-  }, [data?.id]);
+  useMessageSocket(data?.id ?? "");
 
   useEffect(() => {
     const handleMouseUp = () => {

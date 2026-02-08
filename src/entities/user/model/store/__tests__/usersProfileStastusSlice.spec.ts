@@ -75,7 +75,7 @@ describe("usersProfileStastusSlice", () => {
 
     expect(profile).toEqual({
       username: "nestxx",
-      component: "editContact",
+      openComponent: "editContact",
     });
 
     expect(profile).not.toBeNull();
