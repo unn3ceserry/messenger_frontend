@@ -19,15 +19,21 @@ const ChatInput: FC<Props> = ({ userId }) => {
   const currentChat = useAppSelector(getCurrentChat);
   const socket = getSocket(userId);
   const handleSendMsg = () => {
-    console.log('send message');
+    console.log("send message");
     socket.emit("sendMessage", {
       chatId: currentChat?.id,
       text: value,
     });
-    console.log(value)
-    setValue('')
+    console.log(value);
+    setValue("");
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSendMsg();
+    }
+  };
   return (
     <div className="flex w-full items-center justify-center gap-3 mb-5">
       {/* INPUT */}
@@ -54,6 +60,7 @@ const ChatInput: FC<Props> = ({ userId }) => {
             value={value}
             autoComplete="off"
             type="text"
+            onKeyDown={handleKeyDown}
             className="outline-0 w-full"
           />
         </div>
@@ -61,7 +68,10 @@ const ChatInput: FC<Props> = ({ userId }) => {
       </div>
 
       {/* SEND */}
-      <div onClick={handleSendMsg} className="flex items-center justify-center p-3 bg-chatui-bg rounded-2xl cursor-pointer">
+      <div
+        onClick={handleSendMsg}
+        className="flex items-center justify-center p-3 bg-chatui-bg rounded-2xl cursor-pointer"
+      >
         <Forward className="text-input-icons-color hover:text-accent duration-300" />
       </div>
     </div>
