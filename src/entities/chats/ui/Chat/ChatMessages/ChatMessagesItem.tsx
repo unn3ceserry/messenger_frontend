@@ -8,11 +8,15 @@ interface Props {
   createdAt: Date;
 }
 
-const ChatMessagesItem: FC<Props> = ({isMy, message, createdAt}) => {
+const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
   return (
-    <div className={`flex ${isMy ? 'bg-accent' : 'bg-chatui-bg'} p-2.5 rounded-t-2xl rounded-br-2xl rounded-br-0 w-max max-w-full break-all`}>
-      <p>{message}</p>
-      <p>{new Date(createdAt).getDate()}</p>
+    <div className={`flex text-white w-full ${isMy ? 'justify-end' : 'justify-start'}`}>
+      <div className={`p-2.5 rounded-t-2xl 
+        ${isMy ? 'rounded-bl-2xl bg-accent' : 'rounded-br-2xl bg-chatui-bg'}
+        w-max max-w-[70%] break-all
+      `}>
+        <p>{message}</p>
+      </div>
     </div>
   );
 };

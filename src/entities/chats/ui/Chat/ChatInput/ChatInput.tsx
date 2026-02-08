@@ -19,11 +19,13 @@ const ChatInput: FC<Props> = ({ userId }) => {
   const currentChat = useAppSelector(getCurrentChat);
   const socket = getSocket(userId);
   const handleSendMsg = () => {
-    console.log('send message')
+    console.log('send message');
     socket.emit("sendMessage", {
       chatId: currentChat?.id,
       text: value,
     });
+    console.log(value)
+    setValue('')
   };
 
   return (
