@@ -140,7 +140,8 @@
       "nightMode": "Ночной режим",
       "installApp": "Установить приложение"
     },
-    "messagePlaceholder": "Сообщение"
+    "messagePlaceholder": "Сообщение",
+    "deleteChat": "Удалить чат"
   },
   "contacts": {
     "title": "Контакты",

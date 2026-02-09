@@ -56,6 +56,9 @@ export const myDmsSlice = createSlice({
         chat.messages[index] = action.payload;
       }
     },
+    deleteChat: (state, action: PayloadAction<string>) => {
+      state.myDms = state.myDms.filter((chat) => chat.id !== action.payload);
+    },
     deleteMessageInDm: (
       state,
       action: PayloadAction<{ chatId: string; messageId: string }>,
@@ -76,5 +79,6 @@ export const {
   addNewMessageInDm,
   editMessageInDm,
   deleteMessageInDm,
+  deleteChat,
 } = myDmsSlice.actions;
 export const getMyDms = (state: RootState) => state.myDms.myDms;

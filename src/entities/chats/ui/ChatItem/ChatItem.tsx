@@ -2,7 +2,7 @@
 
 import { createRipple, RenderAvatarElement } from "@/shared";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 
 interface Props {
   hasAvatar: boolean;
@@ -12,6 +12,7 @@ interface Props {
   firstName?: string;
   lastName?: string;
   onClick: () => void;
+  onContextMenu: ( e: MouseEvent<HTMLDivElement>) => void;
 }
 
 const ChatItem: FC<Props> = ({
@@ -21,7 +22,8 @@ const ChatItem: FC<Props> = ({
   message,
   firstName,
   lastName,
-  onClick
+  onClick,
+  onContextMenu
 }) => {
   const t = useTranslations();
 
@@ -30,6 +32,10 @@ const ChatItem: FC<Props> = ({
       onClick={(e) => {
         onClick(),
         createRipple(e)
+      }}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        onContextMenu(e);
       }}
       className="flex w-full items-start gap-3 cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color"
     >

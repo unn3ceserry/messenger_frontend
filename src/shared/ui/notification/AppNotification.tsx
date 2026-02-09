@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { ReactElement } from "react";
 
 interface Props {
-  icon: ReactElement | string;
+  icon?: ReactElement | string;
   text: string;
 }
 

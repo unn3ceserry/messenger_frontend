@@ -12,6 +12,10 @@ export const chatsApi = mainApi.injectEndpoints({
     }),
     getMessages: builder.query<Array<Message>, string>({
       query: (chatId) => `/chat/get/messages?chatId=${chatId}`
+    }),
+    deleteChat: builder.mutation<boolean, string>({
+      query: (chatId) => ({url: '/chat/delete', method: 'DELETE', body: {chatId}}),
+      invalidatesTags: ['chats']
     })
   }),
   overrideExisting: true,
