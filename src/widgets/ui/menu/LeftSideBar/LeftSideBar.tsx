@@ -1,6 +1,14 @@
 "use client";
 
-import { FC, useEffect, useState, Dispatch, SetStateAction } from "react";
+import {
+  FC,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+} from "react";
 import { AnimatePresence } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { Spinner } from "@/shared";
@@ -13,6 +21,7 @@ import {
   ActionsPopup,
   getMyDms,
   setNewDm,
+  handleSortChat,
 } from "@/entities";
 import { SearchUsers, useChatSocket, ChatsSideBar } from "@/entities";
 import LeftSideBarSearch from "./LeftSideBarSearch";
@@ -40,11 +49,13 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
 
   useChatSocket(data.id);
 
+  const sortedDms = useMemo(() => handleSortChat(dataDms), [dataDms]);
+
   useEffect(() => {
     if (!dataDms) return;
 
-    dispatch(setNewDm(dataDms));
-  }, [dataDms]);
+    dispatch(setNewDm(sortedDms));
+  }, [dataDms, sortedDms]);
 
   if (isLoading || !dataDms) return <Spinner />;
 

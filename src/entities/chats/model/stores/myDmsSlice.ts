@@ -33,12 +33,19 @@ export const myDmsSlice = createSlice({
       state,
       action: PayloadAction<{ chatId: string; message: Message }>,
     ) => {
-      const chat = state.myDms.find((el) => el.id === action.payload.chatId);
-      if (!chat) return;
+      const index = state.myDms.findIndex(
+        (chat) => chat.id === action.payload.chatId,
+      );
+      if (index === -1) return;
+
+      const chat = state.myDms[index];
 
       if (!chat.messages) chat.messages = [];
       chat.messages.push(action.payload.message);
+
+      state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
     },
+
     editMessageInDm: (state, action: PayloadAction<Message>) => {
       const chat = state.myDms.find((el) => el.id === action.payload.chatId);
       if (!chat?.messages) return;
@@ -49,7 +56,13 @@ export const myDmsSlice = createSlice({
         chat.messages[index] = action.payload;
       }
     },
-    deleteMessageInDm: (state, action: PayloadAction<{chatId: string, messageId: string}>) => {
+    deleteChat: (state, action: PayloadAction<string>) => {
+      state.myDms = state.myDms.filter((chat) => chat.id !== action.payload);
+    },
+    deleteMessageInDm: (
+      state,
+      action: PayloadAction<{ chatId: string; messageId: string }>,
+    ) => {
       const chat = state.myDms.find((el) => el.id === action.payload.chatId);
       if (!chat?.messages) return;
 
@@ -61,5 +74,11 @@ export const myDmsSlice = createSlice({
 });
 
 export const myDmsReducer = myDmsSlice.reducer;
-export const { setNewDm, addNewMessageInDm, editMessageInDm, deleteMessageInDm } = myDmsSlice.actions;
+export const {
+  setNewDm,
+  addNewMessageInDm,
+  editMessageInDm,
+  deleteMessageInDm,
+  deleteChat,
+} = myDmsSlice.actions;
 export const getMyDms = (state: RootState) => state.myDms.myDms;

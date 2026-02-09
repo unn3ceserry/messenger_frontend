@@ -15,4 +15,8 @@ export {
   myDmsReducer,
   myDmsSlice,
   setNewDm,
+  deleteChat
 } from "./stores/myDmsSlice";
+
+export {handleSortChat} from './handlers/handleSortChat'
+export {handleDeleteChat} from './handlers/handleDeleteChat'

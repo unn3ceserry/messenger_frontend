@@ -63,6 +63,7 @@ export {
   myDmsSlice,
   addNewMessageInDm,
   setNewDm,
+  handleSortChat
 } from "./chats";
 export {
   contactsApi,

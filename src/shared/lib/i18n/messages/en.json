@@ -142,7 +142,8 @@
       "nightMode": "Night Mode",
       "installApp": "Install App"
     },
-    "messagePlaceholder": "Message"
+    "messagePlaceholder": "Message",
+    "deleteChat": "Delete Chat"
   },
   "contacts": {
     "title": "Contacts",
