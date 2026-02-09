@@ -59,7 +59,7 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
       })}
 
       <AnimatePresence>
-        {isOpen && <ActionPopup chatId={chatId} position={position} />}
+        {isOpen && <ActionPopup chatId={chatId} position={position} setIsOpen={setIsOpen} />}
       </AnimatePresence>
     </motion.div>
   );
