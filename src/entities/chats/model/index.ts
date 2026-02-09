@@ -16,3 +16,5 @@ export {
   myDmsSlice,
   setNewDm,
 } from "./stores/myDmsSlice";
+
+export {handleSortChat} from './handlers/handleSortChat'

@@ -12,5 +12,6 @@ export {
   myDmsSlice,
   setNewDm,
   setCurrentChat,
+  handleSortChat
 } from "./model";
 export { chatsApi } from "./api";
