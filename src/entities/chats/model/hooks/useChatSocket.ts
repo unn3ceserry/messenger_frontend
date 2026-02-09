@@ -16,7 +16,10 @@ export const useChatSocket = (userId: string) => {
     if (!userId) return;
     const socket = getSocket(userId);
 
-    const handleNewDm = (chat: Chat) => dispatch(setNewDm(chat));
+    const handleNewDm = (chat: Chat) => {
+      dispatch(setNewDm(chat));
+      socket.emit("joinChat", { chatId: chat.id });
+    };
 
     socket.on("newDm", handleNewDm);
     socket.on("chatDeleted", (data) => {
