@@ -6,7 +6,6 @@ import {
   useState,
   Dispatch,
   SetStateAction,
-  useCallback,
   useMemo,
 } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -14,7 +13,6 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { Spinner } from "@/shared";
 import {
   chatsApi,
-  Chat,
   UserType,
   openComponent,
   selectOpenComponent,

@@ -15,6 +15,7 @@ export {
   getMyDms,
   setNewDm,
   setCurrentChat,
+  isUserOnline,
   handleSortChat,
 } from "./model";
 export { chatsApi } from "./api";

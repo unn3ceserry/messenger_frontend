@@ -34,6 +34,7 @@ export {
   setNewDm,
   setUserOffline,
   setUserOnline,
+  isUserOnline,
 } from "./stores/chtasSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";

@@ -22,14 +22,13 @@ interface Props {
 
 const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch, userId }) => {
   const t = useTranslations();
-  const debouncedSearchText = useDebounce(searchText, 500);
-
   const dispatch = useAppDispatch();
+  const debouncedSearchText = useDebounce(searchText, 500);
   const [searchTrigger, { data, isLoading }] = userApi.useLazySearchUserQuery();
   const [getDm] = chatsApi.useLazyGetDmQuery();
 
   const socket = getSocket(userId);
-  
+
   const handleClick = async (
     e: MouseEvent<HTMLDivElement>,
     targetId: string,
@@ -76,9 +75,7 @@ const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch, userId }) => {
                 <RenderAvatarElement
                   hasAvatar={!!data.avatars?.length}
                   size={55}
-                  avatar={
-                    data.avatars ? data.avatars[data.avatars.length - 1] : ""
-                  }
+                  avatar={data.avatars[data.avatars.length - 1]}
                 />
                 <div className="flex flex-col items-start justify-center w-full">
                   <p className="text-[1.1rem]">

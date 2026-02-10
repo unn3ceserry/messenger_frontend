@@ -66,6 +66,7 @@ export {
   useChatSocket,
   getMyDms,
   setNewDm,
+  isUserOnline,
   handleSortChat,
 } from "./chats";
 export {

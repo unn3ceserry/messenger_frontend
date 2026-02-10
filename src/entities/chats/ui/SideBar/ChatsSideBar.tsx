@@ -35,10 +35,10 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
       className="flex flex-col w-full p-2"
     >
       {myDms.map((chat) => {
-        const user = chat.members?.find((m) => m.userId !== userId)?.user;
+        const user = chat.members.find((m) => m.userId !== userId)?.user;
         const lastMessage =
           chat.messages?.[chat.messages.length - 1]?.text ?? "";
-
+        const lastAvatar = user?.avatars[user.avatars.length - 1] ?? "";
         return (
           <ChatItem
             onContextMenu={(e) => {
@@ -50,8 +50,8 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
             key={chat.id}
             firstName={user?.firstName}
             lastName={user?.lastName}
-            avatar={user?.avatars?.[user.avatars.length - 1] ?? ""}
-            hasAvatar={!!user?.avatars?.length}
+            avatar={lastAvatar}
+            hasAvatar={!!user?.avatars.length}
             size={50}
             message={lastMessage}
           />
