@@ -8,7 +8,7 @@ import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import MenuCompoonent from "./MenuCompoonent";
 import RightSideBar from "./RightSideBar/RightSideBar";
 import { Spinner } from "@/shared";
-import { useMessageSocket } from "@/entities/chats/model";
+import { useChatSocket, useMessageSocket } from "@/entities/chats/model";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -27,6 +27,7 @@ const Menu = () => {
   const isResizing = useRef(false);
 
   useMessageSocket(data?.id ?? "");
+  useChatSocket(data?.id ?? "");
 
   useEffect(() => {
     const handleMouseUp = () => {

@@ -23,7 +23,7 @@ import {
   setNewDm,
   handleSortChat,
 } from "@/entities";
-import { SearchUsers, useChatSocket, ChatsSideBar } from "@/entities";
+import { SearchUsers, ChatsSideBar } from "@/entities";
 import LeftSideBarSearch from "./LeftSideBarSearch";
 
 interface Props {
@@ -46,8 +46,6 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
     setSearchText("");
     dispatch(openComponent(null));
   };
-
-  useChatSocket(data.id);
 
   const sortedDms = useMemo(() => handleSortChat(dataDms), [dataDms]);
 

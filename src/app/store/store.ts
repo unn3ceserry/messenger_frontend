@@ -1,4 +1,4 @@
-import { currentChatReducer, myDmsReducer, userCompleteDataReducer, usersProfileStastusReducer, userThemeReducer, userUiReducer  } from "@/entities";
+import { chatsReducer, userCompleteDataReducer, usersProfileStastusReducer, userThemeReducer, userUiReducer  } from "@/entities";
 import { useResizingReducer } from "@/features";
 import { mainApi } from "@/shared";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -21,12 +21,11 @@ import {
 } from "redux-persist";
 
 const reducers = combineReducers({
-  myDms: myDmsReducer,
+  chats: chatsReducer,
   userUiOpenComponent: userUiReducer,
   userCompleteData: userCompleteDataReducer,
   usersProfileStastus: usersProfileStastusReducer,
   userTheme: userThemeReducer,
-  currentChat: currentChatReducer,
   resizing: useResizingReducer,
   [mainApi.reducerPath]: mainApi.reducer,
 });
