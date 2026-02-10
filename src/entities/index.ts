@@ -39,6 +39,10 @@ export {
   UserContactElement,
   UserDataShortInfo,
   SearchUsers,
+  getMyData,
+  myDataReducer,
+  myDataSlice,
+  setMyData,
 } from "./user";
 export {
   userThemeSlice,

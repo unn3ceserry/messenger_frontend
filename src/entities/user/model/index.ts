@@ -34,6 +34,8 @@ export {
   closeOtherProfile
 } from "./store/usersProfileStastusSlice";
 
+export {getMyData, myDataReducer, myDataSlice, setMyData} from './store/myDataSlice'
+
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
 export { handleSetPassword } from "./handlers/handleSetPassword";
 export { handleSetEmail } from "./handlers/handleSetEmail";
