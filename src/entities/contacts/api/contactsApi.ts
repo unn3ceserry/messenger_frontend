@@ -13,7 +13,7 @@ export const contactsApi = mainApi.injectEndpoints({
         method: "POST",
         body: { username, firstName, lastName },
       }),
-      invalidatesTags: ["contacts", "users"],
+      invalidatesTags: ["contacts", "users", 'chats'],
     }),
     editContact: builder.mutation<boolean, {username: string, firstName?: string, lastName?: string}>({
       query: ({username, firstName, lastName}) => ({
@@ -29,7 +29,7 @@ export const contactsApi = mainApi.injectEndpoints({
         method: "DELETE",
         body: { username },
       }),
-      invalidatesTags: ["contacts", "users"],
+      invalidatesTags: ["contacts", "users", 'chats'],
     }),
   }),
   overrideExisting: true,
