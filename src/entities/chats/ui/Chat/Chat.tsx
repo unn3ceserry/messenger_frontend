@@ -9,22 +9,27 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatMessages from "./ChatMessages/ChatMessages";
-import { chatsApi } from "../../api";
 
 interface Props {
   userId: string;
 }
 
 const Chat: FC<Props> = ({ userId }) => {
-  const currentChat = useAppSelector(getCurrentChat);
-  
-  if (!currentChat) return <Spinner />;
-
-  const user = currentChat.members?.find((m) => m.userId !== userId)?.user;
-  const avatar = user?.avatars[user.avatars.length - 1];
-
   const t = useTranslations();
   const dispatch = useDispatch();
+
+  const currentChat = useAppSelector(getCurrentChat);
+
+  if (!currentChat) return <Spinner />;
+
+  const user = currentChat.members?.find(
+    (member) => member.userId !== userId,
+  )?.user;
+
+  if (!user) return <Spinner />;
+
+  const isOnline = user.isOnline;
+  const lastAvatar = user.avatars.at(-1);
 
   return (
     <div className="flex flex-col items-center justify-between h-screen w-full text-default-text-color gap-5">
@@ -33,32 +38,34 @@ const Chat: FC<Props> = ({ userId }) => {
           dispatch(
             setOpenComponentOtherUsersProfile({
               openComponent: "userProfile",
-              username: user?.username ?? "",
+              username: user.username,
             }),
           )
         }
         className="flex w-full items-center justify-start bg-chatui-bg p-2 px-5 gap-3 cursor-pointer"
       >
         <RenderAvatarElement
-          hasAvatar={!!user?.avatars.length}
+          hasAvatar={!!user.avatars.length}
           size={40}
-          avatar={avatar}
+          avatar={lastAvatar}
         />
         <div className="flex flex-col items-start justify-center w-full">
           <h2 className="">
-            {user?.firstName} {user?.lastName}
+            {user.firstName} {user.lastName}
           </h2>
           <p className="text-icons-color text-[.85rem]">
-            {t("settings.online")}
+            {isOnline
+              ? t("settings.online")
+              : new Date(user.lastSeen ?? Date.now()).toLocaleString()}
           </p>
         </div>
       </div>
 
-      <ChatMessages userId={user?.id ?? ''} />
+      <ChatMessages userId={user.id} />
 
       {/* input */}
       <div className="flex w-full items-center justify-center px-5 max-w-175">
-        <ChatInput userId={user?.id ?? ''} />
+        <ChatInput />
       </div>
     </div>
   );

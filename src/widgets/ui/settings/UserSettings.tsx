@@ -19,8 +19,8 @@ interface IUserSettings {
 }
 
 const UserSettings: FC<IUserSettings> = ({ data }) => {
-  const router = useRouter();
   const t = useTranslations();
+  const router = useRouter();
   const locale = useLocale();
 
   return (

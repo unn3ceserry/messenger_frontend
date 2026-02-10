@@ -6,7 +6,6 @@ import {
   useState,
   Dispatch,
   SetStateAction,
-  useCallback,
   useMemo,
 } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -14,7 +13,6 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { Spinner } from "@/shared";
 import {
   chatsApi,
-  Chat,
   UserType,
   openComponent,
   selectOpenComponent,
@@ -23,7 +21,7 @@ import {
   setNewDm,
   handleSortChat,
 } from "@/entities";
-import { SearchUsers, useChatSocket, ChatsSideBar } from "@/entities";
+import { SearchUsers, ChatsSideBar } from "@/entities";
 import LeftSideBarSearch from "./LeftSideBarSearch";
 
 interface Props {
@@ -47,8 +45,6 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
     dispatch(openComponent(null));
   };
 
-  useChatSocket(data.id);
-
   const sortedDms = useMemo(() => handleSortChat(dataDms), [dataDms]);
 
   useEffect(() => {
@@ -70,7 +66,6 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
         />
         {isOpenSearchUsers && searchText ? (
           <SearchUsers
-            userId={data.id}
             searchText={searchText}
             handleCloseSearch={handleCloseSearch}
           />

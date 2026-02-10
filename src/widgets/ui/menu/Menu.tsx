@@ -1,20 +1,21 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { ChatMessages, getCurrentChat, userApi } from "@/entities";
+import { ChatMessages, getCurrentChat, getMyData, userApi } from "@/entities";
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useResizingSlice, setWidth, handleMouseMove } from "@/features";
 import MenuCompoonent from "./MenuCompoonent";
 import RightSideBar from "./RightSideBar/RightSideBar";
 import { Spinner } from "@/shared";
-import { useMessageSocket } from "@/entities/chats/model";
+import { useChatSocket, useMessageSocket } from "@/entities/chats/model";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
 const Menu = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
+  const userId = useAppSelector(getMyData);
 
   // getters
   const width = useAppSelector(useResizingSlice.selectors.selectWidth);
@@ -26,7 +27,8 @@ const Menu = () => {
   const setResizeValue = (v: number) => dispatch(setWidth({ width: v }));
   const isResizing = useRef(false);
 
-  useMessageSocket(data?.id ?? "");
+  useMessageSocket(userId);
+  useChatSocket(userId);
 
   useEffect(() => {
     const handleMouseUp = () => {

@@ -6,7 +6,8 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import bg from "@/app/assets/imgs/fr.svg";
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
+import CurrentUserProvider from "@/app/providers/CurrentUserProvider";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -46,15 +47,17 @@ export default async function RootLayout({
   setRequestLocale(locale);
   return (
     <div className={`${fontRoboto.className} antialiased`}>
-      <div
-        className="absolute inset-0 w-full h-full bg-linear-to-b from-accent/70 to-accent/20"
-        style={{
-          WebkitMaskImage: `url(${bg.src})`,
-          maskImage: `url(${bg.src})`,
-        }}
-      ></div>
-      {children}
-      <Toaster position="top-center" reverseOrder={false} />
+      <CurrentUserProvider>
+          <div
+            className="absolute inset-0 w-full h-full bg-linear-to-b from-accent/70 to-accent/20"
+            style={{
+              WebkitMaskImage: `url(${bg.src})`,
+              maskImage: `url(${bg.src})`,
+            }}
+          ></div>
+          {children}
+          <Toaster position="top-center" reverseOrder={false} />
+      </CurrentUserProvider>
     </div>
   );
 }

@@ -22,8 +22,8 @@ export type ChatMember = {
   createdAt: Date;
   updatedAt: Date;
 
-  chat?: Chat;
-  user?: UserType;
+  chat: Chat;
+  user: UserType;
 };
 
 export type Chat = {
@@ -33,6 +33,6 @@ export type Chat = {
   createdAt: Date;
   updatedAt: Date;
 
-  members?: ChatMember[];
+  members: ChatMember[];
   messages?: Message[];
 };

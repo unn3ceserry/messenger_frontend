@@ -36,5 +36,8 @@ export {
   usersProfileStastusReducer,
   usersProfileStastusSlice,
   closeOtherProfile,
-  
+  getMyData,
+  myDataReducer,
+  myDataSlice,
+  setMyData,
 } from "./model";

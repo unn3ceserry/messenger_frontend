@@ -14,20 +14,16 @@ interface Props {
 const BlockedUsersElement: FC<
   Props
 > = ({ userId }) => {
+  const t = useTranslations();
+  
   const { data, isLoading } = userApi.useGetUserDataQuery({id: userId});
   const [unBlock] = userApi.useUnBlockUsersMutation();
-
-  const t = useTranslations();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
-
-  const handleClick = async () => {
-    await unBlock(userId);
-  };
 
   if (isLoading || !data) {
     return <Spinner/>;
@@ -68,7 +64,7 @@ const BlockedUsersElement: FC<
             className="fixed p-0.5 backdrop-blur-lg rounded-xl w-max shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)] z-50 cursor-pointer"
           >
             <div
-              onClick={handleClick}
+              onClick={async () => await unBlock(userId)}
               className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
             >
               <CircleOff size={19} />

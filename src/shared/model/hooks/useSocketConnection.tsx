@@ -4,7 +4,7 @@ import { io, Socket } from "socket.io-client";
 
 let socketApi: Socket | null = null;
 
-export const getSocket = (userId: string): Socket => {
+export const useSocketConnection = (userId: string): Socket => {
   if (!socketApi) {
     socketApi = io(process.env.NEXT_PUBLIC_SOCKET_URL, {
       transports: ["websocket"],

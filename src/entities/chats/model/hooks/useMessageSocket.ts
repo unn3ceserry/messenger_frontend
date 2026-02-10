@@ -2,19 +2,14 @@
 
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
-import { getSocket } from "@/shared";
+import { useSocketConnection } from "@/shared";
+import { Message } from "../types/chatsTypes";
 import {
   addNewMessage,
   deleteMessage,
   editMessage,
   getCurrentChat,
-} from "../stores/currentChatSlice";
-import { Message } from "../types/chatsTypes";
-import {
-  addNewMessageInDm,
-  deleteMessageInDm,
-  editMessageInDm,
-} from "../stores/myDmsSlice";
+} from "../stores/chtasSlice";
 
 export function useMessageSocket(userId: string) {
   const dispatch = useAppDispatch();
@@ -23,28 +18,19 @@ export function useMessageSocket(userId: string) {
   useEffect(() => {
     if (!userId) return;
 
-    const socket = getSocket(userId);
+    const socket = useSocketConnection(userId);
 
     const handleAddMessage = (message: Message) => {
-      if (currentChat?.id === message.chatId) {
-        dispatch(addNewMessage(message));
-      }
-      dispatch(addNewMessageInDm({ chatId: message.chatId, message }));
+      dispatch(addNewMessage({ chatId: message.chatId, message }));
     };
 
     const handleEditMessage = (message: Message) => {
-      if (currentChat?.id === message.chatId) {
-        dispatch(editMessage(message));
-      }
-      dispatch(editMessageInDm(message));
+      dispatch(editMessage(message));
     };
 
     const handleDeleteMessage = (message: Message) => {
-      if (currentChat?.id === message.chatId) {
-        dispatch(deleteMessage(message.id));
-      }
       dispatch(
-        deleteMessageInDm({ chatId: message.chatId, messageId: message.id }),
+        deleteMessage({ chatId: message.chatId, messageId: message.id }),
       );
     };
 

@@ -39,6 +39,10 @@ export {
   UserContactElement,
   UserDataShortInfo,
   SearchUsers,
+  getMyData,
+  myDataReducer,
+  myDataSlice,
+  setMyData,
 } from "./user";
 export {
   userThemeSlice,
@@ -51,19 +55,23 @@ export { sessionApi } from "./session";
 export {
   ChatsSideBar,
   chatsApi,
-  currentChatReducer,
+  addNewMessage,
+  chatsReducer,
+  chatsSlice,
+  deleteChat,
+  deleteMessage,
+  editMessage,
+  setUserOffline,
+  setUserOnline,
   closeCurrentChat,
-  currentChatSlice,
   getCurrentChat,
   setCurrentChat,
   ChatMessages,
   useChatSocket,
   getMyDms,
-  myDmsReducer,
-  myDmsSlice,
-  addNewMessageInDm,
   setNewDm,
-  handleSortChat
+  isUserOnline,
+  handleSortChat,
 } from "./chats";
 export {
   contactsApi,

@@ -2,21 +2,21 @@ export type { Chat, ChatMember, Message } from "./types/chatsTypes";
 export { useChatSocket } from "./hooks/useChatSocket";
 export { useMessageSocket } from "./hooks/useMessageSocket";
 export {
-  currentChatReducer,
-  closeCurrentChat,
-  currentChatSlice,
-  getCurrentChat,
-  setCurrentChat,
   addNewMessage,
-} from "./stores/currentChatSlice";
-export {
+  chatsReducer,
+  chatsSlice,
+  closeCurrentChat,
+  deleteChat,
+  deleteMessage,
+  editMessage,
+  getCurrentChat,
   getMyDms,
-  addNewMessageInDm,
-  myDmsReducer,
-  myDmsSlice,
+  setCurrentChat,
   setNewDm,
-  deleteChat
-} from "./stores/myDmsSlice";
+  setUserOffline,
+  setUserOnline,
+  isUserOnline,
+} from "./stores/chtasSlice";
 
-export {handleSortChat} from './handlers/handleSortChat'
-export {handleDeleteChat} from './handlers/handleDeleteChat'
+export { handleSortChat } from "./handlers/handleSortChat";
+export { handleDeleteChat } from "./handlers/handleDeleteChat";

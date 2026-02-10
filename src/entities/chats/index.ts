@@ -2,16 +2,20 @@ export { ChatsSideBar, ChatMessages } from "./ui";
 export type { Chat, ChatMember, Message } from "./model";
 export {
   useChatSocket,
-  currentChatReducer,
+  addNewMessage,
+  chatsReducer,
+  chatsSlice,
+  deleteChat,
+  deleteMessage,
+  editMessage,
+  setUserOffline,
+  setUserOnline,
   closeCurrentChat,
-  currentChatSlice,
   getCurrentChat,
   getMyDms,
-  addNewMessageInDm,
-  myDmsReducer,
-  myDmsSlice,
   setNewDm,
   setCurrentChat,
-  handleSortChat
+  isUserOnline,
+  handleSortChat,
 } from "./model";
 export { chatsApi } from "./api";

@@ -29,6 +29,8 @@ export type UserType = {
   bioVisible: WhoCanSeen;
   avatarsVisible: WhoCanSeen;
   birthdayVisible: WhoCanSeen;
+  isOnline: boolean;
+  lastSeen?: number;
   cloudPassword: string | null;
   members: ChatMember
   createdAt: Date;

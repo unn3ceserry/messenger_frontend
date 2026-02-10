@@ -12,12 +12,12 @@ interface Props {
 }
 
 const UserContactElement: FC<Props> = ({ username }) => {
+  const t = useTranslations();
+
+  const [deleteContact] = contactsApi.useDeleteContactMutation();
   const { data, isLoading } = userApi.useGetUserDataQuery({
     username: username,
   });
-  const [deleteContact] = contactsApi.useDeleteContactMutation();
-
-  const t = useTranslations();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
@@ -25,13 +25,7 @@ const UserContactElement: FC<Props> = ({ username }) => {
     y: 0,
   });
 
-  const handleClick = async () => {
-    await deleteContact(username);
-  };
-
-  if (isLoading || !data) {
-    return <Spinner/>;
-  }
+  if (isLoading || !data) return <Spinner />;
 
   return (
     <div
@@ -69,7 +63,7 @@ const UserContactElement: FC<Props> = ({ username }) => {
             className="fixed p-0.5 backdrop-blur-lg rounded-xl w-max shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)] z-50 cursor-pointer text-myred"
           >
             <div
-              onClick={handleClick}
+              onClick={async () => await deleteContact(username)}
               className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
             >
               <CircleMinus size={19} />
