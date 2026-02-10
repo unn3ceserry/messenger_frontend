@@ -9,7 +9,7 @@ import {
   setUserOffline,
   setUserOnline,
 } from "@/entities/chats/model";
-import { getSocket } from "@/shared";
+import { useSocketConnection } from "@/shared";
 import { useAppDispatch } from "@/app";
 
 export const useChatSocket = (userId: string) => {
@@ -18,7 +18,7 @@ export const useChatSocket = (userId: string) => {
   useEffect(() => {
     if (!userId) return;
 
-    const socket = getSocket(userId);
+    const socket = useSocketConnection(userId);
 
     const handleNewDm = (chat: Chat) => {
       dispatch(setNewDm(chat));

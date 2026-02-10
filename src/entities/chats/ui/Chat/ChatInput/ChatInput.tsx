@@ -1,23 +1,21 @@
 "use client";
 
 import { Forward, Paperclip, Smile } from "lucide-react";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { getSocket } from "@/shared";
+import { useSocketConnection } from "@/shared";
 import { useAppSelector } from "@/app";
 import { getCurrentChat } from "@/entities/chats/model";
+import { getMyData } from "@/entities/user";
 
-interface Props {
-  userId: string;
-}
-
-const ChatInput: FC<Props> = ({ userId }) => {
+const ChatInput = () => {
+  const userId = useAppSelector(getMyData);
   const t = useTranslations();
   const [value, setValue] = useState<string>("");
 
   const currentChat = useAppSelector(getCurrentChat);
-  const socket = getSocket(userId);
+  const socket = useSocketConnection(userId);
 
   const handleSendMsg = () => {
     if(!value) return;

@@ -24,4 +24,4 @@ export const myDataSlice = createSlice({
 
 export const myDataReducer = myDataSlice.reducer;
 export const { setMyData } = myDataSlice.actions;
-export const getMyData = (state: RootState) => state.myData.userData.id;
+export const getMyData = (state: RootState) => state.myData.userData.id ?? '';

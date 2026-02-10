@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
-import { getSocket } from "@/shared";
+import { useSocketConnection } from "@/shared";
 import { Message } from "../types/chatsTypes";
 import {
   addNewMessage,
@@ -18,7 +18,7 @@ export function useMessageSocket(userId: string) {
   useEffect(() => {
     if (!userId) return;
 
-    const socket = getSocket(userId);
+    const socket = useSocketConnection(userId);
 
     const handleAddMessage = (message: Message) => {
       dispatch(addNewMessage({ chatId: message.chatId, message }));

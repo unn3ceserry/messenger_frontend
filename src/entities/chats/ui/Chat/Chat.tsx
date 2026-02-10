@@ -65,7 +65,7 @@ const Chat: FC<Props> = ({ userId }) => {
 
       {/* input */}
       <div className="flex w-full items-center justify-center px-5 max-w-175">
-        <ChatInput userId={user.id} />
+        <ChatInput />
       </div>
     </div>
   );

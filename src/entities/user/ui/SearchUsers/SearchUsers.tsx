@@ -4,7 +4,7 @@ import { FC, MouseEvent, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   createRipple,
-  getSocket,
+  useSocketConnection,
   RenderAvatarElement,
   Spinner,
   useDebounce,
@@ -12,22 +12,25 @@ import {
 import { userApi } from "@/entities/user/api";
 import { chatsApi, setCurrentChat, setNewDm } from "@/entities/chats";
 import { useTranslations } from "next-intl";
-import { useAppDispatch } from "@/app";
+import { useAppDispatch, useAppSelector } from "@/app";
+import { getMyData } from "../../model";
 
 interface Props {
   searchText: string;
   handleCloseSearch: () => void;
-  userId: string;
 }
 
-const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch, userId }) => {
+const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch }) => {
   const t = useTranslations();
+  const userId = useAppSelector(getMyData);
+
   const dispatch = useAppDispatch();
   const debouncedSearchText = useDebounce(searchText, 500);
+  
   const [searchTrigger, { data, isLoading }] = userApi.useLazySearchUserQuery();
   const [getDm] = chatsApi.useLazyGetDmQuery();
 
-  const socket = getSocket(userId);
+  const socket = useSocketConnection(userId);
 
   const handleClick = async (
     e: MouseEvent<HTMLDivElement>,

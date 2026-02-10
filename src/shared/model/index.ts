@@ -1,2 +1,2 @@
 export {createRipple} from './handlers/animationRipple'
-export {getSocket} from './hooks/useSocketConnection'
+export {useSocketConnection} from './hooks/useSocketConnection'

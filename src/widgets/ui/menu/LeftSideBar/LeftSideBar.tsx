@@ -66,7 +66,6 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
         />
         {isOpenSearchUsers && searchText ? (
           <SearchUsers
-            userId={data.id}
             searchText={searchText}
             handleCloseSearch={handleCloseSearch}
           />
