@@ -132,6 +132,11 @@
     "globalSearch": "Global Search",
     "noResult": "No results."
   },
+  "formattDate": {
+    "todayIn": "today at",
+    "yesterdayIn": "yesterday at",
+    "in": "at"
+  },
   "chat": {
     "searchPlaceholder": "Search",
     "actionsPopup": {
