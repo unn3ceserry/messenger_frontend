@@ -21,6 +21,7 @@ export function useMessageSocket(userId: string) {
     const socket = useSocketConnection(userId);
 
     const handleAddMessage = (message: Message) => {
+      console.log('handleAddMessage')
       dispatch(addNewMessage({ chatId: message.chatId, message }));
     };
 
@@ -29,6 +30,7 @@ export function useMessageSocket(userId: string) {
     };
 
     const handleDeleteMessage = (message: Message) => {
+      console.log('handleDeleteMessage')
       dispatch(
         deleteMessage({ chatId: message.chatId, messageId: message.id }),
       );

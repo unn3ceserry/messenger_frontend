@@ -146,7 +146,8 @@
       "installApp": "Установить приложение"
     },
     "messagePlaceholder": "Сообщение",
-    "deleteChat": "Удалить чат"
+    "deleteChat": "Удалить чат",
+    "deleteMsg": "Удалить сообщение"
   },
   "contacts": {
     "title": "Контакты",

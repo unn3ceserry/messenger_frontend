@@ -20,8 +20,14 @@ export const chatsSlice = createSlice({
       const chats = Array.isArray(action.payload)
         ? action.payload
         : [action.payload];
-      chats.forEach((newChat) => {
+      chats.forEach((chatPayload) => {
+        const newChat = {
+          ...chatPayload,
+          messages: chatPayload.messages?.filter((m) => !m.deletedAt),
+        };
+
         const index = state.myDms.findIndex((chat) => chat.id === newChat.id);
+
         if (index !== -1) {
           state.myDms[index] = newChat;
         } else {
@@ -43,19 +49,20 @@ export const chatsSlice = createSlice({
       action: PayloadAction<{ chatId: string; message: Message }>,
     ) => {
       const { chatId, message } = action.payload;
+      if (!!!message.deletedAt) {
+        const index = state.myDms.findIndex((chat) => chat.id === chatId);
+        if (index !== -1) {
+          const chat = state.myDms[index];
+          if (!chat.messages) chat.messages = [];
+          chat.messages.push(message);
 
-      const index = state.myDms.findIndex((chat) => chat.id === chatId);
-      if (index !== -1) {
-        const chat = state.myDms[index];
-        if (!chat.messages) chat.messages = [];
-        chat.messages.push(message);
+          state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
+        }
 
-        state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
-      }
-
-      if (state.currentChat?.id === chatId) {
-        if (!state.currentChat.messages) state.currentChat.messages = [];
-        state.currentChat.messages.push(message);
+        if (state.currentChat?.id === chatId) {
+          if (!state.currentChat.messages) state.currentChat.messages = [];
+          state.currentChat.messages.push(message);
+        }
       }
     },
 
@@ -110,14 +117,11 @@ export const chatsSlice = createSlice({
         });
     },
 
-    setUserOffline: (
-      state,
-      action: PayloadAction<{ userId: string}>,
-    ) => {
+    setUserOffline: (state, action: PayloadAction<{ userId: string }>) => {
       console.log("setUserOffline");
       state.myDms.forEach((chat) =>
         chat.members?.forEach((m) => {
-          const {userId} = action.payload;
+          const { userId } = action.payload;
           if (m.userId === userId && m.user) {
             m.user.isOnline = false;
             m.user.lastSeen = Date.now();
@@ -126,7 +130,7 @@ export const chatsSlice = createSlice({
       );
       if (state.currentChat?.members)
         state.currentChat.members.forEach((m) => {
-          const {userId} = action.payload;
+          const { userId } = action.payload;
           if (m.userId === userId && m.user) {
             m.user.isOnline = false;
             m.user.lastSeen = Date.now();

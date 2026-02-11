@@ -1,16 +1,37 @@
 "use client";
 
-import { FC } from "react";
+import { AnimatePresence } from "framer-motion";
+import { FC, useState } from "react";
+import MessagePopup from "./MessagePopup/MessagePopup";
 
 interface Props {
   message: string;
+  messageId: string;
   isMy: boolean;
   createdAt: Date;
 }
 
-const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
+const ChatMessagesItem: FC<Props> = ({
+  isMy,
+  message,
+  createdAt,
+  messageId,
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
   return (
     <div
+      onContextMenu={(e) => {
+        if (isMy) {
+          e.preventDefault();
+          setPosition({ x: e.clientX + 5, y: e.clientY + 5 });
+          setIsOpen((prev) => !prev);
+        }
+      }}
       className={`flex text-default-text-color w-full ${isMy ? "justify-end" : "justify-start"}`}
     >
       <div
@@ -29,6 +50,16 @@ const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
           })}
         </p>
       </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <MessagePopup
+            setIsOpen={setIsOpen}
+            position={position}
+            messageId={messageId}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

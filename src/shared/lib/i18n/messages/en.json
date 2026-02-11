@@ -148,7 +148,8 @@
       "installApp": "Install App"
     },
     "messagePlaceholder": "Message",
-    "deleteChat": "Delete Chat"
+    "deleteChat": "Delete Chat",
+    "deleteMsg": "Delete Message"
   },
   "contacts": {
     "title": "Contacts",
