@@ -26,9 +26,13 @@
   --ripple-bg: #ffffff30;
   --checkbox-border: #ffffff40;
   --modal-bg: #00000035;
+  --accent-chat-bg-color: var(--accent-color);
+  --message-time-color: rgba(104, 108, 114, 0.75);
+  --my-message-time-color: rgba(255, 255, 255, 0.533);
 
   --button-main-bg: color-mix(in srgb, var(--accent-color) 1%, transparent);
   --button-text-color: color-mix(in srgb, var(--accent-color) 25%, #ffffff);
+  --message-time-color: rgba(104, 108, 114, 0.75);
 }
 
 :root[data-theme="light"] {
@@ -53,6 +57,8 @@
   --ripple-bg: #00000030;
   --checkbox-border: #00000040;
   --modal-bg: #ffffff35;
+  --accent-chat-bg-color: rgb(238, 255, 222);
+  --my-message-time-color: rgb(79, 174, 78);
 }
 
 @theme inline {
@@ -76,6 +82,9 @@
   --color-modal-bg: var(--modal-bg);
   --color-button-main-bg: var(--button-main-bg);
   --color-button-text-color: var(--button-text-color);
+  --color-accent-chat-bg-color: var(--accent-chat-bg-color);
+  --color-message-time-color: var(--message-time-color);
+  --color-my-message-time-color: var(--my-message-time-color);
   --breakpoint-otherprofile: 25rem;
 }
 
