@@ -2,10 +2,13 @@ import { useFormatter, useTranslations } from "next-intl";
 
 export const useFormattedChatDate = (timestamp: number) => {
   const format = useFormatter();
-  const date = new Date(timestamp);
+  const t = useTranslations();
   const today = new Date();
-  const t = useTranslations()
-  const dateTime = format.dateTime(date, { hour: "2-digit", minute: "2-digit" });
+  const date = new Date(timestamp);
+  const dateTime = format.dateTime(date, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const isSameDay =
     date.getDate() === today.getDate() &&
@@ -27,7 +30,11 @@ export const useFormattedChatDate = (timestamp: number) => {
     const dateStr = format.dateTime(date, { day: "2-digit", month: "long" });
     return `${dateStr} ${t("formattDate.in")} ${dateTime}`;
   } else {
-    const dateStr = format.dateTime(date, { day: "2-digit", month: "long", year: "numeric" });
+    const dateStr = format.dateTime(date, {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
     return `${dateStr} ${t("formattDate.in")} ${dateTime}`;
   }
 };
