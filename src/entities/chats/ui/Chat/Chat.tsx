@@ -20,7 +20,6 @@ const Chat: FC<Props> = ({ userId }) => {
   const dispatch = useDispatch();
 
   const currentChat = useAppSelector(getCurrentChat);
-
   if (!currentChat) return <Spinner />;
 
   const user = currentChat.members?.find(

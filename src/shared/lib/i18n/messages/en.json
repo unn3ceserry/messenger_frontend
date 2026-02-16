@@ -150,7 +150,8 @@
     "messagePlaceholder": "Message",
     "deleteChat": "Delete Chat",
     "deleteMsg": "Delete Message",
-    "editMsg": "Edit Message"
+    "editMsg": "Edit Message",
+    "editing": "Editing"
   },
   "contacts": {
     "title": "Contacts",

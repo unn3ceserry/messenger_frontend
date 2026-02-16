@@ -1,7 +1,11 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/app";
-import { Message, setEditMessage } from "@/entities/chats/model";
+import {
+  handleDeleteMessage,
+  Message,
+  setEditMessage,
+} from "@/entities/chats/model";
 import { getMyData } from "@/entities/user";
 import { useSocketConnection } from "@/shared";
 import { motion } from "framer-motion";
@@ -22,9 +26,6 @@ const MessagePopup: FC<Props> = ({ position, message, setIsOpen }) => {
   const socket = useSocketConnection(userId);
 
   const dispatch = useAppDispatch();
-  const handleDeleteMessage = (messageId: string) => {
-    socket.emit("deleteMessage", { messageId });
-  };
 
   return (
     <motion.div
@@ -34,21 +35,22 @@ const MessagePopup: FC<Props> = ({ position, message, setIsOpen }) => {
       transition={{ duration: 0.2 }}
       style={{ top: position.y, left: position.x }}
       onContextMenu={(e) => e.preventDefault()}
-      className="flex flex-col items-center justify-start absolute p-0.5 backdrop-blur-lg bg-checkbox-hover rounded-xl max-w-50 text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] top-15 right-3 cursor-pointer"
+      className="flex flex-col items-center justify-start absolute p-0.5 backdrop-blur-lg bg-checkbox-hover rounded-xl max-w-50 text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] top-15 right-3 cursor-pointer z-123123"
     >
       <div
         onClick={() => {
-          setIsOpen(false);
           dispatch(setEditMessage(message));
+          setIsOpen(false);
         }}
         className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
       >
         <Pencil size={19} />
         <p className="text-[.95rem]">{t("chat.editMsg")}</p>
       </div>
+
       <div
         onClick={() => {
-          handleDeleteMessage(message.id);
+          handleDeleteMessage(socket, message.id);
           setIsOpen(false);
         }}
         className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred"
