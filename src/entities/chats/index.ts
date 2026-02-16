@@ -17,5 +17,9 @@ export {
   setCurrentChat,
   isUserOnline,
   handleSortChat,
+  getEditingMessage,
+  setEditMessage,
+  removeEditingMessage,
+  updateMessage,
 } from "./model";
 export { chatsApi } from "./api";

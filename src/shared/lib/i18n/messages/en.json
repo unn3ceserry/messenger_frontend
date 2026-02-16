@@ -149,7 +149,8 @@
     },
     "messagePlaceholder": "Message",
     "deleteChat": "Delete Chat",
-    "deleteMsg": "Delete Message"
+    "deleteMsg": "Delete Message",
+    "editMsg": "Edit Message"
   },
   "contacts": {
     "title": "Contacts",

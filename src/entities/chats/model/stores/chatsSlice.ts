@@ -4,11 +4,13 @@ import { RootState } from "@/app";
 
 interface IChatsState {
   myDms: Chat[];
+  editMessage: Message | null;
   currentChat: Chat | null;
 }
 
 export const initialState: IChatsState = {
   myDms: [],
+  editMessage: null,
   currentChat: null,
 };
 
@@ -34,6 +36,35 @@ export const chatsSlice = createSlice({
           state.myDms.unshift(newChat);
         }
       });
+    },
+
+    setEditMessage: (state, action: PayloadAction<Message>) => {
+      state.editMessage = action.payload;
+    },
+
+    removeEditingMessage: (state) => {
+      state.editMessage = null;
+    },
+
+    updateMessage: (
+      state,
+      action: PayloadAction<{
+        message: Message;
+        chatId: string;
+      }>,
+    ) => {
+      const { chatId, message } = action.payload;
+      if (!!!message.deletedAt) {
+        const index = state.myDms.findIndex((chat) => chat.id === chatId);
+        if (index !== -1) {
+          const chat = state.myDms[index];
+          if (!chat.messages) chat.messages = [];
+          let msg = chat.messages.find(msg => msg.id === message.id);
+          msg = message;
+
+          state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
+        }
+      }
     },
 
     setCurrentChat: (state, action: PayloadAction<Chat>) => {
@@ -152,6 +183,9 @@ export const {
   deleteChat,
   setUserOnline,
   setUserOffline,
+  removeEditingMessage,
+  setEditMessage,
+  updateMessage
 } = chatsSlice.actions;
 
 export const getMyDms = (state: RootState) => state.chats.myDms;
@@ -161,3 +195,4 @@ export const isUserOnline = (userId: string, state: RootState) =>
   state.chats.myDms
     .find((chat) => chat.id === state.chats.currentChat?.id)
     ?.members?.find((el) => el.userId === userId)?.user?.isOnline;
+export const getEditingMessage = (state: RootState) => state.chats.editMessage; 

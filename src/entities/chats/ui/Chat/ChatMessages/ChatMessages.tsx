@@ -31,8 +31,7 @@ const ChatMessages: FC<Props> = ({ userId }) => {
         {currentChat?.messages?.map((el) => (
           <ChatMessagesItem
             key={el.id}
-            messageId={el.id}
-            message={el.text}
+            message={el}
             createdAt={el.createdAt}
             isMy={userId !== el.senderId}
           />

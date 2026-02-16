@@ -9,7 +9,7 @@ import {
   deleteMessage,
   editMessage,
   getCurrentChat,
-} from "../stores/chtasSlice";
+} from "../stores/chatsSlice";
 
 export function useMessageSocket(userId: string) {
   const dispatch = useAppDispatch();

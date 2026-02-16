@@ -147,7 +147,8 @@
     },
     "messagePlaceholder": "Сообщение",
     "deleteChat": "Удалить чат",
-    "deleteMsg": "Удалить сообщение"
+    "deleteMsg": "Удалить сообщение",
+    "editMsg": "Редактировать"
   },
   "contacts": {
     "title": "Контакты",

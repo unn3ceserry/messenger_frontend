@@ -16,7 +16,11 @@ export {
   setUserOffline,
   setUserOnline,
   isUserOnline,
-} from "./stores/chtasSlice";
+  getEditingMessage,
+  setEditMessage,
+  removeEditingMessage,
+  updateMessage,
+} from "./stores/chatsSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";
 export { handleDeleteChat } from "./handlers/handleDeleteChat";
