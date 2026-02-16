@@ -9,6 +9,7 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatMessages from "./ChatMessages/ChatMessages";
+import { useFormattedChatDate } from "../../lib";
 
 interface Props {
   userId: string;
@@ -19,7 +20,6 @@ const Chat: FC<Props> = ({ userId }) => {
   const dispatch = useDispatch();
 
   const currentChat = useAppSelector(getCurrentChat);
-
   if (!currentChat) return <Spinner />;
 
   const user = currentChat.members?.find(
@@ -30,6 +30,7 @@ const Chat: FC<Props> = ({ userId }) => {
 
   const isOnline = user.isOnline;
   const lastAvatar = user.avatars.at(-1);
+  const data = useFormattedChatDate(user.lastSeen ?? 0);
 
   return (
     <div className="flex flex-col items-center justify-between h-screen w-full text-default-text-color gap-5">
@@ -54,9 +55,7 @@ const Chat: FC<Props> = ({ userId }) => {
             {user.firstName} {user.lastName}
           </h2>
           <p className="text-icons-color text-[.85rem]">
-            {isOnline
-              ? t("settings.online")
-              : new Date(user.lastSeen ?? Date.now()).toLocaleString()}
+            {isOnline ? t("settings.online") : data}
           </p>
         </div>
       </div>

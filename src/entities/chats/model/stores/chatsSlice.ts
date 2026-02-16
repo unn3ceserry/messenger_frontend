@@ -4,11 +4,13 @@ import { RootState } from "@/app";
 
 interface IChatsState {
   myDms: Chat[];
+  editMessage: Message | null;
   currentChat: Chat | null;
 }
 
 export const initialState: IChatsState = {
   myDms: [],
+  editMessage: null,
   currentChat: null,
 };
 
@@ -20,14 +22,49 @@ export const chatsSlice = createSlice({
       const chats = Array.isArray(action.payload)
         ? action.payload
         : [action.payload];
-      chats.forEach((newChat) => {
+      chats.forEach((chatPayload) => {
+        const newChat = {
+          ...chatPayload,
+          messages: chatPayload.messages?.filter((m) => !m.deletedAt),
+        };
+
         const index = state.myDms.findIndex((chat) => chat.id === newChat.id);
+
         if (index !== -1) {
           state.myDms[index] = newChat;
         } else {
           state.myDms.unshift(newChat);
         }
       });
+    },
+
+    setEditMessage: (state, action: PayloadAction<Message>) => {
+      state.editMessage = action.payload;
+    },
+
+    removeEditingMessage: (state) => {
+      state.editMessage = null;
+    },
+
+    updateMessage: (
+      state,
+      action: PayloadAction<{
+        message: Message;
+        chatId: string;
+      }>,
+    ) => {
+      const { chatId, message } = action.payload;
+      if (!!!message.deletedAt) {
+        const index = state.myDms.findIndex((chat) => chat.id === chatId);
+        if (index !== -1) {
+          const chat = state.myDms[index];
+          if (!chat.messages) chat.messages = [];
+          let msg = chat.messages.find(msg => msg.id === message.id);
+          msg = message;
+
+          state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
+        }
+      }
     },
 
     setCurrentChat: (state, action: PayloadAction<Chat>) => {
@@ -43,19 +80,20 @@ export const chatsSlice = createSlice({
       action: PayloadAction<{ chatId: string; message: Message }>,
     ) => {
       const { chatId, message } = action.payload;
+      if (!!!message.deletedAt) {
+        const index = state.myDms.findIndex((chat) => chat.id === chatId);
+        if (index !== -1) {
+          const chat = state.myDms[index];
+          if (!chat.messages) chat.messages = [];
+          chat.messages.push(message);
 
-      const index = state.myDms.findIndex((chat) => chat.id === chatId);
-      if (index !== -1) {
-        const chat = state.myDms[index];
-        if (!chat.messages) chat.messages = [];
-        chat.messages.push(message);
+          state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
+        }
 
-        state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
-      }
-
-      if (state.currentChat?.id === chatId) {
-        if (!state.currentChat.messages) state.currentChat.messages = [];
-        state.currentChat.messages.push(message);
+        if (state.currentChat?.id === chatId) {
+          if (!state.currentChat.messages) state.currentChat.messages = [];
+          state.currentChat.messages.push(message);
+        }
       }
     },
 
@@ -110,14 +148,11 @@ export const chatsSlice = createSlice({
         });
     },
 
-    setUserOffline: (
-      state,
-      action: PayloadAction<{ userId: string}>,
-    ) => {
+    setUserOffline: (state, action: PayloadAction<{ userId: string }>) => {
       console.log("setUserOffline");
       state.myDms.forEach((chat) =>
         chat.members?.forEach((m) => {
-          const {userId} = action.payload;
+          const { userId } = action.payload;
           if (m.userId === userId && m.user) {
             m.user.isOnline = false;
             m.user.lastSeen = Date.now();
@@ -126,7 +161,7 @@ export const chatsSlice = createSlice({
       );
       if (state.currentChat?.members)
         state.currentChat.members.forEach((m) => {
-          const {userId} = action.payload;
+          const { userId } = action.payload;
           if (m.userId === userId && m.user) {
             m.user.isOnline = false;
             m.user.lastSeen = Date.now();
@@ -148,6 +183,9 @@ export const {
   deleteChat,
   setUserOnline,
   setUserOffline,
+  removeEditingMessage,
+  setEditMessage,
+  updateMessage
 } = chatsSlice.actions;
 
 export const getMyDms = (state: RootState) => state.chats.myDms;
@@ -157,3 +195,4 @@ export const isUserOnline = (userId: string, state: RootState) =>
   state.chats.myDms
     .find((chat) => chat.id === state.chats.currentChat?.id)
     ?.members?.find((el) => el.userId === userId)?.user?.isOnline;
+export const getEditingMessage = (state: RootState) => state.chats.editMessage; 

@@ -71,6 +71,10 @@ export {
   getMyDms,
   setNewDm,
   isUserOnline,
+  getEditingMessage,
+  setEditMessage,
+  removeEditingMessage,
+  updateMessage,
   handleSortChat,
 } from "./chats";
 export {
