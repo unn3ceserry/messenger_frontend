@@ -151,7 +151,8 @@
     "deleteChat": "Delete Chat",
     "deleteMsg": "Delete Message",
     "editMsg": "Edit Message",
-    "editing": "Editing"
+    "editing": "Editing",
+    "isEdited": "edited"
   },
   "contacts": {
     "title": "Contacts",
