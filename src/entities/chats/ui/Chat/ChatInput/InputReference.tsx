@@ -51,6 +51,7 @@ const InputReference: FC<Props> = ({ setValue, value }) => {
         <input
           id="inputForMessage"
           type="text"
+          maxLength={1000}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
