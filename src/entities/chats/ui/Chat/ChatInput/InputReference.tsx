@@ -1,9 +1,9 @@
 import { Paperclip, Smile } from "lucide-react";
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppSelector } from "@/app";
 import { getMyData } from "@/entities/user";
-import { Spinner, useSocketConnection } from "@/shared";
+import { MyEmojiPicker, Spinner, useSocketConnection } from "@/shared";
 import { getCurrentChat, handleSendMessage } from "@/entities/chats/model";
 import { useTranslations } from "next-intl";
 
@@ -17,8 +17,10 @@ const InputReference: FC<Props> = ({ setValue, value }) => {
 
   const userId = useAppSelector(getMyData);
   const socket = useSocketConnection(userId);
-
   const currentChat = useAppSelector(getCurrentChat);
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   if (!currentChat) return <Spinner />;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -30,7 +32,7 @@ const InputReference: FC<Props> = ({ setValue, value }) => {
 
   return (
     <div className="flex w-full items-center justify-between gap-3">
-      <Smile className="text-input-icons-color cursor-pointer hover:text-accent duration-300" />
+      <Smile onClick={() => setIsOpen(prev => !prev)} className="text-input-icons-color cursor-pointer hover:text-accent duration-300" />
 
       <div className="w-full relative">
         <AnimatePresence>
@@ -61,6 +63,10 @@ const InputReference: FC<Props> = ({ setValue, value }) => {
       </div>
 
       <Paperclip className="text-input-icons-color cursor-pointer hover:text-accent duration-300" />
+
+      <AnimatePresence>
+        {isOpen && <MyEmojiPicker setValue={setValue} />}
+      </AnimatePresence>
     </div>
   );
 };

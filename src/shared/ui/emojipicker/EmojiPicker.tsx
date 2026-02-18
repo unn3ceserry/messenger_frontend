@@ -1,14 +1,18 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
-import EmojiPicker, { Theme } from "emoji-picker-react";
 import { motion } from "framer-motion";
+import EmojiPicker, { Theme } from "emoji-picker-react";
+import { useAppSelector } from "@/app";
+import { getCurrentTheme } from "@/entities";
 
 interface Props {
   setValue: Dispatch<SetStateAction<string>>;
 }
 
 const MyEmojiPicker = ({ setValue }: Props) => {
+  const currentTheme = useAppSelector(getCurrentTheme);
+
   return (
     <motion.div
       exit={{ opacity: 0, y: 10 }}
@@ -17,10 +21,11 @@ const MyEmojiPicker = ({ setValue }: Props) => {
       className="absolute bottom-15 left-0"
     >
       <EmojiPicker
-        onEmojiClick={(emojiObject) =>
-          setValue((prev) => prev + emojiObject.emoji)
-        }
-        theme={Theme.DARK}
+        onEmojiClick={(emojiObject) => setValue((prev) => prev + emojiObject.emoji)}
+        autoFocusSearch={false}
+        theme={currentTheme === "dark" ? Theme.DARK : Theme.LIGHT}
+        lazyLoadEmojis={false}
+        style={{scrollbarWidth: 0}}
       />
     </motion.div>
   );

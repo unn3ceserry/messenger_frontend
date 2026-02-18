@@ -36,6 +36,7 @@ export {
   DefaultButton,
   appNotification,
   ShadowWrapper,
+  MyEmojiPicker
 } from "./ui";
 export { modalContainerDefault, modalDefault, appConfig } from "./config";
 export { createRipple, useSocketConnection } from "./model";
