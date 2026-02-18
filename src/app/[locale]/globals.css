@@ -2,7 +2,7 @@
 
 :root {
   --ff-main: "DMSans", sans-serif;
-  --accent-color: #8166fa;
+  --accent-color: #f32020;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 2%, #000000);
   --rect-background-color: color-mix(
@@ -38,7 +38,7 @@
 
 :root[data-theme="light"] {
   --ff-main: "DMSans", sans-serif;
-  --accent-color: #8166fa;
+  --accent-color: #f32020;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 85%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 3%, #ffffff);
   --rect-background-color: color-mix(in srgb, var(--accent-color) 6%, #ffffff);
