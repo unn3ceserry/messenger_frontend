@@ -18,3 +18,4 @@ export { default as UserSettingsHeaderConstructor } from "./settingsHeader/UserS
 export {default as Spinner} from './spinner/Spinner'
 export {appNotification} from './notification/AppNotification'
 export {default as CirclePopup} from './circlePopup/CirclePopup'
+export {default as ShadowWrapper} from './wrappers/ShadowWrapper'
