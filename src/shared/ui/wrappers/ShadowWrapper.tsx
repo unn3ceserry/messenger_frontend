@@ -18,7 +18,7 @@ const ShadowWrapper: FC<Props> = ({ children, position, className }) => {
       transition={{ duration: 0.2 }}
       style={!!position ? { top: position.y, left: position.x } : {}}
       onContextMenu={(e) => e.preventDefault()}
-      className={`${className ? className : ''} flex flex-col items-center justify-start absolute p-0.5 backdrop-blur-lg bg-checkbox-hover rounded-xl max-w-50 text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] top-15 right-3 cursor-pointer z-123123`}
+      className={`${className ? className : ''} items-center justify-start absolute max-w-50 top-15 right-3 shadow-wrapper`}
     >
       {children}
     </motion.div>

@@ -24,7 +24,7 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.1 }}
-      className="flex flex-col items-center justify-center p-1.5 backdrop-blur-lg rounded-[16px] text-default-text-color w-full gap-0.5 shadow-[0_0px_20px_-8px_rgba(0,0,0,0.7)] font-medium"
+      className="flex flex-col items-center justify-center p-1.5 font-medium max-w-60 shadow-wrapper"
     >
       {/* user short info */}
       <div
