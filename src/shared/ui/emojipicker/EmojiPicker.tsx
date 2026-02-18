@@ -25,7 +25,6 @@ const MyEmojiPicker = ({ setValue }: Props) => {
         autoFocusSearch={false}
         theme={currentTheme === "dark" ? Theme.DARK : Theme.LIGHT}
         lazyLoadEmojis={false}
-        style={{scrollbarWidth: 0}}
       />
     </motion.div>
   );
