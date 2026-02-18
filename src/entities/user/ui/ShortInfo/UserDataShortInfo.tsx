@@ -19,7 +19,7 @@ const UserDataShortInfo: FC<Props> = ({ number, username, email, bio }) => {
     try {
       await navigator.clipboard.writeText(result.toString());
       appNotification({
-        icon: <InfoIcon size={24} className="text-white" />,
+        icon: <InfoIcon size={24} className="text-icons-color" />,
         text: `${t(`profile.${type}`)} ${t('notify.wasCopied')}!`,
       });
     } catch (err) {

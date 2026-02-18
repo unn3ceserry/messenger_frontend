@@ -12,8 +12,8 @@ export const appNotification = ({ icon, text }: Props) => {
     style: {
       textAlign: 'end',
       borderRadius: "9999px",
-      background: "#212121",
-      color: "#fff",
+      background: "var(--chatui-bg)",
+      color: "var(--default-text-color)",
     },
   });
 };

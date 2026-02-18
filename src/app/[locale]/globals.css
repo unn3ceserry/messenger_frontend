@@ -41,8 +41,6 @@
   --accent-color: #f32020;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 85%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 3%, #ffffff);
-  --rect-background-color: color-mix(in srgb, var(--accent-color) 6%, #ffffff);
-  --rect-border-color: color-mix(in srgb, var(--accent-color) 12%, #00000010);
   --text-color: color-mix(in srgb, var(--accent-color) 18%, #000000);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 25%, #00000080);
   --chatui-bg: #ffffff;
