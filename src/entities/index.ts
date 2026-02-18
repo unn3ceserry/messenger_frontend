@@ -10,7 +10,6 @@ export type {
 export type { FindUserType, UserCompleteData, UserType } from "./user";
 export {
   userApi,
-  ActionsPopup,
   userActionsElements,
   userCompleteDataReducer,
   setCompleteData,

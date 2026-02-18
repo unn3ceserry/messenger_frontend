@@ -8,7 +8,6 @@ export { WhoCanSeen, VisibilityField } from "./model";
 
 export { userApi } from "./api";
 export {
-  ActionsPopup,
   UserProfile,
   OtherUsersProfile,
   UserContactElement,

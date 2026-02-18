@@ -16,13 +16,13 @@ import {
   UserType,
   openComponent,
   selectOpenComponent,
-  ActionsPopup,
   getMyDms,
   setNewDm,
   handleSortChat,
 } from "@/entities";
 import { SearchUsers, ChatsSideBar } from "@/entities";
 import LeftSideBarSearch from "./LeftSideBarSearch";
+import { ActionsPopup } from "../../settings";
 
 interface Props {
   isOpen: boolean;

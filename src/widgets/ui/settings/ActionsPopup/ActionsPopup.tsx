@@ -5,8 +5,8 @@ import { useAppDispatch } from "@/app";
 import { appConfig } from "@/shared";
 import { RenderAvatarElement } from "@/shared";
 import { FC } from "react";
-import { userActionsElements } from "../../config";
-import { openComponent, UserType } from "../../model";
+import { userActionsElements } from "../../../../entities/user/config";
+import { openComponent, UserType } from "../../../../entities/user/model";
 import ActionsPopupElement from "./ActionsPopupElement";
 
 interface IActionsPopup {
