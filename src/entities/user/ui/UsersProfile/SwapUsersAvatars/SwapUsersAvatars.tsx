@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import SwapUsersAvatarsLines from "./SwapUsersAvatarsLines";
 import SwapUsersAvatarsArrows from "./SwapUsersAvatarsArrows";
 import SwapUsersAvatarsCurrentAvatar from "./SwapUsersAvatarsCurrentAvatar";
+import { useFormattedChatDate } from "@/entities/chats/lib";
 
 interface Props {
   hasAvatar: boolean;
@@ -13,7 +14,8 @@ interface Props {
   size: number;
   firstName: string;
   lastName: string;
-  status: string;
+  isOnline: boolean;
+  lastSeen: number;
 }
 
 const SwapUsersAvatars: FC<Props> = ({
@@ -22,13 +24,18 @@ const SwapUsersAvatars: FC<Props> = ({
   size,
   firstName,
   lastName,
-  status,
+  isOnline,
+  lastSeen
 }) => {
-  const [isFull, setIsFull] = useState<boolean>(false);
   const t = useTranslations();
+  const [isFull, setIsFull] = useState<boolean>(false);
+
   const [currentImage, setCurrentImage] = useState<number>(
     avatars ? avatars.length - 1 : 0,
   );
+  
+  const lastSeenDate = useFormattedChatDate(lastSeen);
+
   return (
     <div className={`flex w-full flex-col ${isFull ? "" : "pt-4"}`}>
       {hasAvatar ? (
@@ -78,7 +85,7 @@ const SwapUsersAvatars: FC<Props> = ({
             <p className="text-xl">
               {firstName} {lastName}
             </p>
-            <p className="text-icons-color text-[.85rem]">{t(status)}</p>
+            <p className="text-icons-color text-[.85rem]">{isOnline ? t('settings.online') : lastSeenDate}</p>
           </motion.div>
         </motion.div>
       ) : (
@@ -92,13 +99,11 @@ const SwapUsersAvatars: FC<Props> = ({
               className="aspect-square bg-linear-190 from-accent to-accent/20 rounded-full"
             ></div>
           </div>
-          <div
-            className={`flex flex-col justify-center items-center relative`}
-          >
+          <div className={`flex flex-col justify-center items-center relative`}>
             <p className="text-xl">
               {firstName} {lastName}
             </p>
-            <p className="text-icons-color text-[.85rem]">{t(status)}</p>
+            <p className="text-icons-color text-[.85rem]">{isOnline ? t('settings.online') : lastSeenDate}</p>
           </div>
         </div>
       )}

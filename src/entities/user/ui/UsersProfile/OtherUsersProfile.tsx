@@ -8,6 +8,9 @@ import SwapUsersAvatars from "./SwapUsersAvatars/SwapUsersAvatars";
 import UserDataShortInfo from "../ShortInfo/UserDataShortInfo";
 import { ModalConstructor, Spinner } from "@/shared";
 import { AddContactModal } from "@/entities/contacts";
+import { useFormattedChatDate } from "@/entities/chats/lib";
+import { useAppSelector } from "@/app";
+import { isUserOnline } from "@/entities/chats";
 
 type Props = {
   username: string;
@@ -19,10 +22,13 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
   });
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  if (isLoading || !data) {
-    return <Spinner/>;
-  }
+  const isOnline = useAppSelector((state) =>
+    isUserOnline(data?.id ?? "", state),
+  );
 
+  if (isLoading || !data) {
+    return <Spinner />;
+  }
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start">
@@ -40,7 +46,8 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
             avatars={data.avatars}
             firstName={data.firstName ?? ""}
             lastName={data.lastName ?? ""}
-            status="settings.online"
+            isOnline={isOnline ?? false}
+            lastSeen={data.lastSeen ?? 0}
             size={130}
           />
 
