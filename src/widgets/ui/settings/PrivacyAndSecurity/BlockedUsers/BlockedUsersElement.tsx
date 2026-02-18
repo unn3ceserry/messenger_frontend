@@ -1,7 +1,7 @@
 "use client";
 
 import { userApi } from "@/entities";
-import { RenderAvatarElement, Spinner } from "@/shared";
+import { RenderAvatarElement, ShadowWrapper, Spinner } from "@/shared";
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CircleOff } from "lucide-react";
@@ -11,12 +11,10 @@ interface Props {
   userId: string;
 }
 
-const BlockedUsersElement: FC<
-  Props
-> = ({ userId }) => {
+const BlockedUsersElement: FC<Props> = ({ userId }) => {
   const t = useTranslations();
-  
-  const { data, isLoading } = userApi.useGetUserDataQuery({id: userId});
+
+  const { data, isLoading } = userApi.useGetUserDataQuery({ id: userId });
   const [unBlock] = userApi.useUnBlockUsersMutation();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -26,7 +24,7 @@ const BlockedUsersElement: FC<
   });
 
   if (isLoading || !data) {
-    return <Spinner/>;
+    return <Spinner />;
   }
   return (
     <div
@@ -41,7 +39,7 @@ const BlockedUsersElement: FC<
         setIsOpen((prev) => !prev);
       }}
       className="flex items-center justify-center w-full hover:bg-checkbox-hover rounded-2xl p-3 cursor-pointer gap-5 text-default-text-color"
-    > 
+    >
       <RenderAvatarElement
         hasAvatar={!!data.avatars?.length}
         size={55}
@@ -55,22 +53,18 @@ const BlockedUsersElement: FC<
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            exit={{ opacity: 0, scale: 0.9 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2 }}
-            style={{ top: position.y, left: position.x }}
-            className="fixed p-0.5 backdrop-blur-lg rounded-xl w-max shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)] z-50 cursor-pointer"
-          >
-            <div
-              onClick={async () => await unBlock(userId)}
-              className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
-            >
-              <CircleOff size={19} />
-              <p>{t("settings.privacyAndSecurity.unblock")}</p>
-            </div>
-          </motion.div>
+          <ShadowWrapper
+            position={position}
+            children={
+              <div
+                onClick={async () => await unBlock(userId)}
+                className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred"
+              >
+                <CircleOff size={19} />
+                <p>{t("settings.privacyAndSecurity.unblock")}</p>
+              </div>
+            }
+          />
         )}
       </AnimatePresence>
     </div>

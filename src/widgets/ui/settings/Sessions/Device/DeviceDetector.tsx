@@ -1,6 +1,6 @@
 "use client";
 
-import { appConfig } from "@/shared";
+import { appConfig, ShadowWrapper } from "@/shared";
 import { Chromium, CircleMinus } from "lucide-react";
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -47,7 +47,9 @@ const DeviceDetector: FC<Props> = ({
         }
       }}
       className={`flex items-center justify-start w-full gap-4 px-3 relative ${
-        isMySession ? "" : "cursor-pointer hover:bg-checkbox-hover rounded-2xl py-2"
+        isMySession
+          ? ""
+          : "cursor-pointer hover:bg-checkbox-hover rounded-2xl py-2"
       }`}
     >
       {/* icon */}
@@ -66,22 +68,19 @@ const DeviceDetector: FC<Props> = ({
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            exit={{ opacity: 0, scale: 0.9 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2 }}
-            style={{ top: position.y, left: position.x }}
-            className="fixed p-0.5 backdrop-blur-lg rounded-xl max-w-[200px] text-myred shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] z-50"
-          >
-            <div
-              onClick={handleClick}
-              className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
-            >
-              <CircleMinus className="text-myred" size={19} />
-              <p>{t("settings.sessionSettings.terminate")}</p>
-            </div>
-          </motion.div>
+          <ShadowWrapper
+            position={position}
+            className="fixed"
+            children={
+              <div
+                onClick={handleClick}
+                className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred"
+              >
+                <CircleMinus size={19} />
+                <p>{t("settings.sessionSettings.terminate")}</p>
+              </div>
+            }
+          />
         )}
       </AnimatePresence>
     </div>

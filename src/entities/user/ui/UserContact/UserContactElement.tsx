@@ -1,7 +1,7 @@
 "use client";
 
 import { contactsApi, userApi } from "@/entities";
-import { RenderAvatarElement, Spinner } from "@/shared";
+import { RenderAvatarElement, ShadowWrapper, Spinner } from "@/shared";
 import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CircleMinus } from "lucide-react";
@@ -54,22 +54,18 @@ const UserContactElement: FC<Props> = ({ username }) => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            exit={{ opacity: 0, scale: 0.9 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2 }}
-            style={{ top: position.y, left: position.x }}
-            className="fixed p-0.5 backdrop-blur-lg rounded-xl w-max shadow-[0_0px_30px_-8px_rgba(0,0,0,0.8)] z-50 cursor-pointer text-myred"
-          >
-            <div
-              onClick={async () => await deleteContact(username)}
-              className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
-            >
-              <CircleMinus size={19} />
-              <p>{t("contacts.removeContact")}</p>
-            </div>
-          </motion.div>
+          <ShadowWrapper
+            position={position}
+            children={
+              <div
+                onClick={async () => await deleteContact(username)}
+                className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred"
+              >
+                <CircleMinus size={19} />
+                <p>{t("contacts.removeContact")}</p>
+              </div>
+            }
+          />
         )}
       </AnimatePresence>
     </div>

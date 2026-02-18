@@ -12,7 +12,7 @@ export {
   isErrorWithMessage,
   i18nPattern,
   type TLocales,
-  useDebounce
+  useDebounce,
 } from "./lib";
 export {
   ShaderDarkVeil,
@@ -34,7 +34,8 @@ export {
   CirclePopup,
   Spinner,
   DefaultButton,
-  appNotification
+  appNotification,
+  ShadowWrapper,
 } from "./ui";
-export {modalContainerDefault, modalDefault, appConfig} from './config'
-export {createRipple, useSocketConnection} from './model'
+export { modalContainerDefault, modalDefault, appConfig } from "./config";
+export { createRipple, useSocketConnection } from "./model";

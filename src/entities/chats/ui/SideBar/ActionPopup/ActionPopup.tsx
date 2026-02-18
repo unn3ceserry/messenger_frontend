@@ -1,7 +1,7 @@
 "use client";
 
 import { handleDeleteChat } from "@/entities/chats/model";
-import { motion } from "framer-motion";
+import { ShadowWrapper } from "@/shared";
 import { Trash } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Dispatch, FC, SetStateAction } from "react";
@@ -16,16 +16,10 @@ const ActionPopup: FC<Props> = ({ position, chatId, setIsOpen }) => {
   const t = useTranslations();
 
   return (
-    <motion.div
-      exit={{ opacity: 0, scale: 0.9 }}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.2 }}
-      style={{ top: position.y, left: position.x }}
-      onContextMenu={(e) => e.preventDefault()}
-      className="flex flex-col items-center justify-start absolute p-0.5 backdrop-blur-lg bg-checkbox-hover rounded-xl max-w-50 text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] top-15 right-3 cursor-pointer"
-    >
-      <div
+    <ShadowWrapper
+      position={position}
+      children={
+       <div
         onClick={() => {
           handleDeleteChat(chatId);
           setIsOpen(false)
@@ -35,7 +29,8 @@ const ActionPopup: FC<Props> = ({ position, chatId, setIsOpen }) => {
         <Trash size={19} />
         <p className="text-[.95rem]">{t("chat.deleteChat")}</p>
       </div>
-    </motion.div>
+      }
+    />
   );
 };
 

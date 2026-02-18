@@ -30,7 +30,7 @@ const Chat: FC<Props> = ({ userId }) => {
 
   const isOnline = user.isOnline;
   const lastAvatar = user.avatars.at(-1);
-  const data = useFormattedChatDate(user.lastSeen ?? 0);
+  const lastSeenDate = useFormattedChatDate(user.lastSeen ?? 0);
 
   return (
     <div className="flex flex-col items-center justify-between h-screen w-full text-default-text-color gap-5">
@@ -55,7 +55,7 @@ const Chat: FC<Props> = ({ userId }) => {
             {user.firstName} {user.lastName}
           </h2>
           <p className="text-icons-color text-[.85rem]">
-            {isOnline ? t("settings.online") : data}
+            {isOnline ? t("settings.online") : lastSeenDate}
           </p>
         </div>
       </div>
