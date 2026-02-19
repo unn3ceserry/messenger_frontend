@@ -40,4 +40,9 @@ export {
   myDataReducer,
   myDataSlice,
   setMyData,
+  getListIgnoredUsers,
+  ignoredUsersReducer,
+  ignoreUser,
+  unignoreUser,
+  ignoredUsersSlice,
 } from "./model";

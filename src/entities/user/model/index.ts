@@ -31,10 +31,23 @@ export {
   getOtherProfileStatus,
   usersProfileStastusReducer,
   usersProfileStastusSlice,
-  closeOtherProfile
+  closeOtherProfile,
 } from "./store/usersProfileStastusSlice";
 
-export {getMyData, myDataReducer, myDataSlice, setMyData} from './store/myDataSlice'
+export {
+  getListIgnoredUsers,
+  ignoredUsersReducer,
+  ignoreUser,
+  unignoreUser,
+  ignoredUsersSlice,
+} from "./store/ignoredUsersSlice";
+
+export {
+  getMyData,
+  myDataReducer,
+  myDataSlice,
+  setMyData,
+} from "./store/myDataSlice";
 
 export { handleSaveDataEditProfile } from "./handlers/handleSaveDataEditProfile";
 export { handleSetPassword } from "./handlers/handleSetPassword";
