@@ -2,18 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useAppDispatch } from "@/app";
-import { appConfig } from "@/shared";
+import { ActionsElement, appConfig } from "@/shared";
 import { RenderAvatarElement } from "@/shared";
 import { FC } from "react";
 import { userActionsElements } from "../../../../entities/user/config";
 import { openComponent, UserType } from "../../../../entities/user/model";
-import ActionsPopupElement from "./ActionsPopupElement";
 
 interface IActionsPopup {
-  data: UserType
+  data: UserType;
 }
 
-const ActionsPopup: FC<IActionsPopup> = ({data}) => {
+const ActionsPopup: FC<IActionsPopup> = ({ data }) => {
   const dispatch = useAppDispatch();
 
   const actions = userActionsElements(dispatch);
@@ -34,7 +33,7 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
         <RenderAvatarElement
           hasAvatar={!!data.avatars.length}
           size={24}
-          avatar={data.avatars[data.avatars.length -1]}
+          avatar={data.avatars[data.avatars.length - 1]}
         />
 
         <p className="text-[.9rem]">
@@ -42,8 +41,16 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
         </p>
       </div>
 
-      {actions.map((el, i) => (
-        <ActionsPopupElement key={i} {...el} />
+      <hr className="w-full border border-black/5" />
+
+      {actions.filter(el => el.isMain).map((el, i) => (
+        <ActionsElement key={i} {...el} />
+      ))}
+
+      <hr className="w-full border border-black/5" />
+
+      {actions.filter(el => !el.isMain).map((el, i) => (
+        <ActionsElement key={i} {...el} />
       ))}
 
       <p className="text-[.8rem] text-icons-color">

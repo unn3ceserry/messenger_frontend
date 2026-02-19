@@ -40,4 +40,4 @@ export {
   ActionsElement
 } from "./ui";
 export { modalContainerDefault, modalDefault, appConfig } from "./config";
-export { createRipple, useSocketConnection } from "./model";
+export { createRipple, useSocketConnection, type ReturnedTypesActionsElement } from "./model";
