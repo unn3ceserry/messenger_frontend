@@ -13,6 +13,7 @@ export {
   UserContactElement,
   UserDataShortInfo,
   SearchUsers,
+  UserActionsMenu,
 } from "./ui";
 export { userActionsElements } from "./config";
 export {

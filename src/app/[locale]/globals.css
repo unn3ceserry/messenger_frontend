@@ -167,7 +167,7 @@ input[type="number"] {
 }
 
 .shadow-wrapper {
-  @apply flex flex-col absolute p-0.5 gap-0.5 backdrop-blur-xl bg-shadow-wrapper-bg rounded-xl text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] cursor-pointer z-123123
+  @apply flex flex-col absolute p-0.5 gap-1 backdrop-blur-xl bg-shadow-wrapper-bg rounded-xl text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] cursor-pointer z-123123
 }
 
 .user-action-popup {
