@@ -10,10 +10,12 @@ import {
   editMessage,
   getCurrentChat,
 } from "../stores/chatsSlice";
+import { getListIgnoredUsers } from "@/entities/user";
 
 export function useMessageSocket(userId: string) {
   const dispatch = useAppDispatch();
   const currentChat = useAppSelector(getCurrentChat);
+  const ignoredUsers = useAppSelector(getListIgnoredUsers);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioInChatRef = useRef<HTMLAudioElement | null>(null);
@@ -36,7 +38,10 @@ export function useMessageSocket(userId: string) {
     const handleAddMessage = (message: Message) => {
       const isValidUser = message.senderId !== userId;
       const isInCurrentChat = currentChatRef.current?.id === message.chatId;
-      if (isValidUser) {
+
+      const isMuted = ignoredUsers.includes(message.senderId);
+
+      if (!isMuted && isValidUser) {
         if (isInCurrentChat) {
           audioInChatRef.current?.play();
         } else {
@@ -66,5 +71,5 @@ export function useMessageSocket(userId: string) {
       socket.off("message:edited", handleEditMessage);
       socket.off("message:deleted", handleDeleteMessage);
     };
-  }, [userId, dispatch]);
+  }, [userId, dispatch, ignoredUsers]);
 }

@@ -149,7 +149,9 @@
     },
     "user": {
       "blockUser": "Block User",
-      "unblockUser": "Unblock User"
+      "unblockUser": "Unblock User",
+      "muteUser": "Mute User",
+      "unmuteUser": "Unmute User"
     },
     "messagePlaceholder": "Message",
     "deleteChat": "Delete Chat",
