@@ -2,18 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useAppDispatch } from "@/app";
-import { appConfig } from "@/shared";
+import { ActionsElement, appConfig } from "@/shared";
 import { RenderAvatarElement } from "@/shared";
 import { FC } from "react";
-import { userActionsElements } from "../../config";
-import { openComponent, UserType } from "../../model";
-import ActionsPopupElement from "./ActionsPopupElement";
+import { userActionsElements } from "../../../../entities/user/config";
+import { openComponent, UserType } from "../../../../entities/user/model";
 
 interface IActionsPopup {
-  data: UserType
+  data: UserType;
 }
 
-const ActionsPopup: FC<IActionsPopup> = ({data}) => {
+const ActionsPopup: FC<IActionsPopup> = ({ data }) => {
   const dispatch = useAppDispatch();
 
   const actions = userActionsElements(dispatch);
@@ -24,7 +23,7 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.1 }}
-      className="flex flex-col items-center justify-center p-1.5 font-medium max-w-60 shadow-wrapper"
+      className="flex flex-col items-center justify-center p-1.5 font-medium max-w-60 shadow-wrapper paddingPopup"
     >
       {/* user short info */}
       <div
@@ -34,7 +33,7 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
         <RenderAvatarElement
           hasAvatar={!!data.avatars.length}
           size={24}
-          avatar={data.avatars[data.avatars.length -1]}
+          avatar={data.avatars[data.avatars.length - 1]}
         />
 
         <p className="text-[.9rem]">
@@ -42,8 +41,16 @@ const ActionsPopup: FC<IActionsPopup> = ({data}) => {
         </p>
       </div>
 
-      {actions.map((el, i) => (
-        <ActionsPopupElement key={i} {...el} />
+      <hr className="w-full border border-black/5" />
+
+      {actions.filter(el => el.isMain).map((el, i) => (
+        <ActionsElement key={i} {...el} />
+      ))}
+
+      <hr className="w-full border border-black/5" />
+
+      {actions.filter(el => !el.isMain).map((el, i) => (
+        <ActionsElement key={i} {...el} />
       ))}
 
       <p className="text-[.8rem] text-icons-color">

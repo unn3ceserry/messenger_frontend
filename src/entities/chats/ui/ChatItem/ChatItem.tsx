@@ -40,11 +40,11 @@ const ChatItem: FC<Props> = ({
       className="flex w-full items-start gap-3 cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color"
     >
       <RenderAvatarElement hasAvatar={hasAvatar} size={size} avatar={avatar} />
-      <div className="flex flex-col items-start justify-center">
+      <div className="flex flex-col items-start justify-center min-w-0">
         <h2>
           {firstName} {lastName}
         </h2>
-        <p className="line-clamp-1 text-icons-color text-[0.85rem]">
+        <p className="text-icons-color text-[0.85rem] truncate break-all max-w-full">
           {message ? message : t("searchUsers.noResult")}
         </p>
       </div>

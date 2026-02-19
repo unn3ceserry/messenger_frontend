@@ -2,8 +2,8 @@
 
 :root {
   --ff-main: "DMSans", sans-serif;
-  --accent-color: #f32020;
-  --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
+  --accent-color: #8166fa;
+ --accent-button-color: color-mix(in srgb, var(--accent-color) 70%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 2%, #000000);
   --rect-background-color: color-mix(
     in srgb,
@@ -16,7 +16,7 @@
   --chatui-bg: #212121;
   --actions-popup-hover: #00000030;
   --checkbox-hover: #ffffff05;
-  --shadow-wrapper-bg: #00000005;
+  --shadow-wrapper-bg: #21212199;
   --inputs-ring-color: #ffffff07;
   --icons-color: #818181;
   --input-icons-color: #818181;
@@ -38,17 +38,15 @@
 
 :root[data-theme="light"] {
   --ff-main: "DMSans", sans-serif;
-  --accent-color: #f32020;
+  --accent-color: #8166fa;
   --accent-button-color: color-mix(in srgb, var(--accent-color) 85%, #000000);
   --background-color: color-mix(in srgb, var(--accent-color) 3%, #ffffff);
-  --rect-background-color: color-mix(in srgb, var(--accent-color) 6%, #ffffff);
-  --rect-border-color: color-mix(in srgb, var(--accent-color) 12%, #00000010);
   --text-color: color-mix(in srgb, var(--accent-color) 18%, #000000);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 25%, #00000080);
   --chatui-bg: #ffffff;
   --actions-popup-hover: #00000010;
   --checkbox-hover: #00000008;
-  --shadow-wrapper-bg: #ffffff05;
+  --shadow-wrapper-bg: #ffffff30;
   --inputs-ring-color: #00000010;
   --icons-color: #777777;
   --input-icons-color: #b6b5b5;
@@ -169,5 +167,13 @@ input[type="number"] {
 }
 
 .shadow-wrapper {
-  @apply flex flex-col absolute p-0.5 gap-0.5 backdrop-blur-xl bg-shadow-wrapper-bg rounded-xl text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] cursor-pointer z-123123
+  @apply flex flex-col absolute p-0.5 gap-1 backdrop-blur-xl bg-shadow-wrapper-bg rounded-xl text-default-text-color w-full shadow-[0_0px_20px_-8px_rgba(0,0,0,0.8)] cursor-pointer z-123123
+}
+
+.user-action-popup {
+  background: var(--chatui-bg) !important;
+}
+
+.paddingPopup {
+  padding: 4px !important;
 }

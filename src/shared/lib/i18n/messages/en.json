@@ -147,6 +147,10 @@
       "nightMode": "Night Mode",
       "installApp": "Install App"
     },
+    "user": {
+      "blockUser": "Block User",
+      "unblockUser": "Unblock User"
+    },
     "messagePlaceholder": "Message",
     "deleteChat": "Delete Chat",
     "deleteMsg": "Delete Message",
@@ -251,5 +255,5 @@
     },
     "termOfUse": "Term Of Use",
     "online": "online"
-  } 
+  }
 }

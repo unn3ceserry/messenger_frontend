@@ -8,12 +8,12 @@ export { WhoCanSeen, VisibilityField } from "./model";
 
 export { userApi } from "./api";
 export {
-  ActionsPopup,
   UserProfile,
   OtherUsersProfile,
   UserContactElement,
   UserDataShortInfo,
   SearchUsers,
+  UserActionsMenu,
 } from "./ui";
 export { userActionsElements } from "./config";
 export {

@@ -11,6 +11,7 @@ export type IIsOpenUIComponent =
   | "userSettingsSessions"
   | "userSettings"
   | "actionPopup"
+  | "userActionsMenu"
   | "userContacts"
   | "editProfile"
   | "blockedUsers"

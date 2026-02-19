@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppDispatch } from "@/app";
-import { UserRoundPen, UserRoundPlus, X } from "lucide-react";
+import { Pencil, UserRoundPlus, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
   closeOtherProfile,
@@ -57,7 +57,7 @@ const OtherUsersProfileHeader: FC<Props> = ({ username, setIsOpen }) => {
           }
           className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
         >
-          {data ? <UserRoundPen size={22} /> : <UserRoundPlus size={22} />}
+          {data ? <Pencil size={22} /> : <UserRoundPlus size={22} />}
         </div>
       </div>
     </header>

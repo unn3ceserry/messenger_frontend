@@ -145,6 +145,10 @@
       "nightMode": "Ночной режим",
       "installApp": "Установить приложение"
     },
+    "user": {
+      "blockUser": "Заблокировать",
+      "unblockUser": "Разблокировать"
+    },
     "messagePlaceholder": "Сообщение",
     "deleteChat": "Удалить чат",
     "deleteMsg": "Удалить сообщение",

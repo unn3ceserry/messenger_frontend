@@ -23,7 +23,7 @@ export default function NotFoundPage() {
       <div className="w-full h-screen fixed top-0 left-0 -z-10">
         <ShaderDarkVeil
           speed={2}
-          hueShift={245}
+          hueShift={0}
           noiseIntensity={0.1}
           scanlineFrequency={3.8}
           scanlineIntensity={1}

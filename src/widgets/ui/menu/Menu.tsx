@@ -9,6 +9,7 @@ import MenuCompoonent from "./MenuCompoonent";
 import RightSideBar from "./RightSideBar/RightSideBar";
 import { Spinner } from "@/shared";
 import { useChatSocket, useMessageSocket } from "@/entities/chats/model";
+import { handleKeyDown } from "@/widgets/model";
 
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
@@ -25,7 +26,7 @@ const Menu = () => {
   const dispatch = useAppDispatch();
 
   const setResizeValue = (v: number) => dispatch(setWidth({ width: v }));
-  const isResizing = useRef(false);
+  const isResizing = useRef<boolean>(false);
 
   useMessageSocket(userId);
   useChatSocket(userId);
@@ -43,6 +44,12 @@ const Menu = () => {
       window.removeEventListener("mousemove", handleMouseMoveWrapper);
       window.removeEventListener("mouseup", handleMouseUp);
     };
+  }, []);
+
+  useEffect(() => {
+    const listener = (e: KeyboardEvent) => handleKeyDown(e)
+    window.addEventListener("keydown", listener);
+    return () => window.removeEventListener("keydown", listener);
   }, []);
 
   if (isLoading || !data) {
