@@ -70,7 +70,7 @@ const LeftSideBar: FC<Props> = ({ isOpen, setIsOpen, data }) => {
             handleCloseSearch={handleCloseSearch}
           />
         ) : (
-          <ChatsSideBar userId={data.id} myDms={myDms} />
+          <ChatsSideBar myDms={myDms} />
         )}
       </div>
 

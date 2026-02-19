@@ -191,8 +191,12 @@ export const {
 export const getMyDms = (state: RootState) => state.chats.myDms;
 export const getCurrentChat = (state: RootState) =>
   state.chats.myDms.find((chat) => chat.id === state.chats.currentChat?.id);
-export const isUserOnline = (userId: string, state: RootState) =>
-  state.chats.myDms
-    .find((chat) => chat.id === state.chats.currentChat?.id)
-    ?.members?.find((el) => el.userId === userId)?.user?.isOnline;
+export const isUserOnline = (userId: string, state: RootState) => {
+  const chat = state.chats.myDms?.find(chat =>
+    chat.members?.some(member => member.userId === userId)
+  );
+
+  return chat?.members?.find(member => member.userId === userId)?.user?.isOnline;
+};
+
 export const getEditingMessage = (state: RootState) => state.chats.editMessage; 
