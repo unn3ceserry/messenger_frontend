@@ -1,8 +1,10 @@
 "use client";
 
+import { useAppSelector } from "@/app";
 import { createRipple, RenderAvatarElement } from "@/shared";
 import { useTranslations } from "next-intl";
 import { FC, MouseEvent } from "react";
+import { isUserOnline } from "../../model";
 
 interface Props {
   hasAvatar: boolean;
@@ -12,7 +14,8 @@ interface Props {
   firstName?: string;
   lastName?: string;
   onClick: () => void;
-  onContextMenu: ( e: MouseEvent<HTMLDivElement>) => void;
+  onContextMenu: (e: MouseEvent<HTMLDivElement>) => void;
+  userId: string;
 }
 
 const ChatItem: FC<Props> = ({
@@ -23,15 +26,17 @@ const ChatItem: FC<Props> = ({
   firstName,
   lastName,
   onClick,
-  onContextMenu
+  onContextMenu,
+  userId,
 }) => {
   const t = useTranslations();
+
+  const isOnline = useAppSelector((state) => isUserOnline(userId, state));
 
   return (
     <div
       onClick={(e) => {
-        onClick(),
-        createRipple(e)
+        (onClick(), createRipple(e));
       }}
       onContextMenu={(e) => {
         e.preventDefault();
@@ -39,7 +44,16 @@ const ChatItem: FC<Props> = ({
       }}
       className="flex w-full items-start gap-3 cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color"
     >
-      <RenderAvatarElement hasAvatar={hasAvatar} size={size} avatar={avatar} />
+      <div className="flex items-center justify-center relative">
+        <RenderAvatarElement
+          hasAvatar={hasAvatar}
+          size={size}
+          avatar={avatar}
+        />
+        {isOnline && (
+          <div className="absolute bottom-1 right-0 w-4 aspect-square bg-green-400 border-chatui-bg border-2 rounded-full" />
+        )}
+      </div>
       <div className="flex flex-col items-start justify-center min-w-0">
         <h2>
           {firstName} {lastName}

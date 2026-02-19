@@ -4,16 +4,25 @@ import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ChatItem from "../ChatItem/ChatItem";
 import { Chat, setCurrentChat } from "@/entities/chats/model";
-import { useAppDispatch } from "@/app";
+import { useAppDispatch, useAppSelector } from "@/app";
 import ActionPopup from "./ActionPopup/ActionPopup";
+import { Spinner } from "@/shared";
+import {
+  closeOtherProfile,
+  getMyData,
+  getOtherProfileStatus,
+} from "@/entities/user";
 
 interface Props {
-  userId: string;
   myDms: Chat[];
 }
 
-const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
+const ChatsSideBar: FC<Props> = ({ myDms }) => {
   const dispatch = useAppDispatch();
+  const userId = useAppSelector(getMyData);
+  const otherProfileComponent = useAppSelector(
+    getOtherProfileStatus,
+  ).openComponent;
 
   const [chatId, setChatId] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -23,6 +32,9 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
   });
 
   const handleOnClick = (chat: Chat) => {
+    if (!!otherProfileComponent) {
+      dispatch(closeOtherProfile());
+    }
     dispatch(setCurrentChat(chat));
   };
 
@@ -36,9 +48,11 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
     >
       {myDms.map((chat) => {
         const user = chat.members.find((m) => m.userId !== userId)?.user;
+        if (!user) return <Spinner />;
         const lastMessage =
           chat.messages?.[chat.messages.length - 1]?.text ?? "";
-        const lastAvatar = user?.avatars[user.avatars.length - 1] ?? "";
+        const lastAvatar = user.avatars.at(-1);
+
         return (
           <ChatItem
             onContextMenu={(e) => {
@@ -46,12 +60,13 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
               setPosition({ x: e.clientX + 5, y: e.clientY + 5 });
               setChatId(chat.id);
             }}
+            userId={user.id}
             onClick={() => handleOnClick(chat)}
             key={chat.id}
-            firstName={user?.firstName}
-            lastName={user?.lastName}
+            firstName={user.firstName}
+            lastName={user.lastName}
             avatar={lastAvatar}
-            hasAvatar={!!user?.avatars.length}
+            hasAvatar={!!user.avatars.length}
             size={50}
             message={lastMessage}
           />
@@ -59,7 +74,13 @@ const ChatsSideBar: FC<Props> = ({ userId, myDms }) => {
       })}
 
       <AnimatePresence>
-        {isOpen && <ActionPopup chatId={chatId} position={position} setIsOpen={setIsOpen} />}
+        {isOpen && (
+          <ActionPopup
+            chatId={chatId}
+            position={position}
+            setIsOpen={setIsOpen}
+          />
+        )}
       </AnimatePresence>
     </motion.div>
   );
