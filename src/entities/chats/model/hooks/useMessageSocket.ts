@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { useSocketConnection } from "@/shared";
 import { Message } from "../types/chatsTypes";
@@ -15,13 +15,35 @@ export function useMessageSocket(userId: string) {
   const dispatch = useAppDispatch();
   const currentChat = useAppSelector(getCurrentChat);
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioInChatRef = useRef<HTMLAudioElement | null>(null);
+  const currentChatRef = useRef(currentChat);
+
+  useEffect(() => {
+    audioRef.current = new Audio("/sounds/message.mp3");
+    audioInChatRef.current = new Audio("/sounds/messageInChat.mp3");
+  }, []);
+
+  useEffect(() => {
+    currentChatRef.current = currentChat;
+  }, [currentChat]);
+
   useEffect(() => {
     if (!userId) return;
 
     const socket = useSocketConnection(userId);
 
     const handleAddMessage = (message: Message) => {
-      console.log('handleAddMessage')
+      const isValidUser = message.senderId !== userId;
+      const isInCurrentChat = currentChatRef.current?.id === message.chatId;
+      if (isValidUser) {
+        if (isInCurrentChat) {
+          audioInChatRef.current?.play();
+        } else {
+          audioRef.current?.play();
+        }
+      }
+
       dispatch(addNewMessage({ chatId: message.chatId, message }));
     };
 
@@ -30,7 +52,6 @@ export function useMessageSocket(userId: string) {
     };
 
     const handleDeleteMessage = (message: Message) => {
-      console.log('handleDeleteMessage')
       dispatch(
         deleteMessage({ chatId: message.chatId, messageId: message.id }),
       );
@@ -45,5 +66,5 @@ export function useMessageSocket(userId: string) {
       socket.off("message:edited", handleEditMessage);
       socket.off("message:deleted", handleDeleteMessage);
     };
-  }, [userId, currentChat?.id, dispatch]);
+  }, [userId, dispatch]);
 }
