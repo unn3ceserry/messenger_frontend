@@ -39,7 +39,7 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
         const user = chat.members.find((m) => m.userId !== userId)?.user;
         if(!user) return <Spinner/>
         const lastMessage =
-          chat.messages?.[chat.messages.length - 1].text ?? "";
+          chat.messages?.[chat.messages.length - 1]?.text ?? "";
         const lastAvatar = user.avatars.at(-1);
         
         return (
