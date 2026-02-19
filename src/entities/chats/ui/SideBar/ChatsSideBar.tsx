@@ -7,7 +7,11 @@ import { Chat, setCurrentChat } from "@/entities/chats/model";
 import { useAppDispatch, useAppSelector } from "@/app";
 import ActionPopup from "./ActionPopup/ActionPopup";
 import { Spinner } from "@/shared";
-import { getMyData } from "@/entities/user";
+import {
+  closeOtherProfile,
+  getMyData,
+  getOtherProfileStatus,
+} from "@/entities/user";
 
 interface Props {
   myDms: Chat[];
@@ -16,6 +20,10 @@ interface Props {
 const ChatsSideBar: FC<Props> = ({ myDms }) => {
   const dispatch = useAppDispatch();
   const userId = useAppSelector(getMyData);
+  const otherProfileComponent = useAppSelector(
+    getOtherProfileStatus,
+  ).openComponent;
+
   const [chatId, setChatId] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
@@ -24,6 +32,9 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
   });
 
   const handleOnClick = (chat: Chat) => {
+    if (!!otherProfileComponent) {
+      dispatch(closeOtherProfile());
+    }
     dispatch(setCurrentChat(chat));
   };
 
@@ -37,11 +48,11 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
     >
       {myDms.map((chat) => {
         const user = chat.members.find((m) => m.userId !== userId)?.user;
-        if(!user) return <Spinner/>
+        if (!user) return <Spinner />;
         const lastMessage =
           chat.messages?.[chat.messages.length - 1]?.text ?? "";
         const lastAvatar = user.avatars.at(-1);
-        
+
         return (
           <ChatItem
             onContextMenu={(e) => {
@@ -63,7 +74,13 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
       })}
 
       <AnimatePresence>
-        {isOpen && <ActionPopup chatId={chatId} position={position} setIsOpen={setIsOpen} />}
+        {isOpen && (
+          <ActionPopup
+            chatId={chatId}
+            position={position}
+            setIsOpen={setIsOpen}
+          />
+        )}
       </AnimatePresence>
     </motion.div>
   );
