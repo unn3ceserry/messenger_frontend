@@ -59,7 +59,7 @@ export const chatsSlice = createSlice({
         if (index !== -1) {
           const chat = state.myDms[index];
           if (!chat.messages) chat.messages = [];
-          let msg = chat.messages.find(msg => msg.id === message.id);
+          let msg = chat.messages.find((msg) => msg.id === message.id);
           msg = message;
 
           state.myDms = [chat, ...state.myDms.filter((_, i) => i !== index)];
@@ -168,6 +168,29 @@ export const chatsSlice = createSlice({
           }
         });
     },
+    readMessage: (
+      state,
+      action: PayloadAction<{ chatId: string; messageIds: Array<string> }>,
+    ) => {
+      const { chatId, messageIds } = action.payload;
+      const index = state.myDms.findIndex((chat) => chat.id === chatId);
+      if (index !== -1) {
+        const chat = state.myDms[index];
+        chat.messages.map((msg) => {
+          if (messageIds.includes(msg.id)) {
+            msg.isRead = true;
+          }
+        });
+      }
+
+      if (state.currentChat?.id === chatId) {
+        state.currentChat.messages.map((msg) => {
+          if (messageIds.includes(msg.id)) {
+            msg.isRead = true;
+          }
+        });
+      }
+    },
   },
 });
 
@@ -185,18 +208,20 @@ export const {
   setUserOffline,
   removeEditingMessage,
   setEditMessage,
-  updateMessage
+  updateMessage,
+  readMessage,
 } = chatsSlice.actions;
 
 export const getMyDms = (state: RootState) => state.chats.myDms;
 export const getCurrentChat = (state: RootState) =>
   state.chats.myDms.find((chat) => chat.id === state.chats.currentChat?.id);
 export const isUserOnline = (userId: string, state: RootState) => {
-  const chat = state.chats.myDms?.find(chat =>
-    chat.members?.some(member => member.userId === userId)
+  const chat = state.chats.myDms?.find((chat) =>
+    chat.members?.some((member) => member.userId === userId),
   );
 
-  return chat?.members?.find(member => member.userId === userId)?.user?.isOnline;
+  return chat?.members?.find((member) => member.userId === userId)?.user
+    ?.isOnline;
 };
 
-export const getEditingMessage = (state: RootState) => state.chats.editMessage; 
+export const getEditingMessage = (state: RootState) => state.chats.editMessage;

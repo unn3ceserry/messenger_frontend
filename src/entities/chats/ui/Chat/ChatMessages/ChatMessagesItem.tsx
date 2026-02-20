@@ -5,6 +5,7 @@ import { FC, MouseEvent, useState } from "react";
 import MessagePopup from "./MessagePopup/MessagePopup";
 import { Message } from "@/entities/chats/model";
 import { useTranslations } from "next-intl";
+import { Check, CheckCheck } from "lucide-react";
 
 interface Props {
   message: Message;
@@ -41,22 +42,24 @@ const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
       `}
       >
         <p>{message.text}</p>
-        <div className="flex w-full gap-1 items-center justify-end">
+        
+        <div className={`flex w-full gap-1 items-center justify-end ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}>
           {!!message.editedAt ? (
             <p
-              className={`text-[.75rem] shrink-0 ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}
+              className={`text-[.75rem] shrink-0`}
             >
               {t('chat.isEdited')}
             </p>
           ) : null}
           <p
-            className={`text-[.75rem] shrink-0 ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}
+            className={`text-[.75rem] shrink-0`}
           >
             {new Date(createdAt).toLocaleTimeString("ru-RU", {
               hour: "2-digit",
               minute: "2-digit",
             })}
           </p>
+          {message.isRead ? <CheckCheck size={16} /> : <Check size={16} />}
         </div>
       </div>
 

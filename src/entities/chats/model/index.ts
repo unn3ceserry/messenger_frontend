@@ -20,6 +20,7 @@ export {
   setEditMessage,
   removeEditingMessage,
   updateMessage,
+  readMessage,
 } from "./stores/chatsSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";

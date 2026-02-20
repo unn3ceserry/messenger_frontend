@@ -79,6 +79,7 @@ export {
   setEditMessage,
   removeEditingMessage,
   updateMessage,
+  readMessage,
   handleSortChat,
 } from "./chats";
 export {

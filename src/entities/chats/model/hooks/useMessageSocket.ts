@@ -9,6 +9,7 @@ import {
   deleteMessage,
   editMessage,
   getCurrentChat,
+  readMessage,
 } from "../stores/chatsSlice";
 import { getListIgnoredUsers } from "@/entities/user";
 
@@ -62,14 +63,21 @@ export function useMessageSocket(userId: string) {
       );
     };
 
+    const handleIsReadMessage = ({chatId, messageIds}: {chatId: string, messageIds: Array<string>}) => {
+      console.log('handleIsReadMessage')
+      dispatch(readMessage({chatId, messageIds}))
+    }
+
     socket.on("message:created", handleAddMessage);
     socket.on("message:edited", handleEditMessage);
     socket.on("message:deleted", handleDeleteMessage);
+    socket.on("message:isread", handleIsReadMessage);
 
     return () => {
       socket.off("message:created", handleAddMessage);
       socket.off("message:edited", handleEditMessage);
       socket.off("message:deleted", handleDeleteMessage);
+      socket.off("message:isread", handleIsReadMessage);
     };
   }, [userId, dispatch, ignoredUsers]);
 }
