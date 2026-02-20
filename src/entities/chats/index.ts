@@ -22,5 +22,7 @@ export {
   removeEditingMessage,
   updateMessage,
   readMessage,
+  setIsFullScreenChat,
+  getIsFullScreenChat,
 } from "./model";
 export { chatsApi } from "./api";

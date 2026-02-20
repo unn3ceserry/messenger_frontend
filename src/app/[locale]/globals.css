@@ -87,6 +87,7 @@
   --color-message-time-color: var(--message-time-color);
   --color-my-message-time-color: var(--my-message-time-color);
   --breakpoint-otherprofile: 25rem;
+  --breakpoint-resizechat: 70rem;
 }
 
 body {

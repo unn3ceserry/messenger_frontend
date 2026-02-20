@@ -6,12 +6,14 @@ interface IChatsState {
   myDms: Chat[];
   editMessage: Message | null;
   currentChat: Chat | null;
+  isFullScreenChat: boolean
 }
 
 const initialState: IChatsState = {
   myDms: [],
   editMessage: null,
   currentChat: null,
+  isFullScreenChat: false,
 };
 
 // helpers
@@ -214,6 +216,10 @@ export const chatsSlice = createSlice({
       state.myDms.forEach(update);
       if (state.currentChat) update(state.currentChat);
     },
+
+    setIsFullScreenChat: (state, action: PayloadAction<boolean>) => {
+      state.isFullScreenChat = action.payload
+    }
   },
 });
 
@@ -233,6 +239,7 @@ export const {
   setEditMessage,
   updateMessage,
   readMessage,
+  setIsFullScreenChat,
 } = chatsSlice.actions;
 
 //  selectors
@@ -251,3 +258,4 @@ export const isUserOnline = (userId: string, state: RootState) => {
 };
 
 export const getEditingMessage = (state: RootState) => state.chats.editMessage;
+export const getIsFullScreenChat = (state: RootState) => state.chats.isFullScreenChat;
