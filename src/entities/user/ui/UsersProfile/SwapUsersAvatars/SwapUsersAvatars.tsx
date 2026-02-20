@@ -79,6 +79,7 @@ const SwapUsersAvatars: FC<Props> = ({
             className={`flex flex-col justify-center px-3 relative`}
             style={{
               alignItems: isFull ? "flex-start" : "center",
+              textAlign: isFull ? "start" : "center",
             }}
             transition={{ layout: { duration: 0.2 } }}
           >

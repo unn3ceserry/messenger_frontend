@@ -45,11 +45,11 @@ const BlockedUsersElement: FC<Props> = ({ userId }) => {
         size={55}
         avatar={data.avatars ? data.avatars[data.avatars.length - 1] : ""}
       />
-      <div className="flex flex-col items-start justify-center w-full">
-        <p className="text-[1.1rem]">
+      <div className="flex flex-col items-start justify-center w-full min-w-0">
+        <p className="text-[1.1rem] shortText">
           {data.firstName} {data.lastName}
         </p>
-        <p className="text-icons-color text-[.9rem]">@{data.username}</p>
+        <p className="text-icons-color text-[.9rem] shortText">@{data.username}</p>
       </div>
       <AnimatePresence>
         {isOpen && (
