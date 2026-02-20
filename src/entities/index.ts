@@ -81,6 +81,8 @@ export {
   updateMessage,
   readMessage,
   handleSortChat,
+  setIsFullScreenChat,
+  getIsFullScreenChat,
 } from "./chats";
 export {
   contactsApi,

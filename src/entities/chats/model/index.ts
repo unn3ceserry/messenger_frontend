@@ -21,6 +21,8 @@ export {
   removeEditingMessage,
   updateMessage,
   readMessage,
+  setIsFullScreenChat,
+  getIsFullScreenChat,
 } from "./stores/chatsSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";
