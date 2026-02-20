@@ -111,7 +111,7 @@ export const userApi = mainApi.injectEndpoints({
     // BLOCK USERS REQUESTS
     blockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
-        url: "/account/block-user",
+        url: "/users/block-user",
         method: "POST",
         body: { id },
       }),
@@ -119,7 +119,7 @@ export const userApi = mainApi.injectEndpoints({
     }),
     unBlockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
-        url: "/account/unblock-user",
+        url: "/users/unblock-user",
         method: "POST",
         body: { id },
       }),
@@ -147,7 +147,7 @@ export const userApi = mainApi.injectEndpoints({
       providesTags: ["users"],
     }),
     isMyContact: builder.query<boolean, string>({
-      query: (username) => `/account/is-my-contact?username=${username}`,
+      query: (username) => `/users/is-my-contact?username=${username}`,
       providesTags: ['users', 'contacts']
     }),
     // AVATAR REQUESTS
