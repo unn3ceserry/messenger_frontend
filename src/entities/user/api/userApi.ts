@@ -143,7 +143,7 @@ export const userApi = mainApi.injectEndpoints({
       { id?: string; username?: string }
     >({
       query: ({ id, username }) =>
-        `/account/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
+        `/users/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
       providesTags: ["users"],
     }),
     isMyContact: builder.query<boolean, string>({
