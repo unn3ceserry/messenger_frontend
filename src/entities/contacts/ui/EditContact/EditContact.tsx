@@ -40,7 +40,7 @@ const EditContact: FC<Props> = ({ username }) => {
         className="w-full flex flex-col items-start justify-center gap-3"
       >
         {/* info */}
-        <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3">
+        <div className="flex flex-col items-center w-full gap-3 cursor-pointer p-3 text-center">
           <RenderAvatarElement
             hasAvatar={!!data?.avatars?.length}
             size={130}

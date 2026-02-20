@@ -55,10 +55,10 @@ const ChatItem: FC<Props> = ({
         )}
       </div>
       <div className="flex flex-col items-start justify-center min-w-0">
-        <h2>
+        <h2 className="shortText">
           {firstName} {lastName}
         </h2>
-        <p className="text-icons-color text-[0.85rem] truncate break-all max-w-full">
+        <p className="text-icons-color text-[0.85rem] shortText">
           {message ? message : t("searchUsers.noResult")}
         </p>
       </div>

@@ -178,3 +178,7 @@ input[type="number"] {
 .paddingPopup {
   padding: 4px !important;
 }
+
+.shortText {
+  @apply truncate break-all max-w-full
+}
