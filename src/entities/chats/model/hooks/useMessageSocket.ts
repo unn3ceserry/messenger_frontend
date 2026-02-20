@@ -9,11 +9,14 @@ import {
   deleteMessage,
   editMessage,
   getCurrentChat,
+  readMessage,
 } from "../stores/chatsSlice";
+import { getListIgnoredUsers } from "@/entities/user";
 
 export function useMessageSocket(userId: string) {
   const dispatch = useAppDispatch();
   const currentChat = useAppSelector(getCurrentChat);
+  const ignoredUsers = useAppSelector(getListIgnoredUsers);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioInChatRef = useRef<HTMLAudioElement | null>(null);
@@ -36,7 +39,10 @@ export function useMessageSocket(userId: string) {
     const handleAddMessage = (message: Message) => {
       const isValidUser = message.senderId !== userId;
       const isInCurrentChat = currentChatRef.current?.id === message.chatId;
-      if (isValidUser) {
+
+      const isMuted = ignoredUsers.includes(message.senderId);
+
+      if (!isMuted && isValidUser) {
         if (isInCurrentChat) {
           audioInChatRef.current?.play();
         } else {
@@ -57,14 +63,21 @@ export function useMessageSocket(userId: string) {
       );
     };
 
+    const handleIsReadMessage = ({chatId, messageIds}: {chatId: string, messageIds: Array<string>}) => {
+      console.log('handleIsReadMessage')
+      dispatch(readMessage({chatId, messageIds}))
+    }
+
     socket.on("message:created", handleAddMessage);
     socket.on("message:edited", handleEditMessage);
     socket.on("message:deleted", handleDeleteMessage);
+    socket.on("message:isread", handleIsReadMessage);
 
     return () => {
       socket.off("message:created", handleAddMessage);
       socket.off("message:edited", handleEditMessage);
       socket.off("message:deleted", handleDeleteMessage);
+      socket.off("message:isread", handleIsReadMessage);
     };
-  }, [userId, dispatch]);
+  }, [userId, dispatch, ignoredUsers]);
 }

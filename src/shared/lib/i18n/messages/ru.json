@@ -147,7 +147,9 @@
     },
     "user": {
       "blockUser": "Заблокировать",
-      "unblockUser": "Разблокировать"
+      "unblockUser": "Разблокировать",
+      "muteUser": "Убрать звук",
+      "unmuteUser": "Вкл. звук"
     },
     "messagePlaceholder": "Сообщение",
     "deleteChat": "Удалить чат",

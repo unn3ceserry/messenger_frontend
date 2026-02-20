@@ -21,5 +21,6 @@ export {
   setEditMessage,
   removeEditingMessage,
   updateMessage,
+  readMessage,
 } from "./model";
 export { chatsApi } from "./api";

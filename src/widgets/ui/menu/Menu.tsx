@@ -72,7 +72,7 @@ const Menu = () => {
           className="w-0.5 bg-line-color self-stretch cursor-e-resize"
         ></div>
       </div>
-      {!!currentChat && <ChatMessages userId={data.id} />}
+      {!!currentChat && <ChatMessages />}
     </div>
   );
 };

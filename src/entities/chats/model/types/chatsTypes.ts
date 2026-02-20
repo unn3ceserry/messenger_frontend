@@ -5,6 +5,7 @@ export type Message = {
   text: string;
   chatId: string;
   senderId: string;
+  isRead: boolean
   editedAt?: Date | null;
   deletedAt?: Date | null;
   createdAt: Date;
@@ -34,5 +35,5 @@ export type Chat = {
   updatedAt: Date;
 
   members: ChatMember[];
-  messages?: Message[];
+  messages: Message[];
 };

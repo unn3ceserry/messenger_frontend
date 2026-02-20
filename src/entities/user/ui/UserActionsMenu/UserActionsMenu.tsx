@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { getCurrentChat } from "@/entities/chats";
 import { ActionsElement, Spinner } from "@/shared";
 import { userApi } from "../../api";
+import { getListIgnoredUsers } from "../../model";
 
 const UserActionsMenu = () => {
   const { data, isLoading } = userApi.useGetMeQuery();
@@ -15,6 +16,7 @@ const UserActionsMenu = () => {
   const opponent = currentChat.members.find((m) => m.user.id !== data.id);
   const userId = opponent?.user.id ?? "";
   const isBlocked = data.blockedUsers.includes(userId);
+  const isMuted = useAppSelector(getListIgnoredUsers).includes(userId);
 
   const dispatch = useAppDispatch();
   const elements = userActionsMenuElements(
@@ -22,6 +24,7 @@ const UserActionsMenu = () => {
     currentChat.id,
     userId,
     isBlocked,
+    isMuted
   );
   return (
     <motion.div

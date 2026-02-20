@@ -41,6 +41,11 @@ export {
   getMyData,
   myDataReducer,
   myDataSlice,
+  getListIgnoredUsers,
+  ignoredUsersReducer,
+  ignoreUser,
+  unignoreUser,
+  ignoredUsersSlice,
   setMyData,
 } from "./user";
 export {
@@ -74,6 +79,7 @@ export {
   setEditMessage,
   removeEditingMessage,
   updateMessage,
+  readMessage,
   handleSortChat,
 } from "./chats";
 export {

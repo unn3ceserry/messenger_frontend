@@ -5,6 +5,7 @@ import { FC, MouseEvent, useState } from "react";
 import MessagePopup from "./MessagePopup/MessagePopup";
 import { Message } from "@/entities/chats/model";
 import { useTranslations } from "next-intl";
+import { Check, CheckCheck } from "lucide-react";
 
 interface Props {
   message: Message;
@@ -13,8 +14,6 @@ interface Props {
 }
 
 const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
-  const t = useTranslations();
-  
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -41,23 +40,7 @@ const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
       `}
       >
         <p>{message.text}</p>
-        <div className="flex w-full gap-1 items-center justify-end">
-          {!!message.editedAt ? (
-            <p
-              className={`text-[.75rem] shrink-0 ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}
-            >
-              {t('chat.isEdited')}
-            </p>
-          ) : null}
-          <p
-            className={`text-[.75rem] shrink-0 ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}
-          >
-            {new Date(createdAt).toLocaleTimeString("ru-RU", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </p>
-        </div>
+        <MessageStats createdAt={createdAt} isMy={isMy} message={message} />
       </div>
 
       <AnimatePresence>
@@ -69,6 +52,27 @@ const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt }) => {
           />
         )}
       </AnimatePresence>
+    </div>
+  );
+};
+
+const MessageStats: FC<Props> = ({ createdAt, isMy, message }) => {
+  const t = useTranslations();
+
+  return (
+    <div
+      className={`flex w-full gap-1 items-center justify-end ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}
+    >
+      {!!message.editedAt ? (
+        <p className={`text-[.75rem] shrink-0`}>{t("chat.isEdited")}</p>
+      ) : null}
+      <p className={`text-[.75rem] shrink-0`}>
+        {new Date(createdAt).toLocaleTimeString("ru-RU", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </p>
+      {isMy && (message.isRead ? <CheckCheck size={16} /> : <Check size={16} />)}
     </div>
   );
 };
