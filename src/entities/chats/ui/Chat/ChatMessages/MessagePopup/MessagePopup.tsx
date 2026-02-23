@@ -1,17 +1,12 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/app";
-import {
-  handleDeleteMessage,
-  Message,
-  setEditMessage,
-} from "@/entities/chats/model";
+import { Message } from "@/entities/chats/model";
 import { getMyData } from "@/entities/user";
-import { ShadowWrapper, useSocketConnection } from "@/shared";
-import { motion } from "framer-motion";
-import { BrushCleaning, Pencil } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { ActionsElement, useSocketConnection } from "@/shared";
 import { Dispatch, FC, SetStateAction } from "react";
+import { motion } from "framer-motion";
+import { messagePopupElements } from "@/entities/chats/config";
 
 interface Props {
   position: { x: number; y: number };
@@ -20,41 +15,33 @@ interface Props {
 }
 
 const MessagePopup: FC<Props> = ({ position, message, setIsOpen }) => {
-  const t = useTranslations();
-
   const userId = useAppSelector(getMyData);
   const socket = useSocketConnection(userId);
 
   const dispatch = useAppDispatch();
+  const elements = messagePopupElements(dispatch, message, setIsOpen, socket);
 
   return (
-    <ShadowWrapper
-      position={position}
-      children={
-        <>
-          <div
-            onClick={() => {
-              dispatch(setEditMessage(message));
-              setIsOpen(false);
-            }}
-            className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2"
-          >
-            <Pencil size={19} />
-            <p className="text-[.95rem]">{t("chat.editMsg")}</p>
-          </div>
-          <div
-            onClick={() => {
-              handleDeleteMessage(socket, message.id);
-              setIsOpen(false);
-            }}
-            className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred"
-          >
-            <BrushCleaning size={19} />
-            <p className="text-[.95rem]">{t("chat.deleteMsg")}</p>
-          </div>
-        </>
-      }
-    />
+    <motion.div
+      exit={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.1 }}
+      style={{ left: position.x, top: position.y }}
+      className="absolute z-50 flex flex-col items-center justify-center p-1.5 font-medium max-w-50 shadow-wrapper right-3 top-15 paddingPopup"
+    >
+      {elements
+        .filter((el) => el.isMain)
+        .map((el, i) => (
+          <ActionsElement key={i} {...el} />
+        ))}
+      <hr className="w-full border border-black/5" />
+      {elements
+        .filter((el) => !el.isMain)
+        .map((el, i) => (
+          <ActionsElement key={i} {...el} />
+        ))}
+    </motion.div>
   );
 };
 
