@@ -58,10 +58,6 @@ const MenuCompoonent: FC<Props> = ({ data }) => {
         return <SetCloudPassword />;
       case "phoneVisible":
         return <VisibilitySettings data={data} field={VisibilityField.Phone} />;
-      case "avatarsVisible":
-        return (
-          <VisibilitySettings data={data} field={VisibilityField.Avatars} />
-        );
       case "birthdayVisible":
         return (
           <VisibilitySettings data={data} field={VisibilityField.Birthday} />

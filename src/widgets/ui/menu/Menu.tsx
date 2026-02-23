@@ -88,7 +88,7 @@ const Menu = () => {
       {!isFullScreenChat && (
         <div
           style={{ width }}
-          className={`items-center justify-center w-full h-screen bg-chatui-bg relative flex`}
+          className={`items-center justify-center w-full h-screen bg-chatui-bg relative flex shrink-0`}
         >
           <AnimatePresence>
             <MenuCompoonent data={data} />
