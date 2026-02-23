@@ -62,7 +62,7 @@ const ChatItem: FC<Props> = ({
       </div>
 
       <div className="flex flex-col items-end justify-center gap-2 shrink-0">
-        <p className="text-icons-color text-[.65rem]">{formattedCreatedTime}</p>
+        {messages.length ? <p className="text-icons-color text-[.65rem]">{formattedCreatedTime}</p> : null}
         {noReadMessages.length ? (
           <p className="flex items-center justify-center rounded-full bg-accent p-[1.5px] px-2 text-[.85rem]">
             {noReadMessages.length}
