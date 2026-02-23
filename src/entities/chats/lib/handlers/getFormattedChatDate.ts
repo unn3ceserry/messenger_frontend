@@ -23,7 +23,7 @@ export const useFormattedChatDate = (timestamp: number) => {
     date.getFullYear() === yesterday.getFullYear();
 
   if (isSameDay) {
-    return `${t("formattDate.todayIn")} ${dateTime}`;
+    return `${dateTime}`;
   } else if (isYesterday) {
     return `${t("formattDate.yesterdayIn")} ${dateTime}`;
   } else if (date.getFullYear() === today.getFullYear()) {

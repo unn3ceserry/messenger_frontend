@@ -180,5 +180,5 @@ input[type="number"] {
 }
 
 .shortText {
-  @apply truncate break-all max-w-full
+  @apply truncate break-all max-w-full 
 }

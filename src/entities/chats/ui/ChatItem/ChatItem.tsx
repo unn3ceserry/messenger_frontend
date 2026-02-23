@@ -1,16 +1,18 @@
 "use client";
 
 import { useAppSelector } from "@/app";
-import { createRipple, RenderAvatarElement } from "@/shared";
+import { createRipple, RenderAvatarElement, Spinner } from "@/shared";
 import { useTranslations } from "next-intl";
 import { FC, MouseEvent } from "react";
-import { isUserOnline } from "../../model";
+import { getCurrentChat, isUserOnline, Message } from "../../model";
+import { getMyData } from "@/entities/user";
+import ItemUserInfo from "./ItemUserInfo";
+import { useFormattedChatDate } from "../../lib";
 
 interface Props {
   hasAvatar: boolean;
   avatar?: string;
-  size: number;
-  message: string;
+  messages: Array<Message>;
   firstName?: string;
   lastName?: string;
   onClick: () => void;
@@ -20,18 +22,22 @@ interface Props {
 
 const ChatItem: FC<Props> = ({
   hasAvatar,
-  size,
   avatar,
-  message,
   firstName,
   lastName,
+  messages,
   onClick,
   onContextMenu,
   userId,
 }) => {
-  const t = useTranslations();
-
-  const isOnline = useAppSelector((state) => isUserOnline(userId, state));
+  const myUserId = useAppSelector(getMyData);
+  const lastMessage = messages.at(-1);
+  const noReadMessages = messages.filter(
+    (msg) => msg.senderId !== myUserId && !msg.isRead,
+  );
+  const formattedCreatedTime = useFormattedChatDate(
+    new Date(lastMessage?.createdAt ?? new Date()).getTime() ?? 0,
+  );
 
   return (
     <div
@@ -42,25 +48,26 @@ const ChatItem: FC<Props> = ({
         e.preventDefault();
         onContextMenu(e);
       }}
-      className="flex w-full items-start gap-3 cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color"
+      className="flex w-full items-start justify-between cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color"
     >
-      <div className="flex items-center justify-center relative">
-        <RenderAvatarElement
-          hasAvatar={hasAvatar}
-          size={size}
+      <div className="flex-1 min-w-0">
+        <ItemUserInfo
           avatar={avatar}
+          firstName={firstName}
+          hasAvatar={hasAvatar}
+          lastName={lastName}
+          lastMessage={lastMessage}
+          userId={userId}
         />
-        {isOnline && (
-          <div className="absolute bottom-1 right-0 w-4 aspect-square bg-green-400 border-chatui-bg border-2 rounded-full" />
-        )}
       </div>
-      <div className="flex flex-col items-start justify-center min-w-0">
-        <h2 className="shortText">
-          {firstName} {lastName}
-        </h2>
-        <p className="text-icons-color text-[0.85rem] shortText">
-          {message ? message : t("searchUsers.noResult")}
-        </p>
+
+      <div className="flex flex-col items-end justify-center gap-2 shrink-0">
+        {messages.length ? <p className="text-icons-color text-[.65rem]">{formattedCreatedTime}</p> : null}
+        {noReadMessages.length ? (
+          <p className="flex items-center justify-center rounded-full bg-accent p-[1.5px] px-2 text-[.85rem]">
+            {noReadMessages.length}
+          </p>
+        ) : null}
       </div>
     </div>
   );
