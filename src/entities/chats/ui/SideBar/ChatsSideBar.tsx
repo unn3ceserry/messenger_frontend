@@ -49,8 +49,6 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
       {myDms.map((chat) => {
         const user = chat.members.find((m) => m.userId !== userId)?.user;
         if (!user) return <Spinner />;
-        const lastMessage =
-          chat.messages?.[chat.messages.length - 1]?.text ?? "";
         const lastAvatar = user.avatars.at(-1);
 
         return (
@@ -61,14 +59,13 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
               setChatId(chat.id);
             }}
             userId={user.id}
+            messages={chat.messages}
             onClick={() => handleOnClick(chat)}
             key={chat.id}
             firstName={user.firstName}
             lastName={user.lastName}
             avatar={lastAvatar}
             hasAvatar={!!user.avatars.length}
-            size={50}
-            message={lastMessage}
           />
         );
       })}
