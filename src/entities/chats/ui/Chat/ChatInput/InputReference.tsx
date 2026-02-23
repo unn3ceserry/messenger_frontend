@@ -24,6 +24,7 @@ const InputReference: FC<Props> = ({ setValue, value }) => {
   if (!currentChat) return <Spinner />;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setIsOpen(false)
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage(socket, value.trim(), setValue, currentChat.id ?? "");
