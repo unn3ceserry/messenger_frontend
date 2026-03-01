@@ -46,7 +46,7 @@ const DeviceDetector: FC<Props> = ({
           setIsOpen((prev) => !prev);
         }
       }}
-      className={`flex items-center justify-start w-full gap-4 px-3 relative ${
+      className={`flex items-center justify-start w-full gap-4 px-3 ${
         isMySession
           ? ""
           : "cursor-pointer hover:bg-checkbox-hover rounded-2xl py-2"
@@ -70,12 +70,8 @@ const DeviceDetector: FC<Props> = ({
         {isOpen && (
           <ShadowWrapper
             position={position}
-            className="fixed"
             children={
-              <div
-                onClick={handleClick}
-                className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred"
-              >
+              <div className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred">
                 <CircleMinus size={19} />
                 <p>{t("settings.sessionSettings.terminate")}</p>
               </div>

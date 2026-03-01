@@ -45,7 +45,7 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
   return (
-    <html lang="en">
+    <html>
       <body className={`${fontRoboto.className} antialiased`}>
         <StoreProvider>
           <ThemeProvider>
