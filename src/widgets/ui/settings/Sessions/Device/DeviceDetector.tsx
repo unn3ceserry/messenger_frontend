@@ -71,7 +71,7 @@ const DeviceDetector: FC<Props> = ({
           <ShadowWrapper
             position={position}
             children={
-              <div className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred">
+              <div onClick={handleClick} className="flex items-center justify-start hover:bg-actions-popup-hover p-2 px-3 rounded-[10px] duration-500 w-full gap-2 text-myred">
                 <CircleMinus size={19} />
                 <p>{t("settings.sessionSettings.terminate")}</p>
               </div>
