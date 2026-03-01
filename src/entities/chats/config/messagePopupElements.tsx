@@ -17,7 +17,10 @@ export const messagePopupElements = (
     title: "chat.editMsg",
     isMain: true,
     isFirst: true,
-    onClick: () => dispatch(setEditMessage(message)),
+    onClick: () => {
+      dispatch(setEditMessage(message));
+      setIsOpen(false);
+    },
   },
   {
     icon: <BrushCleaning size={20} />,
