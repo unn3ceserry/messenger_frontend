@@ -74,7 +74,7 @@ export const userApi = mainApi.injectEndpoints({
     }),
     deleteBirthday: builder.mutation<boolean, void>({
       query: () => ({ url: "/account/remove-birthday", method: "DELETE" }),
-      invalidatesTags: ["sessions"],
+      invalidatesTags: ["sessions", "users"],
     }),
     // BIO REQUESTS
     setBio: builder.mutation<boolean, string>({

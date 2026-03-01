@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Check } from "lucide-react";
+import { motion } from "framer-motion";
 import { handleSaveDataEditProfile, UserType } from "@/entities";
 
 import { ChooseAvatar } from "./ChooseAvatar";
