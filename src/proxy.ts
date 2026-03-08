@@ -15,14 +15,18 @@ export default function middleware(request: NextRequest) {
   const publicRoutes = ["/", "/auth", "/register"];
   const privateRoutes = ["/c"];
 
-  const redirectUrl = request.nextUrl.clone();
+  const isPrivate = privateRoutes.some(
+    (route) => path === route || path.startsWith(route + "/")
+  );
 
   if (publicRoutes.includes(path) && isAuth) {
+    const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = `/${locale}/c`;
     return NextResponse.redirect(redirectUrl);
   }
 
-  if (privateRoutes.includes(path) && !isAuth) {
+  if (isPrivate && !isAuth) {
+    const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = `/${locale}`;
     return NextResponse.redirect(redirectUrl);
   }
