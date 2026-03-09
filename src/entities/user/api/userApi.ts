@@ -10,7 +10,7 @@ export const userApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
 
     searchUser: builder.query<Array<UserType>, string>({
-      query: (searchText) => `/users/search/user?searchText=${searchText}`
+      query: (searchText) => `/users/search?searchText=${searchText}`
     }),
     setCompleteData: builder.mutation<void, UserCompleteData>({
       query: ({ birthday, email, cloudPassword }) => ({
@@ -111,7 +111,7 @@ export const userApi = mainApi.injectEndpoints({
     // BLOCK USERS REQUESTS
     blockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
-        url: "/users/block-user",
+        url: "/users/block",
         method: "POST",
         body: { id },
       }),
@@ -119,7 +119,7 @@ export const userApi = mainApi.injectEndpoints({
     }),
     unBlockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
-        url: "/users/unblock-user",
+        url: "/users/unblock",
         method: "POST",
         body: { id },
       }),
@@ -143,11 +143,11 @@ export const userApi = mainApi.injectEndpoints({
       { id?: string; username?: string }
     >({
       query: ({ id, username }) =>
-        `/users/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
+        `/users/user?${id ? `id=${id}` : `username=${username}`}`,
       providesTags: ["users"],
     }),
     isMyContact: builder.query<boolean, string>({
-      query: (username) => `/users/is-my-contact?username=${username}`,
+      query: (username) => `/users/contact?username=${username}`,
       providesTags: ['users', 'contacts']
     }),
     // AVATAR REQUESTS
@@ -166,7 +166,7 @@ export const userApi = mainApi.injectEndpoints({
     removeAvatar: builder.mutation<boolean, number>({
       query: (index) => {
         return {
-          method: "POST",
+          method: "DELETE",
           body: { index },
           url: "/account/avatar",
         };

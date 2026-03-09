@@ -4,12 +4,12 @@ import { ContactsType, CreatedContactType } from "../model";
 export const contactsApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
     getMyContacts: builder.query<ContactsType, void>({
-      query: () => "/contacts/get-contacts",
+      query: () => "/contacts/contacts",
       providesTags: ["contacts", "users"],
     }),
     addToContact: builder.mutation<CreatedContactType, {username: string, firstName?: string, lastName?: string}>({
       query: ({username, firstName, lastName}) => ({
-        url: "/contacts/add-to-contact",
+        url: "/contacts/add",
         method: "POST",
         body: { username, firstName, lastName },
       }),
@@ -17,7 +17,7 @@ export const contactsApi = mainApi.injectEndpoints({
     }),
     editContact: builder.mutation<boolean, {username: string, firstName?: string, lastName?: string}>({
       query: ({username, firstName, lastName}) => ({
-        url: "/contacts/edit-contact",
+        url: "/contacts/contact",
         method: "PATCH",
         body: { username, firstName, lastName },
       }),
@@ -25,7 +25,7 @@ export const contactsApi = mainApi.injectEndpoints({
     }),
     deleteContact: builder.mutation<boolean, string>({
       query: (username) => ({
-        url: "/contacts/delete-contact",
+        url: "/contacts/contact",
         method: "DELETE",
         body: { username },
       }),
