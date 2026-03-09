@@ -38,7 +38,7 @@ const UserProfile: FC<IUserProfile> = ({ data, setOpenedAvatar }) => {
               size={130}
               avatar={data.avatars[data.avatars.length - 1]}
             />
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center text-center">
               <p className="text-xl">
                 {data.firstName} {data.lastName}
               </p>

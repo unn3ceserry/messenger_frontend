@@ -36,7 +36,7 @@ const ActionsPopup: FC<IActionsPopup> = ({ data }) => {
           avatar={data.avatars[data.avatars.length - 1]}
         />
 
-        <p className="text-[.9rem]">
+        <p className="text-[.9rem] truncate min-w-0">
           {data.firstName} {data.lastName}
         </p>
       </div>
