@@ -1,8 +1,7 @@
 import { makeStore } from "@/app";
-import type { SignInType } from "../../model";
+import type { SignInType } from "..";
 import { sessionApi } from "@/entities";
 import {
-  appNotification,
   isErrorWithMessage,
   isErrorWithMessageAndType,
   Notification,

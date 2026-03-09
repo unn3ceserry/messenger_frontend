@@ -10,10 +10,12 @@ export const appNotification = ({ icon, text }: Props) => {
   toast(text, {
     icon,
     style: {
-      textAlign: 'end',
+      textAlign: 'center',
       borderRadius: "9999px",
       background: "var(--chatui-bg)",
       color: "var(--default-text-color)",
+      width: 'max-content',
+      maxWidth: 'none'
     },
   });
 };

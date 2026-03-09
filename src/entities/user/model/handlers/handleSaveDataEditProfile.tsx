@@ -1,11 +1,12 @@
 import { makeStore } from "@/app";
 import {
+  appNotification,
   isErrorWithMessage,
   isErrorWithMessageAndType,
-  Notification,
 } from "@/shared";
 import { userApi } from "../../api";
 import { SetStateAction } from "react";
+import { InfoIcon } from "lucide-react";
 
 type Form = {
   firstName: string;
@@ -18,7 +19,7 @@ type Form = {
 export const handleSaveDataEditProfile = async (
   dirty: Record<keyof Form, boolean>,
   form: Form,
-  setDirty: (value: SetStateAction<Record<keyof Form, boolean>>) => void
+  setDirty: (value: SetStateAction<Record<keyof Form, boolean>>) => void,
 ) => {
   try {
     if (dirty.firstName || dirty.lastName) {
@@ -27,7 +28,7 @@ export const handleSaveDataEditProfile = async (
           userApi.endpoints.setName.initiate({
             firstName: form.firstName,
             lastName: form.lastName,
-          })
+          }),
         )
         .unwrap();
     }
@@ -48,12 +49,18 @@ export const handleSaveDataEditProfile = async (
     }
   } catch (error: unknown) {
     if (isErrorWithMessageAndType(error)) {
-      Notification(error.data.message);
+      appNotification({
+        icon: <InfoIcon size={24} className="text-icons-color" />,
+        text: error.data.message,
+      });
     } else if (isErrorWithMessage(error)) {
       const msg = Array.isArray((error as any).data?.message ?? error.message)
         ? ((error as any).data?.message ?? error.message)[0]
-        : (error as any).data?.message ?? error.message;
-      Notification(msg);
+        : ((error as any).data?.message ?? error.message);
+      appNotification({
+        icon: <InfoIcon size={24} className="text-icons-color" />,
+        text: msg,
+      });
     }
   }
 
