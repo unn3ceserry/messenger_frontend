@@ -22,16 +22,16 @@ export const sessionApi = mainApi.injectEndpoints({
       query: () => "/session/logout",
     }),
     getMyAccountSessions: builder.query<Array<Session>, void>({
-      query: () => "/session/get/all",
+      query: () => "/session/sessions",
       providesTags: ['sessions'],
     }),
     getMySession: builder.query<Session, void>({
-      query: () => "/session/get/current",
+      query: () => "/session/session",
       providesTags: ['sessions'],
     }),
     removeSessionById: builder.mutation<void, string>({
       query: (id) => ({
-        url: `/session/remove/`,
+        url: `/session/remove`,
         method: "DELETE",
         body: {id}
       }),
@@ -39,14 +39,14 @@ export const sessionApi = mainApi.injectEndpoints({
     }),
     clearAllSessionsWithoutMy: builder.mutation<void, void>({
       query: () => ({
-        url: "/session/clear/all",
+        url: "/session/clear",
         method: "DELETE",
       }),
       invalidatesTags: ['sessions', 'users'],
     }),
     coockieClear: builder.mutation<void, void>({
       query: () => ({
-        url: "/session/coockie/clear",
+        url: "/session/coockies",
         method: "DELETE",
       }),
       invalidatesTags: ['sessions', 'users'],
@@ -55,7 +55,7 @@ export const sessionApi = mainApi.injectEndpoints({
     resendCode: builder.mutation<void, string>({
       query: (number) => ({
         body: {number},
-        url: "/session/resend/code",
+        url: "/session/code",
         method: "POST",
       }),
     }),

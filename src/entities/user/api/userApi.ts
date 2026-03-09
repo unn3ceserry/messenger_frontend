@@ -10,11 +10,11 @@ export const userApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
 
     searchUser: builder.query<Array<UserType>, string>({
-      query: (searchText) => `/users/search/user?searchText=${searchText}`
+      query: (searchText) => `/users/search?searchText=${searchText}`
     }),
     setCompleteData: builder.mutation<void, UserCompleteData>({
       query: ({ birthday, email, cloudPassword }) => ({
-        url: "/account/set-complete-data",
+        url: "/account/complete",
         method: "POST",
         body: { birthday, email, cloudPassword },
       }),
@@ -30,7 +30,7 @@ export const userApi = mainApi.injectEndpoints({
       { password: string; confirmPassword: string }
     >({
       query: ({ confirmPassword, password }) => ({
-        url: "/account/set-password",
+        url: "/account/password",
         body: { confirmPassword, password },
         method: "POST",
       }),
@@ -38,7 +38,7 @@ export const userApi = mainApi.injectEndpoints({
     }),
     removePassowrd: builder.mutation<boolean, void>({
       query: () => ({
-        url: "/account/remove-password",
+        url: "/account/password",
         method: "DELETE",
       }),
       invalidatesTags: ["sessions"],
@@ -46,7 +46,7 @@ export const userApi = mainApi.injectEndpoints({
     // EMAIL REQUESTS
     setEmail: builder.mutation<boolean, string>({
       query: (email) => ({
-        url: "/account/set-email",
+        url: "/account/email",
         method: "POST",
         body: { email },
       }),
@@ -59,42 +59,42 @@ export const userApi = mainApi.injectEndpoints({
       query: ({ newEmail, cloudPassword }) => ({
         body: { newEmail, cloudPassword },
         method: "PATCH",
-        url: "/account/update-email",
+        url: "/account/email",
       }),
       invalidatesTags: ["sessions"],
     }),
     // BIRTHDAY REQUESTS
     setBirthday: builder.mutation<boolean, string>({
       query: (date) => ({
-        url: "/account/set-birthday",
+        url: "/account/birthday",
         method: "POST",
         body: { date },
       }),
       invalidatesTags: ["sessions"],
     }),
     deleteBirthday: builder.mutation<boolean, void>({
-      query: () => ({ url: "/account/remove-birthday", method: "DELETE" }),
+      query: () => ({ url: "/account/birthday", method: "DELETE" }),
       invalidatesTags: ["sessions", "users"],
     }),
     // BIO REQUESTS
     setBio: builder.mutation<boolean, string>({
       query: (bio) => ({
-        url: "/account/set-bio",
+        url: "/account/bio",
         method: "POST",
         body: { bio },
       }),
       invalidatesTags: ["sessions"],
     }),
     deleteBio: builder.mutation<boolean, void>({
-      query: () => ({ url: "/account/remove-bio", method: "DELETE" }),
+      query: () => ({ url: "/account/bio", method: "DELETE" }),
       invalidatesTags: ["sessions"],
     }),
     // NAME REQUESTS
     setName: builder.mutation<boolean, { lastname: string; firstname: string }>(
       {
         query: ({ firstname, lastname }) => ({
-          url: "/account/set-name",
-          method: "POST",
+          url: "/account/name",
+          method: "PATCH",
           body: { firstname, lastname },
         }),
         invalidatesTags: ["sessions"],
@@ -102,7 +102,7 @@ export const userApi = mainApi.injectEndpoints({
     ),
     changeUsername: builder.mutation<boolean, string>({
       query: (username) => ({
-        url: "/account/change-username",
+        url: "/account/username",
         method: "PATCH",
         body: { username },
       }),
@@ -111,7 +111,7 @@ export const userApi = mainApi.injectEndpoints({
     // BLOCK USERS REQUESTS
     blockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
-        url: "/users/block-user",
+        url: "/users/block",
         method: "POST",
         body: { id },
       }),
@@ -119,7 +119,7 @@ export const userApi = mainApi.injectEndpoints({
     }),
     unBlockUsers: builder.mutation<boolean, string>({
       query: (id) => ({
-        url: "/users/unblock-user",
+        url: "/users/unblock",
         method: "POST",
         body: { id },
       }),
@@ -131,7 +131,7 @@ export const userApi = mainApi.injectEndpoints({
       { field: VisibilityField; whoCanSee: WhoCanSeen }
     >({
       query: ({ field, whoCanSee }) => ({
-        url: "/account/set-visibility",
+        url: "/account/visibility",
         body: { field, whoCanSee },
         method: "POST",
       }),
@@ -143,11 +143,11 @@ export const userApi = mainApi.injectEndpoints({
       { id?: string; username?: string }
     >({
       query: ({ id, username }) =>
-        `/users/get-user-data?${id ? `id=${id}` : `username=${username}`}`,
+        `/users/user?${id ? `id=${id}` : `username=${username}`}`,
       providesTags: ["users"],
     }),
     isMyContact: builder.query<boolean, string>({
-      query: (username) => `/users/is-my-contact?username=${username}`,
+      query: (username) => `/users/contact?username=${username}`,
       providesTags: ['users', 'contacts']
     }),
     // AVATAR REQUESTS
@@ -158,7 +158,7 @@ export const userApi = mainApi.injectEndpoints({
         return {
           method: "POST",
           body: formData,
-          url: "/account/feat-avatar",
+          url: "/account/avatar",
         };
       },
       invalidatesTags: ["users"],
@@ -166,9 +166,9 @@ export const userApi = mainApi.injectEndpoints({
     removeAvatar: builder.mutation<boolean, number>({
       query: (index) => {
         return {
-          method: "POST",
+          method: "DELETE",
           body: { index },
-          url: "/account/remove-avatar",
+          url: "/account/avatar",
         };
       },
       invalidatesTags: ["users"],
