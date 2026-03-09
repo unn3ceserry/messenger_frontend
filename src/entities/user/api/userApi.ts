@@ -90,12 +90,12 @@ export const userApi = mainApi.injectEndpoints({
       invalidatesTags: ["sessions"],
     }),
     // NAME REQUESTS
-    setName: builder.mutation<boolean, { lastname: string; firstname: string }>(
+    setName: builder.mutation<boolean, { lastName: string; firstName: string }>(
       {
-        query: ({ firstname, lastname }) => ({
+        query: ({ firstName, lastName }) => ({
           url: "/account/name",
           method: "PATCH",
-          body: { firstname, lastname },
+          body: { firstName, lastName },
         }),
         invalidatesTags: ["sessions"],
       },

@@ -25,8 +25,8 @@ export const handleSaveDataEditProfile = async (
       await makeStore
         .dispatch(
           userApi.endpoints.setName.initiate({
-            firstname: form.firstName,
-            lastname: form.lastName,
+            firstName: form.firstName,
+            lastName: form.lastName,
           })
         )
         .unwrap();
