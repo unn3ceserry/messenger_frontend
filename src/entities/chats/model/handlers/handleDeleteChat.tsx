@@ -1,6 +1,11 @@
 import { makeStore } from "@/app";
 import { chatsApi } from "../../api";
-import { appNotification, isErrorWithMessage, isErrorWithMessageAndType } from "@/shared";
+import {
+  appNotification,
+  isErrorWithMessage,
+  isErrorWithMessageAndType,
+} from "@/shared";
+import { InfoIcon } from "lucide-react";
 
 export const handleDeleteChat = async (chatId: string) => {
   try {
@@ -9,12 +14,18 @@ export const handleDeleteChat = async (chatId: string) => {
       .unwrap();
   } catch (error) {
     if (isErrorWithMessageAndType(error)) {
-      appNotification({text: error.data.message});
+      appNotification({
+        icon: <InfoIcon size={24} className="text-icons-color" />,
+        text: error.data.message,
+      });
     } else if (isErrorWithMessage(error)) {
       const msg = Array.isArray((error as any).data?.message ?? error.message)
         ? ((error as any).data?.message ?? error.message)[0]
         : ((error as any).data?.message ?? error.message);
-      appNotification(msg);
+      appNotification({
+        icon: <InfoIcon size={24} className="text-icons-color" />,
+        text: msg,
+      });
     }
   }
 };
