@@ -1,37 +1,32 @@
 "use client";
 
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { DragEvent, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { ArrowLeft, EllipsisVertical, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { EllipsisVertical, X } from "lucide-react";
 
-import { useAppSelector } from "@/app";
+import { useAppDispatch, useAppSelector } from "@/app";
+import { getCurrentChat } from "@/entities/chats/model";
 import {
-  closeCurrentChat,
-  getCurrentChat,
-  setIsFullScreenChat,
-} from "@/entities/chats/model";
-import {
-  closeOtherProfile,
   getMyData,
   openComponent,
   selectOpenComponent,
   setOpenComponentOtherUsersProfile,
   UserActionsMenu,
 } from "@/entities/user";
-import { RenderAvatarElement, Spinner, useSocketConnection } from "@/shared";
+import { DrogOnDrop, Spinner, useSocketConnection } from "@/shared";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatMessages from "./ChatMessages/ChatMessages";
-import { useFormattedChatDate } from "../../lib";
+import ChatUserInfo from "./ChatUserInfo/ChatUserInfo";
 
 const Chat = () => {
-  const t = useTranslations();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const userId = useAppSelector(getMyData);
   const currentChat = useAppSelector(getCurrentChat);
   const whoIsOpenWithUi = useAppSelector(selectOpenComponent);
+
+  const [isDrag, setIsDrag] = useState<boolean>(false);
+  const [files, setFiles] = useState<Array<File>>([]);
 
   const socket = useSocketConnection(userId);
 
@@ -58,18 +53,7 @@ const Chat = () => {
   )?.user;
   if (!otherMember) return <Spinner />;
 
-  const {
-    id: otherUserId,
-    firstName,
-    lastName,
-    username,
-    avatars,
-    isOnline,
-    lastSeen,
-  } = otherMember;
-
-  const lastAvatar = avatars.at(-1);
-  const lastSeenFormatted = useFormattedChatDate(lastSeen ?? 0);
+  const { id: otherUserId, username } = otherMember;
 
   const handleOpenProfile = () => {
     dispatch(
@@ -89,46 +73,41 @@ const Chat = () => {
     );
   };
 
-  const handleCloseCurrentChat = () => {
-    dispatch(closeOtherProfile());
-    dispatch(setIsFullScreenChat(false));
-    dispatch(closeCurrentChat());
+  // dragging handlers
+
+  const handleOnDragStart = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDrag(true);
+  };
+
+  const handleOnDragLeave = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setIsDrag(false);
+    }
+  };
+  const handleOnDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDrag(false);
+    Array.from(e.dataTransfer.files).map((file) => {
+      setFiles((prev) => [...prev, file]);
+    });
+    console.log(files)
   };
 
   return (
-    <div className="flex flex-col items-center justify-between h-screen w-full text-default-text-color gap-5 z-1231">
+    <div
+      onDragStart={(e) => handleOnDragStart(e)}
+      onDragOver={(e) => handleOnDragStart(e)}
+      onDragLeave={(e) => handleOnDragLeave(e)}
+      onDrop={(e) => handleOnDrop(e)}
+      className="flex flex-col items-center justify-between h-screen w-full text-default-text-color z-1231 relative"
+    >
       <div
         onClick={handleOpenProfile}
         className="flex w-full items-center justify-between bg-chatui-bg p-1.5 px-3 cursor-pointer"
       >
-        <div className="flex items-center justify-start w-full gap-3 truncate">
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-              handleCloseCurrentChat();
-            }}
-            className="resizechat:hidden flex aspect-square cursor-pointer p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300 text-icons-color"
-          >
-            <ArrowLeft />
-          </div>
-
-          {/* инфо юзера */}
-          <div className="flex items-center gap-3">
-            <RenderAvatarElement
-              hasAvatar={!!avatars.length}
-              size={40}
-              avatar={lastAvatar}
-            />
-            <div className="flex flex-col items-start justify-center w-full">
-              <h2>
-                {firstName} {lastName}
-              </h2>
-              <p className="text-icons-color text-[0.85rem]">
-                {isOnline ? t("settings.online") : lastSeenFormatted}
-              </p>
-            </div>
-          </div>
-        </div>
+        <ChatUserInfo member={otherMember} />
 
         <div
           onClick={toggleUserActionsMenu}
@@ -138,15 +117,17 @@ const Chat = () => {
         </div>
       </div>
 
-      <ChatMessages userId={otherUserId} />
+      <div className="relative flex flex-col flex-1 w-full items-center justify-between gap-5 py-5 overflow-y-auto">
+        <ChatMessages userId={otherUserId} />
+        <div className="flex w-full items-center justify-center px-5 max-w-175">
+          <ChatInput />
+        </div>
 
-      <div className="flex w-full items-center justify-center px-5 max-w-175">
-        <ChatInput />
+        <AnimatePresence>
+          {whoIsOpenWithUi === "userActionsMenu" && <UserActionsMenu />}
+          {isDrag && <DrogOnDrop />}
+        </AnimatePresence>
       </div>
-
-      <AnimatePresence>
-        {whoIsOpenWithUi === "userActionsMenu" && <UserActionsMenu />}
-      </AnimatePresence>
     </div>
   );
 };

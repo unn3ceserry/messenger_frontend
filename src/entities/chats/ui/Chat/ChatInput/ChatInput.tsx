@@ -21,7 +21,7 @@ const ChatInput = () => {
   }, [editingMessage, currentChat?.id]);
 
   return (
-    <div className="flex w-full items-center justify-center gap-3 mb-5">
+    <div className="flex w-full items-center justify-center gap-3">
       <div className="flex flex-col w-full items-end backdrop-blur-xl p-3 gap-3 px-4 rounded-2xl bg-chatui-bg">
         <AnimatePresence>{editingMessage && <EditMessage />}</AnimatePresence>
 

@@ -138,6 +138,7 @@
     "in": "at"
   },
   "chat": {
+    "dragHere": "Drag files here",
     "searchPlaceholder": "Search",
     "actionsPopup": {
       "addAccount": "Add Account",

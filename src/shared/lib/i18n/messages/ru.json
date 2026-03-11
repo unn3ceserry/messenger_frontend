@@ -136,6 +136,7 @@
     "in": "в"
   },
   "chat": {
+    "dragHere": "Перетащите сюда файлы",
     "searchPlaceholder": "Поиск",
     "actionsPopup": {
       "addAccount": "Добавить аккаунт",
