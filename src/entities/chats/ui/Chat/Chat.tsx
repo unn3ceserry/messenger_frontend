@@ -5,7 +5,11 @@ import { AnimatePresence } from "framer-motion";
 import { EllipsisVertical, X } from "lucide-react";
 
 import { useAppDispatch, useAppSelector } from "@/app";
-import { getCurrentChat } from "@/entities/chats/model";
+import {
+  getCurrentChat,
+  getDropFiles,
+  getIsFilesModalOpen,
+} from "@/entities/chats/model";
 import {
   getMyData,
   openComponent,
@@ -13,10 +17,16 @@ import {
   setOpenComponentOtherUsersProfile,
   UserActionsMenu,
 } from "@/entities/user";
-import { DrogOnDrop, Spinner, useSocketConnection } from "@/shared";
+import {
+  DrogOnDrop,
+  ModalConstructor,
+  Spinner,
+  useSocketConnection,
+} from "@/shared";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatMessages from "./ChatMessages/ChatMessages";
 import ChatUserInfo from "./ChatUserInfo/ChatUserInfo";
+import DropFilesModal from "../Files/DropFilesModal";
 
 const Chat = () => {
   const dispatch = useAppDispatch();
@@ -24,9 +34,6 @@ const Chat = () => {
   const userId = useAppSelector(getMyData);
   const currentChat = useAppSelector(getCurrentChat);
   const whoIsOpenWithUi = useAppSelector(selectOpenComponent);
-
-  const [isDrag, setIsDrag] = useState<boolean>(false);
-  const [files, setFiles] = useState<Array<File>>([]);
 
   const socket = useSocketConnection(userId);
 
@@ -73,34 +80,34 @@ const Chat = () => {
     );
   };
 
-  // dragging handlers
+  // dragging
+
+  const [isDrag, setIsDrag] = useState<boolean>(false);
+  const files = useAppSelector(getDropFiles);
 
   const handleOnDragStart = (e: DragEvent<HTMLDivElement>) => {
+    if (files.length > 0) return;
     e.preventDefault();
     setIsDrag(true);
   };
 
   const handleOnDragLeave = (e: DragEvent<HTMLDivElement>) => {
+    if (files.length > 0) return;
     e.preventDefault();
     if (!e.currentTarget.contains(e.relatedTarget as Node)) {
       setIsDrag(false);
     }
   };
-  const handleOnDrop = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDrag(false);
-    Array.from(e.dataTransfer.files).map((file) => {
-      setFiles((prev) => [...prev, file]);
-    });
-    console.log(files)
-  };
+
+  // modal
+
+  const isFilesModalOpen = useAppSelector(getIsFilesModalOpen);
 
   return (
     <div
       onDragStart={(e) => handleOnDragStart(e)}
       onDragOver={(e) => handleOnDragStart(e)}
       onDragLeave={(e) => handleOnDragLeave(e)}
-      onDrop={(e) => handleOnDrop(e)}
       className="flex flex-col items-center justify-between h-screen w-full text-default-text-color z-1231 relative"
     >
       <div
@@ -111,7 +118,7 @@ const Chat = () => {
 
         <div
           onClick={toggleUserActionsMenu}
-          className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300 text-icons-color"
+          className="iconHoverEffect text-icons-color"
         >
           <EllipsisVertical size={22} />
         </div>
@@ -125,7 +132,10 @@ const Chat = () => {
 
         <AnimatePresence>
           {whoIsOpenWithUi === "userActionsMenu" && <UserActionsMenu />}
-          {isDrag && <DrogOnDrop />}
+          {isDrag && <DrogOnDrop setIsDrag={setIsDrag} />}
+          {files.length > 0 && isFilesModalOpen && (
+            <ModalConstructor content={<DropFilesModal />} />
+          )}
         </AnimatePresence>
       </div>
     </div>

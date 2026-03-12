@@ -80,9 +80,12 @@ export {
   removeEditingMessage,
   updateMessage,
   readMessage,
+  readEntry,
   handleSortChat,
   setIsFullScreenChat,
   getIsFullScreenChat,
+  setDropFiles,
+  setFilesModalOpen,
 } from "./chats";
 export {
   contactsApi,

@@ -16,6 +16,17 @@ export const chatsApi = mainApi.injectEndpoints({
     deleteChat: builder.mutation<boolean, string>({
       query: (chatId) => ({url: '/chat/delete', method: 'DELETE', body: {chatId}}),
       invalidatesTags: ['chats']
+    }),
+    fileUpload: builder.mutation<{url: string, fileName: string}, File>({
+      query: (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        return {
+          url: "/files/upload",
+          method: "POST",
+          body: formData,
+        };
+      }
     })
   }),
   overrideExisting: true,

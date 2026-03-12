@@ -23,6 +23,9 @@ export {
   updateMessage,
   readMessage,
   setIsFullScreenChat,
+  setDropFiles,
+  setFilesModalOpen,
   getIsFullScreenChat,
+  readEntry,
 } from "./model";
 export { chatsApi } from "./api";

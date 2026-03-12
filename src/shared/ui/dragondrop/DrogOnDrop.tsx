@@ -4,16 +4,17 @@ import { File } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Dispatch, DragEvent, FC, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
-import { readEntry } from "@/entities";
+import { readEntry, setDropFiles, setFilesModalOpen } from "@/entities";
+import { useAppDispatch } from "@/app";
 
 interface Props {
   setIsDrag: Dispatch<SetStateAction<boolean>>;
-  setFiles: Dispatch<SetStateAction<Array<File>>>;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const DrogOnDrop: FC<Props> = ({ setFiles, setIsDrag, setIsOpen }) => {
+const DrogOnDrop: FC<Props> = ({ setIsDrag }) => {
   const t = useTranslations();
+  
+  const dispatch = useAppDispatch();
   const [isHover, setIsHover] = useState<boolean>(false);
 
   const handleOnDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -31,14 +32,14 @@ const DrogOnDrop: FC<Props> = ({ setFiles, setIsDrag, setIsOpen }) => {
   const handleOnDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDrag(false);
-    setIsOpen(true);
+    dispatch(setFilesModalOpen(true));
     const files = await Promise.all(
       Array.from(e.dataTransfer.items)
         .map((item) => item.webkitGetAsEntry())
         .filter(Boolean)
         .map((entry) => readEntry(entry!)),
     ).then((r) => r.flat());
-    setFiles(files);
+    dispatch(setDropFiles(files));
   };
 
   return (

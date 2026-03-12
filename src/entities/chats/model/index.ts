@@ -22,7 +22,14 @@ export {
   updateMessage,
   readMessage,
   setIsFullScreenChat,
+  setFilesModalOpen,
+  getIsFilesModalOpen,
   getIsFullScreenChat,
+  setDropFiles,
+  setDropFile,
+  clearDropFiles,
+  getDropFiles,
+  removeDropFile
 } from "./stores/chatsSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";
@@ -30,3 +37,5 @@ export { handleDeleteChat } from "./handlers/handleDeleteChat";
 export { handleSendMessage } from "./handlers/handleSendMessage";
 export { handleEditMessage } from "./handlers/handleEditMessage";
 export { handleDeleteMessage } from "./handlers/handleDeleteMessage";
+export { readEntry } from "./handlers/readEntry";
+export { handleUploadFile } from "./handlers/handleUploadFile";
