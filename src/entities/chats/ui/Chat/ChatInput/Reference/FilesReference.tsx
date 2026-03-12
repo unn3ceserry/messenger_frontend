@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/app";
 import { getMyData } from "@/entities/user";
 import { MyEmojiPicker, Spinner, useSocketConnection } from "@/shared";
 import {
+  clearDropFiles,
   getCurrentChat,
   handleSendMessage,
   handleUploadFile,
@@ -48,6 +49,7 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
         urls,
       );
       dispatch(setFilesModalOpen(false));
+      dispatch(clearDropFiles());
     }
   };
 
