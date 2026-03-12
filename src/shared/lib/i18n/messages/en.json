@@ -138,6 +138,14 @@
     "in": "at"
   },
   "chat": {
+    "files": {
+      "filesOne": "file",
+      "filesFew": "files",
+      "filesMany": "files",
+      "featFile": "Add file"
+    },
+    "mb": "MB",
+    "kb": "KB",
     "dragHere": "Drag files here",
     "searchPlaceholder": "Search",
     "actionsPopup": {

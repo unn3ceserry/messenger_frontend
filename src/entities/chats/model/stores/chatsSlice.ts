@@ -6,7 +6,9 @@ interface IChatsState {
   myDms: Chat[];
   editMessage: Message | null;
   currentChat: Chat | null;
-  isFullScreenChat: boolean
+  isFullScreenChat: boolean;
+  isFilesModalOpen: boolean;
+  dropFiles: Array<File>;
 }
 
 const initialState: IChatsState = {
@@ -14,6 +16,8 @@ const initialState: IChatsState = {
   editMessage: null,
   currentChat: null,
   isFullScreenChat: false,
+  isFilesModalOpen: false,
+  dropFiles: [],
 };
 
 // helpers
@@ -218,8 +222,29 @@ export const chatsSlice = createSlice({
     },
 
     setIsFullScreenChat: (state, action: PayloadAction<boolean>) => {
-      state.isFullScreenChat = action.payload
-    }
+      state.isFullScreenChat = action.payload;
+    },
+
+    // files
+    setFilesModalOpen: (state, action: PayloadAction<boolean>) => {
+      state.isFilesModalOpen = action.payload;
+    },
+
+    setDropFiles: (state, action: PayloadAction<Array<File>>) => {
+      state.dropFiles = action.payload;
+    },
+
+    setDropFile: (state, action: PayloadAction<File>) => {
+      state.dropFiles = [...state.dropFiles, action.payload];
+    },
+
+    clearDropFiles: (state) => {
+      state.dropFiles = [];
+    },
+
+    removeDropFile: (state, action: PayloadAction<File>) => {
+      state.dropFiles = state.dropFiles.filter((f) => f !== action.payload);
+    },
   },
 });
 
@@ -228,6 +253,7 @@ export const chatsReducer = chatsSlice.reducer;
 export const {
   setNewDm,
   setCurrentChat,
+  setFilesModalOpen,
   closeCurrentChat,
   addNewMessage,
   editMessage,
@@ -240,6 +266,10 @@ export const {
   updateMessage,
   readMessage,
   setIsFullScreenChat,
+  setDropFiles,
+  setDropFile,
+  removeDropFile,
+  clearDropFiles,
 } = chatsSlice.actions;
 
 //  selectors
@@ -258,4 +288,8 @@ export const isUserOnline = (userId: string, state: RootState) => {
 };
 
 export const getEditingMessage = (state: RootState) => state.chats.editMessage;
-export const getIsFullScreenChat = (state: RootState) => state.chats.isFullScreenChat;
+export const getIsFullScreenChat = (state: RootState) =>
+  state.chats.isFullScreenChat;
+export const getIsFilesModalOpen = (state: RootState) =>
+  state.chats.isFilesModalOpen;
+export const getDropFiles = (state: RootState) => state.chats.dropFiles;

@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { useAppSelector } from "@/app";
 import { getCurrentChat, getEditingMessage } from "@/entities/chats/model";
 import EditMessage from "./EditMessage/EditMessage";
-import InputReference from "./InputReference";
+import InputReference from "./Reference/InputReference";
 
 const ChatInput = () => {
   const [value, setValue] = useState<string>("");

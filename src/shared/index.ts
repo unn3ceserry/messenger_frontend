@@ -45,4 +45,5 @@ export {
   createRipple,
   useSocketConnection,
   type ReturnedTypesActionsElement,
+  byteToMB,
 } from "./model";

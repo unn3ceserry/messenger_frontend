@@ -2,12 +2,19 @@
 
 import { File } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { DragEvent, useState } from "react";
-import {motion} from 'framer-motion'
+import { Dispatch, DragEvent, FC, SetStateAction, useState } from "react";
+import { motion } from "framer-motion";
+import { readEntry, setDropFiles, setFilesModalOpen } from "@/entities";
+import { useAppDispatch } from "@/app";
 
-const DrogOnDrop = () => {
+interface Props {
+  setIsDrag: Dispatch<SetStateAction<boolean>>;
+}
 
-  const t = useTranslations()
+const DrogOnDrop: FC<Props> = ({ setIsDrag }) => {
+  const t = useTranslations();
+  
+  const dispatch = useAppDispatch();
   const [isHover, setIsHover] = useState<boolean>(false);
 
   const handleOnDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -22,14 +29,28 @@ const DrogOnDrop = () => {
     }
   };
 
+  const handleOnDrop = async (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDrag(false);
+    dispatch(setFilesModalOpen(true));
+    const files = await Promise.all(
+      Array.from(e.dataTransfer.items)
+        .map((item) => item.webkitGetAsEntry())
+        .filter(Boolean)
+        .map((entry) => readEntry(entry!)),
+    ).then((r) => r.flat());
+    dispatch(setDropFiles(files));
+  };
+
   return (
     <motion.div
-      initial={{opacity: 0}}
-      exit={{opacity: 0}}
-      animate={{opacity: 1}}
-      transition={{duration: .2}}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
       onDragOver={(e) => handleOnDragOver(e)}
       onDragLeave={(e) => handleOnDragLeave(e)}
+      onDrop={(e) => handleOnDrop(e)}
       className="absolute inset-5 max-w-200 bg-chatui-bg rounded-2xl flex items-center justify-center flex-col mx-auto p-5"
     >
       <div

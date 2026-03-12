@@ -29,7 +29,7 @@ const EditContactHeader: FC<Props> = ({ username }) => {
               }),
             )
           }
-          className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+          className="iconHoverEffect"
         >
           <ArrowLeft size={22} />
         </div>

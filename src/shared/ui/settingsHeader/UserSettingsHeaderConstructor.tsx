@@ -44,7 +44,7 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
           onClick={() =>
             dispatch(backUI === null ? closeAll() : openComponent(backUI))
           }
-          className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+          className="iconHoverEffect"
         >
           <ArrowLeft size={22} />
         </div>
@@ -61,14 +61,14 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
                 {/* editprofile */}
                 <div
                   onClick={() => dispatch(openComponent("editProfile"))}
-                  className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+                  className="iconHoverEffect"
                 >
                   <Pencil size={22} />
                 </div>
                 {/* logout */}
                 <div
                   onClick={() => setIsOpen((prev) => !prev)}
-                  className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+                  className="iconHoverEffect"
                 >
                   <EllipsisVertical size={22} />
                 </div>
@@ -80,7 +80,7 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
                 {/* editprofile */}
                 <div
                   onClick={() => dispatch(openComponent("editProfile"))}
-                  className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+                  className="iconHoverEffect"
                 >
                   <Pencil size={22} />
                 </div>

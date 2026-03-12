@@ -136,6 +136,14 @@
     "in": "в"
   },
   "chat": {
+    "files": {
+      "filesOne": "файл",
+      "filesFew": "файла",
+      "filesMany": "файлов",
+      "featFile": "Добавить файл"
+    },
+    "mb": "МБ",
+    "kb": "КБ",
     "dragHere": "Перетащите сюда файлы",
     "searchPlaceholder": "Поиск",
     "actionsPopup": {

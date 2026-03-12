@@ -45,7 +45,8 @@ export const makeStore = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: ["chats.dropFiles"],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,  "chats/setDropFiles", "chats/setDropFile", "chats/removeDropFile"],
       },
     }).concat(mainApi.middleware),
 });

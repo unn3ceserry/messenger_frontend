@@ -2,8 +2,14 @@ import { Socket } from "socket.io-client";
 import { handleEditMessage } from "./handleEditMessage";
 import { makeStore } from "@/app";
 
-export const handleSendMessage = (socket: Socket, value: string, setValue: (v: string) => void, chatId: string) => {
-  if(!value) return;
+export const handleSendMessage = (
+  socket: Socket,
+  value: string,
+  setValue: (v: string) => void,
+  chatId: string,
+  files: Array<string>,
+) => {
+  if (!value) return;
   const editingMessage = makeStore.getState().chats.editMessage;
 
   if (editingMessage) {
@@ -12,6 +18,7 @@ export const handleSendMessage = (socket: Socket, value: string, setValue: (v: s
     socket.emit("sendMessage", {
       chatId,
       text: value,
+      files,
     });
   }
 

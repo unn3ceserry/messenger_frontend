@@ -65,7 +65,6 @@ const OtherUsersProfile: FC<Props> = ({ username }) => {
       <AnimatePresence>
         {isOpen && (
           <ModalConstructor
-            setIsOpen={setIsOpen}
             content={
               <AddContactModal
                 setIsOpen={setIsOpen}

@@ -33,7 +33,7 @@ const OtherUsersProfileHeader: FC<Props> = ({ username, setIsOpen }) => {
         {/* back */}
         <div
           onClick={() => dispatch(closeOtherProfile())}
-          className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+          className="iconHoverEffect"
         >
           <X size={22} />
         </div>
@@ -55,7 +55,7 @@ const OtherUsersProfileHeader: FC<Props> = ({ username, setIsOpen }) => {
                 )
               : setIsOpen(true)
           }
-          className="cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300"
+          className="iconHoverEffect"
         >
           {data ? <Pencil size={22} /> : <UserRoundPlus size={22} />}
         </div>

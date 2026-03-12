@@ -232,3 +232,7 @@ input[type="number"] {
 .marchingAntsAnimate {
   animation: marching-ants 400ms infinite linear;
 }
+
+.iconHoverEffect {
+  @apply cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300;
+}
