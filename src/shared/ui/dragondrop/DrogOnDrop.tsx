@@ -8,9 +8,10 @@ import { motion } from "framer-motion";
 interface Props {
   setIsDrag: Dispatch<SetStateAction<boolean>>;
   setFiles: Dispatch<SetStateAction<Array<File>>>;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const DrogOnDrop: FC<Props> = ({ setFiles, setIsDrag }) => {
+const DrogOnDrop: FC<Props> = ({ setFiles, setIsDrag, setIsOpen }) => {
   const t = useTranslations();
   const [isHover, setIsHover] = useState<boolean>(false);
 
@@ -29,6 +30,7 @@ const DrogOnDrop: FC<Props> = ({ setFiles, setIsDrag }) => {
   const handleOnDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDrag(false);
+    setIsOpen(true);
     Array.from(e.dataTransfer.files).map((file) => {
       setFiles((prev) => [...prev, file]);
     });
