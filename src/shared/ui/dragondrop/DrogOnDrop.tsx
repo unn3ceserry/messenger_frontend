@@ -4,6 +4,7 @@ import { File } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Dispatch, DragEvent, FC, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
+import { readEntry } from "@/entities";
 
 interface Props {
   setIsDrag: Dispatch<SetStateAction<boolean>>;
@@ -27,14 +28,17 @@ const DrogOnDrop: FC<Props> = ({ setFiles, setIsDrag, setIsOpen }) => {
     }
   };
 
-  const handleOnDrop = (e: DragEvent<HTMLDivElement>) => {
+  const handleOnDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDrag(false);
     setIsOpen(true);
-    Array.from(e.dataTransfer.files).map((file) => {
-      setFiles((prev) => [...prev, file]);
-    });
-    // console.log(files);
+    const files = await Promise.all(
+      Array.from(e.dataTransfer.items)
+        .map((item) => item.webkitGetAsEntry())
+        .filter(Boolean)
+        .map((entry) => readEntry(entry!)),
+    ).then((r) => r.flat());
+    setFiles(files);
   };
 
   return (
