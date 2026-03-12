@@ -1,10 +1,11 @@
-import { Smile } from "lucide-react";
+import { LoaderCircle, Smile } from "lucide-react";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@/app";
 import { getMyData } from "@/entities/user";
 import { MyEmojiPicker, Spinner, useSocketConnection } from "@/shared";
 import {
+  clearDropFiles,
   getCurrentChat,
   handleSendMessage,
   handleUploadFile,
@@ -28,6 +29,7 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
   const currentChat = useAppSelector(getCurrentChat);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isSpin, setIsSpin] = useState<boolean>(false);
 
   if (!currentChat) return <Spinner />;
 
@@ -39,6 +41,7 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
     setIsOpen(false);
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
+      setIsSpin(true);
       const urls = await handleUploadFiles(files);
       handleSendMessage(
         socket,
@@ -47,7 +50,9 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
         currentChat.id ?? "",
         urls,
       );
+      setIsSpin(false);
       dispatch(setFilesModalOpen(false));
+      dispatch(clearDropFiles());
     }
   };
 
@@ -85,6 +90,20 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
           className="outline-0 w-full bg-transparent"
         />
       </div>
+
+      <AnimatePresence>
+        {isSpin && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-accent right-0"
+          >
+            <LoaderCircle size={25} className="animate-spin" />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && <MyEmojiPicker setValue={setValue} />}

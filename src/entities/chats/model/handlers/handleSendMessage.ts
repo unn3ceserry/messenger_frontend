@@ -7,7 +7,7 @@ export const handleSendMessage = (
   value: string,
   setValue: (v: string) => void,
   chatId: string,
-  files: Array<string>,
+  files?: Array<string>,
 ) => {
   if (!value) return;
   const editingMessage = makeStore.getState().chats.editMessage;
