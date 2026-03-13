@@ -39,17 +39,22 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     setIsOpen(false);
+
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
+
       setIsSpin(true);
-      const urls = await handleUploadFiles(files);
+
+      const uploadedFiles = await handleUploadFiles(files);
+
       handleSendMessage(
         socket,
         value.trim(),
         setValue,
         currentChat.id ?? "",
-        urls,
+        uploadedFiles,
       );
+
       setIsSpin(false);
       dispatch(setFilesModalOpen(false));
       dispatch(clearDropFiles());

@@ -7,12 +7,14 @@ import {
 } from "@/shared";
 import { InfoIcon } from "lucide-react";
 
-export const handleUploadFile = async (file: File): Promise<string> => {
+export const handleUploadFile = async (
+  file: File,
+): Promise<{ fileName: string; fileSize: number; fileUrl: string }> => {
   try {
-    const { url } = await makeStore
+    const { fileName, fileSize, fileUrl } = await makeStore
       .dispatch(chatsApi.endpoints.fileUpload.initiate(file))
       .unwrap();
-    return url;
+    return { fileName, fileSize, fileUrl };
   } catch (error) {
     if (isErrorWithMessageAndType(error)) {
       appNotification({
