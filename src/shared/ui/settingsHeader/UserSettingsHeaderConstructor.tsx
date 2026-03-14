@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from "@/app";
 import { handleLogout } from "@/features";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ArrowLeft, EllipsisVertical, LogOut, Pencil } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -29,6 +29,11 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
   const locale = useLocale();
 
   const handleClick = async () => {
@@ -37,7 +42,7 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
   };
 
   return (
-    <header className="flex w-full justify-between items-center text-icons-color sticky top-0 bg-chatui-bg p-2 px-3">
+    <header className="flex w-full justify-between items-center text-icons-color sticky top-0 bg-chatui-bg p-2 px-3 z-1221">
       <div className="flex items-center justify-center gap-3">
         {/* back */}
         <div
@@ -67,7 +72,10 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
                 </div>
                 {/* logout */}
                 <div
-                  onClick={() => setIsOpen((prev) => !prev)}
+                  onClick={(e) => {
+                    setPosition({ x: e.clientX - e.clientX / 2 + 5, y: e.clientY + 30 });
+                    setIsOpen((prev) => !prev);
+                  }}
                   className="iconHoverEffect"
                 >
                   <EllipsisVertical size={22} />
@@ -95,6 +103,7 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
       <AnimatePresence>
         {isOpen && (
           <ShadowWrapper
+            position={position}
             children={
               <div
                 onClick={handleClick}
