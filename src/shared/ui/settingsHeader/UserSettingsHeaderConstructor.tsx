@@ -37,7 +37,7 @@ const UserSettingsHeaderConstructor: FC<IUserSettingsHeaderConstructor> = ({
   };
 
   return (
-    <header className="flex w-full justify-between items-center text-icons-color sticky top-0 bg-chatui-bg z-123123123 p-2 px-3">
+    <header className="flex w-full justify-between items-center text-icons-color sticky top-0 bg-chatui-bg p-2 px-3">
       <div className="flex items-center justify-center gap-3">
         {/* back */}
         <div
