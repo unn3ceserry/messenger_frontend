@@ -3,10 +3,11 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "../store/StoreProvider";
 import { appConfig, routing } from "@/shared";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import ThemeProvider from "../providers/ThemeProvider";
+import { LocaleProvider } from "../providers/LocaleContext";
 
 const fontRoboto = Roboto({
   variable: "--font-roboto",
@@ -44,14 +45,20 @@ export default async function RootLayout({
   }
 
   setRequestLocale(locale);
+
+  const allMessages: Record<string, any> = {};
+  for (const loc of routing.locales) {
+    allMessages[loc] = await getMessages({ locale: loc });
+  }
+
   return (
     <html>
       <body className={`${fontRoboto.className} antialiased`}>
         <StoreProvider>
           <ThemeProvider>
-            <NextIntlClientProvider locale={locale}>
+            <LocaleProvider initialLocale={locale} allMessages={allMessages}>
               {children}
-            </NextIntlClientProvider>
+            </LocaleProvider>
           </ThemeProvider>
         </StoreProvider>
       </body>

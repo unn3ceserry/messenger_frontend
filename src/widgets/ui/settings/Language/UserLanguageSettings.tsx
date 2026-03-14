@@ -8,28 +8,16 @@ import {
   TLocales,
   UserSettingsHeaderConstructor,
 } from "@/shared";
-import { useLocale, useTranslations } from "next-intl";
-import { setCookie } from "cookies-next";
-import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useLocaleSwitch } from "@/app/providers/LocaleContext";
 
 const UserLanguageSettings = () => {
   const locales = routing.locales;
-  const locale = useLocale();
+  const { locale, switchLocale } = useLocaleSwitch();
   const t = useTranslations();
-  const pathname = usePathname();
-  const router = useRouter();
-
-  function handleSwitchLanguage(nextLocale: TLocales) {
-    setCookie("NEXT_LOCALE", nextLocale);
-
-    const segments = pathname.split("/");
-    segments[1] = nextLocale;
-
-    router.replace(segments.join("/"));
-  }
 
   return (
-    <div className="flex flex-col items-center justify-start h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
@@ -55,7 +43,7 @@ const UserLanguageSettings = () => {
                   content={i18nPattern(el).orig}
                   contentEn={i18nPattern(el).en}
                   isActive={el === locale}
-                  onClick={() => handleSwitchLanguage(el)}
+                  onClick={() => switchLocale(el)}
                 />
               ))}
             </div>

@@ -30,7 +30,7 @@ const UserEditorProfileSettings: FC<Props> = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-eazye@gmail.com scrollbar-thin w-full">
+    <div className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-eazye@gmail.com scrollbar-thin w-full">
       <motion.div
         initial={{ opacity: 0, x: -300, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
