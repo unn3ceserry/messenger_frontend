@@ -63,7 +63,7 @@ const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
-      className="z-1233 flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full"
+      className="flex flex-col items-center justify-start gap-5 h-screen overflow-y-auto text-default-text-color scrollbar-thin w-full"
     >
       {data?.length ? (
         <div className="flex flex-col items-start justify-center w-full gap-3 px-3 text-icons-color">

@@ -1,10 +1,9 @@
 "use client";
 
 import { useAppSelector } from "@/app";
-import { createRipple, RenderAvatarElement, Spinner } from "@/shared";
-import { useTranslations } from "next-intl";
+import { createRipple } from "@/shared";
 import { FC, MouseEvent } from "react";
-import { getCurrentChat, isUserOnline, Message } from "../../model";
+import { Message } from "../../model";
 import { getListIgnoredUsers, getMyData } from "@/entities/user";
 import ItemUserInfo from "./ItemUserInfo";
 import { useFormattedChatDate } from "../../lib";

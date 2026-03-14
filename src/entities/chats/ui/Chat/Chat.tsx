@@ -108,7 +108,7 @@ const Chat = () => {
       onDragStart={(e) => handleOnDragStart(e)}
       onDragOver={(e) => handleOnDragStart(e)}
       onDragLeave={(e) => handleOnDragLeave(e)}
-      className="flex flex-col items-center justify-between h-screen w-full text-default-text-color z-1231 relative"
+      className="flex flex-col items-center justify-between h-screen w-full text-default-text-color relative"
     >
       <div
         onClick={handleOpenProfile}

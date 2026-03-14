@@ -32,7 +32,7 @@ const VisibilitySettings: FC<Props> = ({
   };
 
   return (
-    <div className="z-1233 flex flex-col h-screen text-default-text-color w-full">
+    <div className="flex flex-col h-screen text-default-text-color w-full">
       <motion.div
         exit={{ opacity: 0, scale: 0.8, x: -300 }}
         initial={{ opacity: 0, scale: 0.8, x: -300 }}
