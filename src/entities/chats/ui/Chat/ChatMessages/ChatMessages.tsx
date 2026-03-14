@@ -31,6 +31,7 @@ const ChatMessages: FC<Props> = ({ userId }) => {
           <ChatMessagesItem
             key={el.id}
             message={el}
+            attachments={el.attachments}
             createdAt={el.createdAt}
             isMy={userId !== el.senderId}
           />

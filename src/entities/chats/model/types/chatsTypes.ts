@@ -5,9 +5,10 @@ export type Message = {
   text: string;
   chatId: string;
   senderId: string;
-  isRead: boolean
+  isRead: boolean;
   editedAt?: Date | null;
   deletedAt?: Date | null;
+  attachments: Attachment[];
   createdAt: Date;
   updatedAt: Date;
 
@@ -36,4 +37,18 @@ export type Chat = {
 
   members: ChatMember[];
   messages: Message[];
+};
+
+export type Attachment = {
+  id: string;
+  messageId: string;
+  uuidURI: string;
+  fileName: string;
+  fileSize: number;
+  fileExt: string;
+  createdAt: Date;
+  updatedAt: Date;
+
+  chat?: Chat;
+  sender?: UserType;
 };

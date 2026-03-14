@@ -11,13 +11,20 @@ export const chatsApi = mainApi.injectEndpoints({
       providesTags: ["chats"],
     }),
     getMessages: builder.query<Array<Message>, string>({
-      query: (chatId) => `/chat/messages?chatId=${chatId}`
+      query: (chatId) => `/chat/messages?chatId=${chatId}`,
     }),
     deleteChat: builder.mutation<boolean, string>({
-      query: (chatId) => ({url: '/chat/delete', method: 'DELETE', body: {chatId}}),
-      invalidatesTags: ['chats']
+      query: (chatId) => ({
+        url: "/chat/delete",
+        method: "DELETE",
+        body: { chatId },
+      }),
+      invalidatesTags: ["chats"],
     }),
-    fileUpload: builder.mutation<{url: string, fileName: string}, File>({
+    fileUpload: builder.mutation<
+      { fileName: string; fileSize: number; fileUrl: string },
+      File
+    >({
       query: (file) => {
         const formData = new FormData();
         formData.append("file", file);
@@ -26,8 +33,8 @@ export const chatsApi = mainApi.injectEndpoints({
           method: "POST",
           body: formData,
         };
-      }
-    })
+      },
+    }),
   }),
   overrideExisting: true,
 });
