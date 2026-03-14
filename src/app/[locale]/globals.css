@@ -14,6 +14,7 @@
   --text-color: color-mix(in srgb, var(--accent-color) 25%, #ffffff);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 35%, #ffffff80);
   --chatui-bg: #212121;
+  --file-bg: #3993fb;
   --actions-popup-hover: #00000030;
   --checkbox-hover: #ffffff05;
   --shadow-wrapper-bg: #21212199;
@@ -44,6 +45,7 @@
   --text-color: color-mix(in srgb, var(--accent-color) 18%, #000000);
   --sub-text-color: color-mix(in srgb, var(--accent-color) 25%, #00000080);
   --chatui-bg: #ffffff;
+  --file-bg: var(--accent-color);
   --actions-popup-hover: #00000010;
   --checkbox-hover: #00000008;
   --shadow-wrapper-bg: #ffffff30;
@@ -86,6 +88,7 @@
   --color-accent-chat-bg-color: var(--accent-chat-bg-color);
   --color-message-time-color: var(--message-time-color);
   --color-my-message-time-color: var(--my-message-time-color);
+  --color-file-bg: var(--file-bg);
   --breakpoint-otherprofile: 25rem;
   --breakpoint-resizechat: 70rem;
 }
@@ -235,4 +238,8 @@ input[type="number"] {
 
 .iconHoverEffect {
   @apply cursor-pointer flex p-2.5 items-center justify-center hover:bg-checkbox-hover bg-transparent rounded-full duration-300;
+}
+
+.messageItemWrapper {
+  @apply p-2.5 py-1.5 rounded-t-2xl flex flex-col justify-center w-max max-w-[70%] break-all;
 }
