@@ -29,7 +29,11 @@ export {
   setDropFile,
   clearDropFiles,
   getDropFiles,
-  removeDropFile
+  removeDropFile,
+  clearChatImages,
+  getIsImagesPreview,
+  setChatImages,
+  setIsImagesPreview,
 } from "./stores/chatsSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";

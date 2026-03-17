@@ -7,6 +7,9 @@ import { Attachment, Message } from "@/entities/chats/model";
 import { useTranslations } from "next-intl";
 import { Check, CheckCheck } from "lucide-react";
 import FileRender from "./FileRender/FileRender";
+import ImageRender from "./FileRender/ImageRender";
+
+const IMAGE_EXTENSIONS = new Set(["jpg", "jpeg", "png", "gif", "webp"]);
 
 interface Props {
   message: Message;
@@ -15,17 +18,9 @@ interface Props {
   createdAt: Date;
 }
 
-const ChatMessagesItem: FC<Props> = ({
-  isMy,
-  message,
-  createdAt,
-  attachments,
-}) => {
+const ChatMessagesItem: FC<Props> = ({ isMy, message, createdAt, attachments }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [position, setPosition] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
-  });
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     if (isMy) {
@@ -35,30 +30,41 @@ const ChatMessagesItem: FC<Props> = ({
     }
   };
 
+  const imageUrls = attachments
+    ?.filter((a) => IMAGE_EXTENSIONS.has(a.fileExt))
+    .map((a) => a.uuidURI) ?? [];
+
+  const nonImageAttachments = attachments?.filter(
+    (a) => !IMAGE_EXTENSIONS.has(a.fileExt)
+  ) ?? [];
+
   return (
-    <div
-      className={`flex text-default-text-color w-full ${isMy ? "justify-end" : "justify-start"}`}
-    >
-      <div
-        className={`flex flex-col w-full ${isMy ? "items-end" : "items-start"} gap-2`}
-      >
+    <div className={`flex text-default-text-color w-full ${isMy ? "justify-end" : "justify-start"}`}>
+      <div className={`flex flex-col w-full ${isMy ? "items-end" : "items-start"} gap-2`}>
+
+        {imageUrls.length > 0 && (
+          <ImageRender images={imageUrls} isMy={isMy} />
+        )}
+
+        {nonImageAttachments.length > 0 && (
+          <div
+            className={`messageItemWrapper ${isMy ? "rounded-2xl bg-accent-chat-bg-color" : "rounded-2xl bg-chatui-bg"} ${isMy ? "items-end" : "items-start"} gap-2`}
+          >
+            {nonImageAttachments.map((file, index) => (
+              <FileRender
+                key={index}
+                fileName={file.fileName}
+                fileExt={file.fileExt}
+                fileSize={file.fileSize}
+                fileUrl={file.uuidURI}
+              />
+            ))}
+          </div>
+        )}
+
         <div
-          style={{ padding: "10px" }}
-          className={`messageItemWrapper ${isMy ? "rounded-bl-2xl bg-accent-chat-bg-color" : "rounded-br-2xl bg-chatui-bg"} ${isMy ? "items-end" : "items-start"} gap-2`}
-        >
-          {attachments?.map((file, index) => (
-            <FileRender
-              key={index}
-              fileName={file.fileName}
-              fileExt={file.fileExt}
-              fileSize={file.fileSize}
-              fileUrl={file.uuidURI}
-            />
-          ))}
-        </div>
-        <div
-          onContextMenu={(e) => handleOnClick(e)}
-          className={`messageItemWrapper ${isMy ? "rounded-bl-2xl bg-accent-chat-bg-color" : "rounded-br-2xl bg-chatui-bg"} ${isMy ? "items-end" : "items-start"}`}
+          onContextMenu={handleOnClick}
+          className={`messageItemWrapper relative ${isMy ? "rounded-bl-2xl bg-accent-chat-bg-color" : "rounded-br-2xl bg-chatui-bg"} ${isMy ? "items-end" : "items-start"}`}
         >
           <p>{message.text}</p>
           <MessageStats createdAt={createdAt} isMy={isMy} message={message} />
@@ -67,11 +73,7 @@ const ChatMessagesItem: FC<Props> = ({
 
       <AnimatePresence>
         {isOpen && (
-          <MessagePopup
-            setIsOpen={setIsOpen}
-            position={position}
-            message={message}
-          />
+          <MessagePopup setIsOpen={setIsOpen} position={position} message={message} />
         )}
       </AnimatePresence>
     </div>
@@ -82,20 +84,14 @@ const MessageStats: FC<Props> = ({ createdAt, isMy, message }) => {
   const t = useTranslations();
 
   return (
-    <div
-      className={`flex w-full gap-1 items-center justify-end ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}
-    >
-      {!!message.editedAt ? (
-        <p className={`text-[.75rem] shrink-0`}>{t("chat.isEdited")}</p>
-      ) : null}
-      <p className={`text-[.75rem] shrink-0`}>
-        {new Date(createdAt).toLocaleTimeString("ru-RU", {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
+    <div className={`flex w-full gap-1 items-center justify-end ${!isMy ? "text-message-time-color" : "text-my-message-time-color"}`}>
+      {!!message.editedAt && (
+        <p className="text-[.75rem] shrink-0">{t("chat.isEdited")}</p>
+      )}
+      <p className="text-[.75rem] shrink-0">
+        {new Date(createdAt).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" })}
       </p>
-      {isMy &&
-        (message.isRead ? <CheckCheck size={16} /> : <Check size={16} />)}
+      {isMy && (message.isRead ? <CheckCheck size={16} /> : <Check size={16} />)}
     </div>
   );
 };
