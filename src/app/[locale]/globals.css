@@ -241,5 +241,5 @@ input[type="number"] {
 }
 
 .messageItemWrapper {
-  @apply p-2.5 py-1.5 rounded-t-2xl flex flex-col justify-center w-max max-w-[70%] break-all;
+  @apply p-2 rounded-t-2xl flex flex-col justify-center w-max max-w-[70%] break-all;
 }

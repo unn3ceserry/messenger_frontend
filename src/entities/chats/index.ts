@@ -27,5 +27,8 @@ export {
   setFilesModalOpen,
   getIsFullScreenChat,
   readEntry,
+  clearChatImages,
+  setIsImagesPreview,
+  getChatImages,
 } from "./model";
 export { chatsApi } from "./api";

@@ -9,6 +9,8 @@ interface IChatsState {
   isFullScreenChat: boolean;
   isFilesModalOpen: boolean;
   dropFiles: Array<File>;
+  chatImages: {images: Array<string>, startIndex: number};
+  isImagesPreview: boolean;
 }
 
 const initialState: IChatsState = {
@@ -18,6 +20,8 @@ const initialState: IChatsState = {
   isFullScreenChat: false,
   isFilesModalOpen: false,
   dropFiles: [],
+  chatImages: {images: [], startIndex: 0},
+  isImagesPreview: false,
 };
 
 // helpers
@@ -245,6 +249,18 @@ export const chatsSlice = createSlice({
     removeDropFile: (state, action: PayloadAction<File>) => {
       state.dropFiles = state.dropFiles.filter((f) => f !== action.payload);
     },
+
+    // images
+
+    setChatImages: (state, action: PayloadAction<{images: Array<string>, startIndex: number}>) => {
+      state.chatImages = action.payload;
+    },
+    clearChatImages: (state) => {
+      state.chatImages = {images: [], startIndex: 0}
+    },
+    setIsImagesPreview: (state, action: PayloadAction<boolean>) => {
+      state.isImagesPreview = action.payload
+    },
   },
 });
 
@@ -270,6 +286,9 @@ export const {
   setDropFile,
   removeDropFile,
   clearDropFiles,
+  clearChatImages,
+  setIsImagesPreview,
+  setChatImages
 } = chatsSlice.actions;
 
 //  selectors
@@ -293,3 +312,5 @@ export const getIsFullScreenChat = (state: RootState) =>
 export const getIsFilesModalOpen = (state: RootState) =>
   state.chats.isFilesModalOpen;
 export const getDropFiles = (state: RootState) => state.chats.dropFiles;
+export const getIsImagesPreview = (state: RootState) => state.chats.isImagesPreview
+export const getChatImages = (state: RootState) => state.chats.chatImages

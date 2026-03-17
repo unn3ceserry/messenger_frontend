@@ -40,7 +40,12 @@ export {
   ActionsElement,
   DrogOnDrop,
 } from "./ui";
-export { modalContainerDefault, modalDefault, appConfig } from "./config";
+export {
+  modalContainerDefault,
+  modalDefault,
+  appConfig,
+  IMAGE_EXTENSIONS,
+} from "./config";
 export {
   createRipple,
   useSocketConnection,
