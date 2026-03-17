@@ -8,8 +8,7 @@ import { useTranslations } from "next-intl";
 import { Check, CheckCheck } from "lucide-react";
 import FileRender from "./FileRender/FileRender";
 import ImageRender from "./FileRender/ImageRender";
-
-const IMAGE_EXTENSIONS = new Set(["jpg", "jpeg", "png", "gif", "webp"]);
+import { IMAGE_EXTENSIONS } from "@/shared";
 
 interface Props {
   message: Message;

@@ -30,10 +30,11 @@ export {
   clearDropFiles,
   getDropFiles,
   removeDropFile,
-  clearChatImages,
   getIsImagesPreview,
   setChatImages,
+  clearChatImages,
   setIsImagesPreview,
+  getChatImages,
 } from "./stores/chatsSlice";
 
 export { handleSortChat } from "./handlers/handleSortChat";

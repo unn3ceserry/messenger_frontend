@@ -86,6 +86,9 @@ export {
   getIsFullScreenChat,
   setDropFiles,
   setFilesModalOpen,
+  clearChatImages,
+  setIsImagesPreview,
+  getChatImages,
 } from "./chats";
 export {
   contactsApi,

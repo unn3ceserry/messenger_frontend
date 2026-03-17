@@ -1,7 +1,12 @@
 "use client";
 
-import { useAppDispatch } from "@/app";
-import { setChatImages, setIsImagesPreview } from "@/entities/chats/model";
+import { useAppDispatch, useAppSelector } from "@/app";
+import {
+  getCurrentChat,
+  setChatImages,
+  setIsImagesPreview,
+} from "@/entities/chats/model";
+import { IMAGE_EXTENSIONS } from "@/shared";
 import { FC } from "react";
 
 interface Props {
@@ -11,6 +16,15 @@ interface Props {
 
 const ImageRender: FC<Props> = ({ images, isMy }) => {
   const dispatch = useAppDispatch();
+
+  const chatAttachments = useAppSelector(getCurrentChat)
+    ?.messages.filter((msg) => !msg.deletedAt)
+    .map((el) => el.attachments);
+
+  const chatImages =
+    chatAttachments?.flatMap((el) =>
+      el.filter((a) => IMAGE_EXTENSIONS.has(a.fileExt)).map((a) => a.uuidURI),
+    ) ?? [];
 
   const getRows = (length: number): Array<number> => {
     switch (length) {
@@ -80,8 +94,8 @@ const ImageRender: FC<Props> = ({ images, isMy }) => {
                   dispatch(setIsImagesPreview(true));
                   dispatch(
                     setChatImages({
-                      images,
-                      startIndex: images.findIndex((el) => el === img),
+                      images: chatImages,
+                      startIndex: chatImages.findIndex((el) => el === img),
                     }),
                   );
                 }}

@@ -260,7 +260,7 @@ export const chatsSlice = createSlice({
     },
     setIsImagesPreview: (state, action: PayloadAction<boolean>) => {
       state.isImagesPreview = action.payload
-    }
+    },
   },
 });
 
@@ -313,3 +313,4 @@ export const getIsFilesModalOpen = (state: RootState) =>
   state.chats.isFilesModalOpen;
 export const getDropFiles = (state: RootState) => state.chats.dropFiles;
 export const getIsImagesPreview = (state: RootState) => state.chats.isImagesPreview
+export const getChatImages = (state: RootState) => state.chats.chatImages

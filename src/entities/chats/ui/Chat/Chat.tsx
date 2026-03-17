@@ -9,6 +9,7 @@ import {
   getCurrentChat,
   getDropFiles,
   getIsFilesModalOpen,
+  getIsImagesPreview,
 } from "@/entities/chats/model";
 import {
   getMyData,
@@ -27,6 +28,7 @@ import ChatInput from "./ChatInput/ChatInput";
 import ChatMessages from "./ChatMessages/ChatMessages";
 import ChatUserInfo from "./ChatUserInfo/ChatUserInfo";
 import DropFilesModal from "../Files/DropFilesModal";
+import { ImageViewer } from "@/widgets";
 
 const Chat = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +36,7 @@ const Chat = () => {
   const userId = useAppSelector(getMyData);
   const currentChat = useAppSelector(getCurrentChat);
   const whoIsOpenWithUi = useAppSelector(selectOpenComponent);
+  const isImagesPreview = useAppSelector(getIsImagesPreview);
 
   const socket = useSocketConnection(userId);
 
@@ -136,6 +139,7 @@ const Chat = () => {
           {files.length > 0 && isFilesModalOpen && (
             <ModalConstructor content={<DropFilesModal />} />
           )}
+          {isImagesPreview && <ModalConstructor content={<ImageViewer />} />}
         </AnimatePresence>
       </div>
     </div>
