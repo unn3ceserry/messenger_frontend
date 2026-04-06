@@ -8,7 +8,6 @@ on:
       - main
 
 jobs:
-  # run interaction and accessibility tests
   interaction-and-accessibility:
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +18,7 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
@@ -29,7 +28,7 @@ jobs:
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:6006 && npm run test-storybook"
-  # run visual and composition tests with Chromatic
+
   visual-and-composition:
     runs-on: ubuntu-latest
     steps:
@@ -37,11 +36,12 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
   unit-tests:
     runs-on: ubuntu-latest
     steps:
@@ -52,6 +52,6 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Run Unit Tests
         run: npm run test-unit
