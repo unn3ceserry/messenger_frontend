@@ -22,7 +22,7 @@ interface Props {
 
 const SearchUsers: FC<Props> = ({ searchText, handleCloseSearch }) => {
   const t = useTranslations();
-  const userId = useAppSelector(getMyData);
+  const userId = useAppSelector(getMyData).id ?? '';
 
   const dispatch = useAppDispatch();
   const debouncedSearchText = useDebounce(searchText, 500);

@@ -1,7 +1,7 @@
 "use client";
 
 import { DragEvent, useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EllipsisVertical, X } from "lucide-react";
 
 import { useAppDispatch, useAppSelector } from "@/app";
@@ -33,16 +33,16 @@ import { ImageViewer } from "@/widgets";
 const Chat = () => {
   const dispatch = useAppDispatch();
 
-  const userId = useAppSelector(getMyData);
+  const me = useAppSelector(getMyData);
   const currentChat = useAppSelector(getCurrentChat);
   const whoIsOpenWithUi = useAppSelector(selectOpenComponent);
   const isImagesPreview = useAppSelector(getIsImagesPreview);
 
-  const socket = useSocketConnection(userId);
+  const socket = useSocketConnection(me.id ?? "");
 
   const unreadMessageIds =
     currentChat?.messages
-      .filter((msg) => !msg.isRead && msg.senderId !== userId)
+      .filter((msg) => !msg.isRead && msg.senderId !== me.id)
       .map((msg) => msg.id) ?? [];
 
   useEffect(() => {
@@ -54,12 +54,12 @@ const Chat = () => {
         chatId: currentChat.id,
       });
     }
-  }, [currentChat, currentChat?.messages, userId, socket]);
+  }, [currentChat, currentChat?.messages, me.id, socket]);
 
   if (!currentChat) return <Spinner />;
 
   const otherMember = currentChat.members?.find(
-    (m) => m.userId !== userId,
+    (m) => m.userId !== me.id,
   )?.user;
   if (!otherMember) return <Spinner />;
 
@@ -127,11 +127,24 @@ const Chat = () => {
         </div>
       </div>
 
-      <div className="relative flex flex-col flex-1 w-full items-center justify-between gap-5 py-5 overflow-y-auto">
+      <motion.div
+        layout
+        className="relative flex flex-col flex-1 w-full items-center justify-between gap-5 py-5 overflow-y-auto"
+      >
         <ChatMessages userId={otherUserId} />
-        <div className="flex w-full items-center justify-center px-5 max-w-175">
-          <ChatInput />
-        </div>
+        <AnimatePresence initial={false}>
+          {!me.blockedUsers.includes(otherMember.id) && (
+            <motion.div
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 0, opacity: 0 }}
+              initial={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="flex w-full items-center justify-center px-5 max-w-175"
+            >
+              <ChatInput />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
           {whoIsOpenWithUi === "userActionsMenu" && <UserActionsMenu />}
@@ -141,7 +154,7 @@ const Chat = () => {
           )}
           {isImagesPreview && <ModalConstructor content={<ImageViewer />} />}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ const FilesReference: FC<Props> = ({ setValue, value, files }) => {
 
   const dispatch = useAppDispatch();
 
-  const userId = useAppSelector(getMyData);
+  const userId = useAppSelector(getMyData).id ?? '';
   const socket = useSocketConnection(userId);
   const currentChat = useAppSelector(getCurrentChat);
 

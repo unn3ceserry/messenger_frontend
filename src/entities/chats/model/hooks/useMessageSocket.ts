@@ -39,7 +39,7 @@ export function useMessageSocket(userId: string) {
     const handleAddMessage = (message: Message) => {
       const isValidUser = message.senderId !== userId;
       const isInCurrentChat = currentChatRef.current?.id === message.chatId;
-
+      if (message.isBlocked && message.senderId !== userId) return;
       const isMuted = ignoredUsers.includes(message.senderId);
 
       if (!isMuted && isValidUser) {
@@ -49,7 +49,6 @@ export function useMessageSocket(userId: string) {
           audioRef.current?.play();
         }
       }
-
       dispatch(addNewMessage({ chatId: message.chatId, message }));
     };
 
@@ -63,10 +62,16 @@ export function useMessageSocket(userId: string) {
       );
     };
 
-    const handleIsReadMessage = ({chatId, messageIds}: {chatId: string, messageIds: Array<string>}) => {
-      console.log('handleIsReadMessage')
-      dispatch(readMessage({chatId, messageIds}))
-    }
+    const handleIsReadMessage = ({
+      chatId,
+      messageIds,
+    }: {
+      chatId: string;
+      messageIds: Array<string>;
+    }) => {
+      console.log("handleIsReadMessage");
+      dispatch(readMessage({ chatId, messageIds }));
+    };
 
     socket.on("message:created", handleAddMessage);
     socket.on("message:edited", handleEditMessage);

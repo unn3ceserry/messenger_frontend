@@ -16,7 +16,7 @@ const CurrentUserProvider: FC<Props> = ({ children }) => {
 
   useEffect(() => {
     if (data?.id) {
-      dispatch(setMyData({ id: data.id }));
+      dispatch(setMyData({ id: data.id, blockedUsers: data.blockedUsers }));
       setReady(true);
     }
   }, [data, dispatch]);

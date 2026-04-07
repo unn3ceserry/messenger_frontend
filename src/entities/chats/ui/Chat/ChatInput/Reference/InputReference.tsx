@@ -27,7 +27,7 @@ interface Props {
 const InputReference: FC<Props> = ({ setValue, value }) => {
   const t = useTranslations();
 
-  const userId = useAppSelector(getMyData);
+  const userId = useAppSelector(getMyData).id ?? '';
   const socket = useSocketConnection(userId);
   const currentChat = useAppSelector(getCurrentChat);
 
