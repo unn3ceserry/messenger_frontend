@@ -20,7 +20,7 @@ const MIN_WIDTH = 300;
 const MAX_WIDTH = 680;
 
 const Menu = () => {
-  const userId = useAppSelector(getMyData);
+  const userId = useAppSelector(getMyData).id ?? '';
   const { data, isLoading } = userApi.useGetMeQuery();
 
   // getters

@@ -6,6 +6,7 @@ export type Message = {
   chatId: string;
   senderId: string;
   isRead: boolean;
+  isBlocked: boolean;
   editedAt?: Date | null;
   deletedAt?: Date | null;
   attachments: Attachment[];

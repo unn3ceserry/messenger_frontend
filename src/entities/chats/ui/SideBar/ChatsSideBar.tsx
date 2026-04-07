@@ -19,7 +19,7 @@ interface Props {
 
 const ChatsSideBar: FC<Props> = ({ myDms }) => {
   const dispatch = useAppDispatch();
-  const userId = useAppSelector(getMyData);
+  const userId = useAppSelector(getMyData).id;
   const otherProfileComponent = useAppSelector(
     getOtherProfileStatus,
   ).openComponent;

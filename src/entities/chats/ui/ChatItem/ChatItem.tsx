@@ -30,7 +30,7 @@ const ChatItem: FC<Props> = ({
   onContextMenu,
   userId,
 }) => {
-  const myUserId = useAppSelector(getMyData);
+  const myUserId = useAppSelector(getMyData).id ?? '';
   const lastMessage = messages.at(-1);
   const noReadMessages = messages.filter(
     (msg) => msg.senderId !== myUserId && !msg.isRead,

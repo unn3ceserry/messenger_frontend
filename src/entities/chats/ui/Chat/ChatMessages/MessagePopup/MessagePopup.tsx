@@ -15,7 +15,7 @@ interface Props {
 }
 
 const MessagePopup: FC<Props> = ({ position, message, setIsOpen }) => {
-  const userId = useAppSelector(getMyData);
+  const userId = useAppSelector(getMyData).id ?? '';
   const socket = useSocketConnection(userId);
 
   const dispatch = useAppDispatch();
