@@ -46,7 +46,8 @@ export default function NotFoundPage() {
           </p>
         </div>
         <Button
-          label={t("buttons.buttonHome")}
+          buttonType="ternary"
+          text={t("buttons.buttonHome")}
           className="p-2.5 w-full max-w-70"
           onClick={() => router.push("/")}
         />
