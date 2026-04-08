@@ -49,7 +49,7 @@ const ChatItem: FC<Props> = ({
         e.preventDefault();
         onContextMenu(e);
       }}
-      className={`flex w-full items-center justify-between cursor-pointer relative hover:bg-checkbox-hover rounded-2xl p-2.5 overflow-hidden text-default-text-color`}
+      className={`flex w-full items-center justify-between cursor-pointer relative hover:bg-hover-checkbox rounded-2xl p-2.5 overflow-hidden text-text-default`}
     >
       <div className="flex-1 min-w-0">
         <ItemUserInfo
@@ -65,7 +65,7 @@ const ChatItem: FC<Props> = ({
       {!isIgnoreOppent ? (
         <div className="flex flex-col items-end justify-center gap-2 shrink-0 absolute right-2.5 top-2.5">
           {messages.length ? (
-            <p className="text-icons-color text-[.65rem]">
+            <p className="text-icon text-[.65rem]">
               {formattedCreatedTime}
             </p>
           ) : null}
@@ -76,8 +76,8 @@ const ChatItem: FC<Props> = ({
           ) : null}
         </div>
       ) : (
-        <div className="items-center justify-center p-2.5 bg-checkbox-hover rounded-lg">
-          <VolumeOff size={20} className="text-icons-color" />
+        <div className="items-center justify-center p-2.5 bg-hover-checkbox rounded-lg">
+          <VolumeOff size={20} className="text-icon" />
         </div>
       )}
     </div>

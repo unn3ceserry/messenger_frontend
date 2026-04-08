@@ -27,7 +27,7 @@ const SetEmail = () => {
         type="submit"
         text={t("settings.privacyAndSecurity.linkEmailToAccount")}
       />
-      <p className="text-icons-color text-[.8rem]">
+      <p className="text-icon text-[.8rem]">
         {t("settings.privacyAndSecurity.linkEmailSubtext")}
       </p>
     </form>

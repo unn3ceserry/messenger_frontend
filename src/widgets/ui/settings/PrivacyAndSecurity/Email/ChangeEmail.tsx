@@ -56,7 +56,7 @@ const ChangeEmail: FC<Props> = ({ cloudPassword }) => {
       >
         <p>{t("settings.privacyAndSecurity.changeEmail")}</p>
       </button>
-      <p className="text-icons-color text-[.8rem]">
+      <p className="text-icon text-[.8rem]">
         {t("settings.privacyAndSecurity.linkEmailSubtext")}
       </p>
     </form>

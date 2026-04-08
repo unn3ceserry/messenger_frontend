@@ -24,14 +24,14 @@ const ItemUserInfo: FC<Props> = ({avatar, firstName, hasAvatar, lastName, userId
       <div className="flex items-center justify-center relative">
         <RenderAvatarElement hasAvatar={hasAvatar} size={50} avatar={avatar} />
         {isOnline && (
-          <div className="absolute bottom-1 right-0 w-4 aspect-square bg-green-400 border-chatui-bg border-2 rounded-full" />
+          <div className="absolute bottom-1 right-0 w-4 aspect-square bg-green-400 border-bg-chat border-2 rounded-full" />
         )}
       </div>
       <div className="flex flex-col items-start justify-center min-w-0">
         <h2 className="shortText">
           {firstName} {lastName}
         </h2>
-        <p className="text-icons-color text-[0.85rem] shortText">
+        <p className="text-icon text-[0.85rem] shortText">
           {lastMessage ? lastMessage.text : t("searchUsers.noResult")}
         </p>
       </div>

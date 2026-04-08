@@ -33,7 +33,7 @@ const CompletePane: FC<ICompletePane> = ({
         </div>
         <div className="flex flex-col items-start justify-center">
           <h3 className="text-white">{t(title)}</h3>
-          <p className="text-[0.85rem] text-button-text-color/50 line-clamp-1">
+          <p className="text-[0.85rem] text-btn-text/50 line-clamp-1">
             {t(desc)}
           </p>
         </div>

@@ -125,7 +125,7 @@ const RegisterFormNumber: FC<IRegisterFormNumber> = ({ setIsVisible }) => {
           onClick={() => router.back()}
           text={t("buttons.buttonBack")}
         />
-        <p className="text-[.8rem] text-button-text-color/50">
+        <p className="text-[.8rem] text-btn-text/50">
           {t("register.agreeWith")}{" "}
           <Link
             href={`/${params.locale}/terms`}

@@ -52,7 +52,7 @@ const CompleteProfile = () => {
         <h1 className="text-white text-[1.55rem]">
           {t("profileComplete.title")}
         </h1>
-        <p className="text-[0.75rem] text-button-text-color/50 max-w-90">
+        <p className="text-[0.75rem] text-btn-text/50 max-w-90">
           {t("profileComplete.desc")}
         </p>
       </header>
