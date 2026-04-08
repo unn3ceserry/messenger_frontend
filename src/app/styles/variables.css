@@ -68,6 +68,7 @@
   --text-main: color-mix(in srgb, var(--color-primary) 18%, #000000);
   --text-sub: color-mix(in srgb, var(--color-primary) 25%, #00000080);
   --text-default: #000000;
+  --text-time: rgba(104, 108, 114, 0.75);
   --text-time-my: rgb(79, 174, 78);
 
   /* ui elements */

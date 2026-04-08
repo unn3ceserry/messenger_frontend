@@ -83,7 +83,7 @@ const MessageStats: FC<Props> = ({ createdAt, isMy, message }) => {
   const t = useTranslations();
 
   return (
-    <div className={`flex w-full gap-1 items-center justify-end ${!isMy ? "text-message-time-color" : "text-text-time-my"}`}>
+    <div className={`flex w-full gap-1 items-center justify-end ${!isMy ? "text-text-time" : "text-text-time-my"}`}>
       {!!message.editedAt && (
         <p className="text-[.75rem] shrink-0">{t("chat.isEdited")}</p>
       )}

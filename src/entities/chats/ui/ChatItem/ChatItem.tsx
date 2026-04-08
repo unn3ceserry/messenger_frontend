@@ -69,7 +69,7 @@ const ChatItem: FC<Props> = ({
         />
       </div>
 
-      <div className="flex flex-col items-end justify-center gap-2 shrink-0  text-white ">
+      <div className="flex flex-col items-end justify-center gap-2 shrink-0 text-white">
         {messages.length ? (
           <p className={`${!isCurrentChat && "text-icon"} text-[.65rem]`}>
             {formattedCreatedTime}
