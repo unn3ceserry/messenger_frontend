@@ -10,6 +10,7 @@
   --color-bg-rect: var(--bg-rect);
   --color-border-rect: var(--border-rect);
   --color-bg-chat: var(--bg-chat);
+  --color-bg-chat-active: var(--bg-chat-active);
   --color-hover-action: var(--hover-action);
   --color-hover-checkbox: var(--hover-checkbox);
   --color-bg-shadow: var(--bg-shadow);

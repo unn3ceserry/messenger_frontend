@@ -65,6 +65,7 @@ const ChatsSideBar: FC<Props> = ({ myDms }) => {
             firstName={user.firstName}
             lastName={user.lastName}
             avatar={lastAvatar}
+            chatId={chat.id}
             hasAvatar={!!user.avatars.length}
           />
         );

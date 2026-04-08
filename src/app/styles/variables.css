@@ -9,6 +9,7 @@
   /* backgrounds */
   --bg-main: color-mix(in srgb, var(--color-primary) 2%, #000000);
   --bg-chat: #212121;
+  --bg-chat-active: #766AC8;
   --bg-file: #3993fb;
   --bg-rect: color-mix(in srgb, var(--color-primary) 1%, transparent);
   --bg-modal: #00000035;
@@ -55,6 +56,7 @@
   /* backgrounds */
   --bg-main: color-mix(in srgb, var(--color-primary) 3%, #ffffff);
   --bg-chat: #ffffff;
+  --bg-chat-active: #766AC8;
   --bg-file: var(--color-primary);
   --bg-modal: #ffffff35;
   --bg-shadow: #ffffff30;
